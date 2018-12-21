@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">android_trainee_education</string>
+    <string name="app_name">Хочу помочь</string>
+    <string name="msg_loading">Загрузка...</string>
 </resources>
