@@ -10,4 +10,14 @@
         <item name="android:fontFamily">?fontFamily/sans-serif</item>
     </style>
 
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColor">@color/toolbarTextColor</item>
+        <item name="android:actionMenuTextColor">@color/toolbarTextColor</item>
+    </style>
+
+    <style name="ToolbarTheme.Title" parent="ToolbarTheme">
+        <item name="android:fontFamily">@font/oficcina_sans_extra_bold_scc</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+
 </resources>
