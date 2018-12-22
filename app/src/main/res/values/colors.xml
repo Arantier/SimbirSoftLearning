@@ -9,4 +9,7 @@
     <color name="splashBackground">#eff3f6</color>
     <color name="textColorPrimary">#b3000000</color>
     <color name="toolbarTextColor">#fff</color>
+    <color name="inactiveElement">#9c9c9c</color>
+    <color name="bottomNavBarBackground">#fff</color>
+    <color name="buttonHelpBackground">#fe7460</color>
 </resources>

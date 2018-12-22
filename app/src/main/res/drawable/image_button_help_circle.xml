@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid
+                android:color="@color/buttonHelpBackground"/>
+            <size
+                android:width="@dimen/button_help_circle_size"
+                android:height="@dimen/button_help_circle_size"/>
+            <stroke
+                android:color="@color/bottomNavBarBackground"
+                android:width="6dp"/>
+        </shape>
+    </item>
+</selector>
