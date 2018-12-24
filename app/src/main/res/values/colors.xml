@@ -12,4 +12,7 @@
     <color name="inactiveElement">#9c9c9c</color>
     <color name="bottomNavBarBackground">#fff</color>
     <color name="buttonHelpBackground">#fe7460</color>
+    <color name="helpCardText">#9ebf50</color>
+    <color name="helpCardBackground">#eaede8</color>
+    <color name="helpCategoryMessage">#de000000</color>
 </resources>

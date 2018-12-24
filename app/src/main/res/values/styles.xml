@@ -20,4 +20,24 @@
         <item name="android:textSize">21sp</item>
     </style>
 
+    <style name="BottomNavBarItem">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:tint">@drawable/sel_nav_button_color_state</item>
+    </style>
+
+    <style name="HelpSwitchMessage">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:color">@color/helpCategoryMessage</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="HelpCardStyle">
+        <item name="android:textColor">@color/helpCardText</item>
+        <item name="android:fontFamily">@font/oficcina_sans_extra_bold_scc</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>

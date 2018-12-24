@@ -2,11 +2,8 @@
     <string name="app_name">Хочу помочь</string>
 
 
-    <string name="msg_loading">Загрузка...</string>
+    <string name="msg_loading">Загрузка…</string>
     <string name="title_activity_help_categories">HelpCategoriesActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
 
 
     <string name="title_help">Помощь</string>
@@ -15,4 +12,11 @@
     <string name="button_help">Помочь</string>
     <string name="button_history">История</string>
     <string name="button_profile">Профиль</string>
+
+    <string name="msg_help">Выберите категорию помощи</string>
+    <string name="title_help_kids">Дети</string>
+    <string name="title_help_adults">Взрослые</string>
+    <string name="title_help_elders">Пожилые</string>
+    <string name="title_help_animals">Животные</string>
+    <string name="title_help_events">Мероприятия</string>
 </resources>

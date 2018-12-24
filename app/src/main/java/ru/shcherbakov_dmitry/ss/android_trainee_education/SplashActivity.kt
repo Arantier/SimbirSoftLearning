@@ -10,7 +10,7 @@ import android.os.Handler
 
 class SplashActivity : AppCompatActivity() {
 
-    lateinit var progressBar : ProgressBar
+    private lateinit var progressBar : ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
