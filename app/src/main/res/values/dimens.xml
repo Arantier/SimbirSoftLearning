@@ -29,5 +29,6 @@
     <dimen name="bottom_nav_bar_height">54dp</dimen>
     <dimen name="button_help_circle_size">54dp</dimen>
     <dimen name="button_help_shadow_height">27dp</dimen>
+    <dimen name="bottom_nav_bar_labels_margin">6dp</dimen>
 
 </resources>

@@ -13,6 +13,11 @@ class HelpCategoriesActivity : AppCompatActivity() {
 
     private lateinit var helpCategoryFragment: HelpCategoryFragment
 
+    private fun getBack(){
+        Toast.makeText(applicationContext, "Back", Toast.LENGTH_SHORT)
+                .show()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help_categories)
@@ -20,13 +25,16 @@ class HelpCategoriesActivity : AppCompatActivity() {
         helpCategoryFragment = HelpCategoryFragment.newInstance()
 
         toolbar.setNavigationOnClickListener { view ->
-            Toast.makeText(view.context, "Back", Toast.LENGTH_SHORT)
-                    .show()
+            getBack()
         }
 
         val fm = supportFragmentManager
         val ft = fm.beginTransaction()
         ft.add(fragment_container.id,helpCategoryFragment)
         ft.commit()
+    }
+
+    override fun onBackPressed() {
+        getBack()
     }
 }
