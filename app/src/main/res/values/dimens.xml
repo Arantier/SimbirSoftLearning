@@ -2,22 +2,22 @@
     <!--
         Splash Screen
     -->
-    <dimen name="splash_logo_margin_top">154dp</dimen>
-    <dimen name="splash_logo_margin_horizontal">57dp</dimen>
+    <dimen name="splash_logo_margin_top">156dp</dimen>
+    <dimen name="splash_logo_margin_horizontal">56dp</dimen>
 
     <dimen name="splash_dev_logo_margin_bottom">44dp</dimen>
-    <dimen name="splash_dev_logo_margin_horizontal">122dp</dimen>
+    <dimen name="splash_dev_logo_margin_horizontal">120dp</dimen>
 
-    <dimen name="splash_progress_margin_horizontal">161dp</dimen>
-    <dimen name="splash_progress_margin_top">83dp</dimen>
+    <dimen name="splash_progress_margin_horizontal">160dp</dimen>
+    <dimen name="splash_progress_margin_top">84dp</dimen>
 
-    <dimen name="splash_loading_margin_horizontal">146dp</dimen>
+    <dimen name="splash_loading_margin_horizontal">142dp</dimen>
     <dimen name="splash_loading_margin_top">20dp</dimen>
 
     <!--
         Категория "Помощь"
     -->
-    <dimen name="help_text_message">19dp</dimen>
+    <dimen name="help_text_message">20dp</dimen>
     <dimen name="help_card_margin">8dp</dimen>
     <dimen name="help_card_vertical_margin">12dp</dimen>
     <dimen name="help_card_horizontal_margin">24dp</dimen>
@@ -26,9 +26,9 @@
     <!--
         Общее
     -->
-    <dimen name="bottom_nav_bar_height">54dp</dimen>
-    <dimen name="button_help_circle_size">54dp</dimen>
-    <dimen name="button_help_shadow_height">27dp</dimen>
-    <dimen name="bottom_nav_bar_labels_margin">6dp</dimen>
+    <dimen name="bottom_nav_bar_height">56dp</dimen>
+    <dimen name="button_help_circle_size">56dp</dimen>
+    <dimen name="button_help_shadow_height">28dp</dimen>
+    <dimen name="bottom_nav_bar_labels_margin">8dp</dimen>
 
 </resources>
