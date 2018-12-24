@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:elevation="2dp"
+    android:outlineProvider="none"
+    tools:layout_gravity="bottom">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_nav_bar_height"
+        android:layout_gravity="bottom"
+        android:clickable="false"
+        android:elevation="2dp"
+        android:outlineProvider="bounds"
+        app:srcCompat="@drawable/bkg_bottom_nav_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:elevation="2dp"
+        android:orientation="horizontal">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_nav_bar_height"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:tint="@drawable/sel_nav_button_color_state"
+                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:srcCompat="@drawable/ic_news" />
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/BottomNavBarItem"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bottom_nav_bar_labels_margin"
+                android:text="@string/button_news"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_nav_bar_height"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:tint="@drawable/sel_nav_button_color_state">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:tint="@drawable/sel_nav_button_color_state"
+                app:layout_constraintBottom_toTopOf="@+id/textView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_search" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bottom_nav_bar_labels_margin"
+                android:text="@string/button_search"
+                style="@style/BottomNavBarItem"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:tint="@drawable/sel_nav_button_color_state">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/image_button_help_circle" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_heart" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_help_shadow_height"
+                    app:srcCompat="@drawable/ic_shadow" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bottom_nav_bar_labels_margin"
+                android:text="@string/button_help"
+                style="@style/BottomNavBarItem"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_nav_bar_height"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:tint="@drawable/sel_nav_button_color_state"
+                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_history" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bottom_nav_bar_labels_margin"
+                android:text="@string/button_history"
+                style="@style/BottomNavBarItem"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_nav_bar_height"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:tint="@drawable/sel_nav_button_color_state"
+                app:layout_constraintBottom_toTopOf="@+id/textView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_profile" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/bottom_nav_bar_labels_margin"
+                android:text="@string/button_profile"
+                style="@style/BottomNavBarItem"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

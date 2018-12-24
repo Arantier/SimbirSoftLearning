@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/splashBackground">
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/splash_logo_margin_top"
+        android:layout_marginStart="@dimen/splash_logo_margin_horizontal"
+        android:layout_marginEnd="@dimen/splash_logo_margin_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_icon_logo" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/splash_dev_logo_margin_horizontal"
+        android:layout_marginEnd="@dimen/splash_dev_logo_margin_horizontal"
+        android:layout_marginBottom="@dimen/splash_dev_logo_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_logo_mss" />
+
+    <ProgressBar
+        android:id="@+id/progress_loading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/splash_progress_margin_horizontal"
+        android:layout_marginTop="@dimen/splash_progress_margin_top"
+        android:layout_marginEnd="@dimen/splash_progress_margin_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/splash_loading_margin_top"
+        android:layout_marginStart="@dimen/splash_loading_margin_horizontal"
+        android:layout_marginEnd="@dimen/splash_loading_margin_horizontal"
+        android:text="@string/msg_loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_loading" />
+</android.support.constraint.ConstraintLayout>
