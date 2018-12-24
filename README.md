@@ -81,3 +81,55 @@
  - Все переиспользуемые размеры в xml должны быть вынесены в dimes, цвета в colors, а строки в strings.
  - Никаких "магических чисел", все должно иметь понятные названия
 4. После завершения работ над задением отправить ментору количество затраченного времени на практическое выполнение задачи.
+
+---
+## V. Android OS. Activity. Fragments
+---
+### Теоретическая часть
+
+**1. Android OS:** 
++ [История Android](https://www.android.com/history/#/marshmallow) **(\*\*)**
++ [Архитектура Android](https://source.android.com/devices/architecture/) **(\*\*)**
+
+**2. Application:**  
++ [Application](https://developer.android.com/reference/android/app/Application.html)  **(\*\*\*)**
++ [Context](https://possiblemobile.com/2013/06/context/)  **(\*\*\*)**
++ [Файл Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro.html) **(\*\*\*\*)**
+
+**3. Activity:**  
++ [Activity - основы](https://developer.android.com/guide/components/activities.html) **(\*\*\*\*)**
++ [Task и Back Stack](https://habrahabr.ru/post/186434/) **(\*\*)**
++ [Передача данных между Activity](https://developer.android.com/guide/components/activities/parcelables-and-bundles.html) **(\*\*\*\*)**
++ [Управление жизненным циклом Activity](https://developer.android.com/training/basics/activity-lifecycle/index.html) **(\*\*\*\*)**
+
+**4. Fragment:**  
++ [Fragment - основы](https://developer.android.com/guide/components/fragments.html) **(\*\*\*\*)**
++ [Диалоговые окна](https://developer.android.com/guide/topics/ui/dialogs.html) **(\*\*\*\*)**
++ [Обработка изменений конфигурации экрана](https://developer.android.com/guide/topics/resources/runtime-changes.html?hl=ru) **(\*\*\*\*)**
++ [Target fragment](https://habrahabr.ru/post/259805/) **(\*\*)**
+
+
+**5. Работа со сторонними приложениями и permissions:**  
++ [Run-time permissions](https://developer.android.com/training/permissions/requesting.html)**(\*\*\*\*)**
++ [Intent и фильтры](https://developer.android.com/guide/components/intents-filters.html?hl=ru)**(\*\*\*\*)**
++ [Взаимодействие с другими приложениями](https://developer.android.com/training/basics/intents/index.html )**(\*\*\*)**
+
+**6. BroadcastReceiver:**  
++ [BroadcastReceiver - основы](http://codetheory.in/android-broadcast-receivers/) **(\*\*\*\*)**
++ [Изменения работы с BroadcastReceiver с Android 8.0](https://developer.android.com/guide/components/broadcast-exceptions.html) **(\*\*)**
+
+### Практическое задание
+Работа должна производится в созданном ранее проекте.
+
+Все изменения должны быть закоммичены, а названия коммитов должны коротко и исчерпывающе описывать содержащие изменения. Каждый коммит должен быть рабочим, отправка некомпилирующегося кода недопустима. Для работы над этим заданием необходимо переключится на ветку `fragments` и все изменения пушить в нее. После завершения работы над задачей в gitlab необходимо создать merge request в ветку `develop`.
+Код должен быть читабельным и написан согласно code-style.
+
+1. Реализовать экран профиль согласно [макету](https://zpl.io/b6lQpZq)
+2. Реализовать диалог согласно [макету](https://zpl.io/brkmRYX)
+ - Диалог должен открываться при нажатии на изображение пользователя на экране профиля 
+3. Реализовать экран поиска согласно [макету](https://zpl.io/bAGAPj8)
+ - Экран должен быть построен с использованием `ViewPager` и фрагментов
+ - Должна быть реализована возможность изменять выбранную вкладку перелистыванием с плавной анимацией. 
+ - В качестве названий для результатов должны использоваться произвольные случайные строки 
+ - Данные для отображения результата должны генерироваться случайным образом при каждом перелистывании `ViewPager`. 
+4. После завершения работ над задением отправить ментору количество затраченного времени на практическое выполнение задачи.
