@@ -96,6 +96,7 @@
             android:tint="@drawable/sel_nav_button_color_state">
 
             <FrameLayout
+                android:id="@+id/button_heart"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/textView6"

@@ -31,19 +31,48 @@
         android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/include"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_help"
-        android:layout_marginBottom="@dimen/bottom_nav_bar_height"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_help" />
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/include_bottom_nav_bar"
+    <FrameLayout
+        android:id="@+id/button_heart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/button_help_bottom_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_nav_bar"
+        app:layout_constraintStart_toStartOf="@+id/bottom_nav_bar"
+        app:layout_constraintEnd_toEndOf="@+id/bottom_nav_bar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/image_button_help_circle" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_help_shadow_height"
+            app:srcCompat="@drawable/ic_shadow" />
+    </FrameLayout>
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_nav_bar_height"
+        app:itemIconTint="@drawable/sel_nav_button_color_state"
+        app:itemTextColor="@drawable/sel_nav_button_color_state"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_nav_bar" />
 
 </android.support.constraint.ConstraintLayout>
