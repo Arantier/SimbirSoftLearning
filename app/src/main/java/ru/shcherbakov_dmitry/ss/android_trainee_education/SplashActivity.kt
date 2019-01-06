@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
         //TODO:Поменяй 0 на 2000
         Handler().postDelayed({
-            startActivity(Intent(this@SplashActivity, HelpCategoriesActivity::class.java))
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
         },2000)
     }
 }

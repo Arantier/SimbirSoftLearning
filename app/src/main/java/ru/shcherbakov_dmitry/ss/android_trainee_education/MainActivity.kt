@@ -1,40 +1,39 @@
 package ru.shcherbakov_dmitry.ss.android_trainee_education
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.widget.FrameLayout
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_help_categories.*
+import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.presenter.InjectPresenter
+import kotlinx.android.synthetic.main.activity_main.*
 
-class HelpCategoriesActivity : AppCompatActivity() {
+class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
+
+    @InjectPresenter
+    lateinit var presenter : MainMvpPresenter
 
     lateinit var toolbar: Toolbar
 
-    private lateinit var helpCategoryFragment: HelpCategoryFragment
+    private lateinit var helpFragment: HelpFragment
 
-    private fun getBack(){
+    override fun getBack(){
         Toast.makeText(applicationContext, "Back", Toast.LENGTH_SHORT)
                 .show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_help_categories)
+        setContentView(R.layout.activity_main)
         toolbar = toolbar_help
-        helpCategoryFragment = HelpCategoryFragment.newInstance()
+        helpFragment = HelpFragment.newInstance()
 
         toolbar.setNavigationOnClickListener { view ->
-            getBack()
+            presenter.getBack()
         }
 
         val fm = supportFragmentManager
         val ft = fm.beginTransaction()
-        ft.add(fragment_container.id,helpCategoryFragment)
+        ft.add(fragment_container.id,helpFragment)
         ft.commit()
-    }
-
-    override fun onBackPressed() {
-        getBack()
     }
 }

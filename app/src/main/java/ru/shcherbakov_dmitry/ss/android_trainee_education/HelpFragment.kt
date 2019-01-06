@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class HelpCategoryFragment : Fragment() {
+class HelpFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -17,6 +17,6 @@ class HelpCategoryFragment : Fragment() {
 
         // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance() = HelpCategoryFragment()
+        fun newInstance() = HelpFragment()
     }
 }
