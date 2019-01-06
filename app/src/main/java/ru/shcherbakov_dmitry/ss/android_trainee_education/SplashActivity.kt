@@ -17,9 +17,9 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         progressBar = progress_loading
 
-        //TODO:Поменяй 0 на 2000
         Handler().postDelayed({
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            val intent = Intent(this@SplashActivity, MainActivity::class.java)
+            startActivity(intent)
         },2000)
     }
 }

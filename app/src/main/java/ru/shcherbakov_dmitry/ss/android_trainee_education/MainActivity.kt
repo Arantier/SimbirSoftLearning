@@ -16,20 +16,11 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
 
     private lateinit var helpFragment: HelpFragment
 
-    override fun getBack(){
-        Toast.makeText(applicationContext, "Back", Toast.LENGTH_SHORT)
-                .show()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         toolbar = toolbar_help
         helpFragment = HelpFragment.newInstance()
-
-        toolbar.setNavigationOnClickListener { view ->
-            presenter.getBack()
-        }
 
         val fm = supportFragmentManager
         val ft = fm.beginTransaction()

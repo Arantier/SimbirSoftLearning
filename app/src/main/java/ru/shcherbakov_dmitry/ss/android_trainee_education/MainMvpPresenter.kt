@@ -6,7 +6,4 @@ import com.arellomobile.mvp.MvpPresenter
 @InjectViewState
 class MainMvpPresenter : MvpPresenter<MainMvpViewInterface>() {
 
-    fun getBack(){
-        viewState.getBack()
-    }
 }
