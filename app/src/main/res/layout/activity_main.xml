@@ -38,12 +38,13 @@
 
     <FrameLayout
         android:id="@+id/button_heart"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/button_help_bottom_margin"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_nav_bar"
         app:layout_constraintStart_toStartOf="@+id/bottom_nav_bar"
-        app:layout_constraintEnd_toEndOf="@+id/bottom_nav_bar">
+        app:layout_constraintEnd_toEndOf="@+id/bottom_nav_bar"
+        android:elevation="@dimen/button_help_elevation">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -73,6 +74,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_bottom_nav_bar" />
+        android:background="@drawable/bkg_bottom_nav_bar"
+        app:menu="@menu/menu_bottom_nav_bar"
+        android:elevation="@dimen/bottom_nav_bar_elevation"/>
 
 </android.support.constraint.ConstraintLayout>

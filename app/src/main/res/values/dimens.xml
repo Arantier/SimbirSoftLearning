@@ -28,8 +28,10 @@
     -->
     <dimen name="bottom_nav_bar_height">56dp</dimen>
     <dimen name="bottom_nav_bar_labels_margin">8dp</dimen>
+    <dimen name="bottom_nav_bar_elevation">1dp</dimen>
     <dimen name="button_help_circle_size">56dp</dimen>
     <dimen name="button_help_shadow_height">28dp</dimen>
-    <dimen name="button_help_bottom_margin">22dp</dimen>
+    <dimen name="button_help_bottom_margin">16dp</dimen>
+    <dimen name="button_help_elevation">30dp</dimen>
 
 </resources>
