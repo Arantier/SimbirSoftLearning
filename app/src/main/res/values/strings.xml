@@ -1,22 +1,44 @@
 <resources>
     <string name="app_name">Хочу помочь</string>
-
-
-    <string name="msg_loading">Загрузка…</string>
     <string name="title_activity_help_categories">HelpCategoriesActivity</string>
 
+    <!--
+            Сплэш
+        -->
+    <string name="msg_loading">Загрузка…</string>
 
-    <string name="title_help">Помощь</string>
+    <!--
+        Общее
+    -->
     <string name="button_news">Новости</string>
     <string name="button_search">Поиск</string>
     <string name="button_help">Помочь</string>
     <string name="button_history">История</string>
     <string name="button_profile">Профиль</string>
 
-    <string name="msg_help">Выберите категорию помощи</string>
-    <string name="title_help_kids">Дети</string>
-    <string name="title_help_adults">Взрослые</string>
-    <string name="title_help_elders">Пожилые</string>
-    <string name="title_help_animals">Животные</string>
-    <string name="title_help_events">Мероприятия</string>
+    <!--
+        Экран помощи
+    -->
+    <string name="title_help">Помощь</string>
+    <string name="help_select_hint">Выберите категорию помощи</string>
+    <string name="help_category_kids">Дети</string>
+    <string name="help_category_adults">Взрослые</string>
+    <string name="help_category_elders">Пожилые</string>
+    <string name="help_category_animals">Животные</string>
+    <string name="help_category_events">Мероприятия</string>
+
+    <!--
+        Экран профиля
+    -->
+    <string name="title_profile">Профиль</string>
+    <string name="profile_birth_date">Дата рождения</string>
+    <string name="profile_business">Сфера деятельности</string>
+    <string name="profile_receive_notifications">Получать push-уведомления</string>
+    <string name="profile_friends">Ваши друзья</string>
+    <string name="profile_log_out">Выйти из аккаунта</string>
+    <string name="profile_edit">Изменить профиль</string>
+    <string name="edit_photo_dialog_tag">edit_photo</string>
+    <string name="edit_photo_select">Выбрать фото</string>
+    <string name="edit_photo_make">Сделать снимок</string>
+    <string name="edit_photo_delete">Удалить</string>
 </resources>

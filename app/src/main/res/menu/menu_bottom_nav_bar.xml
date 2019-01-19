@@ -7,7 +7,7 @@
         android:title="@string/button_search"
         android:icon="@drawable/ic_search_enh"/>
     <item android:id="@+id/bottom_help"
-        android:title="@string/title_help"/>
+        android:title="@string/button_help"/>
     <item android:id="@+id/bottom_history"
         android:title="@string/button_history"
         android:icon="@drawable/ic_history_enh"/>

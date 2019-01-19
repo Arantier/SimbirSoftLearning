@@ -6,13 +6,20 @@
     <color name="colorPrimaryDark">#33000000</color>-->
     <color name="colorPrimaryDark">#347700</color>
     <color name="colorAccent">#7db354</color>
-    <color name="splashBackground">#eff3f6</color>
     <color name="textColorPrimary">#b3000000</color>
+    <color name="textColorSecondary">#61000000</color>
+
+    <color name="splashBackground">#eff3f6</color>
+
     <color name="toolbarTextColor">#fff</color>
     <color name="inactiveElement">#9c9c9c</color>
+
     <color name="bottomNavBarBackground">#fff</color>
     <color name="buttonHelpBackground">#fe7460</color>
+
     <color name="helpCardText">#9ebf50</color>
     <color name="helpCardBackground">#eaede8</color>
     <color name="helpCategoryMessage">#de000000</color>
+
+    <color name="dividerLineColor">#aabbbb</color>
 </resources>
