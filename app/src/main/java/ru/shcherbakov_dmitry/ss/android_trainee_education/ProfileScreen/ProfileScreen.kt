@@ -1,4 +1,4 @@
-package ru.shcherbakov_dmitry.ss.android_trainee_education.ProfileFragments
+package ru.shcherbakov_dmitry.ss.android_trainee_education.ProfileScreen
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,21 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import ru.shcherbakov_dmitry.ss.android_trainee_education.R
 
-class ProfileFragment : Fragment() {
-
-    interface ProfileInterface {
-
-        fun onProfileShow()
-
-        fun onProfileClose()
-    }
-
-    private lateinit var activityCallback : ProfileInterface
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activityCallback.onProfileShow()
-    }
+class ProfileScreen : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -50,17 +36,10 @@ class ProfileFragment : Fragment() {
         return view
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        activityCallback.onProfileClose()
-    }
-
     companion object {
         @JvmStatic
-        fun newInstance(profileInterface: ProfileInterface) : ProfileFragment {
-            val fragment = ProfileFragment()
-            fragment.activityCallback = profileInterface
-            return fragment
+        fun newInstance() : ProfileScreen {
+            return ProfileScreen()
         }
     }
 }

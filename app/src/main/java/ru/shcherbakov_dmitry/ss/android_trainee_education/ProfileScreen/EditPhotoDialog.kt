@@ -1,4 +1,4 @@
-package ru.shcherbakov_dmitry.ss.android_trainee_education.ProfileFragments
+package ru.shcherbakov_dmitry.ss.android_trainee_education.ProfileScreen
 
 import android.app.AlertDialog
 import android.app.Dialog
