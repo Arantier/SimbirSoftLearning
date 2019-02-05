@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/bottom_news"
         android:title="@string/button_news"
-        android:icon="@drawable/ic_news_enh" />
+        android:icon="@drawable/btn_bnv_news" />
     <item android:id="@+id/bottom_search"
         android:title="@string/button_search"
-        android:icon="@drawable/ic_search_enh"/>
+        android:icon="@drawable/btn_bnv_search"/>
     <item android:id="@+id/bottom_help"
         android:title="@string/button_help"/>
     <item android:id="@+id/bottom_history"
         android:title="@string/button_history"
-        android:icon="@drawable/ic_history_enh"/>
+        android:icon="@drawable/btn_bnv_history"/>
     <item android:id="@+id/bottom_profile"
         android:title="@string/button_profile"
-        android:icon="@drawable/ic_profile_enh"/>
+        android:icon="@drawable/btn_bnv_profile"/>
 </menu>

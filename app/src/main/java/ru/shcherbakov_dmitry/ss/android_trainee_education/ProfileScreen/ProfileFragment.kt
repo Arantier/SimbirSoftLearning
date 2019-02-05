@@ -8,18 +8,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.fragment_profile.view.*
+import kotlinx.android.synthetic.main.fragment_profile_screen.view.*
 import ru.shcherbakov_dmitry.ss.android_trainee_education.R
 
-class ProfileScreen : Fragment() {
+class ProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view =  inflater.inflate(R.layout.fragment_profile, container, false)
+        val view =  inflater.inflate(R.layout.fragment_profile_screen, container, false)
         //TODO:Как только появится более точная система представления юзеров - переделай
         val userPhoto = view.image_user_photo
         val requestOptions = RequestOptions()
-        requestOptions.placeholder(R.drawable.ic_user_icon)
+        requestOptions.placeholder(R.drawable.user_icon)
         Glide.with(this)
                 .setDefaultRequestOptions(requestOptions)
                 .load("https://cdn.zeplin.io/5a8295e8de62056425a09dbc/assets/1D81E1C0-76EC-48C4-9272-A6411B832DF4.png")
@@ -38,8 +38,8 @@ class ProfileScreen : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() : ProfileScreen {
-            return ProfileScreen()
+        fun newInstance() : ProfileFragment {
+            return ProfileFragment()
         }
     }
 }

@@ -25,7 +25,59 @@
             android:layout_gravity="center"
             android:theme="@style/ToolbarTheme.Title" />
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_toolbar_search"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_toolbar_field_height"
+            android:layout_margin="@dimen/search_toolbar_field_margin"
+            android:background="@drawable/tb_search_field_bg"
+            android:elevation="@dimen/search_toolbar_field_elevation"
+            android:outlineProvider="background"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/image_toolbar_search"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingLeft="@dimen/search_toolbar_field_drawable_margin"
+                android:paddingRight="@dimen/search_toolbar_field_drawable_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_toolbar_search" />
+
+            <EditText
+                android:id="@+id/edit_toolbar_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/search_placeholder"
+                android:singleLine="true"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/search_toolbar_field_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_toolbar_mic"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/image_toolbar_search"
+                app:layout_constraintTop_toTopOf="parent"
+                android:imeOptions="actionDone"/>
+
+            <ImageView
+                android:id="@+id/image_toolbar_mic"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingLeft="@dimen/search_toolbar_field_drawable_margin"
+                android:paddingRight="@dimen/search_toolbar_field_drawable_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/btn_mic" />
+
+        </android.support.constraint.ConstraintLayout>
+
     </android.support.v7.widget.Toolbar>
+
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -44,38 +96,39 @@
         app:layout_constraintBottom_toBottomOf="@+id/bottom_nav_bar"
         app:layout_constraintStart_toStartOf="@+id/bottom_nav_bar"
         app:layout_constraintEnd_toEndOf="@+id/bottom_nav_bar"
-        android:elevation="@dimen/button_help_elevation">
+        android:elevation="@dimen/button_help_elevation"
+        tools:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/image_button_help_circle" />
+            app:srcCompat="@drawable/btn_help_circle" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_heart" />
+            app:srcCompat="@drawable/btn_bnv_heart" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_help_shadow_height"
-            app:srcCompat="@drawable/ic_shadow" />
+            app:srcCompat="@drawable/shadow" />
     </FrameLayout>
 
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/bottom_nav_bar"
         android:layout_width="0dp"
         android:layout_height="@dimen/bottom_nav_bar_height"
-        app:itemIconTint="@drawable/sel_nav_button_color_state"
-        app:itemTextColor="@drawable/sel_nav_button_color_state"
+        app:itemIconTint="@drawable/btn_bnv_selected"
+        app:itemTextColor="@drawable/btn_bnv_selected"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/bkg_bottom_nav_bar"
-        app:menu="@menu/menu_bottom_nav_bar"
+        android:background="@drawable/bnv_background"
+        app:menu="@menu/activity_main_bottom_nav_bar"
         android:elevation="@dimen/bottom_nav_bar_elevation"/>
 
 </android.support.constraint.ConstraintLayout>

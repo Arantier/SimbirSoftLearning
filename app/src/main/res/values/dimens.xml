@@ -51,6 +51,29 @@
     <dimen name="edit_photo_item_text_size">22sp</dimen>
 
     <!--
+        Экран поиска
+    -->
+    <dimen name="search_background_icon_size">187.5dp</dimen>
+    <dimen name="search_background_icon_margin_top">53dp</dimen>
+    <dimen name="search_background_icon_margin_horizontal">86.5dp</dimen>
+    <dimen name="search_hint_1_margin_horizontal">58dp</dimen>
+    <dimen name="search_hint_1_margin_top">37.5dp</dimen>
+    <dimen name="search_hint_2_margin_horizontal">67dp</dimen>
+    <dimen name="search_hint_2_margin_top">10dp</dimen>
+    <dimen name="search_info_padding">20dp</dimen>
+    <dimen name="search_list_item_padding_vertical">18dp</dimen>
+    <dimen name="search_list_item_padding_left">20dp</dimen>
+    <dimen name="search_list_item_padding_right">8dp</dimen>
+    <dimen name="search_list_item_drawable_padding">20dp</dimen>
+    <dimen name="search_list_item_text_size">16sp</dimen>
+    <dimen name="search_toolbar_field_margin">8dp</dimen>
+    <dimen name="search_toolbar_field_radius">2dp</dimen>
+    <dimen name="search_toolbar_field_height">48dp</dimen>
+    <dimen name="search_toolbar_field_elevation">8dp</dimen>
+    <dimen name="search_toolbar_field_drawable_margin">11dp</dimen>
+    <dimen name="search_toolbar_field_text_size">14sp</dimen>
+
+    <!--
         Общее
     -->
     <dimen name="bottom_nav_bar_height">56dp</dimen>

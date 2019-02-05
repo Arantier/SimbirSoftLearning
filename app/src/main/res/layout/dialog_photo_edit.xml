@@ -7,28 +7,28 @@
 
     <TextView
         android:id="@+id/text_photo_select"
-        style="@style/EditPhotoItem"
+        style="@style/EditPhotoItemStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edit_photo_item_height"
         android:layout_weight="1"
-        android:drawableStart="@drawable/ic_camera"
+        android:drawableStart="@drawable/dialog_camera"
         android:text="@string/edit_photo_select" />
 
     <TextView
         android:id="@+id/text_photo_make"
-        style="@style/EditPhotoItem"
+        style="@style/EditPhotoItemStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edit_photo_item_height"
         android:layout_weight="1"
-        android:drawableStart="@drawable/ic_upload"
+        android:drawableStart="@drawable/dialog_upload"
         android:text="@string/edit_photo_make" />
 
     <TextView
         android:id="@+id/text_photo_delete"
-        style="@style/EditPhotoItem"
+        style="@style/EditPhotoItemStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edit_photo_item_height"
         android:layout_weight="1"
-        android:drawableStart="@drawable/ic_delete"
+        android:drawableStart="@drawable/dialog_delete"
         android:text="@string/edit_photo_delete" />
 </LinearLayout>

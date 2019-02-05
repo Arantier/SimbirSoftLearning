@@ -42,6 +42,27 @@
     <string name="edit_photo_make">Сделать снимок</string>
     <string name="edit_photo_delete">Удалить</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--
+        Экран поиска
+    -->
+    <string name="title_search">Поиск</string>
+    <string name="search_placeholder">Введите название организации</string>
+    <string name="search_tab_events">По мероприятиям</string>
+    <string name="search_tab_organisations">По НКО</string>
+    <string name="search_keywords">Ключевые слова: мастер-класс, помощь</string>
+    <string name="search_results_title">Результаты поиска:</string>
+    <plurals name="search_result_number">
+        <item quantity="one">%1$d мероприятие</item>
+        <item quantity="few">%1$d мероприятия</item>
+        <item quantity="other">%1$d мероприятий</item>
+    </plurals>
+    <string name="search_hint_1">Напишите в строке поиска название мероприятия или ключевые слова.</string>
+    <string name="search_hint_2">Например, %1$s, %2$s </string>
+    <string name="search_results_keywords">Ключевые слова: %1$s</string>
+    <string name="search_result_info">Результаты поиска: %1$s</string>
+    <string-array name="search_NKO_hint_words">
+        <item>мастер-класс</item>
+        <item>помощь</item>
+    </string-array>
 </resources>

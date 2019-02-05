@@ -80,7 +80,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/image_divide_line" />
+                app:srcCompat="@drawable/divider_profile" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -100,11 +100,11 @@
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/image_divide_line" />
+                app:srcCompat="@drawable/divider_profile" />
 
             <Button
                 android:id="@+id/button_log_out"
-                style="@style/ProfileLogOutButton"
+                style="@style/ProfileLogOutButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_log_out" />
