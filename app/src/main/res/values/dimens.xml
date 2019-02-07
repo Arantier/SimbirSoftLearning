@@ -41,6 +41,10 @@
     <dimen name="profile_log_out_vertical_padding">9dp</dimen>
     <dimen name="profile_log_out_horizontal_padding">16dp</dimen>
     <dimen name="profile_log_out_elevation">5dp</dimen>
+    <dimen name="profile_friend_picture_size">48dp</dimen>
+    <dimen name="profile_friend_picture_margin_vertical">5dp</dimen>
+    <dimen name="profile_friend_picture_margin_left">20dp</dimen>
+    <dimen name="profile_friend_text_margin_horizontal">20dp</dimen>
 
     <!--
         Экран редактирования профиля
