@@ -1,7 +1,9 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.SearchFieldNotifier
 
 @InjectViewState
 class MainMvpPresenter : MvpPresenter<MainMvpViewInterface>() {

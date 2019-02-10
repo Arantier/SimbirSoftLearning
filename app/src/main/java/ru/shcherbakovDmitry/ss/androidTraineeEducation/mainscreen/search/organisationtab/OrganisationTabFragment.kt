@@ -1,4 +1,4 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.organisationtab
 
 
 import android.content.res.Configuration
@@ -14,6 +14,8 @@ import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_organisation_tab.view.*
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Organisation
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
 import java.util.*
 
 class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView, OnOrganisationClickListener {

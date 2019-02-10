@@ -1,4 +1,4 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.profile
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_profile_screen.view.*
 import kotlinx.android.synthetic.main.item_friend_list.view.*
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.UserProfile
 
 class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
 

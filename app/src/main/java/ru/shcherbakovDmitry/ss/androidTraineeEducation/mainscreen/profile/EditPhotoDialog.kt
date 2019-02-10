@@ -1,9 +1,10 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.profile
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
 
 class EditPhotoDialog : DialogFragment() {
 

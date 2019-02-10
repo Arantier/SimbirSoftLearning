@@ -1,4 +1,6 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.profile
+
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.UserProfile
 
 object ProfileModel {
 

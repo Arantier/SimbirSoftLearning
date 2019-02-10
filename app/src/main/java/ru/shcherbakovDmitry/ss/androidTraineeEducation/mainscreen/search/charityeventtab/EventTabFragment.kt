@@ -1,4 +1,4 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.charityeventtab
 
 
 import android.content.res.Configuration
@@ -13,6 +13,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_events_tab.view.*
 import kotlinx.android.synthetic.main.item_event_list.view.*
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.CharityEvent
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
 import java.util.*
 
 class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickListener {

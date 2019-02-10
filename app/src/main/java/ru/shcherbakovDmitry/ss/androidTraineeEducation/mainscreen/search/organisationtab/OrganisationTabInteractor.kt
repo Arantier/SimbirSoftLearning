@@ -1,5 +1,6 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.organisationtab
 
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Organisation
 import java.util.*
 
 object OrganisationTabInteractor {

@@ -1,4 +1,4 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search
 
 
 import android.content.Context
@@ -12,6 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import kotlinx.android.synthetic.main.fragment_search_screen.view.*
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.charityeventtab.EventTabFragment
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.organisationtab.OrganisationTabFragment
 
 class SearchFragment : MvpAppCompatFragment() {
 
@@ -21,7 +24,7 @@ class SearchFragment : MvpAppCompatFragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search_screen, container, false)
         viewPager = view.viewPager_search.apply {
-            adapter = TabPagerAdapter(childFragmentManager,context)
+            adapter = TabPagerAdapter(childFragmentManager, context)
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(p0: Int) {
 

@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ru.shcherbakovDmitry.ss.androidTraineeEducation.MainActivity"
+            android:name="ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.MainActivity"
             android:label="@string/title_activity_help_categories"/>
     </application>
 

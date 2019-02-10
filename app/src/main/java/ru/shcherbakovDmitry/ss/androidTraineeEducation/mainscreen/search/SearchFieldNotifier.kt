@@ -1,4 +1,4 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search
 
 object SearchFieldNotifier {
 

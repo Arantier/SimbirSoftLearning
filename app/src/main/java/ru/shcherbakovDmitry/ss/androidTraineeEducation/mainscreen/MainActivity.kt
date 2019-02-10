@@ -1,4 +1,4 @@
-package ru.shcherbakovDmitry.ss.androidTraineeEducation
+package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,10 @@ import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.helpcategory.HelpFragment
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.profile.ProfileFragment
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.SearchFragment
 
 class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
 
@@ -43,7 +47,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
             }
             R.id.bottom_search -> {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, SearchFragment.newInstance(),SearchFragment.TAG)
+                        .replace(R.id.fragment_container, SearchFragment.newInstance(), SearchFragment.TAG)
                         .commit()
                 text_toolbar_title.text = getString(R.string.title_search)
                 toolbar.apply {

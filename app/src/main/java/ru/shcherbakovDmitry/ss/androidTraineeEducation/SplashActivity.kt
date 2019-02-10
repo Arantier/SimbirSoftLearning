@@ -6,6 +6,7 @@ import android.widget.ProgressBar
 import kotlinx.android.synthetic.main.activity_splash.*
 import android.content.Intent
 import android.os.Handler
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.MainActivity
 
 
 class SplashActivity : AppCompatActivity() {
