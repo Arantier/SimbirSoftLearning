@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -19,7 +18,7 @@
                 android:id="@+id/image_user_photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:src="@tools:sample/avatars" />
+                tools:src="@drawable/image_user_placeholder" />
 
             <LinearLayout
                 android:id="@+id/layout_info"
@@ -76,31 +75,30 @@
                     android:text="@string/profile_receive_notifications" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/divider_profile" />
+                android:layout_height="@dimen/profile_divider_height"
+                android:background="@color/dividerLineColor"/>
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/text_friend_hint"
+                style="@style/ProfileHintStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/profile_friends"
-                style="@style/ProfileHintStyle"
-                android:layout_marginTop="@dimen/profile_friends_hint_top_margin"
-                android:layout_marginBottom="@dimen/profile_friends_hint_bottom_margin"/>
+                android:layout_marginTop="@dimen/profile_friend_list_hint_top_margin"
+                android:layout_marginBottom="@dimen/profile_friend_list_hint_bottom_margin"
+                android:text="@string/profile_friends" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/list_friends"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/profile_friend_list_bottom_margin"/>
 
-            <ImageView
-                android:id="@+id/imageView2"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/divider_profile" />
+                android:layout_height="@dimen/profile_divider_height"
+                android:background="@color/dividerLineColor"/>
 
             <Button
                 android:id="@+id/button_log_out"

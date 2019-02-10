@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
 
 class EditPhotoDialog : DialogFragment() {
 
@@ -12,5 +11,9 @@ class EditPhotoDialog : DialogFragment() {
         val builder = AlertDialog.Builder(activity)
         builder.setView(R.layout.dialog_photo_edit)
         return builder.create()
+    }
+
+    companion object {
+        val TAG = "edit_photo"
     }
 }

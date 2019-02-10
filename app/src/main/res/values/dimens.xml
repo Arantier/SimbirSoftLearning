@@ -34,8 +34,10 @@
     <dimen name="profile_name_size">24sp</dimen>
     <dimen name="profile_text_size">16sp</dimen>
     <dimen name="profile_hint_size">12sp</dimen>
-    <dimen name="profile_friends_hint_top_margin">20dp</dimen>
-    <dimen name="profile_friends_hint_bottom_margin">11dp</dimen>
+    <dimen name="profile_divider_height">1dp</dimen>
+    <dimen name="profile_friend_list_hint_top_margin">20dp</dimen>
+    <dimen name="profile_friend_list_hint_bottom_margin">11dp</dimen>
+    <dimen name="profile_friend_list_bottom_margin">15dp</dimen>
     <dimen name="profile_log_out_top_margin">20dp</dimen>
     <dimen name="profile_log_out_bottom_margin">38dp</dimen>
     <dimen name="profile_log_out_vertical_padding">9dp</dimen>
@@ -44,7 +46,6 @@
     <dimen name="profile_friend_picture_size">48dp</dimen>
     <dimen name="profile_friend_picture_margin_vertical">5dp</dimen>
     <dimen name="profile_friend_picture_margin_left">20dp</dimen>
-    <dimen name="profile_friend_text_margin_horizontal">20dp</dimen>
 
     <!--
         Экран редактирования профиля
@@ -65,17 +66,32 @@
     <dimen name="search_hint_2_margin_horizontal">67dp</dimen>
     <dimen name="search_hint_2_margin_top">10dp</dimen>
     <dimen name="search_info_padding">20dp</dimen>
-    <dimen name="search_list_item_padding_vertical">18dp</dimen>
-    <dimen name="search_list_item_padding_left">20dp</dimen>
-    <dimen name="search_list_item_padding_right">8dp</dimen>
-    <dimen name="search_list_item_drawable_padding">20dp</dimen>
-    <dimen name="search_list_item_text_size">16sp</dimen>
     <dimen name="search_toolbar_field_margin">8dp</dimen>
     <dimen name="search_toolbar_field_radius">2dp</dimen>
     <dimen name="search_toolbar_field_height">48dp</dimen>
     <dimen name="search_toolbar_field_elevation">8dp</dimen>
     <dimen name="search_toolbar_field_drawable_margin">11dp</dimen>
     <dimen name="search_toolbar_field_text_size">14sp</dimen>
+    <dimen name="organisation_list_item_padding_vertical">18dp</dimen>
+    <dimen name="organisation_list_padding_left">20dp</dimen>
+    <dimen name="organisation_list_item_padding_right">8dp</dimen>
+    <dimen name="organisation_list_item_drawable_padding">20dp</dimen>
+    <dimen name="organisation_list_item_text_size">16sp</dimen>
+    <dimen name="event_list_item_width">304dp</dimen>
+    <dimen name="event_list_item_height">404dp</dimen>
+    <dimen name="event_list_item_margin">8dp</dimen>
+    <dimen name="event_list_item_elevation">4dp</dimen>
+    <dimen name="event_list_item_image_margin">4dp</dimen>
+    <dimen name="event_list_item_title_margin_horizontal">38dp</dimen>
+    <dimen name="event_list_item_title_margin_bottom">8dp</dimen>
+    <dimen name="event_list_item_title_text_size">21sp</dimen>
+    <dimen name="event_list_item_title_line_spacing">13sp</dimen>
+    <dimen name="event_list_item_decor_margin_bottom">10dp</dimen>
+    <dimen name="event_list_item_description_margin_horizontal">26dp</dimen>
+    <dimen name="event_list_item_description_margin_bottom">16dp</dimen>
+    <dimen name="event_list_item_description_text_size">14sp</dimen>
+    <dimen name="event_list_item_snack_height">32dp</dimen>
+    <dimen name="event_list_item_snack_text_size">12sp</dimen>
 
     <!--
         Общее
@@ -86,6 +102,5 @@
     <dimen name="button_help_shadow_height">28dp</dimen>
     <dimen name="button_help_bottom_margin">16dp</dimen>
     <dimen name="button_help_elevation">30dp</dimen>
-    <dimen name="divider_line_width">1dp</dimen>
 
 </resources>

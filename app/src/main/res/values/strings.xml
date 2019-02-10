@@ -37,7 +37,6 @@
     <string name="profile_friends">Ваши друзья</string>
     <string name="profile_log_out">Выйти из аккаунта</string>
     <string name="profile_edit">Изменить профиль</string>
-    <string name="edit_photo_dialog_tag">edit_photo</string>
     <string name="edit_photo_select">Выбрать фото</string>
     <string name="edit_photo_make">Сделать снимок</string>
     <string name="edit_photo_delete">Удалить</string>
@@ -51,11 +50,12 @@
     <string name="search_tab_events">По мероприятиям</string>
     <string name="search_tab_organisations">По НКО</string>
     <string name="search_keywords">Ключевые слова: мастер-класс, помощь</string>
-    <string name="search_results_title">Результаты поиска:</string>
-    <plurals name="search_result_number">
-        <item quantity="one">%1$d мероприятие</item>
-        <item quantity="few">%1$d мероприятия</item>
-        <item quantity="other">%1$d мероприятий</item>
+    <plurals name="organisation_search_quantity">
+        <item quantity="zero">%d мероприятий</item>
+        <item quantity="one">%d мероприятие</item>
+        <item quantity="few">%d мероприятия</item>
+        <item quantity="many">%d мероприятий</item>
+        <item quantity="other">%d мероприятий</item>
     </plurals>
     <string name="search_hint_1">Напишите в строке поиска название мероприятия или ключевые слова.</string>
     <string name="search_hint_2">Например, %1$s, %2$s </string>
@@ -65,4 +65,12 @@
         <item>мастер-класс</item>
         <item>помощь</item>
     </string-array>
+    <string name="event_date_expiration_info">Осталось %1$s (%2$d.%3$d - %4$d.%5$d)</string>
+    <plurals name="event_date_expiration">
+        <item quantity="zero">%d дней</item>
+        <item quantity="one">%d день</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d мероприятий</item>
+        <item quantity="other">%d мероприятий</item>
+    </plurals>
 </resources>

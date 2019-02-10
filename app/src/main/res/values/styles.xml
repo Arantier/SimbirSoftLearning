@@ -70,21 +70,14 @@
         <item name="android:drawablePadding">@dimen/edit_photo_item_drawable_padding</item>
     </style>
 
-    <style name="SearchTabStyle" parent="Widget.MaterialComponents.TabLayout">
-        <item name="tabIndicatorColor">@color/searchTabIndicator</item>
-        <item name="tabBackground">@color/colorPrimary</item>
-        <item name="tabTextColor">@color/toolbarTextColor</item>
-    </style>
-
     <style name="OrganisationListItemStyle">
         <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:textSize">@dimen/search_list_item_text_size</item>
-        <item name="android:paddingLeft">@dimen/search_list_item_padding_left</item>
-        <item name="android:paddingRight">@dimen/search_list_item_padding_right</item>
-        <item name="android:paddingTop">@dimen/search_list_item_padding_vertical</item>
-        <item name="android:paddingBottom">@dimen/search_list_item_padding_vertical</item>
+        <item name="android:textSize">@dimen/organisation_list_item_text_size</item>
+        <item name="android:paddingRight">@dimen/organisation_list_item_padding_right</item>
+        <item name="android:paddingTop">@dimen/organisation_list_item_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/organisation_list_item_padding_vertical</item>
         <item name="android:drawableRight">@drawable/ic_list_chevron</item>
-        <item name="android:drawablePadding">@dimen/search_list_item_drawable_padding</item>
+        <item name="android:drawablePadding">@dimen/organisation_list_item_drawable_padding</item>
         <item name="android:lines">1</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>

@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".EventTabFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_list_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,8 +15,8 @@
             android:id="@+id/image_search_background"
             android:layout_width="@dimen/search_background_icon_size"
             android:layout_height="@dimen/search_background_icon_size"
-            android:layout_marginTop="@dimen/search_background_icon_margin_top"
             android:layout_marginStart="@dimen/search_background_icon_margin_horizontal"
+            android:layout_marginTop="@dimen/search_background_icon_margin_top"
             android:layout_marginEnd="@dimen/search_background_icon_margin_horizontal"
             android:src="@drawable/ic_search_bg"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +36,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_search_background" />
 
-        <TextView
+        <!--TODO: когда понадобиться сделать реальынй поиск - реализуй-->
+        <!--<TextView
             android:id="@+id/text_search_hint_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,7 +48,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@+id/text_search_hint_1" />
+            app:layout_constraintTop_toBottomOf="@+id/text_search_hint_1" />-->
 
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_events_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_event_list" />
+
 </FrameLayout>

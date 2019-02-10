@@ -1,13 +1,14 @@
 package ru.shcherbakovDmitry.ss.androidTraineeEducation
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.shcherbakovDmitry.ss.androidTraineeEducation.HelpScreen.HelpFragment
 
 class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
 
@@ -41,21 +42,22 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
                 showFragmentPlaceholder()
             }
             R.id.bottom_search -> {
-//                supportFragmentManager.beginTransaction()
-//                        .replace(R.id.fragment_container, searchFragment)
-//                        .commit()
-//                text_toolbar_title.text = getString(R.string.title_search)
-//                toolbar.inflateMenu(R.menu.search_toolbar)
-//                toolbar.menu.getItem(0).setOnMenuItemClickListener { item ->
-//                    text_toolbar_title.visibility = View.GONE
-//                    layout_toolbar_search.visibility = View.VISIBLE
-//                    (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-//                            .showSoftInput(edit_toolbar_search,InputMethodManager.SHOW_FORCED)
-//                    edit_toolbar_search.requestFocus()
-//                    toolbar.menu.clear()
-//                    true
-//                }
-                showFragmentPlaceholder()
+                supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, SearchFragment.newInstance(),SearchFragment.TAG)
+                        .commit()
+                text_toolbar_title.text = getString(R.string.title_search)
+                toolbar.apply {
+                    inflateMenu(R.menu.search_toolbar)
+                    menu.getItem(0).setOnMenuItemClickListener { item ->
+                        text_toolbar_title.visibility = View.GONE
+                        layout_toolbar_search.visibility = View.VISIBLE
+                        (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                                .showSoftInput(edit_toolbar_search,InputMethodManager.SHOW_FORCED)
+                        edit_toolbar_search.requestFocus()
+                        menu.clear()
+                        true
+                    }
+                }
             }
             R.id.bottom_help -> {
                 supportFragmentManager.beginTransaction()
@@ -70,6 +72,13 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
                 supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, ProfileFragment.newInstance(), ProfileFragment.TAG)
                         .commit()
+                toolbar.apply {
+                    inflateMenu(R.menu.profile_toolbar)
+                    menu.getItem(0).setOnMenuItemClickListener {
+                        //TODO: потом понадобится
+                        true
+                    }
+                }
                 text_toolbar_title.text = getText(R.string.title_profile)
             }
         }
@@ -85,16 +94,9 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
         image_toolbar_search.setOnClickListener {
             presenter.findContent(edit_toolbar_search.text as String?)
         }
-        edit_toolbar_search.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
-            if (!hasFocus) {
-                text_toolbar_title.visibility = View.VISIBLE
-                view.visibility = View.GONE
-                toolbar.inflateMenu(R.menu.search_toolbar)
-            }
-        }
         edit_toolbar_search.setOnEditorActionListener { editText, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                presenter.findContent(editText.text as String?)
+                presenter.findContent(editText.text.toString())
                 true
             } else {
                 false

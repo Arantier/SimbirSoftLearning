@@ -32,13 +32,12 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
                 adjustViewBounds = true
                 scaleType = ImageView.ScaleType.FIT_XY
                 setOnClickListener {
-                    EditPhotoDialog().show(fragmentManager, getString(R.string.edit_photo_dialog_tag))
+                    EditPhotoDialog().show(fragmentManager, EditPhotoDialog.TAG)
                 }
             }
             text_user_name.text = profile.name
             text_user_birth_date.text = profile.birthDate
             text_user_business.text = profile.business
-            list_friends.layoutManager = LinearLayoutManager(context)
             list_friends.adapter = FriendListAdapter(profile.friendsArray, object : OnFriendClickListener {
                 override fun onFriendClick(friend: UserProfile) {
                     presenter.findAndShowProfile(friend)
@@ -54,7 +53,13 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(R.layout.fragment_profile_screen, container, false)
-        return view
+        fragmentView.apply {
+            list_friends.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            button_log_out.setOnClickListener {
+                presenter.userLogout()
+            }
+        }
+        return fragmentView
     }
 
     override fun onStart() {
@@ -76,7 +81,7 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
                                         private val onFriendClickListener: OnFriendClickListener)
         : RecyclerView.Adapter<FriendListAdapter.ItemViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): ItemViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_friend_list, null)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_friend_list, parent, false)
             return ItemViewHolder(view)
         }
 

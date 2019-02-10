@@ -3,7 +3,7 @@ package ru.shcherbakovDmitry.ss.androidTraineeEducation
 object ProfileModel {
 
     //TODO: Как только появится более точная модель - переделай
-    val testFriendsArray = arrayOf(
+    private val testFriendsArray = arrayOf(
             UserProfile(2, "Дмитрий Валерьевич",
                     "https://cdn.zeplin.io/5a8295e8de62056425a09dbc/assets/E0F81DAD-ED24-4342-957A-8DC6B274A0BA.png",
                     "",
@@ -25,9 +25,4 @@ object ProfileModel {
             "01 февраля 1980",
             "Хирургия, травмотология",
             testFriendsArray)
-
-    fun findUserById(id: Int): UserProfile {
-        //TODO: Просто болванка
-        return testFriendsArray[id]
-    }
 }

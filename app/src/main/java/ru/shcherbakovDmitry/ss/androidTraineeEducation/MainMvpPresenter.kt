@@ -13,6 +13,8 @@ class MainMvpPresenter : MvpPresenter<MainMvpViewInterface>() {
         }
 
     fun findContent(key:String?){
-//        Interactor.findContent(key)
+        if (key != null) {
+            SearchFieldNotifier.findContent(key)
+        }
     }
 }

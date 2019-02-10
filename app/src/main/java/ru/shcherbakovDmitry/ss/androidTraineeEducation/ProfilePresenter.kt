@@ -5,6 +5,7 @@ import com.arellomobile.mvp.MvpPresenter
 
 @InjectViewState
 class ProfilePresenter : MvpPresenter<ProfileMvpView>() {
+
     fun requestUserProfile() {
         val userProfile = ProfileModel.userProfile
         if (userProfile != null) {
@@ -16,5 +17,9 @@ class ProfilePresenter : MvpPresenter<ProfileMvpView>() {
 
     fun findAndShowProfile(profile: UserProfile) {
         //TODO:Потом
+    }
+
+    fun userLogout(){
+
     }
 }

@@ -3,11 +3,12 @@
     <color name="colorPrimary">#66a636</color>
     <!--TODO: Разберись всё ли в порядке с цветом
         Возможно стоит использовать это:
-    <color name="colorPrimaryDark">#33000000</color>-->
+    <color title="colorPrimaryDark">#33000000</color>-->
     <color name="colorPrimaryDark">#347700</color>
     <color name="colorAccent">#7db354</color>
     <color name="textColorPrimary">#b3000000</color>
     <color name="textColorSecondary">#61000000</color>
+    <color name="textColorPrimaryInverse">#fff</color>
 
     <color name="splashBackground">#eff3f6</color>
 
@@ -27,9 +28,9 @@
 
     <!--Search-->
     <color name="searchTabIndicator">#f2b630</color>
-    <color name="shadedTitleTextColor">#b3ffffff</color>
     <color name="hintTextColor">#8a000000</color>
     <color name="searchFragmentBackground">#e8eded</color>
-    <color name="listItemTextColor">#de000000</color>
     <color name="searchToolbarFieldColor">#fff</color>
+    <color name="searchListBackground">#fff</color>
+    <color name="eventListItemTitleTextColor">#627f8f</color>
 </resources>
