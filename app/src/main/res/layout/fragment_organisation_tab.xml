@@ -8,13 +8,13 @@
     tools:context=".mainscreen.search.organisationtab.OrganisationTabFragment">
 
     <TextView
-        android:id="@+id/text_search_info"
+        android:id="@+id/textOrganisationTabSearchInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/search_info_padding" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_organisations_list"
+        android:id="@+id/recyclerviewOrganisationList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/searchListBackground"

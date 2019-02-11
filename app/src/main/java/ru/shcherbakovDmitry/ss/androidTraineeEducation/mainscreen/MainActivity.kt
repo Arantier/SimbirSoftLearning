@@ -32,14 +32,14 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
                 }
             }
         }
-        text_toolbar_title.text = "Unused"
+        textToolbarTitle.text = "Unused"
     }
 
     override fun selectScreen(id: Int) {
         toolbar.menu.clear()
         toolbar.navigationIcon = null
-        text_toolbar_title.visibility = View.VISIBLE
-        layout_toolbar_search.visibility = View.GONE
+        textToolbarTitle.visibility = View.VISIBLE
+        layoutToolbarSearch.visibility = View.GONE
 
         when (id) {
             R.id.bottom_news -> {
@@ -47,17 +47,17 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
             }
             R.id.bottom_search -> {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, SearchFragment.newInstance(), SearchFragment.TAG)
+                        .replace(R.id.fragmentContainer, SearchFragment.newInstance(), SearchFragment.TAG)
                         .commit()
-                text_toolbar_title.text = getString(R.string.title_search)
+                textToolbarTitle.text = getString(R.string.title_search)
                 toolbar.apply {
                     inflateMenu(R.menu.search_toolbar)
                     menu.getItem(0).setOnMenuItemClickListener { item ->
-                        text_toolbar_title.visibility = View.GONE
-                        layout_toolbar_search.visibility = View.VISIBLE
+                        textToolbarTitle.visibility = View.GONE
+                        layoutToolbarSearch.visibility = View.VISIBLE
                         (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                                .showSoftInput(edit_toolbar_search,InputMethodManager.SHOW_FORCED)
-                        edit_toolbar_search.requestFocus()
+                                .showSoftInput(edittextToolbarSearch,InputMethodManager.SHOW_FORCED)
+                        edittextToolbarSearch.requestFocus()
                         menu.clear()
                         true
                     }
@@ -65,16 +65,16 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
             }
             R.id.bottom_help -> {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, HelpFragment.newInstance(), HelpFragment.TAG)
+                        .replace(R.id.fragmentContainer, HelpFragment.newInstance(), HelpFragment.TAG)
                         .commit()
-                text_toolbar_title.text = getText(R.string.title_help)
+                textToolbarTitle.text = getText(R.string.title_help)
             }
             R.id.bottom_history -> {
                 showFragmentPlaceholder()
             }
             R.id.bottom_profile -> {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, ProfileFragment.newInstance(), ProfileFragment.TAG)
+                        .replace(R.id.fragmentContainer, ProfileFragment.newInstance(), ProfileFragment.TAG)
                         .commit()
                 toolbar.apply {
                     inflateMenu(R.menu.profile_toolbar)
@@ -83,7 +83,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
                         true
                     }
                 }
-                text_toolbar_title.text = getText(R.string.title_profile)
+                textToolbarTitle.text = getText(R.string.title_profile)
             }
         }
     }
@@ -92,13 +92,13 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        image_toolbar_mic.setOnClickListener {
+        imageToolbarMic.setOnClickListener {
             //TODO:Аналогично
         }
-        image_toolbar_search.setOnClickListener {
-            presenter.findContent(edit_toolbar_search.text as String?)
+        imageToolbarSearch.setOnClickListener {
+            presenter.findContent(edittextToolbarSearch.text as String?)
         }
-        edit_toolbar_search.setOnEditorActionListener { editText, actionId, event ->
+        edittextToolbarSearch.setOnEditorActionListener { editText, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 presenter.findContent(editText.text.toString())
                 true
@@ -107,8 +107,8 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
             }
         }
 
-        bottom_nav_bar.enableAnimation(false)
-        bottom_nav_bar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        bottomNavBar.enableAnimation(false)
+        bottomNavBar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
             if (item.isChecked) {
                 false
             } else {
@@ -116,6 +116,6 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
                 true
             }
         }
-        bottom_nav_bar.selectedItemId = presenter.currentScreenID
+        bottomNavBar.selectedItemId = presenter.currentScreenID
     }
 }

@@ -35,8 +35,8 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView, 
         val searchResultPattern = getString(R.string.search_result_info)
         val searchResultsInfo = getLocaleQuantityString(R.plurals.organisation_search_quantity, organisationArray.size)
         fragmentView.apply {
-            text_search_info.text = String.format(searchResultPattern, searchResultsInfo)
-            recycler_organisations_list.adapter = OrganisationListAdapter(organisationArray, this@OrganisationTabFragment)
+            textOrganisationTabSearchInfo.text = String.format(searchResultPattern, searchResultsInfo)
+            recyclerviewOrganisationList.adapter = OrganisationListAdapter(organisationArray, this@OrganisationTabFragment)
         }
     }
 
@@ -51,7 +51,7 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView, 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(R.layout.fragment_organisation_tab, container, false)
-        fragmentView.recycler_organisations_list.apply {
+        fragmentView.recyclerviewOrganisationList.apply {
             layoutManager = LinearLayoutManager(context)
             val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             addItemDecoration(divider)

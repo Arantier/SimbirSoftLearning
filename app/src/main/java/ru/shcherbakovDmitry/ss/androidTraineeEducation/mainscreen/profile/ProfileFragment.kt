@@ -28,19 +28,19 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
         Glide.with(this)
                 .setDefaultRequestOptions(RequestOptions().apply { placeholder(R.drawable.image_user_placeholder) })
                 .load(profile.pictureUrl)
-                .into(fragmentView.image_user_photo)
+                .into(fragmentView.imageUserScreenPhoto)
         fragmentView.apply {
-            image_user_photo.apply {
+            imageUserScreenPhoto.apply {
                 adjustViewBounds = true
                 scaleType = ImageView.ScaleType.FIT_XY
                 setOnClickListener {
                     EditPhotoDialog().show(fragmentManager, EditPhotoDialog.TAG)
                 }
             }
-            text_user_name.text = profile.name
-            text_user_birth_date.text = profile.birthDate
-            text_user_business.text = profile.business
-            list_friends.adapter = FriendListAdapter(profile.friendsArray, object : OnFriendClickListener {
+            textUserScreenName.text = profile.name
+            textUserScreenBirth.text = profile.birthDate
+            textUserScreenBusiness.text = profile.business
+            recyclerviewUserScreenFriends.adapter = FriendListAdapter(profile.friendsArray, object : OnFriendClickListener {
                 override fun onFriendClick(friend: UserProfile) {
                     presenter.findAndShowProfile(friend)
                 }
@@ -56,8 +56,8 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
                               savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(R.layout.fragment_profile_screen, container, false)
         fragmentView.apply {
-            list_friends.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            button_log_out.setOnClickListener {
+            recyclerviewUserScreenFriends.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            buttonUserScreenLogout.setOnClickListener {
                 presenter.userLogout()
             }
         }
@@ -101,8 +101,8 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
             fun bind(friend: UserProfile, listener: OnFriendClickListener) {
                 Glide.with(view.context)
                         .load(friend.pictureUrl)
-                        .into(view.image_friend)
-                view.text_friend.text = friend.name
+                        .into(view.imageFriendItem)
+                view.textFriendItem.text = friend.name
                 view.setOnClickListener { listener.onFriendClick(friend) }
             }
         }

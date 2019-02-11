@@ -15,19 +15,19 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/image_user_photo"
+                android:id="@+id/imageUserScreenPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:src="@drawable/image_user_placeholder" />
 
             <LinearLayout
-                android:id="@+id/layout_info"
+                android:id="@+id/layoutUserScreenInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/text_user_name"
+                    android:id="@+id/textUserScreenName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/profile_text_horizontal_margin"
@@ -38,35 +38,35 @@
                     tools:text="Кагыр Маур Дыффин Аэп Кеаллах"/>
 
                 <TextView
-                    android:id="@+id/text_hint_birth_date"
+                    android:id="@+id/textUserScreenHintBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/ProfileHintStyle"
                     android:text="@string/profile_birth_date" />
 
                 <TextView
-                    android:id="@+id/text_user_birth_date"
+                    android:id="@+id/textUserScreenBirth"
                     style="@style/ProfileTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="01 февраля 1980"/>
 
                 <TextView
-                    android:id="@+id/text_hint_business"
+                    android:id="@+id/textUserScreenHintBusiness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/ProfileHintStyle"
                     android:text="@string/profile_business" />
 
                 <TextView
-                    android:id="@+id/text_user_business"
+                    android:id="@+id/textUserScreenBusiness"
                     style="@style/ProfileTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="Хирургия, травматология"/>
 
                 <Switch
-                    android:id="@+id/switch_receive"
+                    android:id="switchUserScreenReceiveNotifications"
                     style="@style/ProfileTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 android:background="@color/dividerLineColor"/>
 
             <TextView
-                android:id="@+id/text_friend_hint"
+                android:id="@+id/textUserScreenHintFriends"
                 style="@style/ProfileHintStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                 android:text="@string/profile_friends" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/list_friends"
+                android:id="@+id/recyclerviewUserScreenFriends"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/profile_friend_list_bottom_margin"/>
@@ -101,7 +101,7 @@
                 android:background="@color/dividerLineColor"/>
 
             <Button
-                android:id="@+id/button_log_out"
+                android:id="@+id/buttonUserScreenLogout"
                 style="@style/ProfileLogOutButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

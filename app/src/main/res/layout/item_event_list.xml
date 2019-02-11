@@ -14,7 +14,7 @@
 
         <!--TODO: сделай фейдинг -->
         <ImageView
-            android:id="@+id/image_event"
+            android:id="@+id/imageEventItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/event_list_item_image_margin"
@@ -24,7 +24,7 @@
             app:srcCompat="@drawable/image_user_placeholder" />
 
         <TextView
-            android:id="@+id/title_event"
+            android:id="@+id/titleEventItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/event_list_item_title_margin_horizontal"
@@ -35,23 +35,23 @@
             android:lineSpacingExtra="@dimen/event_list_item_title_line_spacing"
             android:textColor="@color/eventListItemTitleTextColor"
             android:textSize="@dimen/event_list_item_title_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/image_decor"
+            app:layout_constraintBottom_toTopOf="@+id/imageEventItemDecor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Спонсоры отремонтируют школу-интернат" />
 
         <ImageView
-            android:id="@+id/image_decor"
+            android:id="@+id/imageEventItemDecor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/event_list_item_decor_margin_bottom"
-            app:layout_constraintBottom_toTopOf="@+id/text_description"
+            app:layout_constraintBottom_toTopOf="@+id/textEventItemDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/event_item_decor" />
 
         <TextView
-            android:id="@+id/text_description"
+            android:id="@+id/textEventItemDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/event_list_item_description_margin_horizontal"
@@ -61,13 +61,13 @@
             android:gravity="center_horizontal"
             android:maxLines="3"
             android:textSize="@dimen/event_list_item_description_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/text_date_handler"
+            app:layout_constraintBottom_toTopOf="@+id/textEventItemDateHandler"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области школой интернатом для детей с ограниченными возможностями" />
 
         <FrameLayout
-            android:id="@+id/text_date_handler"
+            android:id="@+id/textEventItemDateHandler"
             android:layout_width="0dp"
             android:layout_height="@dimen/event_list_item_snack_height"
             android:background="@color/colorAccent"
@@ -76,7 +76,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/text_date_rest"
+                android:id="@+id/textEventItemDate"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"

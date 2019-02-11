@@ -19,14 +19,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/text_toolbar_title"
+            android:id="@+id/textToolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:theme="@style/ToolbarTheme.Title" />
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/layout_toolbar_search"
+            android:id="@+id/layoutToolbarSearch"
             android:layout_width="match_parent"
             android:layout_height="@dimen/search_toolbar_field_height"
             android:layout_margin="@dimen/search_toolbar_field_margin"
@@ -37,7 +37,7 @@
             tools:visibility="visible">
 
             <ImageView
-                android:id="@+id/image_toolbar_search"
+                android:id="@+id/imageToolbarSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:paddingLeft="@dimen/search_toolbar_field_drawable_margin"
@@ -48,7 +48,7 @@
                 app:srcCompat="@drawable/ic_toolbar_search" />
 
             <EditText
-                android:id="@+id/edit_toolbar_search"
+                android:id="@+id/edittextToolbarSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -57,15 +57,15 @@
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/search_toolbar_field_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/image_toolbar_mic"
+                app:layout_constraintEnd_toStartOf="@+id/imageToolbarMic"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/image_toolbar_search"
+                app:layout_constraintStart_toEndOf="@+id/imageToolbarSearch"
                 app:layout_constraintTop_toTopOf="parent"
                 android:inputType="textFilter"
                 android:imeOptions="actionDone"/>
 
             <ImageView
-                android:id="@+id/image_toolbar_mic"
+                android:id="@+id/imageToolbarMic"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:paddingLeft="@dimen/search_toolbar_field_drawable_margin"
@@ -81,22 +81,22 @@
 
 
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/fragmentContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_bar"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <FrameLayout
-        android:id="@+id/button_heart"
+        android:id="@+id/buttonHeart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/button_help_bottom_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/bottom_nav_bar"
-        app:layout_constraintStart_toStartOf="@+id/bottom_nav_bar"
-        app:layout_constraintEnd_toEndOf="@+id/bottom_nav_bar"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavBar"
+        app:layout_constraintStart_toStartOf="@+id/bottomNavBar"
+        app:layout_constraintEnd_toEndOf="@+id/bottomNavBar"
         android:elevation="@dimen/button_help_elevation"
         tools:visibility="gone">
 
@@ -119,7 +119,7 @@
     </FrameLayout>
 
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-        android:id="@+id/bottom_nav_bar"
+        android:id="@+id/bottomNavBar"
         android:layout_width="0dp"
         android:layout_height="@dimen/bottom_nav_bar_height"
         app:itemIconTint="@drawable/btn_bnv_selected"

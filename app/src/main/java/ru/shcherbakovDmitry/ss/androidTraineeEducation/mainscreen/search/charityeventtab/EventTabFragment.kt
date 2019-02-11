@@ -25,10 +25,10 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
 
     override fun setContent(eventArray: Array<CharityEvent>) {
         if (eventArray.isEmpty()){
-            fragmentView.layout_list_background.visibility = View.VISIBLE
+            fragmentView.layoutEventTabBackground.visibility = View.VISIBLE
         } else {
-            fragmentView.layout_list_background.visibility = View.GONE
-            fragmentView.recycler_events_list.adapter = EventListAdapter(eventArray, this)
+            fragmentView.layoutEventTabBackground.visibility = View.GONE
+            fragmentView.recyclerviewEventTab.adapter = EventListAdapter(eventArray, this)
         }
     }
 
@@ -39,7 +39,7 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(R.layout.fragment_events_tab, container, false)
-        fragmentView.recycler_events_list.layoutManager = LinearLayoutManager(context)
+        fragmentView.recyclerviewEventTab.layoutManager = LinearLayoutManager(context)
         return fragmentView
     }
 
@@ -63,8 +63,8 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
 
             fun bind(event: CharityEvent, listener: OnEventClickListener) {
                 view.apply {
-                    title_event.text = event.title
-                    text_description.text = event.description
+                    titleEventItem.text = event.title
+                    textEventItemDescription.text = event.description
                     val startDateString = event.startDate.split(".")
                     val startDate = Calendar.getInstance().apply {
                         set(Calendar.YEAR, startDateString[2].toInt())
@@ -85,7 +85,7 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
                             365
                         }
                     }
-                    text_date_rest.text = String.format(resources.getString(R.string.event_date_expiration_info),
+                    textEventItemDate.text = String.format(resources.getString(R.string.event_date_expiration_info),
                             getLocaleQuantityString(R.plurals.event_date_expiration, dayDifference),
                             startDateString[0].toInt(),
                             startDateString[1].toInt(),
@@ -94,7 +94,7 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
                     )
                     Glide.with(view)
                             .load(event.pictureURL)
-                            .into(image_event)
+                            .into(imageEventItem)
                     setOnClickListener {
 
                     }

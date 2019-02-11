@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        progressBar = progress_loading
+        progressBar = progressLoading
 
         Handler().postDelayed({
             val intent = Intent(this@SplashActivity, MainActivity::class.java)

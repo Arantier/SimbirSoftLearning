@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView
     style="@style/OrganisationListItemStyle"
-    android:id="@+id/text_organisation_name"
+    android:id="@+id/textOrganisationItemName"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     tools:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
