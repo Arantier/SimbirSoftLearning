@@ -24,7 +24,6 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
     private lateinit var fragmentView: View
 
     override fun fillProfileScreen(profile: UserProfile) {
-//TODO:Как только появится более точная система представления юзеров - переделай
         Glide.with(this)
                 .setDefaultRequestOptions(RequestOptions().apply { placeholder(R.drawable.image_user_placeholder) })
                 .load(profile.pictureUrl)
@@ -40,16 +39,8 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
             textUserScreenName.text = profile.name
             textUserScreenBirth.text = profile.birthDate
             textUserScreenBusiness.text = profile.business
-            recyclerviewUserScreenFriends.adapter = FriendListAdapter(profile.friendsArray, object : OnFriendClickListener {
-                override fun onFriendClick(friend: UserProfile) {
-                    presenter.findAndShowProfile(friend)
-                }
-            })
+            recyclerviewUserScreenFriends.adapter = FriendListAdapter(profile.friendsArray)
         }
-    }
-
-    override fun showLoginScreen() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -57,9 +48,6 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
         fragmentView = inflater.inflate(R.layout.fragment_profile_screen, container, false)
         fragmentView.apply {
             recyclerviewUserScreenFriends.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            buttonUserScreenLogout.setOnClickListener {
-                presenter.userLogout()
-            }
         }
         return fragmentView
     }
@@ -79,8 +67,7 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
         }
     }
 
-    class FriendListAdapter constructor(private val friendsList: Array<UserProfile>?,
-                                        private val onFriendClickListener: OnFriendClickListener)
+    class FriendListAdapter constructor(private val friendsList: Array<UserProfile>?)
         : RecyclerView.Adapter<FriendListAdapter.ItemViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): ItemViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_friend_list, parent, false)
@@ -93,22 +80,17 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
 
         override fun onBindViewHolder(viewHolder: ItemViewHolder, position: Int) {
             if (friendsList != null) {
-                viewHolder.bind(friendsList[position], onFriendClickListener)
+                viewHolder.bind(friendsList[position])
             }
         }
 
         class ItemViewHolder constructor(val view: View) : RecyclerView.ViewHolder(view) {
-            fun bind(friend: UserProfile, listener: OnFriendClickListener) {
+            fun bind(friend: UserProfile) {
                 Glide.with(view.context)
                         .load(friend.pictureUrl)
                         .into(view.imageFriendItem)
                 view.textFriendItem.text = friend.name
-                view.setOnClickListener { listener.onFriendClick(friend) }
             }
         }
-    }
-
-    interface OnFriendClickListener {
-        fun onFriendClick(friend: UserProfile)
     }
 }

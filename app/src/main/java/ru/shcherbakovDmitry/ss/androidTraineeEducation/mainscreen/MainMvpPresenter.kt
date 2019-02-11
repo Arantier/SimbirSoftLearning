@@ -13,10 +13,4 @@ class MainMvpPresenter : MvpPresenter<MainMvpViewInterface>() {
             field = id
             viewState.selectScreen(id)
         }
-
-    fun findContent(key:String?){
-        if (key != null) {
-            SearchFieldNotifier.findContent(key)
-        }
-    }
 }

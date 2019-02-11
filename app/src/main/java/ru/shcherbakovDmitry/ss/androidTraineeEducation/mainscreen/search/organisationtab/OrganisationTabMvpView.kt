@@ -8,7 +8,4 @@ import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Or
 interface OrganisationTabMvpView : MvpView {
     @StateStrategyType(AddToEndSingleStrategy :: class)
     fun setContent(organisationArray : Array<Organisation>)
-
-    @StateStrategyType(AddToEndSingleStrategy :: class)
-    fun startOrganisationActivity(organisationArray : Array<Organisation>)
 }

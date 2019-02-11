@@ -78,10 +78,6 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
                         .commit()
                 toolbar.apply {
                     inflateMenu(R.menu.profile_toolbar)
-                    menu.getItem(0).setOnMenuItemClickListener {
-                        //TODO: потом понадобится
-                        true
-                    }
                 }
                 textToolbarTitle.text = getText(R.string.title_profile)
             }
@@ -91,21 +87,18 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        imageToolbarMic.setOnClickListener {
-            //TODO:Аналогично
-        }
-        imageToolbarSearch.setOnClickListener {
-            presenter.findContent(edittextToolbarSearch.text as String?)
-        }
-        edittextToolbarSearch.setOnEditorActionListener { editText, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                presenter.findContent(editText.text.toString())
-                true
-            } else {
-                false
-            }
-        }
+//TODO: Если не нужно - удаляй
+//        imageToolbarSearch.setOnClickListener {
+//            presenter.findContent(edittextToolbarSearch.text as String?)
+//        }
+//        edittextToolbarSearch.setOnEditorActionListener { editText, actionId, event ->
+//            if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                presenter.findContent(editText.text.toString())
+//                true
+//            } else {
+//                false
+//            }
+//        }
 
         bottomNavBar.enableAnimation(false)
         bottomNavBar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

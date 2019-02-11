@@ -17,7 +17,7 @@ import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Ch
 import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
 import java.util.*
 
-class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickListener {
+class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView {
 
     @InjectPresenter
     lateinit var presenter: EventMvpPresenter
@@ -28,12 +28,8 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
             fragmentView.layoutEventTabBackground.visibility = View.VISIBLE
         } else {
             fragmentView.layoutEventTabBackground.visibility = View.GONE
-            fragmentView.recyclerviewEventTab.adapter = EventListAdapter(eventArray, this)
+            fragmentView.recyclerviewEventTab.adapter = EventListAdapter(eventArray)
         }
-    }
-
-    override fun startCharityEventActivity(eventArray: Array<CharityEvent>) {
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -50,9 +46,9 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
         }
     }
 
-    class EventListAdapter constructor(private val eventArray: Array<CharityEvent>, private val listener: OnEventClickListener) : RecyclerView.Adapter<EventListAdapter.ViewHolder>() {
+    class EventListAdapter(private val eventArray: Array<CharityEvent>) : RecyclerView.Adapter<EventListAdapter.ViewHolder>() {
 
-        class ViewHolder constructor(val view: View) : RecyclerView.ViewHolder(view) {
+        class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
             private fun getLocaleQuantityString(id: Int, quantity: Int): String {
                 val configuration = Configuration(view.context!!.resources.configuration).apply {
@@ -61,7 +57,7 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
                 return view.context!!.createConfigurationContext(configuration).resources.getQuantityString(id, quantity, quantity)
             }
 
-            fun bind(event: CharityEvent, listener: OnEventClickListener) {
+            fun bind(event: CharityEvent) {
                 view.apply {
                     titleEventItem.text = event.title
                     textEventItemDescription.text = event.description
@@ -95,9 +91,6 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
                     Glide.with(view)
                             .load(event.pictureURL)
                             .into(imageEventItem)
-                    setOnClickListener {
-
-                    }
                 }
             }
 
@@ -111,9 +104,7 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnEventClickLi
 
         override fun getItemCount() = eventArray.size
 
-        override fun onBindViewHolder(viewHolder: ViewHolder, item: Int) = viewHolder.bind(eventArray[item], listener)
+        override fun onBindViewHolder(viewHolder: ViewHolder, item: Int) = viewHolder.bind(eventArray[item])
 
     }
 }
-
-interface OnEventClickListener

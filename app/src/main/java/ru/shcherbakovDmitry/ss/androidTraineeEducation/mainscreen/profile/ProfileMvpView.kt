@@ -6,6 +6,4 @@ import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Us
 interface ProfileMvpView : MvpView {
 
     fun fillProfileScreen(profile: UserProfile)
-
-    fun showLoginScreen()
 }

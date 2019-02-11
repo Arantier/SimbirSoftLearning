@@ -23,7 +23,4 @@ class OrganisationTabPresenter : MvpPresenter<OrganisationTabMvpView>(), SearchF
         val organisationArray = OrganisationTabInteractor.requestOrganisations(key)
         viewState.setContent(organisationArray)
     }
-
-    fun requestOrganisationActivity(organisationId: Int) {
-    }
 }

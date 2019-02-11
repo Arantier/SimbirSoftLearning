@@ -16,7 +16,7 @@ object OrganisationTabInteractor {
             for (j in 1..stringLength) {
                 string += random.nextInt(10).toString()
             }
-            organisationArray.add(Organisation(string, i))
+            organisationArray.add(Organisation(string))
         }
         return organisationArray.toTypedArray()
     }

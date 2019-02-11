@@ -11,16 +11,6 @@ class ProfilePresenter : MvpPresenter<ProfileMvpView>() {
         val userProfile = ProfileModel.userProfile
         if (userProfile != null) {
             viewState.fillProfileScreen(userProfile)
-        } else {
-            viewState.showLoginScreen()
         }
-    }
-
-    fun findAndShowProfile(profile: UserProfile) {
-        //TODO:Потом
-    }
-
-    fun userLogout(){
-
     }
 }

@@ -9,7 +9,4 @@ interface EventTabMvpView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy :: class)
     fun setContent(eventArray:Array<CharityEvent>)
-
-    @StateStrategyType(AddToEndSingleStrategy :: class)
-    fun startCharityEventActivity(eventArray:Array<CharityEvent>)
 }

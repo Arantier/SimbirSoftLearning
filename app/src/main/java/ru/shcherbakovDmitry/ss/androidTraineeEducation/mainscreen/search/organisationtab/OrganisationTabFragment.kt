@@ -18,7 +18,7 @@ import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Or
 import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
 import java.util.*
 
-class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView, OnOrganisationClickListener {
+class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView {
 
     @InjectPresenter
     lateinit var presenter: OrganisationTabPresenter
@@ -36,16 +36,8 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView, 
         val searchResultsInfo = getLocaleQuantityString(R.plurals.organisation_search_quantity, organisationArray.size)
         fragmentView.apply {
             textOrganisationTabSearchInfo.text = String.format(searchResultPattern, searchResultsInfo)
-            recyclerviewOrganisationList.adapter = OrganisationListAdapter(organisationArray, this@OrganisationTabFragment)
+            recyclerviewOrganisationList.adapter = OrganisationListAdapter(organisationArray)
         }
-    }
-
-    override fun startOrganisationActivity(organisationArray : Array<Organisation>) {
-        Toast.makeText(context, "Requested activity", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onOrganisationClick(organisationId: Int) {
-        presenter.requestOrganisationActivity(organisationId)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -66,15 +58,12 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView, 
         }
     }
 
-    class OrganisationListAdapter constructor(val organisationArray: Array<Organisation>, val listener: OnOrganisationClickListener) : RecyclerView.Adapter<OrganisationListAdapter.OrganisationViewHolder>() {
+    class OrganisationListAdapter(private val organisationArray: Array<Organisation>) : RecyclerView.Adapter<OrganisationListAdapter.OrganisationViewHolder>() {
 
-        class OrganisationViewHolder constructor(val view: TextView) : RecyclerView.ViewHolder(view) {
+        class OrganisationViewHolder(val view: TextView) : RecyclerView.ViewHolder(view) {
 
-            fun bind(organisation: Organisation, onOrganisationClickListener: OnOrganisationClickListener) {
+            fun bind(organisation: Organisation) {
                 view.text = organisation.name
-                view.setOnClickListener {
-                    onOrganisationClickListener.onOrganisationClick(organisation.organisationId)
-                }
             }
 
         }
@@ -90,11 +79,7 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView, 
         }
 
         override fun onBindViewHolder(viewHolder: OrganisationViewHolder, position: Int) {
-            viewHolder.bind(organisationArray[position], listener)
+            viewHolder.bind(organisationArray[position])
         }
     }
-}
-
-interface OnOrganisationClickListener {
-    fun onOrganisationClick(organisationId: Int)
 }
