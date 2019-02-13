@@ -17,8 +17,6 @@ class OrganisationTabPresenter : MvpPresenter<OrganisationTabMvpView>(), SearchF
         SearchFieldNotifier.detachObserver(this)
     }
 
-    fun requestContent() = requestContent(null)
-
     override fun requestContent(key: String?) {
         val organisationArray = OrganisationTabInteractor.requestOrganisations(key)
         viewState.setContent(organisationArray)

@@ -1,11 +1,7 @@
 package ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search
 
 
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +9,6 @@ import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import kotlinx.android.synthetic.main.fragment_search_screen.view.*
 import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
-import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.charityeventtab.EventTabFragment
-import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.search.organisationtab.OrganisationTabFragment
 
 class SearchFragment : MvpAppCompatFragment() {
 
@@ -24,7 +18,7 @@ class SearchFragment : MvpAppCompatFragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search_screen, container, false)
         viewPager = view.viewpagerSearchScreen.apply {
-            adapter = TabPagerAdapter(childFragmentManager, context)
+            adapter = SearchTabPagerAdapter(childFragmentManager, context)
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(p0: Int) {
 
@@ -45,43 +39,10 @@ class SearchFragment : MvpAppCompatFragment() {
     }
 
     companion object {
-        val TAG = "search_fragment"
+        val TAG = SearchFragment::class.simpleName
 
         fun newInstance(): SearchFragment {
             return SearchFragment()
         }
-    }
-
-    private class TabPagerAdapter constructor(fm: FragmentManager, val context:Context?) : FragmentPagerAdapter(fm) {
-        override fun getItem(position: Int): Fragment {
-            return when (position) {
-                0 -> {
-                    EventTabFragment.newInstance()
-                }
-                1 -> {
-                    OrganisationTabFragment.newInstance()
-                }
-                else -> {
-                    OrganisationTabFragment.newInstance()
-                }
-            }
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return when (position) {
-                0 -> {
-                    context?.getString(R.string.search_tab_events) ?: "ERROR"
-                }
-                1 -> {
-                    context?.getString(R.string.search_tab_organisations) ?: "ERROR"
-                }
-                else -> {
-                    "Error"
-                }
-            }
-        }
-
-        override fun getCount(): Int = 2
-
     }
 }

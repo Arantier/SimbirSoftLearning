@@ -48,38 +48,13 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView {
             val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             addItemDecoration(divider)
         }
-        presenter.requestContent()
+        presenter.requestContent("")
         return fragmentView
     }
 
     companion object {
         fun newInstance(): OrganisationTabFragment {
             return OrganisationTabFragment()
-        }
-    }
-
-    class OrganisationListAdapter(private val organisationArray: Array<Organisation>) : RecyclerView.Adapter<OrganisationListAdapter.OrganisationViewHolder>() {
-
-        class OrganisationViewHolder(val view: TextView) : RecyclerView.ViewHolder(view) {
-
-            fun bind(organisation: Organisation) {
-                view.text = organisation.name
-            }
-
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): OrganisationViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_organisation_list, parent, false)
-            return OrganisationViewHolder(view as TextView)
-        }
-
-        override fun getItemCount(): Int {
-            return organisationArray.size
-        }
-
-        override fun onBindViewHolder(viewHolder: OrganisationViewHolder, position: Int) {
-            viewHolder.bind(organisationArray[position])
         }
     }
 }

@@ -9,11 +9,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_profile_screen.view.*
 import kotlinx.android.synthetic.main.item_friend_list.view.*
 import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
+import ru.shcherbakovDmitry.ss.androidTraineeEducation.utilites.ImageProvider
 import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.UserProfile
 
 class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
@@ -24,10 +23,7 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
     private lateinit var fragmentView: View
 
     override fun fillProfileScreen(profile: UserProfile) {
-        Glide.with(this)
-                .setDefaultRequestOptions(RequestOptions().apply { placeholder(R.drawable.image_user_placeholder) })
-                .load(profile.pictureUrl)
-                .into(fragmentView.imageUserScreenPhoto)
+        ImageProvider.loadImage(profile.pictureUrl, fragmentView.imageUserScreenPhoto)
         fragmentView.apply {
             imageUserScreenPhoto.apply {
                 adjustViewBounds = true
@@ -52,45 +48,13 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
         return fragmentView
     }
 
-    override fun onStart() {
-        super.onStart()
-        presenter.requestUserProfile()
-    }
-
     companion object {
         @JvmStatic
-        val TAG = "profile_fragment"
+        val TAG = ProfileFragment::class.simpleName
 
         @JvmStatic
         fun newInstance(): ProfileFragment {
             return ProfileFragment()
-        }
-    }
-
-    class FriendListAdapter constructor(private val friendsList: Array<UserProfile>?)
-        : RecyclerView.Adapter<FriendListAdapter.ItemViewHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): ItemViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_friend_list, parent, false)
-            return ItemViewHolder(view)
-        }
-
-        override fun getItemCount(): Int {
-            return friendsList?.size ?: 0
-        }
-
-        override fun onBindViewHolder(viewHolder: ItemViewHolder, position: Int) {
-            if (friendsList != null) {
-                viewHolder.bind(friendsList[position])
-            }
-        }
-
-        class ItemViewHolder constructor(val view: View) : RecyclerView.ViewHolder(view) {
-            fun bind(friend: UserProfile) {
-                Glide.with(view.context)
-                        .load(friend.pictureUrl)
-                        .into(view.imageFriendItem)
-                view.textFriendItem.text = friend.name
-            }
         }
     }
 }
