@@ -15,6 +15,6 @@ class EditPhotoDialog : DialogFragment() {
     }
 
     companion object {
-        val TAG = "edit_photo"
+        val TAG = EditPhotoDialog::class.simpleName
     }
 }

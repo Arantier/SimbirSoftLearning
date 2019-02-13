@@ -15,7 +15,7 @@ class HelpFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        val TAG = "help_fragment"
+        val TAG = HelpFragment::class.simpleName
 
         @JvmStatic
         fun newInstance(): HelpFragment {

@@ -7,7 +7,8 @@ import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Us
 @InjectViewState
 class ProfilePresenter : MvpPresenter<ProfileMvpView>() {
 
-    fun requestUserProfile() {
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
         val userProfile = ProfileModel.userProfile
         if (userProfile != null) {
             viewState.fillProfileScreen(userProfile)
