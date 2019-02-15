@@ -7,15 +7,7 @@ import android.widget.TextView
 import ru.shcherbakovDmitry.ss.androidTraineeEducation.R
 import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Organisation
 
-class OrganisationListAdapter(private val organisationArray: Array<Organisation>) : RecyclerView.Adapter<OrganisationListAdapter.OrganisationViewHolder>() {
-
-    class OrganisationViewHolder(val view: TextView) : RecyclerView.ViewHolder(view) {
-
-        fun bind(organisation: Organisation) {
-            view.text = organisation.name
-        }
-
-    }
+class OrganisationListAdapter(private val organisationArray: Array<Organisation>) : RecyclerView.Adapter<OrganisationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): OrganisationViewHolder {
         val view = LayoutInflater.from(parent.context)

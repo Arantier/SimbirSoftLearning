@@ -18,7 +18,7 @@ object SearchFieldNotifier {
         listOfObservers.remove(observer)
     }
 
-    fun findContent(key: String?) {
-        listOfObservers[inactiveItem].requestContent(key)
+    fun findContent() {
+        listOfObservers[inactiveItem].requestContent()
     }
 }

@@ -10,26 +10,19 @@ import ru.shcherbakovDmitry.ss.androidTraineeEducation.mainscreen.dataclasses.Us
 import ru.shcherbakovDmitry.ss.androidTraineeEducation.utilites.ImageProvider
 
 class FriendListAdapter(private val friendsList: Array<UserProfile>?)
-    : RecyclerView.Adapter<FriendListAdapter.ItemViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): ItemViewHolder {
+    : RecyclerView.Adapter<FriendViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): FriendViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_friend_list, parent, false)
-        return ItemViewHolder(view)
+        return FriendViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return friendsList?.size ?: 0
     }
 
-    override fun onBindViewHolder(viewHolder: ItemViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: FriendViewHolder, position: Int) {
         if (friendsList != null) {
             viewHolder.bind(friendsList[position])
-        }
-    }
-
-    class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(friend: UserProfile) {
-            ImageProvider.loadImage(friend.pictureUrl, view.imageFriendItem)
-            view.textFriendItem.text = friend.name
         }
     }
 }

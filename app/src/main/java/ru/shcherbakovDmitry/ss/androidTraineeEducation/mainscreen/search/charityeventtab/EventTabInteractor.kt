@@ -5,7 +5,7 @@ import java.util.*
 
 object EventTabInteractor {
 
-    fun requestEvents(key: String?): Array<CharityEvent> {
+    fun requestEvents(): Array<CharityEvent> {
         val eventArray = ArrayList<CharityEvent>()
         val random = Random()
         val numberOfElements = random.nextInt(32)

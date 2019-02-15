@@ -19,18 +19,10 @@ class SearchFragment : MvpAppCompatFragment() {
         val view = inflater.inflate(R.layout.fragment_search_screen, container, false)
         viewPager = view.viewpagerSearchScreen.apply {
             adapter = SearchTabPagerAdapter(childFragmentManager, context)
-            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(p0: Int) {
-
-                }
-
-                override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
-
-                }
-
+            addOnPageChangeListener(object : BaseOnTabChangeListener() {
                 override fun onPageSelected(position: Int) {
                     SearchFieldNotifier.activeItem = position
-                    SearchFieldNotifier.findContent("")
+                    SearchFieldNotifier.findContent()
                 }
 
             })

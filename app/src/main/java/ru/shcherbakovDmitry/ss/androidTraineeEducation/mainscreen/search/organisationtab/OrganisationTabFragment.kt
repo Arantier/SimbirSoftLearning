@@ -48,7 +48,7 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView {
             val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             addItemDecoration(divider)
         }
-        presenter.requestContent("")
+        presenter.requestContent()
         return fragmentView
     }
 

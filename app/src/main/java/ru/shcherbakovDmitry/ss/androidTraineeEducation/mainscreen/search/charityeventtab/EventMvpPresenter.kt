@@ -16,8 +16,8 @@ class EventMvpPresenter : MvpPresenter<EventTabMvpView>(), SearchFieldObserver {
         SearchFieldNotifier.detachObserver(this)
     }
 
-    override fun requestContent(key: String?) {
-        val eventArray = EventTabInteractor.requestEvents(key)
+    override fun requestContent() {
+        val eventArray = EventTabInteractor.requestEvents()
         viewState.setContent(eventArray)
     }
 
