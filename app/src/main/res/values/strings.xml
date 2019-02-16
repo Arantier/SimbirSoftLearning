@@ -1,22 +1,76 @@
 <resources>
     <string name="app_name">Хочу помочь</string>
-
-
-    <string name="msg_loading">Загрузка…</string>
     <string name="title_activity_help_categories">HelpCategoriesActivity</string>
 
+    <!--
+            Сплэш
+        -->
+    <string name="msg_loading">Загрузка…</string>
 
-    <string name="title_help">Помощь</string>
+    <!--
+        Общее
+    -->
     <string name="button_news">Новости</string>
     <string name="button_search">Поиск</string>
     <string name="button_help">Помочь</string>
     <string name="button_history">История</string>
     <string name="button_profile">Профиль</string>
 
-    <string name="msg_help">Выберите категорию помощи</string>
-    <string name="title_help_kids">Дети</string>
-    <string name="title_help_adults">Взрослые</string>
-    <string name="title_help_elders">Пожилые</string>
-    <string name="title_help_animals">Животные</string>
-    <string name="title_help_events">Мероприятия</string>
+    <!--
+        Экран помощи
+    -->
+    <string name="title_help">Помощь</string>
+    <string name="help_select_hint">Выберите категорию помощи</string>
+    <string name="help_category_kids">Дети</string>
+    <string name="help_category_adults">Взрослые</string>
+    <string name="help_category_elders">Пожилые</string>
+    <string name="help_category_animals">Животные</string>
+    <string name="help_category_events">Мероприятия</string>
+
+    <!--
+        Экран профиля
+    -->
+    <string name="title_profile">Профиль</string>
+    <string name="profile_birth_date">Дата рождения</string>
+    <string name="profile_business">Сфера деятельности</string>
+    <string name="profile_receive_notifications">Получать push-уведомления</string>
+    <string name="profile_friends">Ваши друзья</string>
+    <string name="profile_log_out">Выйти из аккаунта</string>
+    <string name="profile_edit">Изменить профиль</string>
+    <string name="edit_photo_select">Выбрать фото</string>
+    <string name="edit_photo_make">Сделать снимок</string>
+    <string name="edit_photo_delete">Удалить</string>
+
+
+    <!--
+        Экран поиска
+    -->
+    <string name="title_search">Поиск</string>
+    <string name="search_placeholder">Введите название организации</string>
+    <string name="search_tab_events">По мероприятиям</string>
+    <string name="search_tab_organisations">По НКО</string>
+    <string name="search_keywords">Ключевые слова: мастер-класс, помощь</string>
+    <plurals name="organisation_search_quantity">
+        <item quantity="zero">%d мероприятий</item>
+        <item quantity="one">%d мероприятие</item>
+        <item quantity="few">%d мероприятия</item>
+        <item quantity="many">%d мероприятий</item>
+        <item quantity="other">%d мероприятий</item>
+    </plurals>
+    <string name="search_hint_1">Напишите в строке поиска название мероприятия или ключевые слова.</string>
+    <string name="search_hint_2">Например, %1$s, %2$s </string>
+    <string name="search_results_keywords">Ключевые слова: %1$s</string>
+    <string name="search_result_info">Результаты поиска: %1$s</string>
+    <string-array name="search_NKO_hint_words">
+        <item>мастер-класс</item>
+        <item>помощь</item>
+    </string-array>
+    <string name="event_date_expiration_info">Осталось %1$s (%2$d.%3$d - %4$d.%5$d)</string>
+    <plurals name="event_date_expiration">
+        <item quantity="zero">%d дней</item>
+        <item quantity="one">%d день</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d мероприятий</item>
+        <item quantity="other">%d мероприятий</item>
+    </plurals>
 </resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid
+                android:color="@color/searchToolbarFieldColor"/>
+            <size
+                android:height="@dimen/search_toolbar_field_height"/>
+            <corners
+                android:radius="@dimen/search_toolbar_field_radius"/>
+        </shape>
+    </item>
+</selector>

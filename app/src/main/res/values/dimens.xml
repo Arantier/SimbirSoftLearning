@@ -24,11 +24,83 @@
     <dimen name="help_card_text_margin_bottom">12dp</dimen>
 
     <!--
+        Категория "Профиль"
+    -->
+    <dimen name="profile_text_horizontal_margin">20dp</dimen>
+    <dimen name="profile_name_top_margin">20dp</dimen>
+    <dimen name="profile_text_top_margin">0dp</dimen>
+    <dimen name="profile_text_bottom_margin">18dp</dimen>
+    <dimen name="profile_hint_top_margin">27dp</dimen>
+    <dimen name="profile_name_size">24sp</dimen>
+    <dimen name="profile_text_size">16sp</dimen>
+    <dimen name="profile_hint_size">12sp</dimen>
+    <dimen name="profile_divider_height">1dp</dimen>
+    <dimen name="profile_friend_list_hint_top_margin">20dp</dimen>
+    <dimen name="profile_friend_list_hint_bottom_margin">11dp</dimen>
+    <dimen name="profile_friend_list_bottom_margin">15dp</dimen>
+    <dimen name="profile_log_out_top_margin">20dp</dimen>
+    <dimen name="profile_log_out_bottom_margin">38dp</dimen>
+    <dimen name="profile_log_out_vertical_padding">9dp</dimen>
+    <dimen name="profile_log_out_horizontal_padding">16dp</dimen>
+    <dimen name="profile_log_out_elevation">5dp</dimen>
+    <dimen name="profile_friend_picture_size">48dp</dimen>
+    <dimen name="profile_friend_picture_margin_vertical">5dp</dimen>
+    <dimen name="profile_friend_picture_margin_left">20dp</dimen>
+
+    <!--
+        Экран редактирования профиля
+    -->
+    <dimen name="edit_photo_dialog_width">310dp</dimen>
+    <dimen name="edit_photo_item_height">73dp</dimen>
+    <dimen name="edit_photo_item_drawable_padding">24dp</dimen>
+    <dimen name="edit_photo_item_text_size">22sp</dimen>
+
+    <!--
+        Экран поиска
+    -->
+    <dimen name="search_background_icon_size">187.5dp</dimen>
+    <dimen name="search_background_icon_margin_top">53dp</dimen>
+    <dimen name="search_background_icon_margin_horizontal">86.5dp</dimen>
+    <dimen name="search_hint_1_margin_horizontal">58dp</dimen>
+    <dimen name="search_hint_1_margin_top">37.5dp</dimen>
+    <dimen name="search_hint_2_margin_horizontal">67dp</dimen>
+    <dimen name="search_hint_2_margin_top">10dp</dimen>
+    <dimen name="search_info_padding">20dp</dimen>
+    <dimen name="search_toolbar_field_margin">8dp</dimen>
+    <dimen name="search_toolbar_field_radius">2dp</dimen>
+    <dimen name="search_toolbar_field_height">48dp</dimen>
+    <dimen name="search_toolbar_field_elevation">8dp</dimen>
+    <dimen name="search_toolbar_field_drawable_margin">11dp</dimen>
+    <dimen name="search_toolbar_field_text_size">14sp</dimen>
+    <dimen name="organisation_list_item_padding_vertical">18dp</dimen>
+    <dimen name="organisation_list_padding_left">20dp</dimen>
+    <dimen name="organisation_list_item_padding_right">8dp</dimen>
+    <dimen name="organisation_list_item_drawable_padding">20dp</dimen>
+    <dimen name="organisation_list_item_text_size">16sp</dimen>
+    <dimen name="event_list_item_width">304dp</dimen>
+    <dimen name="event_list_item_height">404dp</dimen>
+    <dimen name="event_list_item_margin">8dp</dimen>
+    <dimen name="event_list_item_elevation">4dp</dimen>
+    <dimen name="event_list_item_image_margin">4dp</dimen>
+    <dimen name="event_list_item_title_margin_horizontal">38dp</dimen>
+    <dimen name="event_list_item_title_margin_bottom">8dp</dimen>
+    <dimen name="event_list_item_title_text_size">21sp</dimen>
+    <dimen name="event_list_item_title_line_spacing">13sp</dimen>
+    <dimen name="event_list_item_decor_margin_bottom">10dp</dimen>
+    <dimen name="event_list_item_description_margin_horizontal">26dp</dimen>
+    <dimen name="event_list_item_description_margin_bottom">16dp</dimen>
+    <dimen name="event_list_item_description_text_size">14sp</dimen>
+    <dimen name="event_list_item_snack_height">32dp</dimen>
+    <dimen name="event_list_item_snack_text_size">12sp</dimen>
+
+    <!--
         Общее
     -->
     <dimen name="bottom_nav_bar_height">56dp</dimen>
+    <dimen name="bottom_nav_bar_elevation">1dp</dimen>
     <dimen name="button_help_circle_size">56dp</dimen>
     <dimen name="button_help_shadow_height">28dp</dimen>
-    <dimen name="bottom_nav_bar_labels_margin">8dp</dimen>
+    <dimen name="button_help_bottom_margin">16dp</dimen>
+    <dimen name="button_help_elevation">30dp</dimen>
 
 </resources>

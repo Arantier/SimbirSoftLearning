@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainscreen.search.charityeventtab.EventTabFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutEventTabBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageEventTabListPlaceholder"
+            android:layout_width="@dimen/search_background_icon_size"
+            android:layout_height="@dimen/search_background_icon_size"
+            android:layout_marginStart="@dimen/search_background_icon_margin_horizontal"
+            android:layout_marginTop="@dimen/search_background_icon_margin_top"
+            android:layout_marginEnd="@dimen/search_background_icon_margin_horizontal"
+            android:src="@drawable/ic_search_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textEventTabHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/search_hint_1_margin_horizontal"
+            android:layout_marginTop="@dimen/search_hint_1_margin_top"
+            android:layout_marginEnd="@dimen/search_hint_1_margin_horizontal"
+            android:text="@string/search_hint_1"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageEventTabListPlaceholder" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerviewEventTab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_event_list" />
+
+</FrameLayout>

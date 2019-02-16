@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textHelpScreenDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/help_text_message"
+        android:text="@string/help_select_hint"
+        style="@style/HelpSwitchMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/itemHelpScreenKids"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/help_card_margin"
+        android:layout_marginTop="@dimen/help_card_margin"
+        android:layout_marginEnd="@dimen/help_card_margin"
+        android:background="@color/helpCardBackground"
+        app:layout_constraintBottom_toTopOf="@+id/itemHelpScreenElders"
+        app:layout_constraintEnd_toStartOf="@+id/itemHelpScreenAdults"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textHelpScreenDescription">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/help_card_vertical_margin"
+            android:layout_marginBottom="@dimen/help_card_vertical_margin"
+            android:layout_marginStart="@dimen/help_card_horizontal_margin"
+            android:layout_marginEnd="@dimen/help_card_horizontal_margin"
+            android:src="@drawable/ic_help_kids"
+            app:layout_constraintBottom_toTopOf="@+id/textHelpScreenKids"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textHelpScreenKids"
+            style="@style/HelpCardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_card_text_margin_bottom"
+            android:text="@string/help_category_kids"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/itemHelpScreenAdults"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/help_card_margin"
+        android:layout_marginEnd="@dimen/help_card_margin"
+        android:background="@color/helpCardBackground"
+        app:layout_constraintBottom_toTopOf="@+id/itemHelpScreenAnimals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/itemHelpScreenKids"
+        app:layout_constraintTop_toBottomOf="@+id/textHelpScreenDescription">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/help_card_vertical_margin"
+            android:layout_marginBottom="@dimen/help_card_vertical_margin"
+            android:layout_marginStart="@dimen/help_card_horizontal_margin"
+            android:layout_marginEnd="@dimen/help_card_horizontal_margin"
+            android:src="@drawable/ic_help_adults"
+            app:layout_constraintBottom_toTopOf="@+id/textHelpScreenAdults"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textHelpScreenAdults"
+            style="@style/HelpCardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_card_text_margin_bottom"
+            android:text="@string/help_category_adults"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/itemHelpScreenElders"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/help_card_margin"
+        android:background="@color/helpCardBackground"
+        app:layout_constraintBottom_toTopOf="@+id/itemHelpScreenEvents"
+        app:layout_constraintEnd_toEndOf="@+id/itemHelpScreenKids"
+        app:layout_constraintStart_toStartOf="@+id/itemHelpScreenKids"
+        app:layout_constraintTop_toBottomOf="@+id/itemHelpScreenKids">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/help_card_vertical_margin"
+            android:layout_marginBottom="@dimen/help_card_vertical_margin"
+            android:layout_marginStart="@dimen/help_card_horizontal_margin"
+            android:layout_marginEnd="@dimen/help_card_horizontal_margin"
+            android:src="@drawable/ic_help_elders"
+            app:layout_constraintBottom_toTopOf="@+id/textHelpScreenElders"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textHelpScreenElders"
+            style="@style/HelpCardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_card_text_margin_bottom"
+            android:text="@string/help_category_elders"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/itemHelpScreenAnimals"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/help_card_margin"
+        android:background="@color/helpCardBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/itemHelpScreenElders"
+        app:layout_constraintEnd_toEndOf="@+id/itemHelpScreenAdults"
+        app:layout_constraintStart_toStartOf="@+id/itemHelpScreenAdults"
+        app:layout_constraintTop_toBottomOf="@+id/itemHelpScreenAdults">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/help_card_vertical_margin"
+            android:layout_marginBottom="@dimen/help_card_vertical_margin"
+            android:layout_marginStart="@dimen/help_card_horizontal_margin"
+            android:layout_marginEnd="@dimen/help_card_horizontal_margin"
+            android:src="@drawable/ic_help_animals"
+            app:layout_constraintBottom_toTopOf="@+id/textHelpScreenAnimals"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textHelpScreenAnimals"
+            style="@style/HelpCardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_card_text_margin_bottom"
+            android:text="@string/help_category_animals"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/itemHelpScreenEvents"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/help_card_margin"
+        android:layout_marginBottom="@dimen/help_card_margin"
+        android:background="@color/helpCardBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/itemHelpScreenElders"
+        app:layout_constraintStart_toStartOf="@+id/itemHelpScreenElders"
+        app:layout_constraintTop_toBottomOf="@+id/itemHelpScreenElders">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/help_card_vertical_margin"
+            android:layout_marginBottom="@dimen/help_card_vertical_margin"
+            android:layout_marginStart="@dimen/help_card_horizontal_margin"
+            android:layout_marginEnd="@dimen/help_card_horizontal_margin"
+            android:src="@drawable/ic_help_events"
+            app:layout_constraintBottom_toTopOf="@+id/textHelpScreenEvents"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textHelpScreenEvents"
+            style="@style/HelpCardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/help_card_text_margin_bottom"
+            android:text="@string/help_category_events"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

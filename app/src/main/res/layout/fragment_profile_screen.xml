@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageUserScreenPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:src="@drawable/image_user_placeholder"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"/>
+
+            <LinearLayout
+                android:id="@+id/layoutUserScreenInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textUserScreenName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/profile_text_horizontal_margin"
+                    android:layout_marginTop="@dimen/profile_name_top_margin"
+                    android:layout_marginEnd="@dimen/profile_text_horizontal_margin"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/profile_name_size"
+                    tools:text="Кагыр Маур Дыффин Аэп Кеаллах"/>
+
+                <TextView
+                    android:id="@+id/textUserScreenHintBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ProfileHintStyle"
+                    android:text="@string/profile_birth_date" />
+
+                <TextView
+                    android:id="@+id/textUserScreenBirth"
+                    style="@style/ProfileTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="01 февраля 1980"/>
+
+                <TextView
+                    android:id="@+id/textUserScreenHintBusiness"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ProfileHintStyle"
+                    android:text="@string/profile_business" />
+
+                <TextView
+                    android:id="@+id/textUserScreenBusiness"
+                    style="@style/ProfileTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Хирургия, травматология"/>
+
+                <Switch
+                    android:id="@+id/switchUserScreenReceiveNotifications"
+                    style="@style/ProfileTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/profile_hint_top_margin"
+                    android:layout_marginBottom="@dimen/profile_text_bottom_margin"
+                    android:text="@string/profile_receive_notifications" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_divider_height"
+                android:background="@color/dividerLineColor"/>
+
+            <TextView
+                android:id="@+id/textUserScreenHintFriends"
+                style="@style/ProfileHintStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_friend_list_hint_top_margin"
+                android:layout_marginBottom="@dimen/profile_friend_list_hint_bottom_margin"
+                android:text="@string/profile_friends" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerviewUserScreenFriends"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/profile_friend_list_bottom_margin"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_divider_height"
+                android:background="@color/dividerLineColor"/>
+
+            <Button
+                android:id="@+id/buttonUserScreenLogout"
+                style="@style/ProfileLogOutButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_log_out" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</FrameLayout>
