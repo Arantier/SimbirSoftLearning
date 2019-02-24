@@ -73,4 +73,5 @@
         <item quantity="many">%d мероприятий</item>
         <item quantity="other">%d мероприятий</item>
     </plurals>
+    <string name="title_activity_help_category">HelpCategoryActivity</string>
 </resources>
