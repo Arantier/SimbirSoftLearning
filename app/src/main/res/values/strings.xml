@@ -21,11 +21,11 @@
     -->
     <string name="title_help">Помощь</string>
     <string name="help_select_hint">Выберите категорию помощи</string>
-    <string name="help_category_kids">Дети</string>
-    <string name="help_category_adults">Взрослые</string>
-    <string name="help_category_elders">Пожилые</string>
-    <string name="help_category_animals">Животные</string>
-    <string name="help_category_events">Мероприятия</string>
+    <string name="category_kids">Дети</string>
+    <string name="category_adults">Взрослые</string>
+    <string name="category_elders">Пожилые</string>
+    <string name="category_animals">Животные</string>
+    <string name="category_events">Мероприятия</string>
 
     <!--
         Экран профиля
@@ -73,5 +73,9 @@
         <item quantity="many">%d мероприятий</item>
         <item quantity="other">%d мероприятий</item>
     </plurals>
+
+    <!--Экран категорий-->
     <string name="title_activity_help_category">HelpCategoryActivity</string>
+    <string name="category_filter">Фильтр</string>
+
 </resources>

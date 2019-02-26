@@ -7,6 +7,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.mainscreen.helpcategory.HelpFragment
 import ru.shcherbakovdv.ss.trainee.mainscreen.profile.ProfileFragment
@@ -85,18 +86,6 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//TODO: Если не нужно - удаляй
-//        imageToolbarSearch.setOnClickListener {
-//            presenter.findContent(edittextToolbarSearch.text as String?)
-//        }
-//        edittextToolbarSearch.setOnEditorActionListener { editText, actionId, event ->
-//            if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                presenter.findContent(editText.text.toString())
-//                true
-//            } else {
-//                false
-//            }
-//        }
 
         bottomNavBar.enableAnimation(false)
         bottomNavBar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

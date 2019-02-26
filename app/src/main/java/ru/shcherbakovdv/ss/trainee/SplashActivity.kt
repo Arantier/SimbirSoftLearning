@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ProgressBar
 import android.content.Intent
 import android.os.Handler
+import kotlinx.android.synthetic.main.activity_splash.*
 import ru.shcherbakovdv.ss.trainee.mainscreen.MainActivity
 
 
