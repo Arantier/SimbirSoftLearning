@@ -8,20 +8,20 @@
 
     <ImageView
         android:id="@+id/imageBig"
-        tools:srcCompat="@drawable/image_user_placeholder"
         android:layout_width="@dimen/event_screen_big_image_width"
         android:layout_height="@dimen/event_screen_big_image_height"
         android:adjustViewBounds="true"
         android:scaleType="center"
         app:layout_columnSpan="2"
+        app:layout_gravity="fill"
         app:layout_rowSpan="2"
         app:layout_rowWeight="2"
-        app:layout_gravity="fill"/>
+        tools:srcCompat="@drawable/image_user_placeholder" />
 
     <ImageView
         android:id="@+id/imageSmallTop"
-        android:layout_width="@dimen/event_screen_small_image_max_width"
-        android:layout_height="@dimen/event_screen_small_image_max_height"
+        android:layout_width="@dimen/event_screen_small_image_width"
+        android:layout_height="@dimen/event_screen_small_image_height"
         android:layout_marginLeft="@dimen/event_screen_image_margin_between"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
@@ -30,8 +30,8 @@
 
     <ImageView
         android:id="@+id/imageSmallBottom"
-        android:layout_width="@dimen/event_screen_small_image_max_width"
-        android:layout_height="@dimen/event_screen_small_image_max_height"
+        android:layout_width="@dimen/event_screen_small_image_width"
+        android:layout_height="@dimen/event_screen_small_image_height"
         android:layout_marginLeft="@dimen/event_screen_image_margin_between"
         android:layout_marginTop="@dimen/event_screen_image_margin_between"
         android:adjustViewBounds="true"

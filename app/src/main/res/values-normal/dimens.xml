@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="event_screen_small_image_width">85dp</dimen>
+    <dimen name="event_screen_small_image_height">74dp</dimen>
+    <dimen name="event_screen_big_image_width">180dp</dimen>
+    <dimen name="event_screen_big_image_height">158dp</dimen>
+</resources>

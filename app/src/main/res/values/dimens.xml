@@ -104,8 +104,8 @@
     <dimen name="event_screen_info_field_left_margin">10dp</dimen>
     <dimen name="event_screen_image_margin_top">19dp</dimen>
     <dimen name="event_screen_image_margin_between">10dp</dimen>
-    <dimen name="event_screen_small_image_max_width">105dp</dimen>
-    <dimen name="event_screen_small_image_max_height">74dp</dimen>
+    <dimen name="event_screen_small_image_width">105dp</dimen>
+    <dimen name="event_screen_small_image_height">74dp</dimen>
     <dimen name="event_screen_big_image_width">205dp</dimen>
     <dimen name="event_screen_big_image_height">158dp</dimen>
     <dimen name="event_screen_description_margin_top">20dp</dimen>
