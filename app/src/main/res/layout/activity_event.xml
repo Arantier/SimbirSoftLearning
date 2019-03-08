@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ru.shcherbakovdv.ss.trainee.EventActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:theme="@style/ToolbarTheme.Title"
+            tools:text="Спонсоры отремонтируют школу-интернат" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textTitle"
+                style="@style/EventTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_title_top_margin"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Спонсоры отремонтируют школу-интернат" />
+
+            <TextView
+                android:id="@+id/textOrganisationPhones"
+                style="@style/EventTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imagePhoneIcon"
+                app:layout_constraintTop_toTopOf="@+id/imagePhoneIcon"
+                tools:text="+7 (937) 037 37-73
+        +7 (937) 016 16-16" />
+
+            <TextView
+                android:id="@+id/textEventItemDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_title_top_margin"
+                android:layout_marginRight="@dimen/event_screen_horizontal_margin"
+                android:drawableLeft="@drawable/ic_calendar_white"
+                android:drawableTint="@color/dateTextColor"
+                android:text="@string/event_date_expiration_info"
+                android:textColor="@color/dateTextColor"
+                android:textSize="@dimen/event_list_item_snack_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+
+            <TextView
+                android:id="@+id/textOrganisationAddress"
+                style="@style/EventTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageAddressIcon"
+                app:layout_constraintTop_toTopOf="@+id/imageAddressIcon"
+                tools:text="Санкт-Петербург, Кирочная улица, д. 50А, каб. 208" />
+
+            <ImageView
+                android:id="@+id/imagePhoneIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_common_vertical_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textOrganisationAddress"
+                app:srcCompat="@drawable/ic_phone" />
+
+            <TextView
+                android:id="@+id/textOrganisationName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_organisation_name_top_margin"
+                android:layout_marginRight="@dimen/event_screen_horizontal_margin"
+                android:textColor="@color/organisationNameColor"
+                android:textSize="@dimen/event_screen_organisation_name_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textEventItemDate"
+                tools:text="Благотворительный Фонд «Счастливый Мир»" />
+
+            <ImageView
+                android:id="@+id/imageAddressIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_common_vertical_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textOrganisationName"
+                app:srcCompat="@drawable/ic_address" />
+
+            <ImageView
+                android:id="@+id/imageMessageIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_common_vertical_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textOrganisationPhones"
+                app:srcCompat="@drawable/ic_mail" />
+
+            <TextView
+                android:id="@+id/textMessage"
+                style="@style/EventTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/imageMessageIcon"
+                app:layout_constraintTop_toTopOf="@+id/imageMessageIcon"
+                tools:text="У вас есть вопросы? Напишите нам!" />
+
+
+            <android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/layoutImages"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_image_margin_top"
+                android:layout_marginEnd="@dimen/event_screen_horizontal_margin"
+                app:columnCount="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textMessage">
+
+                <ImageView
+                    android:id="@+id/imageBig"
+                    android:layout_width="@dimen/event_screen_big_image_width"
+                    android:layout_height="@dimen/event_screen_big_image_height"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    app:layout_columnSpan="2"
+                    app:layout_gravity="fill"
+                    app:layout_rowSpan="2"
+                    app:layout_rowWeight="2"
+                    tools:srcCompat="@drawable/image_user_placeholder" />
+
+                <ImageView
+                    android:id="@+id/imageSmallTop"
+                    android:layout_width="@dimen/event_screen_small_image_max_width"
+                    android:layout_height="@dimen/event_screen_small_image_max_height"
+                    android:layout_marginLeft="@dimen/event_screen_image_margin_between"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:visibility="visible"
+                    tools:srcCompat="@drawable/image_user_placeholder" />
+
+                <ImageView
+                    android:id="@+id/imageSmallBottom"
+                    android:layout_width="@dimen/event_screen_small_image_max_width"
+                    android:layout_height="@dimen/event_screen_small_image_max_height"
+                    android:layout_marginLeft="@dimen/event_screen_image_margin_between"
+                    android:layout_marginTop="@dimen/event_screen_image_margin_between"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:visibility="visible"
+                    tools:srcCompat="@drawable/image_user_placeholder" />
+            </android.support.v7.widget.GridLayout>
+
+            <TextView
+                android:id="@+id/textDescription"
+                style="@style/EventTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/event_screen_horizontal_margin"
+                android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_description_margin_top"
+                android:layout_marginEnd="@dimen/event_screen_horizontal_margin"
+                android:layout_marginRight="@dimen/event_screen_horizontal_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutImages"
+                tools:text="Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям." />
+
+            <TextView
+                android:id="@+id/textHyperlink"
+                style="@style/EventLinkStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
+                android:layout_marginTop="@dimen/event_screen_hyperlink_margin_top"
+                android:layout_marginRight="@dimen/event_screen_horizontal_margin"
+                android:text="@string/event_screen_hyperlink"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textDescription" />
+
+            <FrameLayout
+                android:id="@+id/layoutDonatorsBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/event_screen_donators_bar_margin_top"
+                android:background="@color/donatorsBarBackground"
+                android:padding="@dimen/event_screen_donators_bar_padding"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textHyperlink">
+
+                <TextView
+                    android:id="@+id/textDonatorsRestCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/donatorsTextColor"
+                    android:textSize="@dimen/event_screen_donators_text_size"
+                    tools:text="+102" />
+            </FrameLayout>
+
+            <include
+                layout="@layout/content_event_screen_action_bar"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/event_screen_action_bar_height"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutDonatorsBar" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

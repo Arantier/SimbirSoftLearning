@@ -83,8 +83,31 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="EventTitle">
+        <item name="fontFamily">@font/oficcina_sans_extra_bold_scc</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lineSpacingExtra">@dimen/event_list_item_title_line_spacing</item>
+        <item name="android:textColor">@color/eventListItemTitleTextColor</item>
+        <item name="android:textSize">@dimen/event_list_item_title_text_size</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="EventTextStyle">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/eventTextColor</item>
+        <item name="android:textSize">@dimen/event_screen_info_field_text_size</item>
+        <item name="android:layout_marginTop">@dimen/event_screen_info_field_top_margin</item>
+        <item name="android:layout_marginRight">@dimen/event_screen_horizontal_margin</item>
+        <item name="android:layout_marginLeft">@dimen/event_screen_info_field_left_margin</item>
+    </style>
 
+    <style name="EventLinkStyle" parent="EventTextStyle">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:lines">1</item>
+        <item name="android:autoLink">web</item>
+    </style>
+    <style name="EventScreenActionbarLabel">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:minLines">2</item>
+    </style>
 </resources>

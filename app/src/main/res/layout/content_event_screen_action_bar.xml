@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/event_screen_action_bar_height"
+    android:divider="@drawable/event_screen_action_bar_divider"
+    android:orientation="horizontal"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutItems"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageDivider1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageItemIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/event_screen_action_bar_item_icon_margin_horizontal"
+            android:layout_marginTop="@dimen/event_screen_action_bar_item_icon_margin_top"
+            android:layout_marginRight="@dimen/event_screen_action_bar_item_icon_margin_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_shirt" />
+
+        <TextView
+            android:id="@+id/textItem"
+            style="@style/EventScreenActionbarLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/event_screen_action_bar_item_title_margin_horizontal"
+            android:layout_marginTop="@dimen/event_screen_action_bar_item_title_margin_top"
+            android:layout_marginRight="@dimen/event_screen_action_bar_item_title_margin_horizontal"
+            android:layout_marginBottom="@dimen/event_screen_action_bar_item_title_margin_bottom"
+            android:text="@string/event_screen_action_bar_items"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageItemIcon" />
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageDivider1"
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/layoutQualityHelp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layoutItems"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/event_screen_action_bar_divider" />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutQualityHelp"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageDivider2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageDivider1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageQualityHelpIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/event_screen_action_bar_item_icon_margin_horizontal"
+            android:layout_marginTop="@dimen/event_screen_action_bar_item_icon_margin_top"
+            android:layout_marginRight="@dimen/event_screen_action_bar_item_icon_margin_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_tools" />
+
+        <TextView
+            android:id="@+id/textQualityHelp"
+            style="@style/EventScreenActionbarLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/event_screen_action_bar_item_title_margin_horizontal"
+            android:layout_marginTop="@dimen/event_screen_action_bar_item_title_margin_top"
+            android:layout_marginRight="@dimen/event_screen_action_bar_item_title_margin_horizontal"
+            android:layout_marginBottom="@dimen/event_screen_action_bar_item_title_margin_bottom"
+            android:text="@string/event_screen_action_bar_quality_help"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageQualityHelpIcon" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageDivider2"
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/layoutVolunteers"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layoutQualityHelp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/event_screen_action_bar_divider" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutVolunteers"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageDivider3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageDivider2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageVolunteersIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/event_screen_action_bar_item_icon_margin_horizontal"
+            android:layout_marginTop="@dimen/event_screen_action_bar_item_icon_margin_top"
+            android:layout_marginRight="@dimen/event_screen_action_bar_item_icon_margin_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_hands" />
+
+        <TextView
+            android:id="@+id/textVolunteers"
+            style="@style/EventScreenActionbarLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/event_screen_action_bar_item_title_margin_horizontal"
+            android:layout_marginTop="@dimen/event_screen_action_bar_item_title_margin_top"
+            android:layout_marginRight="@dimen/event_screen_action_bar_item_title_margin_horizontal"
+            android:layout_marginBottom="@dimen/event_screen_action_bar_item_title_margin_bottom"
+            android:text="@string/event_screen_action_bar_volunteers"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageVolunteersIcon" />
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageDivider3"
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/layoutDonate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layoutVolunteers"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/event_screen_action_bar_divider" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutDonate"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageDivider3"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageDonateIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/event_screen_action_bar_item_icon_margin_horizontal"
+            android:layout_marginTop="@dimen/event_screen_action_bar_item_icon_margin_top"
+            android:layout_marginRight="@dimen/event_screen_action_bar_item_icon_margin_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_coins" />
+
+        <TextView
+            android:id="@+id/textDonate"
+            style="@style/EventScreenActionbarLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/event_screen_action_bar_item_title_margin_horizontal"
+            android:layout_marginTop="@dimen/event_screen_action_bar_item_title_margin_top"
+            android:layout_marginRight="@dimen/event_screen_action_bar_item_title_margin_horizontal"
+            android:layout_marginBottom="@dimen/event_screen_action_bar_item_title_margin_bottom"
+            android:text="@string/event_screen_action_bar_donate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageDonateIcon" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

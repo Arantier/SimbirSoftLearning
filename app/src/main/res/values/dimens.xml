@@ -15,7 +15,7 @@
     <dimen name="splash_loading_margin_top">20dp</dimen>
 
     <!--
-        Категория "Помощь"
+        Экран помощи
     -->
     <dimen name="help_text_message">20dp</dimen>
     <dimen name="help_card_margin">8dp</dimen>
@@ -24,7 +24,7 @@
     <dimen name="help_card_text_margin_bottom">12dp</dimen>
 
     <!--
-        Категория "Профиль"
+        Экран профиля
     -->
     <dimen name="profile_text_horizontal_margin">20dp</dimen>
     <dimen name="profile_name_top_margin">20dp</dimen>
@@ -48,7 +48,7 @@
     <dimen name="profile_friend_picture_margin_left">20dp</dimen>
 
     <!--
-        Экран редактирования профиля
+        Диалог редактирования фото
     -->
     <dimen name="edit_photo_dialog_width">310dp</dimen>
     <dimen name="edit_photo_item_height">73dp</dimen>
@@ -93,6 +93,33 @@
     <dimen name="event_list_item_snack_height">32dp</dimen>
     <dimen name="event_list_item_snack_text_size">12sp</dimen>
 
+    <!-- Экран события -->
+    <dimen name="event_screen_horizontal_margin">20dp</dimen>
+    <dimen name="event_screen_title_top_margin">16dp</dimen>
+    <dimen name="event_screen_common_vertical_margin">15dp</dimen>
+    <dimen name="event_screen_organisation_name_top_margin">11dp</dimen>
+    <dimen name="event_screen_organisation_name_text_size">12sp</dimen>
+    <dimen name="event_screen_info_field_text_size">14sp</dimen>
+    <dimen name="event_screen_info_field_top_margin">5dp</dimen>
+    <dimen name="event_screen_info_field_left_margin">10dp</dimen>
+    <dimen name="event_screen_image_margin_top">19dp</dimen>
+    <dimen name="event_screen_image_margin_between">10dp</dimen>
+    <dimen name="event_screen_small_image_max_width">105dp</dimen>
+    <dimen name="event_screen_small_image_max_height">74dp</dimen>
+    <dimen name="event_screen_big_image_width">205dp</dimen>
+    <dimen name="event_screen_big_image_height">158dp</dimen>
+    <dimen name="event_screen_description_margin_top">20dp</dimen>
+    <dimen name="event_screen_hyperlink_margin_top">20dp</dimen>
+    <dimen name="event_screen_donators_bar_margin_top">30dp</dimen>
+    <dimen name="event_screen_donators_bar_padding">30dp</dimen>
+    <dimen name="event_screen_donators_text_size">14sp</dimen>
+    <dimen name="event_screen_action_bar_height">70dp</dimen>
+    <dimen name="event_screen_action_bar_item_icon_margin_top">9dp</dimen>
+    <dimen name="event_screen_action_bar_item_icon_margin_horizontal">33dp</dimen>
+    <dimen name="event_screen_action_bar_item_title_margin_horizontal">26dp</dimen>
+    <dimen name="event_screen_action_bar_item_title_margin_top">7dp</dimen>
+    <dimen name="event_screen_action_bar_item_title_margin_bottom">5dp</dimen>
+    <dimen name="event_screen_action_bar_item_title_text_size">10sp</dimen>
     <!--
         Общее
     -->

@@ -77,5 +77,13 @@
     <!--Экран категорий-->
     <string name="title_activity_help_category">HelpCategoryActivity</string>
     <string name="category_filter">Фильтр</string>
+    <string name="title_activity_event">EventActivity</string>
+
+    <!--Экран события-->
+    <string name="event_screen_hyperlink"><u>Перейти на сайт организаии</u></string>
+    <string name="event_screen_action_bar_items">Помочь \nвещами</string>
+    <string name="event_screen_action_bar_volunteers">Стать \nволонтёром</string>
+    <string name="event_screen_action_bar_quality_help">Проф. \nпомощь</string>
+    <string name="event_screen_action_bar_donate">Помочь \nденьгами</string>
 
 </resources>

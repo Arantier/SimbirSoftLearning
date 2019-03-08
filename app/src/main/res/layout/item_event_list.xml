@@ -25,16 +25,12 @@
 
         <TextView
             android:id="@+id/titleEventItem"
+            style="@style/EventTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/event_list_item_title_margin_horizontal"
             android:layout_marginRight="@dimen/event_list_item_title_margin_horizontal"
             android:layout_marginBottom="@dimen/event_list_item_title_margin_bottom"
-            android:fontFamily="@font/oficcina_sans_extra_bold_scc"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="@dimen/event_list_item_title_line_spacing"
-            android:textColor="@color/eventListItemTitleTextColor"
-            android:textSize="@dimen/event_list_item_title_text_size"
             app:layout_constraintBottom_toTopOf="@+id/imageEventItemDecor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,13 +57,13 @@
             android:gravity="center_horizontal"
             android:maxLines="3"
             android:textSize="@dimen/event_list_item_description_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/textEventItemDateHandler"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEventItemDateHandler"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области школой интернатом для детей с ограниченными возможностями" />
 
         <FrameLayout
-            android:id="@+id/textEventItemDateHandler"
+            android:id="@+id/layoutEventItemDateHandler"
             android:layout_width="0dp"
             android:layout_height="@dimen/event_list_item_snack_height"
             android:background="@color/colorAccent"
@@ -80,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:drawableLeft="@drawable/ic_calendar"
+                android:drawableLeft="@drawable/ic_calendar_white"
                 android:gravity="center"
                 android:textColor="@color/textColorPrimaryInverse"
                 android:textSize="@dimen/event_list_item_snack_text_size"
