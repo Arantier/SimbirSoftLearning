@@ -69,10 +69,6 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
                         .replace(R.id.fragmentContainer, HelpFragment.newInstance(), HelpFragment.TAG)
                         .commit()
                 textToolbarTitle.text = getText(R.string.title_help)
-                //TODO: Отладочная хрень, убрать
-                textToolbarTitle.setOnClickListener {
-                    startActivity(Intent(this, EventActivity::class.java))
-                }
             }
             R.id.bottom_history -> {
                 showFragmentPlaceholder()

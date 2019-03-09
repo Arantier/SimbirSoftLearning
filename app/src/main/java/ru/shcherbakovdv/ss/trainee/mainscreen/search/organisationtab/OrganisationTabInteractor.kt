@@ -1,6 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.mainscreen.search.organisationtab
 
-import ru.shcherbakovdv.ss.trainee.mainscreen.dataclasses.Organisation
+import ru.shcherbakovdv.ss.trainee.dataclasses.Organisation
 import java.util.*
 
 object OrganisationTabInteractor {

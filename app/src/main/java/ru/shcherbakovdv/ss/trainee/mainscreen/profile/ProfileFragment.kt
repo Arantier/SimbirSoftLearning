@@ -2,7 +2,6 @@ package ru.shcherbakovdv.ss.trainee.mainscreen.profile
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_profile_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.utilites.ImageProvider
-import ru.shcherbakovdv.ss.trainee.mainscreen.dataclasses.UserProfile
+import ru.shcherbakovdv.ss.trainee.dataclasses.UserProfile
 
 class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
 

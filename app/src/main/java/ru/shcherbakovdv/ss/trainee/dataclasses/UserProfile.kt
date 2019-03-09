@@ -1,4 +1,4 @@
-package ru.shcherbakovdv.ss.trainee.mainscreen.dataclasses
+package ru.shcherbakovdv.ss.trainee.dataclasses
 
 class UserProfile(var name: String,
                   var pictureUrl: String,

@@ -65,7 +65,7 @@
         <item>мастер-класс</item>
         <item>помощь</item>
     </string-array>
-    <string name="event_date_expiration_info">Осталось %1$s (%2$d.%3$d - %4$d.%5$d)</string>
+    <string name="event_date_expiration_info">Осталось %1$s (%2$s - %3$s)</string>
     <plurals name="event_date_expiration">
         <item quantity="zero">%d дней</item>
         <item quantity="one">%d день</item>

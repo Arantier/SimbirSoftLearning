@@ -5,14 +5,13 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_organisation_tab.view.*
-import ru.shcherbakovdv.ss.trainee.mainscreen.dataclasses.Organisation
+import ru.shcherbakovdv.ss.trainee.dataclasses.Organisation
 import ru.shcherbakovdv.ss.trainee.R
 import java.util.*
 

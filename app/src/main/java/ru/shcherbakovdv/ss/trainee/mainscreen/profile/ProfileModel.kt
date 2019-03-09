@@ -1,6 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.mainscreen.profile
 
-import ru.shcherbakovdv.ss.trainee.mainscreen.dataclasses.UserProfile
+import ru.shcherbakovdv.ss.trainee.dataclasses.UserProfile
 
 object ProfileModel {
 

@@ -6,14 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_event_list.view.*
+import org.threeten.bp.LocalDate
+import org.threeten.bp.Period
+import org.threeten.bp.format.DateTimeFormatter
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.utilites.ImageProvider
-import ru.shcherbakovdv.ss.trainee.mainscreen.dataclasses.CharityEvent
+import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
 import java.util.*
 
-class EventListAdapter(private val eventArray: Array<CharityEvent>) : RecyclerView.Adapter<EventListAdapter.ViewHolder>() {
+class EventListAdapter(private val eventArray: Array<CharityEvent>, private val onCharityEventClickListener : OnCharityEventClickListener) : RecyclerView.Adapter<EventListAdapter.ViewHolder>() {
 
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(val view: View, val onCharityEventClickListener : OnCharityEventClickListener) : RecyclerView.ViewHolder(view) {
 
         private fun getLocaleQuantityString(id: Int, quantity: Int): String {
             val configuration = Configuration(view.context!!.resources.configuration).apply {
@@ -26,34 +29,16 @@ class EventListAdapter(private val eventArray: Array<CharityEvent>) : RecyclerVi
             view.apply {
                 titleEventItem.text = event.title
                 textEventItemDescription.text = event.description
-                val startDateString = event.startDate.split(".")
-                val startDate = Calendar.getInstance().apply {
-                    set(Calendar.YEAR, startDateString[2].toInt())
-                    set(Calendar.MONTH, startDateString[1].toInt())
-                    set(Calendar.DAY_OF_MONTH, startDateString[0].toInt())
-                }
-                val endDateString = event.endDate.split(".")
-                val endDate = Calendar.getInstance().apply {
-                    set(Calendar.YEAR, endDateString[2].toInt())
-                    set(Calendar.MONTH, endDateString[1].toInt())
-                    set(Calendar.DAY_OF_MONTH, endDateString[0].toInt())
-                }
-                var dayDifference = endDate.get(Calendar.DAY_OF_YEAR) - startDate.get(Calendar.DAY_OF_YEAR)
-                if (endDate.get(Calendar.DAY_OF_YEAR) < startDate.get(Calendar.DAY_OF_YEAR)) {
-                    dayDifference += if (startDate.get(Calendar.YEAR) % 4 == 0) {
-                        366
-                    } else {
-                        365
-                    }
-                }
+                val restDays = Period.between(LocalDate.now(),event.endDate).days
                 textEventItemDate.text = String.format(resources.getString(R.string.event_date_expiration_info),
-                        getLocaleQuantityString(R.plurals.event_date_expiration, dayDifference),
-                        startDateString[0].toInt(),
-                        startDateString[1].toInt(),
-                        endDateString[0].toInt(),
-                        endDateString[1].toInt()
+                        getLocaleQuantityString(R.plurals.event_date_expiration, restDays),
+                        event.startDate.format(DateTimeFormatter.ofPattern("dd.MM")),
+                        event.endDate.format(DateTimeFormatter.ofPattern("dd.MM"))
                 )
-                ImageProvider.loadImage(event.pictureURL,imageEventItem)
+                ImageProvider.loadImage(event.picturesUrlArray.first(),imageEventItem)
+                setOnClickListener {
+                    onCharityEventClickListener.onCharityEventClick(event)
+                }
             }
         }
 
@@ -62,7 +47,7 @@ class EventListAdapter(private val eventArray: Array<CharityEvent>) : RecyclerVi
     override fun onCreateViewHolder(parent: ViewGroup, state: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_event_list, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, onCharityEventClickListener)
     }
 
     override fun getItemCount() = eventArray.size
