@@ -16,7 +16,11 @@ object OrganisationTabInteractor {
             for (j in 1..stringLength) {
                 string += random.nextInt(10).toString()
             }
-            organisationArray.add(Organisation(string))
+            organisationArray.add(Organisation(string,
+                    "Point Nemo",
+                    arrayOf("8-800-555-35-35", "1-234-567-89-10"),
+                    "google@google.com",
+                    "127.0.0.1"))
         }
         return organisationArray.toTypedArray()
     }

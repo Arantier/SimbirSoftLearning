@@ -1,7 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.mainscreen
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.shcherbakovdv.ss.trainee.EventActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.mainscreen.helpcategory.HelpFragment
 import ru.shcherbakovdv.ss.trainee.mainscreen.profile.ProfileFragment

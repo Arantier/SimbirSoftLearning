@@ -120,6 +120,10 @@
     <dimen name="event_screen_action_bar_item_title_margin_top">7dp</dimen>
     <dimen name="event_screen_action_bar_item_title_margin_bottom">5dp</dimen>
     <dimen name="event_screen_action_bar_item_title_text_size">10sp</dimen>
+    <dimen name="donator_picture_size">36dp</dimen>
+    <dimen name="donator_picture_start_margin">-6dp</dimen>
+    <dimen name="donator_picture_margin_vertical">20dp</dimen>
+    <dimen name="donator_counter_margin_start">10dp</dimen>
     <!--
         Общее
     -->

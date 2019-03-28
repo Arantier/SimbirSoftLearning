@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ru.shcherbakovdv.ss.trainee.EventActivity">
+    tools:context="ru.shcherbakovdv.ss.trainee.eventscreen.EventActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -182,16 +182,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textDescription" />
 
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/layoutDonatorsBar"
+                android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/event_screen_donators_bar_margin_top"
                 android:background="@color/donatorsBarBackground"
-                android:padding="@dimen/event_screen_donators_bar_padding"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textHyperlink">
+                app:layout_constraintTop_toBottomOf="@id/textHyperlink"
+                android:paddingLeft="@dimen/event_screen_horizontal_margin"/>
+
+            <!--
+
+
+                <ImageView
+                    android:id="@+id/imageDonator4"
+                    android:layout_width="@dimen/donator_picture_size"
+                    android:layout_height="@dimen/donator_picture_size"
+                    android:layout_marginStart="@dimen/donator_picture_start_margin"
+                    android:layout_marginTop="@dimen/donator_picture_margin_vertical"
+                    android:layout_marginBottom="@dimen/donator_picture_margin_vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageDonator3"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/textDonatorsRestCounter"
@@ -199,8 +214,11 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/donatorsTextColor"
                     android:textSize="@dimen/event_screen_donators_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="210dp"
                     tools:text="+102" />
-            </FrameLayout>
+            -->
 
             <include
                 layout="@layout/content_event_screen_action_bar"

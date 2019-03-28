@@ -70,8 +70,8 @@
         <item quantity="zero">%d дней</item>
         <item quantity="one">%d день</item>
         <item quantity="few">%d дня</item>
-        <item quantity="many">%d мероприятий</item>
-        <item quantity="other">%d мероприятий</item>
+        <item quantity="many">%d дней</item>
+        <item quantity="other">%d дней</item>
     </plurals>
 
     <!--Экран категорий-->
@@ -85,5 +85,6 @@
     <string name="event_screen_action_bar_volunteers">Стать \nволонтёром</string>
     <string name="event_screen_action_bar_quality_help">Проф. \nпомощь</string>
     <string name="event_screen_action_bar_donate">Помочь \nденьгами</string>
+    <string name="event_screen_organisation_site">У вас есть вопросы? Напишите нам!</string>
 
 </resources>

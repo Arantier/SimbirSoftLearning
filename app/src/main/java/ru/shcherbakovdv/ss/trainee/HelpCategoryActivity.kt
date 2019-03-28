@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import com.google.gson.GsonBuilder
 
 import kotlinx.android.synthetic.main.activity_category.*
 import org.threeten.bp.format.DateTimeFormatter
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
+import ru.shcherbakovdv.ss.trainee.eventscreen.EventActivity
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab.EventListAdapter
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab.EventTabInteractor
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab.OnCharityEventClickListener
@@ -18,8 +20,9 @@ class HelpCategoryActivity : AppCompatActivity(), OnCharityEventClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
-        //TODO: УБРАТЬ!!!
+        //TODO: Отладочный код
         val events = EventTabInteractor.requestEvents("")
+
         recyclerView.adapter = EventListAdapter(events,this)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
@@ -50,13 +53,18 @@ class HelpCategoryActivity : AppCompatActivity(), OnCharityEventClickListener {
     }
 
     override fun onCharityEventClick(event: CharityEvent) {
-        val intent = Intent(this,EventActivity::class.java)
-        intent.putExtra(EventActivity.EVENT_TITLE,event.title)
-        intent.putExtra(EventActivity.EVENT_DESCRIPTION,event.description)
-        intent.putExtra(EventActivity.EVENT_PICTURES_ARRAY,event.picturesUrlArray)
-        intent.putExtra(EventActivity.EVENT_START_DATE,event.startDate.format(DateTimeFormatter.BASIC_ISO_DATE))
-        intent.putExtra(EventActivity.EVENT_END_DATE,event.endDate.format(DateTimeFormatter.BASIC_ISO_DATE))
-        intent.putExtra(EventActivity.EVENT_DONATORS_PICTURES_ARRAY,event.donatorsPicturesUrlArray)
+        val intent = Intent(this, EventActivity::class.java)
+        val builder = GsonBuilder()
+        val gson = builder.create()
+        intent.apply {
+            putExtra(EventActivity.EVENT_TITLE,event.title)
+            putExtra(EventActivity.EVENT_DESCRIPTION,event.description)
+            putExtra(EventActivity.EVENT_PICTURES_ARRAY,event.picturesUrlArray)
+            putExtra(EventActivity.EVENT_START_DATE,event.startDate.format(DateTimeFormatter.ISO_DATE))
+            putExtra(EventActivity.EVENT_END_DATE,event.endDate.format(DateTimeFormatter.ISO_DATE))
+            putExtra(EventActivity.EVENT_ORGANISATION, gson.toJson(event.organisation))
+            putExtra(EventActivity.EVENT_DONATORS_PICTURES_ARRAY,event.donatorsPicturesUrlArray)
+        }
         startActivity(intent)
     }
 

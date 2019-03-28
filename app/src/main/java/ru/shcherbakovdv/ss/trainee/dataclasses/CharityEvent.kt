@@ -7,4 +7,5 @@ class CharityEvent(val title: String,
                    val picturesUrlArray: Array<String>,
                    val startDate: LocalDate,
                    val endDate: LocalDate,
+                   val organisation: Organisation,
                    val donatorsPicturesUrlArray: Array<String>)

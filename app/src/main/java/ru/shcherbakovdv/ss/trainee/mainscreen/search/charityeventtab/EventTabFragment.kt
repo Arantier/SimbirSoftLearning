@@ -11,7 +11,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_events_tab.view.*
 import org.threeten.bp.format.DateTimeFormatter
-import ru.shcherbakovdv.ss.trainee.EventActivity
+import ru.shcherbakovdv.ss.trainee.eventscreen.EventActivity
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
 import ru.shcherbakovdv.ss.trainee.R
 
@@ -38,7 +38,7 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEvent
     }
 
     override fun onCharityEventClick(event: CharityEvent) {
-        val intent = Intent(context,EventActivity::class.java)
+        val intent = Intent(context, EventActivity::class.java)
         intent.putExtra(EventActivity.EVENT_TITLE,event.title)
         intent.putExtra(EventActivity.EVENT_DESCRIPTION,event.description)
         intent.putExtra(EventActivity.EVENT_PICTURES_ARRAY,event.picturesUrlArray)
