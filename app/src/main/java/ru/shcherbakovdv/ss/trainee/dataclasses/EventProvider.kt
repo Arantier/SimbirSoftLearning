@@ -1,13 +1,11 @@
-package ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab
+package ru.shcherbakovdv.ss.trainee.dataclasses
 
 import org.threeten.bp.LocalDate
-import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
-import ru.shcherbakovdv.ss.trainee.dataclasses.Organisation
 import java.util.*
 
-object EventTabInteractor {
+object EventProvider {
 
-    fun requestEvents(key: String?): Array<CharityEvent> {
+    fun requestEventsOld(key: String?): Array<CharityEvent> {
         val eventArray = ArrayList<CharityEvent>()
         val random = Random()
         val numberOfElements = random.nextInt(32)

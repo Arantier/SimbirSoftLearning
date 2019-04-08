@@ -1,15 +1,19 @@
 package ru.shcherbakovdv.ss.trainee.mainscreen
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.mainscreen.helpcategory.HelpFragment
+import ru.shcherbakovdv.ss.trainee.mainscreen.helpcategory.CategoryFragment
 import ru.shcherbakovdv.ss.trainee.mainscreen.profile.ProfileFragment
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.SearchFragment
 
@@ -20,7 +24,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
 
     private fun showFragmentPlaceholder() {
         supportFragmentManager.apply {
-            findFragmentByTag(HelpFragment.TAG).apply {
+            findFragmentByTag(CategoryFragment.TAG).apply {
                 if (this != null) {
                     beginTransaction().remove(this).commit()
                 }
@@ -55,7 +59,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
                         textToolbarTitle.visibility = View.GONE
                         layoutToolbarSearch.visibility = View.VISIBLE
                         (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                                .showSoftInput(edittextToolbarSearch,InputMethodManager.SHOW_FORCED)
+                                .showSoftInput(edittextToolbarSearch, InputMethodManager.SHOW_FORCED)
                         edittextToolbarSearch.requestFocus()
                         menu.clear()
                         true
@@ -64,7 +68,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
             }
             R.id.bottom_help -> {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, HelpFragment.newInstance(), HelpFragment.TAG)
+                        .replace(R.id.fragmentContainer, CategoryFragment.newInstance(), CategoryFragment.TAG)
                         .commit()
                 textToolbarTitle.text = getText(R.string.title_help)
             }
@@ -97,5 +101,11 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
             }
         }
         bottomNavBar.selectedItemId = presenter.currentScreenID
+
+        //TODO: тупо код для пермишнов, юзабельности с точки зрения проекта ноль, но для отладки обязателен
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 0)
+        }
     }
 }

@@ -21,11 +21,7 @@
     -->
     <string name="title_help">Помощь</string>
     <string name="help_select_hint">Выберите категорию помощи</string>
-    <string name="category_kids">Дети</string>
-    <string name="category_adults">Взрослые</string>
-    <string name="category_elders">Пожилые</string>
-    <string name="category_animals">Животные</string>
-    <string name="category_events">Мероприятия</string>
+    <string name="help_error">Ошибка: загрузка категорий не удалась. Проверьте ваше Интернет соединение и повторите.</string>
 
     <!--
         Экран профиля

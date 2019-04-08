@@ -2,6 +2,7 @@ package ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import ru.shcherbakovdv.ss.trainee.dataclasses.EventProvider
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.SearchFieldNotifier
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.SearchFieldObserver
 
@@ -17,7 +18,7 @@ class EventMvpPresenter : MvpPresenter<EventTabMvpView>(), SearchFieldObserver {
     }
 
     override fun requestContent(key: String?) {
-        val eventArray = EventTabInteractor.requestEvents(key)
+        val eventArray = EventProvider.requestEventsOld(key)
         viewState.setContent(eventArray)
     }
 

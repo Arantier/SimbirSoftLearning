@@ -5,14 +5,20 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 import kotlinx.android.synthetic.main.activity_category.*
 import org.threeten.bp.format.DateTimeFormatter
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
 import ru.shcherbakovdv.ss.trainee.eventscreen.EventActivity
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab.EventListAdapter
-import ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab.EventTabInteractor
+import ru.shcherbakovdv.ss.trainee.dataclasses.EventProvider
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab.OnCharityEventClickListener
+import ru.shcherbakovdv.ss.trainee.utilites.Logger
+import java.io.File
+import java.io.FileReader
 
 class HelpCategoryActivity : AppCompatActivity(), OnCharityEventClickListener {
 
@@ -21,28 +27,11 @@ class HelpCategoryActivity : AppCompatActivity(), OnCharityEventClickListener {
         setContentView(R.layout.activity_category)
 
         //TODO: Отладочный код
-        val events = EventTabInteractor.requestEvents("")
+        val events = EventProvider.requestEventsOld("")
 
         recyclerView.adapter = EventListAdapter(events,this)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        when (intent.getIntExtra(CATEGORY_ID, -1)) {
-            CATEGORY_KIDS -> {
-                toolbarTitle.text = getString(R.string.category_kids)
-            }
-            CATEGORY_ADULTS -> {
-                toolbarTitle.text = getString(R.string.category_adults)
-            }
-            CATEGORY_ELDERS -> {
-                toolbarTitle.text = getString(R.string.category_elders)
-            }
-            CATEGORY_ANIMALS -> {
-                toolbarTitle.text = getString(R.string.category_animals)
-            }
-            CATEGORY_EVENTS -> {
-                toolbarTitle.text = getString(R.string.category_events)
-            }
-        }
         toolbar.apply {
             navigationIcon = getDrawable(R.drawable.btn_back)
             setNavigationOnClickListener {
@@ -69,12 +58,6 @@ class HelpCategoryActivity : AppCompatActivity(), OnCharityEventClickListener {
     }
 
     companion object {
-        const val CATEGORY_KIDS = 0
-        const val CATEGORY_ADULTS = 1
-        const val CATEGORY_ELDERS = 2
-        const val CATEGORY_ANIMALS = 3
-        const val CATEGORY_EVENTS = 4
-
         const val CATEGORY_ID = "category_id"
     }
 

@@ -32,6 +32,7 @@
         <item name="android:fontFamily">@font/oficcina_sans_extra_bold_scc</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">15sp</item>
+        <item name="android:maxLines">2</item>
     </style>
 
     <style name="ProfileHintStyle">
