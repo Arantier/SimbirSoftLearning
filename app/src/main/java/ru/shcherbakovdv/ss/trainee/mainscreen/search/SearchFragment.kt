@@ -30,7 +30,6 @@ class SearchFragment : MvpAppCompatFragment() {
 
                 override fun onPageSelected(position: Int) {
                     SearchFieldNotifier.activeItem = position
-                    SearchFieldNotifier.findContent("")
                 }
 
             })

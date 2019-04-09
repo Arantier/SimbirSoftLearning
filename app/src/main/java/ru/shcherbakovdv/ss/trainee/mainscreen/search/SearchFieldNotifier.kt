@@ -1,12 +1,19 @@
 package ru.shcherbakovdv.ss.trainee.mainscreen.search
 
+import ru.shcherbakovdv.ss.trainee.mainscreen.search.organisationtab.OrganisationTabPresenter
+
 object SearchFieldNotifier {
 
-    var inactiveItem = 1
+    private var inactiveItem = 1
     var activeItem = 0
         set(value){
             inactiveItem = field
             field = value
+
+            //Кусок кода для 2 задания, уберу когда надо будет
+            if (listOfObservers[inactiveItem]::class.java == OrganisationTabPresenter::class.java){
+                listOfObservers[inactiveItem].requestContent("")
+            }
         }
     private val listOfObservers: ArrayList<SearchFieldObserver> = ArrayList()
 
@@ -19,6 +26,8 @@ object SearchFieldNotifier {
     }
 
     fun findContent(key: String?) {
-        listOfObservers[inactiveItem].requestContent(key)
+        if (listOfObservers.isNotEmpty()) {
+            listOfObservers[activeItem].requestContent(key)
+        }
     }
 }

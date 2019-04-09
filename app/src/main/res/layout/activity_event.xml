@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:theme="@style/ToolbarTheme.Title"
+            android:singleLine="true"
             tools:text="Спонсоры отремонтируют школу-интернат" />
 
     </android.support.v7.widget.Toolbar>
@@ -140,7 +141,7 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintStart_toEndOf="@+id/imageMessageIcon"
                 app:layout_constraintTop_toTopOf="@+id/imageMessageIcon"
-                tools:text="У вас есть вопросы? Напишите нам!" />
+                tools:text="У вас есть вопросы? Напишите нам!"/>
 
             <include
                 layout="@layout/content_event_screen_images"
@@ -180,7 +181,7 @@
                 android:text="@string/event_screen_hyperlink"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/textDescription"/>
 
             <LinearLayout
                 android:id="@+id/layoutDonatorsBar"
@@ -193,32 +194,6 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textHyperlink"
                 android:paddingLeft="@dimen/event_screen_horizontal_margin"/>
-
-            <!--
-
-
-                <ImageView
-                    android:id="@+id/imageDonator4"
-                    android:layout_width="@dimen/donator_picture_size"
-                    android:layout_height="@dimen/donator_picture_size"
-                    android:layout_marginStart="@dimen/donator_picture_start_margin"
-                    android:layout_marginTop="@dimen/donator_picture_margin_vertical"
-                    android:layout_marginBottom="@dimen/donator_picture_margin_vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageDonator3"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <TextView
-                    android:id="@+id/textDonatorsRestCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/donatorsTextColor"
-                    android:textSize="@dimen/event_screen_donators_text_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="210dp"
-                    tools:text="+102" />
-            -->
 
             <include
                 layout="@layout/content_event_screen_action_bar"

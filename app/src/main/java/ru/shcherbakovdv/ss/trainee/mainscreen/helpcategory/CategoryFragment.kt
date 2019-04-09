@@ -1,29 +1,21 @@
 package ru.shcherbakovdv.ss.trainee.mainscreen.helpcategory
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_category_screen.*
 import kotlinx.android.synthetic.main.fragment_category_screen.view.*
-import ru.shcherbakovdv.ss.trainee.HelpCategoryActivity
+import ru.shcherbakovdv.ss.trainee.categoryscreen.CategoryActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.dataclasses.Category
-import ru.shcherbakovdv.ss.trainee.utilites.Logger
-import java.io.File
-import java.io.FileReader
-import io.reactivex.Flowable
 
 
 class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClickListener {
@@ -31,19 +23,17 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
     @InjectPresenter
     lateinit var presenter: CategoryPresenter
 
-    lateinit var fragmentView: View
+    private lateinit var fragmentView: View
 
-    override fun onCategoryClick(id: Int) {
-        startCategoryActivity(id)
+    override fun onCategoryClick(id: Int, name: String) {
+        startCategoryActivity(id, name)
     }
 
     override fun setLoadingState() {
-        if (fragmentView.progressBar.visibility == View.GONE) {
-            fragmentView.recyclerCategories.visibility = View.GONE
-            fragmentView.progressBar.visibility = View.VISIBLE
-            fragmentView.imageError.visibility = View.GONE
-            fragmentView.textError.visibility = View.GONE
-        }
+        fragmentView.recyclerCategories.visibility = View.GONE
+        fragmentView.progressBar.visibility = View.VISIBLE
+        fragmentView.imageError.visibility = View.GONE
+        fragmentView.textError.visibility = View.GONE
     }
 
     override fun setErrorState() {
@@ -66,18 +56,23 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(R.layout.fragment_category_screen, container, false)
-        presenter.requestCategories()
         return fragmentView
     }
 
     override fun onStart() {
         super.onStart()
         recyclerCategories.layoutManager = GridLayoutManager(context, 2)
+        if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            presenter.requestCategories()
+        } else {
+            setErrorState()
+        }
     }
 
-    fun startCategoryActivity(id: Int) {
-        val intent = Intent(context, HelpCategoryActivity::class.java).apply {
-            putExtra(HelpCategoryActivity.CATEGORY_ID, id)
+    private fun startCategoryActivity(id: Int, name: String) {
+        val intent = Intent(context, CategoryActivity::class.java).apply {
+            putExtra(CategoryActivity.CATEGORY_ID, id)
+            putExtra(CategoryActivity.CATEGORY_NAME, name)
         }
         startActivity(intent)
     }

@@ -76,7 +76,7 @@
     <string name="title_activity_event">EventActivity</string>
 
     <!--Экран события-->
-    <string name="event_screen_hyperlink"><u>Перейти на сайт организаии</u></string>
+    <string name="event_screen_hyperlink">Перейти на сайт организаии</string>
     <string name="event_screen_action_bar_items">Помочь \nвещами</string>
     <string name="event_screen_action_bar_volunteers">Стать \nволонтёром</string>
     <string name="event_screen_action_bar_quality_help">Проф. \nпомощь</string>

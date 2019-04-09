@@ -4,8 +4,8 @@ import android.util.Log
 
 object Logger {
 
-    val FLAT_DEBUG_VALUE = "flatdebugtag"
-    val FLAT_ERROR_VALUE = "flaterrortag"
+    private const val FLAT_DEBUG_VALUE = "flatdebugtag"
+    private const val FLAT_ERROR_VALUE = "flaterrortag"
 
     fun flatDebug(message:String){
         Log.d(FLAT_DEBUG_VALUE,message)

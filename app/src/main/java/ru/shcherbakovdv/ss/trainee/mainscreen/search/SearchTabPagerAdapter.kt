@@ -10,8 +10,6 @@ import ru.shcherbakovdv.ss.trainee.mainscreen.search.organisationtab.Organisatio
 
 class SearchTabPagerAdapter(fm: FragmentManager, val context: Context?) : FragmentPagerAdapter(fm) {
 
-    private val EVENT_TAB_POSITION = 0
-    private val ORGANISATION_TAB_POSITION = 1
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
@@ -30,4 +28,9 @@ class SearchTabPagerAdapter(fm: FragmentManager, val context: Context?) : Fragme
     }
 
     override fun getCount(): Int = 2
+
+    companion object {
+        private const val EVENT_TAB_POSITION = 0
+        private const val ORGANISATION_TAB_POSITION = 1
+    }
 }

@@ -1,39 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="ru.shcherbakovdv.ss.trainee.HelpCategoryActivity">
+    tools:context="ru.shcherbakovdv.ss.trainee.categoryscreen.CategoryActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ToolbarTheme">
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/toolbarTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:theme="@style/ToolbarTheme.Title" />
+            android:textAlignment="center"
+            android:theme="@style/ToolbarTheme.Title"
+            android:singleLine="true"/>
 
     </android.support.v7.widget.Toolbar>
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:id="@+id/recyclerViewContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
             tools:listitem="@layout/item_event_list" />
     </android.support.v4.widget.NestedScrollView>
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewContainer"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewContainer"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewContainer"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewContainer" />
+
+    <ImageView
+        android:id="@+id/imageError"
+        android:layout_width="@dimen/help_screen_error_image_size"
+        android:layout_height="@dimen/help_screen_error_image_size"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewContainer"
+        app:srcCompat="?android:attr/alertDialogIcon" />
+
+    <TextView
+        android:id="@+id/textError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/help_screen_error_text_margin_top"
+        android:text="@string/help_error"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageError" />
+
+
+
+</android.support.constraint.ConstraintLayout>

@@ -18,8 +18,8 @@ class EventMvpPresenter : MvpPresenter<EventTabMvpView>(), SearchFieldObserver {
     }
 
     override fun requestContent(key: String?) {
-        val eventArray = EventProvider.requestEventsOld(key)
-        viewState.setContent(eventArray)
+        EventProvider.requestEvents(key ?: "")
+                .subscribe { array -> viewState.setContent(array) }
     }
 
 }

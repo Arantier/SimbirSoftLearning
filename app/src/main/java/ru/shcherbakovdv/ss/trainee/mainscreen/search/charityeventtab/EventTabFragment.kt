@@ -9,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_events_tab.view.*
-import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.LocalDate
 import ru.shcherbakovdv.ss.trainee.eventscreen.EventActivity
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
 import ru.shcherbakovdv.ss.trainee.R
+import ru.shcherbakovdv.ss.trainee.utilites.LocalDateJsonSerializer
 
 class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEventClickListener {
 
@@ -39,19 +41,17 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEvent
 
     override fun onCharityEventClick(event: CharityEvent) {
         val intent = Intent(context, EventActivity::class.java)
-        intent.putExtra(EventActivity.EVENT_TITLE,event.title)
-        intent.putExtra(EventActivity.EVENT_DESCRIPTION,event.description)
-        intent.putExtra(EventActivity.EVENT_PICTURES_ARRAY,event.picturesUrlArray)
-        intent.putExtra(EventActivity.EVENT_START_DATE,event.startDate.format(DateTimeFormatter.BASIC_ISO_DATE))
-        intent.putExtra(EventActivity.EVENT_END_DATE,event.endDate.format(DateTimeFormatter.BASIC_ISO_DATE))
-        intent.putExtra(EventActivity.EVENT_DONATORS_PICTURES_ARRAY,event.donatorsPicturesUrlArray)
+        val gson = GsonBuilder()
+                .registerTypeAdapter(LocalDate::class.java, LocalDateJsonSerializer())
+                .create()
+        val eventJson = gson.toJson(event)
+        intent.putExtra(EventActivity.EVENT_JSON,eventJson)
         startActivity(intent)
     }
 
     companion object {
         fun newInstance(): EventTabFragment {
-            val fragment = EventTabFragment()
-            return fragment
+            return EventTabFragment()
         }
     }
 }

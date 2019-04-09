@@ -16,8 +16,4 @@ object ImageProvider {
                 .into(imageView)
     }
 
-    fun loadRoundedImage(url: String, imageView: ImageView) {
-        loadImage(url, imageView)
-    }
-
 }

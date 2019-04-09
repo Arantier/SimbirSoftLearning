@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.mainscreen.helpcategory.CategoryFragment
 import ru.shcherbakovdv.ss.trainee.mainscreen.profile.ProfileFragment
+import ru.shcherbakovdv.ss.trainee.mainscreen.search.SearchFieldNotifier
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.SearchFragment
 
 class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
@@ -90,6 +92,17 @@ class MainActivity : MvpAppCompatActivity(), MainMvpViewInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        edittextToolbarSearch.setOnEditorActionListener { textView, actionId, keyEvent ->
+            when (actionId){
+                EditorInfo.IME_ACTION_SEARCH, EditorInfo.IME_ACTION_DONE -> {
+                    val key = textView.text.toString()
+                    SearchFieldNotifier.findContent(key)
+                    true
+                }
+                else -> false
+            }
+        }
 
         bottomNavBar.enableAnimation(false)
         bottomNavBar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
