@@ -15,6 +15,9 @@
     <string name="button_help">Помочь</string>
     <string name="button_history">История</string>
     <string name="button_profile">Профиль</string>
+    <string name="title_error">Ошибка!</string>
+    <string name="undefined_error">Непредвиденная ошибка!</string>
+    <string name="no_internet_connection">Отсутствует соединение с Интернетом</string>
 
     <!--
         Экран помощи

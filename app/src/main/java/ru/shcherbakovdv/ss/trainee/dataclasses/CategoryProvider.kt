@@ -11,18 +11,15 @@ import java.lang.Exception
 object CategoryProvider {
 
     fun requestCategoriesFile() : Observable<Array<Category>> {
-        val categoryJson = File("/sdcard/Download/categories.json")
+        var categoryJson = File("/sdcard/Download/categories.json")
+        if (!categoryJson.exists()){
+            categoryJson = File("/storage/emulated/0/Download/categories.json")
+        }
         return Observable.just(categoryJson)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .flatMap { file ->
-                    //Код снизу нужен для теста с моего телефона
-                    lateinit var fileReader : FileReader
-                    try {
-                        fileReader = FileReader(file)
-                    } catch(e : Exception){
-                        fileReader = FileReader("/storage/emulated/0/Download/categories.json")
-                    }
+                    val fileReader = FileReader(file)
                     val processedString = fileReader.readText()
                     fileReader.close()
                     Observable.just(Gson().fromJson<Array<Category>>(processedString, Array<Category>::class.java))

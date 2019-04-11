@@ -29,17 +29,7 @@ class EventActivity : AppCompatActivity() {
 
     private lateinit var event: CharityEvent
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_event)
-        event = GsonBuilder()
-                .registerTypeAdapter(LocalDate::class.java, LocalDateJsonDesrializer())
-                .create()
-                .fromJson(intent.getStringExtra(EVENT_JSON), CharityEvent::class.java)
-    }
-
-    override fun onStart() {
-        super.onStart()
+    fun fillScreen(){
         toolbarTitle.text = event.title
         textTitle.text = event.title
         val restDays = ChronoUnit.DAYS.between(LocalDate.now(ZoneId.of("UTC+3")), event.endDate).toInt()
@@ -111,6 +101,16 @@ class EventActivity : AppCompatActivity() {
             }
             layoutDonatorsBar.addView(donatorCountView)
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_event)
+        event = GsonBuilder()
+                .registerTypeAdapter(LocalDate::class.java, LocalDateJsonDesrializer())
+                .create()
+                .fromJson(intent.getStringExtra(EVENT_JSON), CharityEvent::class.java)
+        fillScreen()
     }
 
     companion object {
