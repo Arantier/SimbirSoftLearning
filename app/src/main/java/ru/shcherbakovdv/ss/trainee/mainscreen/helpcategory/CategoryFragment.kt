@@ -1,7 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.mainscreen.helpcategory
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -11,17 +10,22 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_category_screen.*
 import kotlinx.android.synthetic.main.fragment_category_screen.view.*
 import ru.shcherbakovdv.ss.trainee.categoryscreen.CategoryActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.dataclasses.Category
+import ru.shcherbakovdv.ss.trainee.mainscreen.getClassIntent
+import ru.shcherbakovdv.ss.trainee.mainscreen.makeGone
+import ru.shcherbakovdv.ss.trainee.mainscreen.makeVisible
 
 
 class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClickListener {
 
     @InjectPresenter
     lateinit var presenter: CategoryPresenter
+    private lateinit var categoriesDisposable: Disposable
 
     private lateinit var fragmentView: View
 
@@ -30,27 +34,30 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
     }
 
     override fun setLoadingState() {
-        fragmentView.recyclerCategories.visibility = View.GONE
-        fragmentView.progressBar.visibility = View.VISIBLE
-        fragmentView.imageError.visibility = View.GONE
-        fragmentView.textError.visibility = View.GONE
+        fragmentView.progressBar.makeVisible()
+        fragmentView.recyclerCategories.makeGone()
+        fragmentView.imageError.makeGone()
+        fragmentView.textError.makeGone()
     }
 
     override fun setErrorState() {
-        fragmentView.recyclerCategories.visibility = View.GONE
-        fragmentView.progressBar.visibility = View.GONE
-        fragmentView.imageError.visibility = View.VISIBLE
-        fragmentView.textError.visibility = View.VISIBLE
+        fragmentView.recyclerCategories.makeGone()
+        fragmentView.progressBar.makeGone()
+        fragmentView.imageError.makeVisible()
+        fragmentView.textError.makeVisible()
     }
 
     override fun updateList(categories: Array<Category>) {
         if (fragmentView.recyclerCategories.visibility == View.GONE) {
-            fragmentView.recyclerCategories.visibility = View.VISIBLE
-            fragmentView.progressBar.visibility = View.GONE
-            fragmentView.imageError.visibility = View.GONE
-            fragmentView.textError.visibility = View.GONE
+            fragmentView.recyclerCategories.makeVisible()
+            fragmentView.progressBar.makeGone()
+            fragmentView.imageError.makeGone()
+            fragmentView.textError.makeGone()
         }
         fragmentView.recyclerCategories.adapter = CategoryListAdapter(categories, this)
+        if (::categoriesDisposable.isInitialized) {
+            categoriesDisposable.dispose()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -62,15 +69,16 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
     override fun onStart() {
         super.onStart()
         recyclerCategories.layoutManager = GridLayoutManager(context, 2)
-        if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            presenter.requestCategories()
+        val storageAvailable = ContextCompat.checkSelfPermission(context!!, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+        if (storageAvailable) {
+            categoriesDisposable = presenter.requestCategories()
         } else {
             setErrorState()
         }
     }
 
     private fun startCategoryActivity(id: Int, name: String) {
-        val intent = Intent(context, CategoryActivity::class.java).apply {
+        val intent = context!!.getClassIntent<CategoryActivity>().apply {
             putExtra(CategoryActivity.CATEGORY_ID, id)
             putExtra(CategoryActivity.CATEGORY_NAME, name)
         }

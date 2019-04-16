@@ -101,11 +101,6 @@
         <item name="android:layout_marginLeft">@dimen/event_screen_info_field_left_margin</item>
     </style>
 
-    <style name="EventLinkStyle" parent="EventTextStyle">
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:lines">1</item>
-        <item name="android:autoLink">web</item>
-    </style>
     <style name="EventScreenActionbarLabel">
         <item name="android:textSize">10sp</item>
         <item name="android:textAlignment">center</item>

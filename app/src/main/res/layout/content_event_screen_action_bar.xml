@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/event_screen_action_bar_height"
     android:divider="@drawable/event_screen_action_bar_divider"
@@ -32,7 +31,6 @@
             app:srcCompat="@drawable/ic_shirt" />
 
         <TextView
-            android:id="@+id/textItem"
             style="@style/EventScreenActionbarLabel"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -82,7 +80,6 @@
             app:srcCompat="@drawable/ic_tools" />
 
         <TextView
-            android:id="@+id/textQualityHelp"
             style="@style/EventScreenActionbarLabel"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -132,7 +129,6 @@
             app:srcCompat="@drawable/ic_hands" />
 
         <TextView
-            android:id="@+id/textVolunteers"
             style="@style/EventScreenActionbarLabel"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -181,7 +177,6 @@
             app:srcCompat="@drawable/ic_coins" />
 
         <TextView
-            android:id="@+id/textDonate"
             style="@style/EventScreenActionbarLabel"
             android:layout_width="wrap_content"
             android:layout_height="0dp"

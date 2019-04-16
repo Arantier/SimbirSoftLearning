@@ -23,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:theme="@style/ToolbarTheme.Title"
             android:singleLine="true"
+            android:theme="@style/ToolbarTheme.Title"
             tools:text="Спонсоры отремонтируют школу-интернат" />
 
     </android.support.v7.widget.Toolbar>
@@ -172,13 +172,13 @@
 
             <TextView
                 android:id="@+id/textHyperlink"
-                style="@style/EventLinkStyle"
+                style="@style/EventTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
                 android:layout_marginTop="@dimen/event_screen_hyperlink_margin_top"
                 android:layout_marginRight="@dimen/event_screen_horizontal_margin"
-                android:text="@string/event_screen_hyperlink"
+                android:text="@string/event_screen_organisation_site"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textDescription"/>

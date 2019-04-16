@@ -10,7 +10,6 @@ object SearchFieldNotifier {
             inactiveItem = field
             field = value
 
-            //Кусок кода для 2 задания, уберу когда надо будет
             if (listOfObservers[inactiveItem]::class.java == OrganisationTabPresenter::class.java){
                 listOfObservers[inactiveItem].requestContent("")
             }

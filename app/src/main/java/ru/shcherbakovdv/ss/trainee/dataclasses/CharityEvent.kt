@@ -2,7 +2,7 @@ package ru.shcherbakovdv.ss.trainee.dataclasses
 
 import org.threeten.bp.LocalDate
 
-class CharityEvent(val categoryId: Int,
+data class CharityEvent(val categoryId: Int,
                    val title: String,
                    val description: String,
                    val picturesUrlArray: Array<String>,

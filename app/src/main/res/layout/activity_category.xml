@@ -22,9 +22,11 @@
             android:id="@+id/toolbarTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:textAlignment="center"
             android:theme="@style/ToolbarTheme.Title"
-            android:singleLine="true"/>
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="19dp" />
 
     </android.support.v7.widget.Toolbar>
 

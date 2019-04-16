@@ -11,7 +11,6 @@ import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
 import ru.shcherbakovdv.ss.trainee.utilites.ImageProvider
 import ru.shcherbakovdv.ss.trainee.utilites.LocaleStringManager.getLocaleQuantityString
-import java.util.*
 
 class EventItemViewHolder(val view: View, private val onCharityEventClickListener : OnCharityEventClickListener) : RecyclerView.ViewHolder(view) {
 

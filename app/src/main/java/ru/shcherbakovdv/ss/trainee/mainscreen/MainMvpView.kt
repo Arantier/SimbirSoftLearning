@@ -4,9 +4,14 @@ import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 
-interface MainMvpViewInterface : MvpView {
+@StateStrategyType(AddToEndSingleStrategy::class)
+interface MainMvpView : MvpView {
 
-    @StateStrategyType(AddToEndSingleStrategy :: class)
     fun selectScreen(id: Int)
 
+    fun setUnconnectedState()
+
+    fun setConnectedState()
+
+    fun requestPermissions(name:String, code: Int)
 }

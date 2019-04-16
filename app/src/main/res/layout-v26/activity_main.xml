@@ -23,7 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:theme="@style/ToolbarTheme.Title" />
+            android:theme="@style/ToolbarTheme.Title"
+            tools:layout_editor_absoluteX="480dp"
+            tools:layout_editor_absoluteY="19dp" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/layoutToolbarSearch"
@@ -34,6 +36,8 @@
             android:elevation="@dimen/search_toolbar_field_elevation"
             android:outlineProvider="background"
             android:visibility="gone"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp"
             tools:visibility="visible">
 
             <ImageView
@@ -51,8 +55,10 @@
                 android:id="@+id/edittextToolbarSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@null"
                 android:autofillHints="@string/search_placeholder"
+                android:background="@null"
+                android:imeOptions="actionDone"
+                android:inputType="textFilter"
                 android:singleLine="true"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/search_toolbar_field_text_size"
@@ -60,9 +66,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageToolbarMic"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/imageToolbarSearch"
-                app:layout_constraintTop_toTopOf="parent"
-                android:inputType="textFilter"
-                android:imeOptions="actionDone"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageToolbarMic"
@@ -94,10 +98,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/button_help_bottom_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/bottomNavBar"
-        app:layout_constraintStart_toStartOf="@+id/bottomNavBar"
-        app:layout_constraintEnd_toEndOf="@+id/bottomNavBar"
         android:elevation="@dimen/button_help_elevation"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavBar"
+        app:layout_constraintEnd_toEndOf="@+id/bottomNavBar"
+        app:layout_constraintStart_toStartOf="@+id/bottomNavBar"
         tools:visibility="gone">
 
         <ImageView

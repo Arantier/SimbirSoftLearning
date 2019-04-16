@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/itemHelpScreenKids"
     android:layout_width="match_parent"
     android:layout_height="@dimen/help_card_height"
     android:layout_marginStart="@dimen/help_card_margin"

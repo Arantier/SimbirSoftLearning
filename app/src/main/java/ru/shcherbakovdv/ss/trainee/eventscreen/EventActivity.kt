@@ -6,33 +6,33 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.URLSpan
+import android.text.util.Linkify
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.google.gson.GsonBuilder
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.content_event_screen_images.*
 import org.threeten.bp.LocalDate
-import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.temporal.ChronoUnit
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
+import ru.shcherbakovdv.ss.trainee.utilites.DateUtility
 import ru.shcherbakovdv.ss.trainee.utilites.ImageProvider
 import ru.shcherbakovdv.ss.trainee.utilites.LocalDateJsonDesrializer
 import ru.shcherbakovdv.ss.trainee.utilites.LocaleStringManager.getLocaleQuantityString
+import java.util.regex.Pattern
 
 class EventActivity : AppCompatActivity() {
 
     private lateinit var event: CharityEvent
 
-    fun fillScreen(){
+    private fun fillScreen(){
         toolbarTitle.text = event.title
         textTitle.text = event.title
-        val restDays = ChronoUnit.DAYS.between(LocalDate.now(ZoneId.of("UTC+3")), event.endDate).toInt()
+        val restDays = DateUtility.daysRest(event.endDate)
         textEventItemDate.text = String.format(textEventItemDate.text.toString(),
                 getLocaleQuantityString(this, R.plurals.event_date_expiration, restDays),
                 event.startDate.format(DateTimeFormatter.ofPattern("dd.MM")),
@@ -43,20 +43,18 @@ class EventActivity : AppCompatActivity() {
         textOrganisationPhones.text = event.organisation.phones.joinToString("\n")
 
         textMessage.apply {
-            val emailUrlString = SpannableString(getString(R.string.event_screen_organisation_site)).apply {
-                setSpan(URLSpan(event.organisation.email), 20, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }
-            text = emailUrlString
-            //TODO: Не работает, но пока не критично. Игорь, что делать?
-//            movementMethod = LinkMovementMethod.getInstance()
+            //Всё ещё не работает, причина неизвестна
+            text = getString(R.string.event_screen_organisation_message)
+            val p = Pattern.compile("Напишите нам!")
+            Linkify.addLinks(this,p,event.organisation.email)
         }
         textHyperlink.apply {
-            val siteUrlString = SpannableString(getString(R.string.event_screen_organisation_site)).apply {
-                setSpan(URLSpan(event.organisation.site), 0, 33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            val siteString = getString(R.string.event_screen_organisation_site)
+            val siteUrlString = SpannableString(siteString).apply {
+                setSpan(URLSpan(event.organisation.site), 0, siteString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             }
             text = siteUrlString
-            //TODO: Не работает, но пока не критично. Игорь, что делать?
-//            movementMethod = LinkMovementMethod.getInstance()
+            movementMethod = LinkMovementMethod.getInstance()
         }
         textDescription.text = event.description
         ImageProvider.apply {

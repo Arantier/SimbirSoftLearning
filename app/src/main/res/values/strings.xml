@@ -48,7 +48,6 @@
     <string name="search_placeholder">Введите название организации</string>
     <string name="search_tab_events">По мероприятиям</string>
     <string name="search_tab_organisations">По НКО</string>
-    <string name="search_keywords">Ключевые слова: мастер-класс, помощь</string>
     <plurals name="organisation_search_quantity">
         <item quantity="zero">%d мероприятий</item>
         <item quantity="one">%d мероприятие</item>
@@ -57,13 +56,7 @@
         <item quantity="other">%d мероприятий</item>
     </plurals>
     <string name="search_hint_1">Напишите в строке поиска название мероприятия или ключевые слова.</string>
-    <string name="search_hint_2">Например, %1$s, %2$s </string>
-    <string name="search_results_keywords">Ключевые слова: %1$s</string>
     <string name="search_result_info">Результаты поиска: %1$s</string>
-    <string-array name="search_NKO_hint_words">
-        <item>мастер-класс</item>
-        <item>помощь</item>
-    </string-array>
     <string name="event_date_expiration_info">Осталось %1$s (%2$s - %3$s)</string>
     <plurals name="event_date_expiration">
         <item quantity="zero">%d дней</item>
@@ -79,11 +72,11 @@
     <string name="title_activity_event">EventActivity</string>
 
     <!--Экран события-->
-    <string name="event_screen_hyperlink">Перейти на сайт организаии</string>
     <string name="event_screen_action_bar_items">Помочь \nвещами</string>
     <string name="event_screen_action_bar_volunteers">Стать \nволонтёром</string>
     <string name="event_screen_action_bar_quality_help">Проф. \nпомощь</string>
     <string name="event_screen_action_bar_donate">Помочь \nденьгами</string>
-    <string name="event_screen_organisation_site">У вас есть вопросы? Напишите нам!</string>
+    <string name="event_screen_organisation_message">У вас есть вопросы? Напишите нам!</string>
+    <string name="event_screen_organisation_site">Перейти на сайт организаии</string>
 
 </resources>

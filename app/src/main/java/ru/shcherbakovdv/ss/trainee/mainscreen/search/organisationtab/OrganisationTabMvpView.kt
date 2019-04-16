@@ -6,6 +6,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import ru.shcherbakovdv.ss.trainee.dataclasses.Organisation
 
 interface OrganisationTabMvpView : MvpView {
-    @StateStrategyType(AddToEndSingleStrategy :: class)
-    fun setContent(organisationArray : Array<Organisation>)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun setContent(organisationArray: Array<Organisation>)
+
 }
