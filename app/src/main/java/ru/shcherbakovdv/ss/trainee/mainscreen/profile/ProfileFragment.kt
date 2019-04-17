@@ -22,12 +22,8 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
     override fun fillProfileScreen(profile: UserProfile) {
         ImageProvider.loadImage(profile.pictureUrl, fragmentView.imageUserScreenPhoto)
         fragmentView.apply {
-            imageUserScreenPhoto.apply {
-                adjustViewBounds = true
-                scaleType = ImageView.ScaleType.FIT_XY
-                setOnClickListener {
-                    EditPhotoDialog().show(fragmentManager, EditPhotoDialog.TAG)
-                }
+            imageUserScreenPhoto.setOnClickListener {
+                EditPhotoDialog().show(fragmentManager, EditPhotoDialog.TAG)
             }
             textUserScreenName.text = profile.name
             textUserScreenBirth.text = profile.birthDate

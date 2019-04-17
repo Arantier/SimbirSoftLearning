@@ -5,10 +5,9 @@ import java.util.*
 
 object OrganisationTabInteractor {
 
-    fun requestOrganisations(key: String?): Array<Organisation> {
+    fun requestOrganisations(): Array<Organisation> {
         val organisationArray = ArrayList<Organisation>()
         val random = Random()
-//        val numberOfElements = random.nextInt(32)
         val numberOfElements = random.nextInt(32)
         for (i in 1..numberOfElements) {
             var string = ""
