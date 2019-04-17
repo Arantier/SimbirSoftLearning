@@ -1,11 +1,9 @@
 package ru.shcherbakovdv.ss.trainee.dataclasses
 
-import com.google.gson.GsonBuilder
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import org.threeten.bp.LocalDate
-import ru.shcherbakovdv.ss.trainee.utilites.LocalDateJsonDesrializer
+import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
 import java.io.File
 import java.io.FileReader
 
@@ -23,10 +21,7 @@ object EventProvider {
                     val fileReader = FileReader(file)
                     val processedString = fileReader.readText()
                     fileReader.close()
-                    val gson = GsonBuilder()
-                            .registerTypeAdapter(LocalDate::class.java, LocalDateJsonDesrializer())
-                            .create()
-                    Single.just(gson.fromJson(processedString, Array<CharityEvent>::class.java))
+                    Single.just(JsonUtilities.gson.fromJson(processedString, Array<CharityEvent>::class.java))
                 }
     }
 
@@ -42,10 +37,7 @@ object EventProvider {
                     val fileReader = FileReader(file)
                     val processedString = fileReader.readText()
                     fileReader.close()
-                    val gson = GsonBuilder()
-                            .registerTypeAdapter(LocalDate::class.java, LocalDateJsonDesrializer())
-                            .create()
-                    Single.just(gson.fromJson(processedString, Array<CharityEvent>::class.java)
+                    Single.just(JsonUtilities.gson.fromJson(processedString, Array<CharityEvent>::class.java)
                             .filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }
                             .toTypedArray())
                 }

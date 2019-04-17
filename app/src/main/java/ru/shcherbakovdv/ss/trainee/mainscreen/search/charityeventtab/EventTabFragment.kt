@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_events_tab.view.*
-import org.threeten.bp.LocalDate
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
 import ru.shcherbakovdv.ss.trainee.eventscreen.EventActivity
 import ru.shcherbakovdv.ss.trainee.mainscreen.getClassIntent
+import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
 import ru.shcherbakovdv.ss.trainee.utilites.LocalDateJsonSerializer
 import ru.shcherbakovdv.ss.trainee.utilites.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
@@ -35,13 +34,13 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEvent
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_events_tab, container, false)
+                              savedInstanceState: Bundle?) : View {
+        fragmentView = inflater.inflate(R.layout.fragment_events_tab, container, false)
+        return fragmentView
+    }
 
     override fun onCharityEventClick(event: CharityEvent) {
-        val gson = GsonBuilder()
-                .registerTypeAdapter(LocalDate::class.java, LocalDateJsonSerializer())
-                .create()
-        val eventJson = gson.toJson(event)
+        val eventJson = JsonUtilities.gson.toJson(event)
         val intent = context!!.getClassIntent<EventActivity>()
         intent.putExtra(EventActivity.EVENT_JSON, eventJson)
         startActivity(intent)

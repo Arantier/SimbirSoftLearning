@@ -37,7 +37,10 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_profile_screen, container, false)
+                              savedInstanceState: Bundle?) : View {
+        fragmentView = inflater.inflate(R.layout.fragment_profile_screen, container, false)
+        return fragmentView
+    }
 
     companion object {
         @JvmStatic
