@@ -23,14 +23,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".mainscreen.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_help_categories" />
         <activity
-            android:name=".categoryscreen.CategoryActivity"
+            android:name=".CategoryActivity"
             android:label="@string/title_activity_help_category"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".eventscreen.EventActivity"
+            android:name=".EventActivity"
             android:label="@string/title_activity_event"
             android:theme="@style/AppTheme" />
     </application>

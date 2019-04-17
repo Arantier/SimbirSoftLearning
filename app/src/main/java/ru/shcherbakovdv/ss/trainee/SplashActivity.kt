@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import ru.shcherbakovdv.ss.trainee.mainscreen.MainActivity
 
 
 class SplashActivity : AppCompatActivity() {
