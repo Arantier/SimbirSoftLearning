@@ -7,7 +7,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import ru.shcherbakovdv.ss.trainee.data_classes.Category
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface CategoriesListMvpView : MvpView {
+interface CategoryTypesMvpView : MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun setLoadingState()

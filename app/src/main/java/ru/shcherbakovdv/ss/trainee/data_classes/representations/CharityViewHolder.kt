@@ -1,4 +1,4 @@
-package ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.charities_tab
+package ru.shcherbakovdv.ss.trainee.data_classes.representations
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -7,7 +7,7 @@ import ru.shcherbakovdv.ss.trainee.data_classes.Charity
 import ru.shcherbakovdv.ss.trainee.utilites.DateUtility
 import ru.shcherbakovdv.ss.trainee.data_providers.ImageProvider
 
-class EventItemViewHolder(val view: View, private val onCharityEventClickListener : OnCharityEventClickListener) : RecyclerView.ViewHolder(view) {
+class CharityViewHolder(val view: View, private val onCharityClickListener : OnCharityClickListener) : RecyclerView.ViewHolder(view) {
 
     fun bind(event: Charity) {
         view.apply {
@@ -16,7 +16,7 @@ class EventItemViewHolder(val view: View, private val onCharityEventClickListene
             textEventItemDate.text = DateUtility.eventDateIntervalRepresentation(context,event.startDate,event.endDate)
             ImageProvider.loadImage(event.picturesUrlArray.first(),imageEventItem)
             setOnClickListener {
-                onCharityEventClickListener.onCharityEventClick(event)
+                onCharityClickListener.onCharityEventClick(event)
             }
         }
     }

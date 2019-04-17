@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import java.util.*
 
-object LocaleStringManager {
+object StringManager {
     fun getLocaleQuantityString(context: Context, id: Int, quantity: Int): String {
         val configuration = Configuration(context.resources.configuration).apply {
             setLocale(Locale("ru"))

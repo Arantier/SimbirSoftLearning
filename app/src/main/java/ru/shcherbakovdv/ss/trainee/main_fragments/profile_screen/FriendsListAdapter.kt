@@ -9,8 +9,8 @@ import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data_classes.Profile
 import ru.shcherbakovdv.ss.trainee.data_providers.ImageProvider
 
-class FriendListAdapter(private val friendsList: Array<Profile>?)
-    : RecyclerView.Adapter<FriendListAdapter.ItemViewHolder>() {
+class FriendsListAdapter(private val friendsList: Array<Profile>?)
+    : RecyclerView.Adapter<FriendsListAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_friend_list, parent, false)
         return ItemViewHolder(view)

@@ -15,10 +15,10 @@ import ru.shcherbakovdv.ss.trainee.data_classes.Organisation
 import ru.shcherbakovdv.ss.trainee.R
 import java.util.*
 
-class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView {
+class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView {
 
     @InjectPresenter
-    lateinit var presenter: OrganisationTabPresenter
+    lateinit var presenter: OrganisationsTabPresenter
     private lateinit var fragmentView: View
 
     private fun getLocaleQuantityString(id: Int, quantity: Int): String {
@@ -33,7 +33,7 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView {
         val searchResultsInfo = getLocaleQuantityString(R.plurals.organisation_search_quantity, organisationArray.size)
         fragmentView.apply {
             textOrganisationTabSearchInfo.text = String.format(searchResultPattern, searchResultsInfo)
-            recyclerviewOrganisationList.adapter = OrganisationListAdapter(organisationArray)
+            recyclerviewOrganisationList.adapter = OrganisationsListAdapter(organisationArray)
         }
     }
 
@@ -49,6 +49,6 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView {
     }
 
     companion object {
-        fun newInstance() = OrganisationTabFragment()
+        fun newInstance() = OrganisationsTabFragment()
     }
 }

@@ -5,7 +5,7 @@ import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import ru.shcherbakovdv.ss.trainee.data_classes.Charity
 
-interface EventTabMvpView : MvpView {
+interface CharityTabMvpView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy :: class)
     fun setContent(charityArray:Array<Charity>)

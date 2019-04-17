@@ -10,12 +10,12 @@ import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.shcherbakovdv.ss.trainee.main_fragments.CategoriesListFragment
+import ru.shcherbakovdv.ss.trainee.main_fragments.CategoryTypesFragment
 import ru.shcherbakovdv.ss.trainee.main_fragments.ConnectionLostFragment
 import ru.shcherbakovdv.ss.trainee.main_fragments.ProfileFragment
 import ru.shcherbakovdv.ss.trainee.main_fragments.SearchFragment
-import ru.shcherbakovdv.ss.trainee.utilites.makeGone
-import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
 class MainActivity : MvpAppCompatActivity(), MainMvpView {
 
@@ -24,7 +24,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
 
     private fun showFragmentPlaceholder() {
         supportFragmentManager.apply {
-            findFragmentByTag(CategoriesListFragment.TAG).apply {
+            findFragmentByTag(CategoryTypesFragment.TAG).apply {
                 if (this != null) {
                     beginTransaction().remove(this).commit()
                 }
@@ -92,7 +92,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
             }
             R.id.bottom_help -> {
                 supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, CategoriesListFragment.newInstance(), CategoriesListFragment.TAG)
+                        .replace(R.id.fragmentContainer, CategoryTypesFragment.newInstance(), CategoryTypesFragment.TAG)
                         .commit()
                 textToolbarTitle.text = getText(R.string.title_help)
             }

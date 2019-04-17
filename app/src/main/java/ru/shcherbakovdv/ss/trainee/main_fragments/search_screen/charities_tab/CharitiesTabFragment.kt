@@ -11,15 +11,16 @@ import kotlinx.android.synthetic.main.fragment_events_tab.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data_classes.Charity
 import ru.shcherbakovdv.ss.trainee.EventActivity
+import ru.shcherbakovdv.ss.trainee.data_classes.representations.OnCharityClickListener
 import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
-import ru.shcherbakovdv.ss.trainee.utilites.getClassIntent
-import ru.shcherbakovdv.ss.trainee.utilites.makeGone
-import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
-class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEventClickListener {
+class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharityClickListener {
 
     @InjectPresenter
-    lateinit var presenter: EventMvpPresenter
+    lateinit var presenter: CharitiesTabMvpPresenter
     private lateinit var fragmentView: View
 
     override fun setContent(charityArray: Array<Charity>) {
@@ -27,7 +28,7 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEvent
             fragmentView.layoutEventTabBackground.makeVisible()
         } else {
             fragmentView.layoutEventTabBackground.makeGone()
-            fragmentView.recyclerviewEventTab.adapter = EventListAdapter(charityArray, this)
+            fragmentView.recyclerviewEventTab.adapter = CharitiesListAdapter(charityArray, this)
         }
     }
 
@@ -45,8 +46,8 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEvent
     }
 
     companion object {
-        fun newInstance(): EventTabFragment {
-            return EventTabFragment()
+        fun newInstance(): CharitiesTabFragment {
+            return CharitiesTabFragment()
         }
     }
 }

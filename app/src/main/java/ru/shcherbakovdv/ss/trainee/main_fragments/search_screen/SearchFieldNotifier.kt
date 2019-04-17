@@ -1,6 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.main_fragments.search_screen
 
-import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.organisations_tab.OrganisationTabPresenter
+import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.organisations_tab.OrganisationsTabPresenter
 
 object SearchFieldNotifier {
 
@@ -10,7 +10,7 @@ object SearchFieldNotifier {
             inactiveItem = field
             field = value
 
-            if (listOfObservers[inactiveItem]::class.java == OrganisationTabPresenter::class.java){
+            if (listOfObservers[inactiveItem]::class.java == OrganisationsTabPresenter::class.java){
                 listOfObservers[inactiveItem].requestContent("")
             }
         }

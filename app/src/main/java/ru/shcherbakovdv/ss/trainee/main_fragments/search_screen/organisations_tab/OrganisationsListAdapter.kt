@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data_classes.Organisation
+import ru.shcherbakovdv.ss.trainee.data_classes.representations.OrganisationViewHolder
 
-class OrganisationListAdapter(private val organisationArray: Array<Organisation>) : RecyclerView.Adapter<OrganisationViewHolder>() {
+class OrganisationsListAdapter(private val organisationArray: Array<Organisation>) : RecyclerView.Adapter<OrganisationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): OrganisationViewHolder {
         val view = LayoutInflater.from(parent.context)

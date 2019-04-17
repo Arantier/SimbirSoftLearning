@@ -18,7 +18,7 @@ object DateUtility {
 
     fun eventDateIntervalRepresentation(context: Context, start: LocalDate, end: LocalDate) : String {
         return String.format(context.getString(R.string.event_date_expiration_info),
-                LocaleStringManager.getLocaleQuantityString(context,
+                StringManager.getLocaleQuantityString(context,
                         R.plurals.event_date_expiration,
                         daysRest(end)),
                 dateToString(start),

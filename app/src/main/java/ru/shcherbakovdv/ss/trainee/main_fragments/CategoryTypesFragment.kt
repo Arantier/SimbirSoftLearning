@@ -13,19 +13,19 @@ import kotlinx.android.synthetic.main.fragment_category_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.CategoryActivity
 import ru.shcherbakovdv.ss.trainee.data_classes.Category
-import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoriesListAdapter
-import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoriesListMvpView
-import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoriesListPresenter
-import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.OnCategoryClickListener
-import ru.shcherbakovdv.ss.trainee.utilites.getClassIntent
-import ru.shcherbakovdv.ss.trainee.utilites.makeGone
-import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
+import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoriesGridAdapter
+import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoryTypesMvpView
+import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoriesTypesPresenter
+import ru.shcherbakovdv.ss.trainee.data_classes.representations.OnCategoryClickListener
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
 
-class CategoriesListFragment : MvpAppCompatFragment(), CategoriesListMvpView, OnCategoryClickListener {
+class CategoryTypesFragment : MvpAppCompatFragment(), CategoryTypesMvpView, OnCategoryClickListener {
 
     @InjectPresenter
-    lateinit var presenter: CategoriesListPresenter
+    lateinit var presenter: CategoriesTypesPresenter
 
     private lateinit var fragmentView: View
 
@@ -57,7 +57,7 @@ class CategoriesListFragment : MvpAppCompatFragment(), CategoriesListMvpView, On
                 imageError.makeGone()
                 textError.makeGone()
             }
-            recyclerCategories.adapter = CategoriesListAdapter(categories, this@CategoriesListFragment)
+            recyclerCategories.adapter = CategoriesGridAdapter(categories, this@CategoryTypesFragment)
         }
     }
 
@@ -87,9 +87,9 @@ class CategoriesListFragment : MvpAppCompatFragment(), CategoriesListMvpView, On
 
     companion object {
         @JvmStatic
-        val TAG = CategoriesListFragment::class.simpleName
+        val TAG = CategoryTypesFragment::class.simpleName
 
         @JvmStatic
-        fun newInstance() = CategoriesListFragment()
+        fun newInstance() = CategoryTypesFragment()
     }
 }

@@ -7,7 +7,7 @@ import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.SearchFieldNotif
 import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.SearchFieldObserver
 
 @InjectViewState
-class OrganisationTabPresenter : MvpPresenter<OrganisationTabMvpView>(), SearchFieldObserver {
+class OrganisationsTabPresenter : MvpPresenter<OrganisationsTabMvpView>(), SearchFieldObserver {
 
     init {
         SearchFieldNotifier.attachObserver(this)

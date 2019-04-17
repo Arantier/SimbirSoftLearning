@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_profile_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data_classes.Profile
 import ru.shcherbakovdv.ss.trainee.main_fragments.profile_screen.EditPhotoDialog
-import ru.shcherbakovdv.ss.trainee.main_fragments.profile_screen.FriendListAdapter
+import ru.shcherbakovdv.ss.trainee.main_fragments.profile_screen.FriendsListAdapter
 import ru.shcherbakovdv.ss.trainee.main_fragments.profile_screen.ProfileMvpView
 import ru.shcherbakovdv.ss.trainee.main_fragments.profile_screen.ProfilePresenter
 import ru.shcherbakovdv.ss.trainee.data_providers.ImageProvider
@@ -31,7 +31,7 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
             textUserScreenName.text = profile.name
             textUserScreenBirth.text = profile.birthDate
             textUserScreenBusiness.text = profile.business
-            recyclerviewUserScreenFriends.adapter = FriendListAdapter(profile.friendsArray)
+            recyclerviewUserScreenFriends.adapter = FriendsListAdapter(profile.friendsArray)
         }
     }
 

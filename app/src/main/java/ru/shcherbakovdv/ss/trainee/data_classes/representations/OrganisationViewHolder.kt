@@ -1,4 +1,4 @@
-package ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.organisations_tab
+package ru.shcherbakovdv.ss.trainee.data_classes.representations
 
 import android.support.v7.widget.RecyclerView
 import android.widget.TextView

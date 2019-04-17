@@ -5,14 +5,13 @@ import ru.shcherbakovdv.ss.trainee.project_classes.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.data_providers.CategoriesProvider
 
 @InjectViewState
-class CategoriesListPresenter : ReactiveMvpPresenter<CategoriesListMvpView>() {
+class CategoriesTypesPresenter : ReactiveMvpPresenter<CategoryTypesMvpView>() {
 
     fun requestCategories() {
         viewState.setLoadingState()
         CategoriesProvider.requestCategoriesFile()
-                .doOnSubscribe { viewState.setLoadingState() }
-                .doOnError { viewState.setErrorState() }
-                .subscribe { viewState.updateList(it)}
+                .doOnNext { viewState.setLoadingState() }
+                .subscribe({array -> viewState.updateList(array)},{throwable -> viewState.setErrorState()})
                 .let { attachDisposable(it) }
     }
 }

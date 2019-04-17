@@ -7,13 +7,13 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_category.*
 import ru.shcherbakovdv.ss.trainee.data_classes.Charity
-import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.charities_tab.EventListAdapter
-import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.charities_tab.OnCharityEventClickListener
+import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.charities_tab.CharitiesListAdapter
+import ru.shcherbakovdv.ss.trainee.data_classes.representations.OnCharityClickListener
 import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
-import ru.shcherbakovdv.ss.trainee.utilites.makeGone
-import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
+import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
-class CategoryActivity : MvpAppCompatActivity(), OnCharityEventClickListener, CategoryMvpView {
+class CategoryActivity : MvpAppCompatActivity(), OnCharityClickListener, CategoryMvpView {
 
     @InjectPresenter
     lateinit var presenter: CategoryPresenter
@@ -39,7 +39,7 @@ class CategoryActivity : MvpAppCompatActivity(), OnCharityEventClickListener, Ca
             imageError.makeGone()
             textError.makeGone()
         }
-        recyclerView.adapter = EventListAdapter(events, this)
+        recyclerView.adapter = CharitiesListAdapter(events, this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
