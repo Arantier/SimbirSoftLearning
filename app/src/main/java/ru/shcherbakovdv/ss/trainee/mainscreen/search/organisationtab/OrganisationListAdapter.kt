@@ -23,11 +23,7 @@ class OrganisationListAdapter(private val organisationArray: Array<Organisation>
         return OrganisationViewHolder(view as TextView)
     }
 
-    override fun getItemCount(): Int {
-        return organisationArray.size
-    }
+    override fun getItemCount() = organisationArray.size
 
-    override fun onBindViewHolder(viewHolder: OrganisationViewHolder, position: Int) {
-        viewHolder.bind(organisationArray[position])
-    }
+    override fun onBindViewHolder(viewHolder: OrganisationViewHolder, position: Int) = viewHolder.bind(organisationArray[position])
 }

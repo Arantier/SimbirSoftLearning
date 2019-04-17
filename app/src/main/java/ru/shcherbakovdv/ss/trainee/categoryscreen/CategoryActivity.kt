@@ -2,21 +2,18 @@ package ru.shcherbakovdv.ss.trainee.categoryscreen
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_category.*
-import org.threeten.bp.LocalDate
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
 import ru.shcherbakovdv.ss.trainee.eventscreen.EventActivity
-import ru.shcherbakovdv.ss.trainee.mainscreen.makeGone
-import ru.shcherbakovdv.ss.trainee.mainscreen.makeVisible
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab.EventListAdapter
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab.OnCharityEventClickListener
-import ru.shcherbakovdv.ss.trainee.utilites.LocalDateJsonSerializer
+import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
+import ru.shcherbakovdv.ss.trainee.utilites.makeGone
+import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
 
 class CategoryActivity : MvpAppCompatActivity(), OnCharityEventClickListener, CategoryMvpView {
 
@@ -45,7 +42,6 @@ class CategoryActivity : MvpAppCompatActivity(), OnCharityEventClickListener, Ca
             textError.makeGone()
         }
         recyclerView.adapter = EventListAdapter(events, this)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,10 +72,7 @@ class CategoryActivity : MvpAppCompatActivity(), OnCharityEventClickListener, Ca
 
     override fun onCharityEventClick(event: CharityEvent) {
         val intent = Intent(this, EventActivity::class.java)
-        val gson = GsonBuilder()
-                .registerTypeAdapter(LocalDate::class.java, LocalDateJsonSerializer())
-                .create()
-        val eventJson = gson.toJson(event)
+        val eventJson = JsonUtilities.gson.toJson(event)
         intent.putExtra(EventActivity.EVENT_JSON, eventJson)
         startActivity(intent)
     }

@@ -16,10 +16,7 @@ class FriendListAdapter(private val friendsList: Array<UserProfile>?)
         return ItemViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return friendsList?.size ?: 0
-    }
-
+    override fun getItemCount() = friendsList?.size ?: 0
     override fun onBindViewHolder(viewHolder: ItemViewHolder, position: Int) {
         if (friendsList != null) {
             viewHolder.bind(friendsList[position])

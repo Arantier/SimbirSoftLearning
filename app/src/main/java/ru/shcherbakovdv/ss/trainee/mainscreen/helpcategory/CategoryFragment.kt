@@ -4,21 +4,19 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
-import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.fragment_category_screen.*
 import kotlinx.android.synthetic.main.fragment_category_screen.view.*
-import ru.shcherbakovdv.ss.trainee.categoryscreen.CategoryActivity
 import ru.shcherbakovdv.ss.trainee.R
+import ru.shcherbakovdv.ss.trainee.categoryscreen.CategoryActivity
 import ru.shcherbakovdv.ss.trainee.dataclasses.Category
 import ru.shcherbakovdv.ss.trainee.mainscreen.getClassIntent
-import ru.shcherbakovdv.ss.trainee.mainscreen.makeGone
-import ru.shcherbakovdv.ss.trainee.mainscreen.makeVisible
+import ru.shcherbakovdv.ss.trainee.utilites.makeGone
+import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
 
 
 class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClickListener {
@@ -29,9 +27,7 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
 
     private lateinit var fragmentView: View
 
-    override fun onCategoryClick(id: Int, name: String) {
-        startCategoryActivity(id, name)
-    }
+    override fun onCategoryClick(id: Int, name: String) = startCategoryActivity(id, name)
 
     override fun setLoadingState() {
         fragmentView.progressBar.makeVisible()
@@ -68,7 +64,6 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
 
     override fun onStart() {
         super.onStart()
-        recyclerCategories.layoutManager = GridLayoutManager(context, 2)
         val storageAvailable = ContextCompat.checkSelfPermission(context!!, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
         if (storageAvailable) {
             categoriesDisposable = presenter.requestCategories()
@@ -90,8 +85,6 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
         val TAG = CategoryFragment::class.simpleName
 
         @JvmStatic
-        fun newInstance(): CategoryFragment {
-            return CategoryFragment()
-        }
+        fun newInstance() = CategoryFragment()
     }
 }

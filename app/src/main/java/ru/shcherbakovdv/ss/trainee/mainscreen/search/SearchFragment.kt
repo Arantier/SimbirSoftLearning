@@ -36,8 +36,6 @@ class SearchFragment : MvpAppCompatFragment() {
     companion object {
         val TAG = SearchFragment::class.simpleName
 
-        fun newInstance(): SearchFragment {
-            return SearchFragment()
-        }
+        fun newInstance() = SearchFragment()
     }
 }

@@ -1,7 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.mainscreen.profile
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_profile_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.utilites.ImageProvider
 import ru.shcherbakovdv.ss.trainee.dataclasses.UserProfile
+import ru.shcherbakovdv.ss.trainee.utilites.ImageProvider
 
 class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
 
@@ -38,21 +37,13 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        fragmentView = inflater.inflate(R.layout.fragment_profile_screen, container, false)
-        fragmentView.apply {
-            recyclerviewUserScreenFriends.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        }
-        return fragmentView
-    }
+                              savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_profile_screen, container, false)
 
     companion object {
         @JvmStatic
         val TAG = ProfileFragment::class.simpleName
 
         @JvmStatic
-        fun newInstance(): ProfileFragment {
-            return ProfileFragment()
-        }
+        fun newInstance() = ProfileFragment()
     }
 }

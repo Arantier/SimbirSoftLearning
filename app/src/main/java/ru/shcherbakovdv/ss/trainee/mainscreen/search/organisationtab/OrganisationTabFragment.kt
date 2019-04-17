@@ -41,7 +41,6 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView {
                               savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(R.layout.fragment_organisation_tab, container, false)
         fragmentView.recyclerviewOrganisationList.apply {
-            layoutManager = LinearLayoutManager(context)
             val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             addItemDecoration(divider)
         }
@@ -50,8 +49,6 @@ class OrganisationTabFragment : MvpAppCompatFragment(), OrganisationTabMvpView {
     }
 
     companion object {
-        fun newInstance(): OrganisationTabFragment {
-            return OrganisationTabFragment()
-        }
+        fun newInstance() = OrganisationTabFragment()
     }
 }

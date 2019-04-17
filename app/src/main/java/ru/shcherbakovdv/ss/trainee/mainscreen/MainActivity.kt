@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.ActivityCompat
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -16,16 +15,10 @@ import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.mainscreen.helpcategory.CategoryFragment
 import ru.shcherbakovdv.ss.trainee.mainscreen.profile.ProfileFragment
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.SearchFragment
+import ru.shcherbakovdv.ss.trainee.utilites.makeGone
+import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
 
 inline fun <reified T> Context.getClassIntent() = Intent(this, T::class.java)
-
-fun View.makeVisible() {
-    visibility = View.VISIBLE
-}
-
-fun View.makeGone() {
-    visibility = View.GONE
-}
 
 class MainActivity : MvpAppCompatActivity(), MainMvpView {
 

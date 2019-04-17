@@ -43,9 +43,7 @@ class MainMvpPresenter : MvpPresenter<MainMvpView>() {
         }
     }
 
-    fun findContent(key: String) {
-        SearchFieldNotifier.findContent(key)
-    }
+    fun findContent(key: String) = SearchFieldNotifier.findContent(key)
 
     fun observeNetwork(context: Context) {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

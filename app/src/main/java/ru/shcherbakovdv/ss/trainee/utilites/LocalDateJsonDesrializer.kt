@@ -12,7 +12,6 @@ class LocalDateJsonDesrializer : JsonDeserializer<LocalDate> {
 
     override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): LocalDate {
         if (json!=null) {
-            val s = json.asString
             return LocalDate.parse(json.asString, DateTimeFormatter.ISO_DATE)
         } else {
             throw DateTimeException("Bad Json parsing")

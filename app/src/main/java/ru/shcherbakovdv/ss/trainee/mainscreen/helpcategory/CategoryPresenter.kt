@@ -12,11 +12,8 @@ class CategoryPresenter : MvpPresenter<CategoryMvpView>() {
     fun requestCategories() : Disposable {
         viewState.setLoadingState()
         return CategoryProvider.requestCategoriesFile()
-                .subscribe({ array ->
-                    viewState.updateList(array)
-                }, ({ throwable ->
-                    Logger.flatError(throwable.toString())
-                    viewState.setErrorState()
-                }))
+                .doOnSubscribe { viewState.setLoadingState() }
+                .doOnError { viewState.setErrorState() }
+                .subscribe(viewState::updateList) { Logger.flatError(it.toString()) }
     }
 }

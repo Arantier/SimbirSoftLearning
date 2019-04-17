@@ -2,7 +2,6 @@ package ru.shcherbakovdv.ss.trainee.mainscreen.search.charityeventtab
 
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +14,9 @@ import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.dataclasses.CharityEvent
 import ru.shcherbakovdv.ss.trainee.eventscreen.EventActivity
 import ru.shcherbakovdv.ss.trainee.mainscreen.getClassIntent
-import ru.shcherbakovdv.ss.trainee.mainscreen.makeGone
-import ru.shcherbakovdv.ss.trainee.mainscreen.makeVisible
 import ru.shcherbakovdv.ss.trainee.utilites.LocalDateJsonSerializer
+import ru.shcherbakovdv.ss.trainee.utilites.makeGone
+import ru.shcherbakovdv.ss.trainee.utilites.makeVisible
 
 class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEventClickListener {
 
@@ -36,11 +35,7 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEvent
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        fragmentView = inflater.inflate(R.layout.fragment_events_tab, container, false)
-        fragmentView.recyclerviewEventTab.layoutManager = LinearLayoutManager(context)
-        return fragmentView
-    }
+                              savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_events_tab, container, false)
 
     override fun onCharityEventClick(event: CharityEvent) {
         val gson = GsonBuilder()

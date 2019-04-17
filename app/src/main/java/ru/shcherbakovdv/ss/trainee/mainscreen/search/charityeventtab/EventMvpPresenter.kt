@@ -16,9 +16,7 @@ class EventMvpPresenter : MvpPresenter<EventTabMvpView>(), SearchFieldObserver {
         SearchFieldNotifier.attachObserver(this)
     }
 
-    override fun onDestroy() {
-        SearchFieldNotifier.detachObserver(this)
-    }
+    override fun onDestroy() = SearchFieldNotifier.detachObserver(this)
 
     override fun requestContent(key: String?) {
         eventDisposable = EventProvider.requestEvents(key ?: "")
