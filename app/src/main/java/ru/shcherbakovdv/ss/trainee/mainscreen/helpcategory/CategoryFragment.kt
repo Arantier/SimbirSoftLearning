@@ -23,36 +23,38 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
 
     @InjectPresenter
     lateinit var presenter: CategoryPresenter
-    private lateinit var categoriesDisposable: Disposable
 
     private lateinit var fragmentView: View
 
     override fun onCategoryClick(id: Int, name: String) = startCategoryActivity(id, name)
 
     override fun setLoadingState() {
-        fragmentView.progressBar.makeVisible()
-        fragmentView.recyclerCategories.makeGone()
-        fragmentView.imageError.makeGone()
-        fragmentView.textError.makeGone()
+        fragmentView.apply{
+            progressBar.makeVisible()
+            recyclerCategories.makeGone()
+            imageError.makeGone()
+            textError.makeGone()
+        }
     }
 
     override fun setErrorState() {
-        fragmentView.recyclerCategories.makeGone()
-        fragmentView.progressBar.makeGone()
-        fragmentView.imageError.makeVisible()
-        fragmentView.textError.makeVisible()
+        fragmentView.apply{
+            recyclerCategories.makeGone()
+            progressBar.makeGone()
+            imageError.makeVisible()
+            textError.makeVisible()
+        }
     }
 
     override fun updateList(categories: Array<Category>) {
-        if (fragmentView.recyclerCategories.visibility == View.GONE) {
-            fragmentView.recyclerCategories.makeVisible()
-            fragmentView.progressBar.makeGone()
-            fragmentView.imageError.makeGone()
-            fragmentView.textError.makeGone()
-        }
-        fragmentView.recyclerCategories.adapter = CategoryListAdapter(categories, this)
-        if (::categoriesDisposable.isInitialized) {
-            categoriesDisposable.dispose()
+        fragmentView.apply {
+            if (recyclerCategories.visibility == View.GONE) {
+                recyclerCategories.makeVisible()
+                progressBar.makeGone()
+                imageError.makeGone()
+                textError.makeGone()
+            }
+            recyclerCategories.adapter = CategoryListAdapter(categories, this@CategoryFragment)
         }
     }
 
@@ -66,7 +68,7 @@ class CategoryFragment : MvpAppCompatFragment(), CategoryMvpView, OnCategoryClic
         super.onStart()
         val storageAvailable = ContextCompat.checkSelfPermission(context!!, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
         if (storageAvailable) {
-            categoriesDisposable = presenter.requestCategories()
+            presenter.requestCategories()
         } else {
             setErrorState()
         }

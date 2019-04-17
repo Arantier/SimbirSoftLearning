@@ -30,7 +30,6 @@ class EventTabFragment : MvpAppCompatFragment(), EventTabMvpView, OnCharityEvent
             fragmentView.layoutEventTabBackground.makeGone()
             fragmentView.recyclerviewEventTab.adapter = EventListAdapter(eventArray, this)
         }
-        presenter.onContentReceived()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

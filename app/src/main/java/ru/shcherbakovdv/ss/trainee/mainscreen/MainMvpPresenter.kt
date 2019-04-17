@@ -9,12 +9,13 @@ import android.support.v4.content.ContextCompat
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.disposables.Disposable
+import ru.shcherbakovdv.ss.trainee.CompositePresenter
 import ru.shcherbakovdv.ss.trainee.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.mainscreen.search.SearchFieldNotifier
 
 @InjectViewState
-class MainMvpPresenter : MvpPresenter<MainMvpView>() {
+class MainMvpPresenter : CompositePresenter<MainMvpView>() {
 
     var currentScreenID = R.id.bottom_help
         set(id) {
@@ -23,7 +24,6 @@ class MainMvpPresenter : MvpPresenter<MainMvpView>() {
         }
 
     private val networkCallback = NetworkCallback()
-    private lateinit var networkDisposable: Disposable
     private var isConnected = false
         set(value) {
             field = value
@@ -53,17 +53,16 @@ class MainMvpPresenter : MvpPresenter<MainMvpView>() {
             viewState.requestPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, MainActivity.STORAGE_REQUEST_CODE)
         }
         connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkCallback)
-        networkDisposable = networkCallback.networkState
+        networkCallback.networkState
                 .subscribe {
                     viewState.apply {
                         isConnected = it
                     }
-                }
+                }.let { attachDisposable(it) }
     }
 
     fun disposeNetwork(context: Context) {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.unregisterNetworkCallback(networkCallback)
-        networkDisposable.dispose()
     }
 }
