@@ -5,7 +5,6 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textDialogSelectPhoto"
         style="@style/EditPhotoItemStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edit_photo_item_height"
@@ -14,7 +13,6 @@
         android:text="@string/edit_photo_select" />
 
     <TextView
-        android:id="@+id/textDialogMakePhoto"
         style="@style/EditPhotoItemStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edit_photo_item_height"
@@ -23,7 +21,6 @@
         android:text="@string/edit_photo_make" />
 
     <TextView
-        android:id="@+id/textDialogDeletePhoto"
         style="@style/EditPhotoItemStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edit_photo_item_height"

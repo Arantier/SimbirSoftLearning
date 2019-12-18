@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -23,7 +24,6 @@
                 android:scaleType="fitXY"/>
 
             <LinearLayout
-                android:id="@+id/layoutUserScreenInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -37,10 +37,9 @@
                     android:layout_marginEnd="@dimen/profile_text_horizontal_margin"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="@dimen/profile_name_size"
-                    tools:text="Кагыр Маур Дыффин Аэп Кеаллах"/>
+                    tools:text="Кагыр Маур Дыффин Аэп Кеаллах" />
 
                 <TextView
-                    android:id="@+id/textUserScreenHintBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/ProfileHintStyle"
@@ -51,10 +50,9 @@
                     style="@style/ProfileTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="01 февраля 1980"/>
+                    tools:text="01 февраля 1980" />
 
                 <TextView
-                    android:id="@+id/textUserScreenHintBusiness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/ProfileHintStyle"
@@ -65,10 +63,9 @@
                     style="@style/ProfileTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Хирургия, травматология"/>
+                    tools:text="Хирургия, травматология" />
 
                 <Switch
-                    android:id="@+id/switchUserScreenReceiveNotifications"
                     style="@style/ProfileTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,7 +80,6 @@
                 android:background="@color/dividerLineColor"/>
 
             <TextView
-                android:id="@+id/textUserScreenHintFriends"
                 style="@style/ProfileHintStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +91,8 @@
                 android:id="@+id/recyclerviewUserScreenFriends"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/profile_friend_list_bottom_margin"/>
+                android:layout_marginBottom="@dimen/profile_friend_list_bottom_margin"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
             <View
                 android:layout_width="match_parent"
@@ -103,7 +100,6 @@
                 android:background="@color/dividerLineColor"/>
 
             <Button
-                android:id="@+id/buttonUserScreenLogout"
                 style="@style/ProfileLogOutButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

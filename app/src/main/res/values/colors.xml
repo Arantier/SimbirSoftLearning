@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#66a636</color>
-    <!--TODO: Разберись всё ли в порядке с цветом
-        Возможно стоит использовать это:
-    <color title="colorPrimaryDark">#33000000</color>-->
     <color name="colorPrimaryDark">#347700</color>
     <color name="colorAccent">#7db354</color>
     <color name="textColorPrimary">#b3000000</color>
@@ -28,9 +25,17 @@
 
     <!--Search-->
     <color name="searchTabIndicator">#f2b630</color>
-    <color name="hintTextColor">#8a000000</color>
     <color name="searchFragmentBackground">#e8eded</color>
     <color name="searchToolbarFieldColor">#fff</color>
     <color name="searchListBackground">#fff</color>
     <color name="eventListItemTitleTextColor">#627f8f</color>
+
+    <!-- Экран события-->
+    <color name="dateTextColor">#94998a</color>
+    <color name="organisationNameColor">#99000000</color>
+    <color name="eventTextColor">#b3000000</color>
+    <color name="donatorsBarBackground">#e8eded</color>
+    <color name="donatorsTextColor">#8a000000</color>
+    <color name="eventScreenActionBarDividerGradientSide">#fffffd</color>
+    <color name="eventScreenActionBarDividerGradientCenter">#aaaaaa</color>
 </resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:columnCount="3">
+
+    <ImageView
+        android:id="@+id/imageBig"
+        android:layout_width="@dimen/event_screen_big_image_width"
+        android:layout_height="@dimen/event_screen_big_image_height"
+        android:adjustViewBounds="true"
+        android:scaleType="center"
+        app:layout_columnSpan="2"
+        app:layout_gravity="fill"
+        app:layout_rowSpan="2"
+        app:layout_rowWeight="2"
+        tools:srcCompat="@drawable/image_user_placeholder" />
+
+    <ImageView
+        android:id="@+id/imageSmallTop"
+        android:layout_width="@dimen/event_screen_small_image_width"
+        android:layout_height="@dimen/event_screen_small_image_height"
+        android:layout_marginLeft="@dimen/event_screen_image_margin_between"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        tools:srcCompat="@drawable/image_user_placeholder" />
+
+    <ImageView
+        android:id="@+id/imageSmallBottom"
+        android:layout_width="@dimen/event_screen_small_image_width"
+        android:layout_height="@dimen/event_screen_small_image_height"
+        android:layout_marginLeft="@dimen/event_screen_image_margin_between"
+        android:layout_marginTop="@dimen/event_screen_image_margin_between"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        tools:srcCompat="@drawable/image_user_placeholder" />
+</android.support.v7.widget.GridLayout>
