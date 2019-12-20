@@ -14,6 +14,7 @@ import ru.shcherbakovdv.ss.trainee.utilites.Logger
 class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
 
     var categoryId = -1
+    var charities: Array<Charity>? = null
 
     private val networkCallback = NetworkCallback()
 
@@ -31,28 +32,18 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
 
     fun observeNetwork(context: Context) {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val isConnected = connectivityManager.activeNetworkInfo?.isConnected ?: false
-        if (isConnected) {
-            viewState.setLoadingState()
-            EventsProvider.requestAllEvents()
-                    .subscribe(({ array -> fillScreen(array) }),
-                            ({ throwable ->
-                                setErrorScreen(throwable)
-                            }))
-                    .let { attachDisposable(it) }
-        } else {
-            viewState.setErrorState()
-        }
         connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkCallback)
         networkCallback.networkState
                 .subscribe {
                     if (it) {
                         viewState.setLoadingState()
-                        EventsProvider.requestAllEvents()
-                                .subscribe(({ array -> fillScreen(array) }),
-                                        ({ throwable ->
-                                            setErrorScreen(throwable)
-                                        })).let { attachDisposable(it) }
+                        if (charities == null) {
+                            EventsProvider.requestAllEvents()
+                                    .subscribe(({ array -> charities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
+                                    .let { attachDisposable(it) }
+                        } else {
+                            fillScreen(charities!!)
+                        }
                     } else {
                         viewState.setErrorState()
                     }
