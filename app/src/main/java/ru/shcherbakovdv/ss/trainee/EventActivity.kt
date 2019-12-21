@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_event.*
+import kotlinx.android.synthetic.main.activity_charity.*
 import kotlinx.android.synthetic.main.content_event_screen_images.*
 import ru.shcherbakovdv.ss.trainee.data_classes.Charity
 import ru.shcherbakovdv.ss.trainee.utilites.DateUtility
@@ -110,7 +110,14 @@ class EventActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_event)
+        setContentView(R.layout.activity_charity)
+        toolbar.apply {
+            navigationIcon = getDrawable(R.drawable.btn_back)
+            setNavigationOnClickListener {
+                finish()
+            }
+            inflateMenu(R.menu.category_toolbar)
+        }
         event = JsonUtilities.gson.fromJson(intent.getStringExtra(EVENT_JSON), Charity::class.java)
         setupHeader()
         setupOrganisationInfo()
