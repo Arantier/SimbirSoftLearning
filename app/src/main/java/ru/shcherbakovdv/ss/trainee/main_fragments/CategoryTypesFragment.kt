@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.PresenterType
 import kotlinx.android.synthetic.main.fragment_category_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.CategoryActivity
@@ -25,7 +24,7 @@ import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
 class CategoryTypesFragment : MvpAppCompatFragment(), CategoryTypesMvpView, OnCategoryClickListener {
 
-    @InjectPresenter(type = PresenterType.GLOBAL)
+    @InjectPresenter
     lateinit var presenter: CategoriesTypesPresenter
 
     private lateinit var fragmentView: View

@@ -10,9 +10,11 @@ import java.io.FileReader
 
 object CategoriesProvider {
 
-    fun requestCategoriesFile() : Observable<Array<Category>> {
+    var categories: Array<Category>? = null
+
+    fun requestCategoriesFile(): Observable<Array<Category>> {
         var categoryJson = File("/sdcard/Download/categories.json")
-        if (!categoryJson.exists()){
+        if (!categoryJson.exists()) {
             categoryJson = File("/storage/emulated/0/Download/categories.json")
         }
         return Observable.just(categoryJson)

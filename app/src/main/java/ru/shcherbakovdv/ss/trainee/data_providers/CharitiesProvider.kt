@@ -8,9 +8,11 @@ import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
 import java.io.File
 import java.io.FileReader
 
-object EventsProvider {
+object CharitiesProvider {
 
-    fun requestAllEvents(): Single<Array<Charity>> {
+    var currentCharities: Array<Charity>? = null
+
+    fun requestAllCharities(): Single<Array<Charity>> {
         var eventsJson = File("/sdcard/Download/events.json")
         if (!eventsJson.exists()) {
             eventsJson = File("/storage/emulated/0/Download/events.json")
@@ -26,22 +28,15 @@ object EventsProvider {
                 }
     }
 
-    fun requestEvents(key: String): Single<Array<Charity>> {
-        var eventsJson = File("/sdcard/Download/events.json")
-        if (!eventsJson.exists()) {
-            eventsJson = File("/storage/emulated/0/Download/events.json")
+    fun requestCharities(key: String): Single<Array<Charity>> {
+        if (currentCharities != null) {
+            return Single.just(currentCharities!!.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray())
+        } else {
+            return requestAllCharities()
+                    .map { array: Array<Charity> ->
+                        array.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray()
+                    }
         }
-        return Single.just(eventsJson)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .flatMap { file ->
-                    val fileReader = FileReader(file)
-                    val processedString = fileReader.readText()
-                    fileReader.close()
-                    Single.just(JsonUtilities.gson.fromJson(processedString, Array<Charity>::class.java)
-                            .filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }
-                            .toTypedArray())
-                }
     }
 
 }

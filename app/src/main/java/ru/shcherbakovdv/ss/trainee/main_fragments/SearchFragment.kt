@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.fragment_search_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.SearchFieldNotifier
 import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.SearchTabPagerAdapter
+import ru.shcherbakovdv.ss.trainee.utilites.Logger
+
 
 class SearchFragment : MvpAppCompatFragment() {
 
@@ -28,11 +30,18 @@ class SearchFragment : MvpAppCompatFragment() {
 
                 override fun onPageSelected(position: Int) {
                     SearchFieldNotifier.activeItem = position
+                    Logger.flatDebug("Page was swapped on position $position")
                 }
 
             })
         }
+        viewPager.currentItem = savedInstanceState?.getInt("position") ?: 0
         return view
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("position", viewPager.currentItem)
     }
 
     companion object {

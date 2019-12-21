@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import com.arellomobile.mvp.InjectViewState
 import ru.shcherbakovdv.ss.trainee.data_classes.Charity
-import ru.shcherbakovdv.ss.trainee.data_providers.EventsProvider
+import ru.shcherbakovdv.ss.trainee.data_providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.project_classes.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.project_classes.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
@@ -14,7 +14,6 @@ import ru.shcherbakovdv.ss.trainee.utilites.Logger
 class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
 
     var categoryId = -1
-    var charities: Array<Charity>? = null
 
     private val networkCallback = NetworkCallback()
 
@@ -37,12 +36,12 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
                 .subscribe {
                     if (it) {
                         viewState.setLoadingState()
-                        if (charities == null) {
-                            EventsProvider.requestAllEvents()
-                                    .subscribe(({ array -> charities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
+                        if (CharitiesProvider.currentCharities == null) {
+                            CharitiesProvider.requestAllCharities()
+                                    .subscribe(({ array -> CharitiesProvider.currentCharities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
                                     .let { attachDisposable(it) }
                         } else {
-                            fillScreen(charities!!)
+                            fillScreen(CharitiesProvider.currentCharities!!)
                         }
                     } else {
                         viewState.setErrorState()
