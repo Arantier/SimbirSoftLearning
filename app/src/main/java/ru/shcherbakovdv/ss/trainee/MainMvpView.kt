@@ -9,9 +9,7 @@ interface MainMvpView : MvpView {
 
     fun selectScreen(id: Int)
 
-    fun setUnconnectedState()
+    fun setDisconnectedState()
 
     fun setConnectedState()
-
-    fun requestPermissions(name:String, code: Int)
 }

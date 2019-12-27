@@ -1,11 +1,8 @@
 package ru.shcherbakovdv.ss.trainee
 
-import android.Manifest
 import android.content.Context
-import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
-import android.support.v4.content.ContextCompat
 import com.arellomobile.mvp.InjectViewState
 import ru.shcherbakovdv.ss.trainee.project_classes.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.SearchFieldNotifier
@@ -23,31 +20,20 @@ class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
     private val networkCallback = NetworkCallback()
     private var isConnected = false
         set(value) {
-            field = value
-            resolveState(value, storageAvailable)
+            if (value != field) {
+                if (value) {
+                    viewState.setConnectedState()
+                } else {
+                    viewState.setDisconnectedState()
+                }
+                field = value
+            }
         }
-    var storageAvailable = false
-        set(value) {
-            field = value
-            resolveState(isConnected, value)
-        }
-
-    private fun resolveState(isConnected: Boolean, storageAvailable: Boolean) {
-        if (isConnected && storageAvailable) {
-            viewState.setConnectedState()
-        } else {
-            viewState.setUnconnectedState()
-        }
-    }
 
     fun findContent(key: String) = SearchFieldNotifier.findContent(key)
 
     fun observeNetwork(context: Context) {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        storageAvailable = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
-        if (!storageAvailable) {
-            viewState.requestPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, MainActivity.STORAGE_REQUEST_CODE)
-        }
         connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkCallback)
         networkCallback.networkState
                 .subscribe {

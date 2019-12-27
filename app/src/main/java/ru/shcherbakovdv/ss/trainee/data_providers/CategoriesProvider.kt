@@ -1,30 +1,34 @@
 package ru.shcherbakovdv.ss.trainee.data_providers
 
-import com.google.gson.Gson
-import io.reactivex.Single
+import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.realm.Realm
 import ru.shcherbakovdv.ss.trainee.data.Category
-import java.io.File
-import java.io.FileReader
+import ru.shcherbakovdv.ss.trainee.data.RealmCategory
 
 object CategoriesProvider {
 
     var categories: Array<Category>? = null
 
-    fun requestCategoriesFile(): Single<Array<Category>> {
-        // TODO: Замени на выдачу файлов из бд
-        var categoryJson = File("/sdcard/Download/categories.json")
-        if (!categoryJson.exists()) {
-            categoryJson = File("/storage/emulated/0/Download/categories.json")
-        }
-        return Single.just(categoryJson)
-                .subscribeOn(Schedulers.io())
-                .flatMap { file ->
-                    val fileReader = FileReader(file)
-                    val processedString = fileReader.readText()
-                    fileReader.close()
-                    Single.just(Gson().fromJson<Array<Category>>(processedString, Array<Category>::class.java))
+    fun requestCategoriesFile(): Flowable<Array<Category>> {
+        val realm = Realm.getDefaultInstance()
+        return realm.where(RealmCategory::class.java)
+                .findAllAsync()
+                .asFlowable()
+                .flatMap {
+                    val categoriesList = ArrayList<Category>()
+                    for (realmCategory in it) {
+                        val category = Category(
+                                realmCategory?.id ?: 0,
+                                realmCategory.name ?: "",
+                                realmCategory.pictureUrl ?: ""
+                        )
+                        categoriesList.add(category)
+                    }
+                    categories = categoriesList.toTypedArray()
+                    categories?.let {
+                        Flowable.just(it)
+                    } ?: throw IllegalStateException("Empty categories")
                 }
                 .observeOn(AndroidSchedulers.mainThread())
     }

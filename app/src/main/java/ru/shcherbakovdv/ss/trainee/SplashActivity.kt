@@ -63,7 +63,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-            MainActivity.STORAGE_REQUEST_CODE -> {
+            STORAGE_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     disposable = loadAndSave()
                             .subscribe({
@@ -133,6 +133,7 @@ class SplashActivity : AppCompatActivity() {
         }
 
         realm.commitTransaction()
+        realm.close()
 
         return Single.just(1)
     }
