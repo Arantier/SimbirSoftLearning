@@ -36,12 +36,12 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
                 .subscribe {
                     if (it) {
                         viewState.setLoadingState()
-                        if (CharitiesProvider.currentCharities == null) {
+                        if (CharitiesProvider.charities == null) {
                             CharitiesProvider.requestAllCharities()
-                                    .subscribe(({ array -> CharitiesProvider.currentCharities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
+                                    .subscribe(({ array -> CharitiesProvider.charities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
                                     .let { attachDisposable(it) }
                         } else {
-                            fillScreen(CharitiesProvider.currentCharities!!)
+                            fillScreen(CharitiesProvider.charities!!)
                         }
                     } else {
                         viewState.setErrorState()

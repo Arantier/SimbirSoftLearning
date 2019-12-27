@@ -12,7 +12,7 @@ class CategoriesTypesPresenter : ReactiveMvpPresenter<CategoryTypesMvpView>() {
             viewState.updateList(CategoriesProvider.categories!!)
         } else {
             CategoriesProvider.requestCategoriesFile()
-                    .subscribe({ array -> CategoriesProvider.categories = array; viewState.updateList(array) }, { t: Throwable? -> viewState.setErrorState() })
+                    .subscribe({ array -> viewState.updateList(array) }, { t: Throwable? -> viewState.setErrorState() })
                     .let { attachDisposable(it) }
         }
     }

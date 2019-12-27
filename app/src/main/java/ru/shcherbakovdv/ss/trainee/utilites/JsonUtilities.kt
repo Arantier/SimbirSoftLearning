@@ -17,4 +17,7 @@ object JsonUtilities {
         return gson.toJson(source)
     }
 
+    fun <T> fromJson(json: String?, classOfT: Class<T>): T? {
+        return gson.fromJson(json, classOfT)
+    }
 }
