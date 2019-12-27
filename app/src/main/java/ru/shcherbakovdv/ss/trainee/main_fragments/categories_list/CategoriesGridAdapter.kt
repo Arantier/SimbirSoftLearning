@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.data_classes.Category
-import ru.shcherbakovdv.ss.trainee.data_classes.representations.CategoryViewHolder
-import ru.shcherbakovdv.ss.trainee.data_classes.representations.OnCategoryClickListener
+import ru.shcherbakovdv.ss.trainee.data.Category
+import ru.shcherbakovdv.ss.trainee.data.representations.CategoryViewHolder
+import ru.shcherbakovdv.ss.trainee.data.representations.OnCategoryClickListener
 
 class CategoriesGridAdapter(private val categories: Array<Category>,
                             private val onCategoryClickListener: OnCategoryClickListener) : RecyclerView.Adapter<CategoryViewHolder>() {

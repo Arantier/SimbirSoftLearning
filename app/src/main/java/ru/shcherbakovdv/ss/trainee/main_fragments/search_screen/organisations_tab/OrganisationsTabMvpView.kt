@@ -3,7 +3,7 @@ package ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.organisations_t
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import ru.shcherbakovdv.ss.trainee.data_classes.Organisation
+import ru.shcherbakovdv.ss.trainee.data.Organisation
 
 interface OrganisationsTabMvpView : MvpView {
 

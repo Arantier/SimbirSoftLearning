@@ -1,4 +1,4 @@
-package ru.shcherbakovdv.ss.trainee.data_classes
+package ru.shcherbakovdv.ss.trainee.data
 
 import org.threeten.bp.LocalDate
 

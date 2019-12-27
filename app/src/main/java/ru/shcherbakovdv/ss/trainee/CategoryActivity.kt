@@ -6,9 +6,9 @@ import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_category.*
-import ru.shcherbakovdv.ss.trainee.data_classes.Charity
+import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.charities_tab.CharitiesListAdapter
-import ru.shcherbakovdv.ss.trainee.data_classes.representations.OnCharityClickListener
+import ru.shcherbakovdv.ss.trainee.data.representations.OnCharityClickListener
 import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible

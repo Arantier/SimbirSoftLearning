@@ -1,6 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.data_providers
 
-import ru.shcherbakovdv.ss.trainee.data_classes.Organisation
+import ru.shcherbakovdv.ss.trainee.data.Organisation
 import java.util.*
 
 object OrganisationsProvider {

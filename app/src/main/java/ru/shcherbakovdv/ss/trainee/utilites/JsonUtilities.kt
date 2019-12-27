@@ -13,4 +13,8 @@ object JsonUtilities {
                 .create()
     }
 
+    fun toJson(source: Any): String {
+        return gson.toJson(source)
+    }
+
 }

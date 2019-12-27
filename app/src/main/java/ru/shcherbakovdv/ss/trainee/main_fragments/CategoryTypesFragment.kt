@@ -12,11 +12,11 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_category_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.CategoryActivity
-import ru.shcherbakovdv.ss.trainee.data_classes.Category
+import ru.shcherbakovdv.ss.trainee.data.Category
 import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoriesGridAdapter
 import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoryTypesMvpView
 import ru.shcherbakovdv.ss.trainee.main_fragments.categories_list.CategoriesTypesPresenter
-import ru.shcherbakovdv.ss.trainee.data_classes.representations.OnCategoryClickListener
+import ru.shcherbakovdv.ss.trainee.data.representations.OnCategoryClickListener
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible

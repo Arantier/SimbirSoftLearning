@@ -3,7 +3,7 @@ package ru.shcherbakovdv.ss.trainee.data_providers
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import ru.shcherbakovdv.ss.trainee.data_classes.Charity
+import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
 import java.io.File
 import java.io.FileReader
@@ -19,13 +19,13 @@ object CharitiesProvider {
         }
         return Single.just(eventsJson)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .flatMap { file ->
                     val fileReader = FileReader(file)
                     val processedString = fileReader.readText()
                     fileReader.close()
                     Single.just(JsonUtilities.gson.fromJson(processedString, Array<Charity>::class.java))
                 }
+                .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun requestCharities(key: String): Single<Array<Charity>> {

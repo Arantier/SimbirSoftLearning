@@ -8,7 +8,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_profile_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.data_classes.Profile
+import ru.shcherbakovdv.ss.trainee.data.Profile
 import ru.shcherbakovdv.ss.trainee.main_fragments.profile_screen.EditPhotoDialog
 import ru.shcherbakovdv.ss.trainee.main_fragments.profile_screen.FriendsListAdapter
 import ru.shcherbakovdv.ss.trainee.main_fragments.profile_screen.ProfileMvpView

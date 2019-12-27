@@ -1,6 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.data_providers
 
-import ru.shcherbakovdv.ss.trainee.data_classes.Profile
+import ru.shcherbakovdv.ss.trainee.data.Profile
 
 object ProfileModel {
 

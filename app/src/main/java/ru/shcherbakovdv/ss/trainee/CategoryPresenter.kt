@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import com.arellomobile.mvp.InjectViewState
-import ru.shcherbakovdv.ss.trainee.data_classes.Charity
+import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data_providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.project_classes.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.project_classes.ReactiveMvpPresenter

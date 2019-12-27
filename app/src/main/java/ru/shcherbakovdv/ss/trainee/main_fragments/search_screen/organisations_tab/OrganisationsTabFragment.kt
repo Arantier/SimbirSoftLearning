@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_organisation_tab.view.*
-import ru.shcherbakovdv.ss.trainee.data_classes.Organisation
+import ru.shcherbakovdv.ss.trainee.data.Organisation
 import ru.shcherbakovdv.ss.trainee.R
 import java.util.*
 

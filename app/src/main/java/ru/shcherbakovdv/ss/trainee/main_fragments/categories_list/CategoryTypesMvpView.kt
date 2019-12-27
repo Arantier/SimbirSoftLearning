@@ -4,7 +4,7 @@ import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import ru.shcherbakovdv.ss.trainee.data_classes.Category
+import ru.shcherbakovdv.ss.trainee.data.Category
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface CategoryTypesMvpView : MvpView {
