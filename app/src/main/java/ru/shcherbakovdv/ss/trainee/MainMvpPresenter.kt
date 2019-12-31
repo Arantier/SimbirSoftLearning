@@ -44,7 +44,6 @@ class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
 
     fun observeNetwork(context: Context) {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        isConnected = connectivityManager.activeNetworkInfo?.isConnected ?: false
         storageAvailable = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
         if (!storageAvailable) {
             viewState.requestPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, MainActivity.STORAGE_REQUEST_CODE)

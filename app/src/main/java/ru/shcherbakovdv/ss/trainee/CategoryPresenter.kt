@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import com.arellomobile.mvp.InjectViewState
 import ru.shcherbakovdv.ss.trainee.data_classes.Charity
-import ru.shcherbakovdv.ss.trainee.data_providers.EventsProvider
+import ru.shcherbakovdv.ss.trainee.data_providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.project_classes.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.project_classes.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
@@ -31,28 +31,18 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
 
     fun observeNetwork(context: Context) {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val isConnected = connectivityManager.activeNetworkInfo?.isConnected ?: false
-        if (isConnected) {
-            viewState.setLoadingState()
-            EventsProvider.requestAllEvents()
-                    .subscribe(({ array -> fillScreen(array) }),
-                            ({ throwable ->
-                                setErrorScreen(throwable)
-                            }))
-                    .let { attachDisposable(it) }
-        } else {
-            viewState.setErrorState()
-        }
         connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkCallback)
         networkCallback.networkState
                 .subscribe {
                     if (it) {
                         viewState.setLoadingState()
-                        EventsProvider.requestAllEvents()
-                                .subscribe(({ array -> fillScreen(array) }),
-                                        ({ throwable ->
-                                            setErrorScreen(throwable)
-                                        })).let { attachDisposable(it) }
+                        if (CharitiesProvider.currentCharities == null) {
+                            CharitiesProvider.requestAllCharities()
+                                    .subscribe(({ array -> CharitiesProvider.currentCharities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
+                                    .let { attachDisposable(it) }
+                        } else {
+                            fillScreen(CharitiesProvider.currentCharities!!)
+                        }
                     } else {
                         viewState.setErrorState()
                     }

@@ -1,12 +1,10 @@
 package ru.shcherbakovdv.ss.trainee
 
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.ActivityCompat
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -82,9 +80,6 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
                     menu.getItem(0).setOnMenuItemClickListener { item ->
                         textToolbarTitle.makeGone()
                         layoutToolbarSearch.makeVisible()
-                        (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                                .showSoftInput(edittextToolbarSearch, InputMethodManager.SHOW_FORCED)
-                        edittextToolbarSearch.requestFocus()
                         menu.clear()
                         true
                     }

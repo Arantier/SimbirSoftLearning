@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
-import kotlinx.android.synthetic.main.fragment_events_tab.view.*
+import kotlinx.android.synthetic.main.fragment_charity_tab.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data_classes.Charity
 import ru.shcherbakovdv.ss.trainee.EventActivity
@@ -25,16 +25,16 @@ class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharit
 
     override fun setContent(charityArray: Array<Charity>) {
         if (charityArray.isEmpty()) {
-            fragmentView.layoutEventTabBackground.makeVisible()
+            fragmentView.layoutCharityTabBackground.makeVisible()
         } else {
-            fragmentView.layoutEventTabBackground.makeGone()
+            fragmentView.layoutCharityTabBackground.makeGone()
             fragmentView.recyclerviewEventTab.adapter = CharitiesListAdapter(charityArray, this)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?) : View {
-        fragmentView = inflater.inflate(R.layout.fragment_events_tab, container, false)
+                              savedInstanceState: Bundle?): View {
+        fragmentView = inflater.inflate(R.layout.fragment_charity_tab, container, false)
         return fragmentView
     }
 

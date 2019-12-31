@@ -7,31 +7,36 @@
     tools:context=".main_fragments.search_screen.charities_tab.CharitiesTabFragment">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/layoutEventTabBackground"
+        android:id="@+id/layoutCharityTabBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageEventTabListPlaceholder"
             android:layout_width="@dimen/search_background_icon_size"
-            android:layout_height="@dimen/search_background_icon_size"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/search_background_icon_margin_horizontal"
             android:layout_marginTop="@dimen/search_background_icon_margin_top"
             android:layout_marginEnd="@dimen/search_background_icon_margin_horizontal"
+            android:layout_marginBottom="@dimen/search_hint_1_margin_top"
             android:src="@drawable/ic_search_bg"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/search_hint_1_margin_horizontal"
-            android:layout_marginTop="@dimen/search_hint_1_margin_top"
             android:layout_marginEnd="@dimen/search_hint_1_margin_horizontal"
             android:text="@string/search_hint_1"
             android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageEventTabListPlaceholder" />
 
@@ -42,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_event_list" />
+        tools:listitem="@layout/item_event_list"
+        tools:visibility="gone"/>
 
 </FrameLayout>
