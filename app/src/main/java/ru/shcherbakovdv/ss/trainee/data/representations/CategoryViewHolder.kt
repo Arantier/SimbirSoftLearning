@@ -1,9 +1,9 @@
-package ru.shcherbakovdv.ss.trainee.data_classes.representations
+package ru.shcherbakovdv.ss.trainee.data.representations
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.item_category_list.view.*
-import ru.shcherbakovdv.ss.trainee.data_classes.Category
+import ru.shcherbakovdv.ss.trainee.data.Category
 import ru.shcherbakovdv.ss.trainee.data_providers.ImageProvider
 
 class CategoryViewHolder (val view : View, private val onCategoryClickListener: OnCategoryClickListener) : RecyclerView.ViewHolder(view) {

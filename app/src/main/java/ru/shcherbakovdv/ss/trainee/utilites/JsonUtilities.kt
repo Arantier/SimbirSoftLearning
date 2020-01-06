@@ -13,4 +13,11 @@ object JsonUtilities {
                 .create()
     }
 
+    fun toJson(source: Any): String {
+        return gson.toJson(source)
+    }
+
+    fun <T> fromJson(json: String?, classOfT: Class<T>): T? {
+        return gson.fromJson(json, classOfT)
+    }
 }

@@ -1,4 +1,4 @@
-package ru.shcherbakovdv.ss.trainee.data_classes.representations
+package ru.shcherbakovdv.ss.trainee.data.representations
 
 interface OnCategoryClickListener {
 

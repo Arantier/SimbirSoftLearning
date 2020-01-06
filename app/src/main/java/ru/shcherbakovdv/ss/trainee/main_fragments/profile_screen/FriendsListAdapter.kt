@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_friend_list.view.*
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.data_classes.Profile
+import ru.shcherbakovdv.ss.trainee.data.Profile
 import ru.shcherbakovdv.ss.trainee.data_providers.ImageProvider
 
 class FriendsListAdapter(private val friendsList: Array<Profile>?)

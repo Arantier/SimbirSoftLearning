@@ -9,9 +9,9 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_charity_tab.view.*
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.data_classes.Charity
+import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.EventActivity
-import ru.shcherbakovdv.ss.trainee.data_classes.representations.OnCharityClickListener
+import ru.shcherbakovdv.ss.trainee.data.representations.OnCharityClickListener
 import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone

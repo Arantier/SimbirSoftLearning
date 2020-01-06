@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.data_classes.Charity
-import ru.shcherbakovdv.ss.trainee.data_classes.representations.CharityViewHolder
-import ru.shcherbakovdv.ss.trainee.data_classes.representations.OnCharityClickListener
+import ru.shcherbakovdv.ss.trainee.data.Charity
+import ru.shcherbakovdv.ss.trainee.data.representations.CharityViewHolder
+import ru.shcherbakovdv.ss.trainee.data.representations.OnCharityClickListener
 
 class CharitiesListAdapter(private val charityArray: Array<Charity>, private val onCharityClickListener : OnCharityClickListener) : RecyclerView.Adapter<CharityViewHolder>() {
 

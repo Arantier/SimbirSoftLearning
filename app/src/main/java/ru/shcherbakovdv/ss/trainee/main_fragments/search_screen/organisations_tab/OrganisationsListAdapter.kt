@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.data_classes.Organisation
-import ru.shcherbakovdv.ss.trainee.data_classes.representations.OrganisationViewHolder
+import ru.shcherbakovdv.ss.trainee.data.Organisation
+import ru.shcherbakovdv.ss.trainee.data.representations.OrganisationViewHolder
 
 class OrganisationsListAdapter(private val organisationArray: Array<Organisation>) : RecyclerView.Adapter<OrganisationViewHolder>() {
 

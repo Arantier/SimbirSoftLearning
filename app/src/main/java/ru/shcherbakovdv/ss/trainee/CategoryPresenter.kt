@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import com.arellomobile.mvp.InjectViewState
-import ru.shcherbakovdv.ss.trainee.data_classes.Charity
+import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data_providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.project_classes.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.project_classes.ReactiveMvpPresenter
@@ -36,12 +36,12 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
                 .subscribe {
                     if (it) {
                         viewState.setLoadingState()
-                        if (CharitiesProvider.currentCharities == null) {
+                        if (CharitiesProvider.charities == null) {
                             CharitiesProvider.requestAllCharities()
-                                    .subscribe(({ array -> CharitiesProvider.currentCharities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
+                                    .subscribe(({ array -> CharitiesProvider.charities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
                                     .let { attachDisposable(it) }
                         } else {
-                            fillScreen(CharitiesProvider.currentCharities!!)
+                            fillScreen(CharitiesProvider.charities!!)
                         }
                     } else {
                         viewState.setErrorState()

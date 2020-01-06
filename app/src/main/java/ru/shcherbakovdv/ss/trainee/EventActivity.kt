@@ -15,7 +15,7 @@ import android.widget.TextView
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_charity.*
 import kotlinx.android.synthetic.main.content_event_screen_images.*
-import ru.shcherbakovdv.ss.trainee.data_classes.Charity
+import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.utilites.DateUtility
 import ru.shcherbakovdv.ss.trainee.data_providers.ImageProvider
 import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities

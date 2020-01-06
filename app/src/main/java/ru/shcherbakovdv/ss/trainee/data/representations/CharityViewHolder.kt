@@ -1,9 +1,9 @@
-package ru.shcherbakovdv.ss.trainee.data_classes.representations
+package ru.shcherbakovdv.ss.trainee.data.representations
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.item_event_list.view.*
-import ru.shcherbakovdv.ss.trainee.data_classes.Charity
+import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.utilites.DateUtility
 import ru.shcherbakovdv.ss.trainee.data_providers.ImageProvider
 

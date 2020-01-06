@@ -42,7 +42,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
         buttonHeart.makeVisible()
     }
 
-    override fun setUnconnectedState() {
+    override fun setDisconnectedState() {
         textToolbarTitle.text = getString(R.string.title_error)
         toolbar.menu.clear()
         toolbar.navigationIcon = null
@@ -53,11 +53,6 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
                 .commit()
         bottomNavBar.makeGone()
         buttonHeart.makeGone()
-    }
-
-    override fun requestPermissions(name: String, code: Int) {
-        ActivityCompat.requestPermissions(this,
-                arrayOf(name), code)
     }
 
     override fun selectScreen(id: Int) {
@@ -146,19 +141,5 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
     override fun onStop() {
         super.onStop()
         presenter.disposeNetwork(this)
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            STORAGE_REQUEST_CODE -> {
-                presenter.storageAvailable = (grantResults.isNotEmpty()
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            }
-        }
-    }
-
-    companion object {
-        const val STORAGE_REQUEST_CODE = 0
     }
 }

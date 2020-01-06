@@ -1,4 +1,4 @@
-package ru.shcherbakovdv.ss.trainee.data_classes
+package ru.shcherbakovdv.ss.trainee.data
 
 data class Profile(var name: String,
                    var pictureUrl: String,
