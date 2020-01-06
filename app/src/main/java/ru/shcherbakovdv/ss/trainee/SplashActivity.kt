@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.google.gson.Gson
@@ -46,8 +47,18 @@ class SplashActivity : AppCompatActivity() {
                     .subscribe({
                         startActivity(Intent(this, MainActivity::class.java))
                     }, { t ->
-                        Log.e(LOG_TAG, "Error occurred during loading data to database: $t")
-                        startActivity(Intent(this, MainActivity::class.java))
+                        // TODO: перенеси это в другое место
+                        AlertDialog.Builder(this)
+                                .setTitle(R.string.title_error)
+                                .setMessage(getString(R.string.msg_load_error))
+                                .setNegativeButton(R.string.button_close) { dialog, id ->
+                                    finish()
+                                }
+                                .setOnCancelListener {
+                                    finish()
+                                }
+                                .create()
+                                .show()
                     })
         } else {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_REQUEST_CODE)

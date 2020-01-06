@@ -18,10 +18,10 @@ class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
         }
 
     private val networkCallback = NetworkCallback()
-    private var isConnected = false
+    private var isConnected: Boolean? = null
         set(value) {
             if (value != field) {
-                if (value) {
+                if (value == true) {
                     viewState.setConnectedState()
                 } else {
                     viewState.setDisconnectedState()
