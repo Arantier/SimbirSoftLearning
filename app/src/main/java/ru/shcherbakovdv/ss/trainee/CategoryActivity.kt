@@ -7,9 +7,9 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_category.*
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.charities_tab.CharitiesListAdapter
-import ru.shcherbakovdv.ss.trainee.data.representations.OnCharityClickListener
-import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
+import ru.shcherbakovdv.ss.trainee.ui.search.charities.CharitiesListAdapter
+import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
+import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
@@ -70,7 +70,7 @@ class CategoryActivity : MvpAppCompatActivity(), OnCharityClickListener, Categor
 
     override fun onCharityEventClick(event: Charity) {
         val intent = Intent(this, EventActivity::class.java)
-        val eventJson = JsonUtilities.gson.toJson(event)
+        val eventJson = JsonUtils.gson.toJson(event)
         intent.putExtra(EventActivity.EVENT_JSON, eventJson)
         startActivity(intent)
     }

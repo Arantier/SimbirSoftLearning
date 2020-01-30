@@ -1,17 +1,15 @@
 package ru.shcherbakovdv.ss.trainee
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.ActivityCompat
 import android.view.inputmethod.EditorInfo
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.shcherbakovdv.ss.trainee.main_fragments.CategoryTypesFragment
-import ru.shcherbakovdv.ss.trainee.main_fragments.ConnectionLostFragment
-import ru.shcherbakovdv.ss.trainee.main_fragments.ProfileFragment
-import ru.shcherbakovdv.ss.trainee.main_fragments.SearchFragment
+import ru.shcherbakovdv.ss.trainee.ui.CategoryTypesFragment
+import ru.shcherbakovdv.ss.trainee.ui.ConnectionLostFragment
+import ru.shcherbakovdv.ss.trainee.ui.profile.ProfileFragment
+import ru.shcherbakovdv.ss.trainee.ui.search.SearchFragment
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 

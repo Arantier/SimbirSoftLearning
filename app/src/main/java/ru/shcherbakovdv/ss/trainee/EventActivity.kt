@@ -16,9 +16,9 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_charity.*
 import kotlinx.android.synthetic.main.content_event_screen_images.*
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.utilites.DateUtility
-import ru.shcherbakovdv.ss.trainee.data_providers.ImageProvider
-import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
+import ru.shcherbakovdv.ss.trainee.utilites.DateUtils
+import ru.shcherbakovdv.ss.trainee.data.providers.ImageProvider
+import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import java.util.regex.Pattern
 
 class EventActivity : AppCompatActivity() {
@@ -28,7 +28,7 @@ class EventActivity : AppCompatActivity() {
     private fun setupHeader(){
         toolbarTitle.text = event.title
         textTitle.text = event.title
-        textEventItemDate.text = DateUtility.eventDateIntervalRepresentation(this,event.startDate,event.endDate)
+        textEventItemDate.text = DateUtils.eventDateIntervalRepresentation(this,event.startDate,event.endDate)
         textOrganisationName.text = event.organisation.name
         textOrganisationAddress.text = event.organisation.address
         textOrganisationPhones.text = event.organisation.phones.joinToString("\n")
@@ -118,7 +118,7 @@ class EventActivity : AppCompatActivity() {
             }
             inflateMenu(R.menu.category_toolbar)
         }
-        event = JsonUtilities.gson.fromJson(intent.getStringExtra(EVENT_JSON), Charity::class.java)
+        event = JsonUtils.gson.fromJson(intent.getStringExtra(EVENT_JSON), Charity::class.java)
         setupHeader()
         setupOrganisationInfo()
         setupEventInfo()

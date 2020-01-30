@@ -4,9 +4,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import com.arellomobile.mvp.InjectViewState
-import ru.shcherbakovdv.ss.trainee.project_classes.ReactiveMvpPresenter
-import ru.shcherbakovdv.ss.trainee.main_fragments.search_screen.SearchFieldNotifier
-import ru.shcherbakovdv.ss.trainee.project_classes.NetworkCallback
+import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
+import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
+import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
 
 @InjectViewState
 class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {

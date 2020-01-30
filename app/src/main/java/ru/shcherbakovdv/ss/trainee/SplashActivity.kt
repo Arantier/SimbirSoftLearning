@@ -19,7 +19,7 @@ import org.threeten.bp.format.DateTimeFormatter
 import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.RealmCategory
 import ru.shcherbakovdv.ss.trainee.data.RealmCharity
-import ru.shcherbakovdv.ss.trainee.utilites.JsonUtilities
+import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import java.io.File
 import java.io.FileReader
 
@@ -40,26 +40,12 @@ class SplashActivity : AppCompatActivity() {
             realm.deleteAll()
         }
 
-
         val isStorageAvailable = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
         if (isStorageAvailable) {
             disposable = loadAndSave()
                     .subscribe({
                         startActivity(Intent(this, MainActivity::class.java))
-                    }, { t ->
-                        // TODO: перенеси это в другое место
-                        AlertDialog.Builder(this)
-                                .setTitle(R.string.title_error)
-                                .setMessage(getString(R.string.msg_load_error))
-                                .setNegativeButton(R.string.button_close) { dialog, id ->
-                                    finish()
-                                }
-                                .setOnCancelListener {
-                                    finish()
-                                }
-                                .create()
-                                .show()
-                    })
+                    }, { t -> showErrorMessage() })
         } else {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_REQUEST_CODE)
         }
@@ -79,19 +65,32 @@ class SplashActivity : AppCompatActivity() {
                     disposable = loadAndSave()
                             .subscribe({
                                 startActivity(Intent(this, MainActivity::class.java))
-                            }, { t ->
-                                Log.e(LOG_TAG, "Error occurred during loading data to database: $t")
-                                startActivity(Intent(this, MainActivity::class.java))
-                            })
+                            }, { t -> showErrorMessage() })
                 } else {
                     Log.e(LOG_TAG, "Storage permission wasn't granted")
-                    startActivity(Intent(this, MainActivity::class.java))
+                    showErrorMessage()
                 }
             }
         }
     }
 
-    fun loadData(): Single<Pair<Array<RealmCategory>, Array<RealmCharity>>> {
+    private fun showErrorMessage() {
+        // TODO: перенеси это в другое место
+        AlertDialog.Builder(this)
+                .setTitle(R.string.title_error)
+                .setMessage(getString(R.string.msg_load_error))
+                .setNegativeButton(R.string.button_close) { dialog, id ->
+                    finish()
+                }
+                .setOnCancelListener {
+                    finish()
+                }
+                .create()
+                .show()
+
+    }
+
+    private fun loadData(): Single<Pair<Array<RealmCategory>, Array<RealmCharity>>> {
         val categoriesJson = File("/sdcard/Download/categories.json")
         val charitiesJson = File("/sdcard/Download/events.json")
 
@@ -106,7 +105,7 @@ class SplashActivity : AppCompatActivity() {
                     charitiesFileReader.close()
 
                     val categoriesArray = Gson().fromJson<Array<RealmCategory>>(categoriesData, Array<RealmCategory>::class.java)
-                    val charitiesArray = JsonUtilities.gson.fromJson(charitiesData, Array<Charity>::class.java)
+                    val charitiesArray = JsonUtils.gson.fromJson(charitiesData, Array<Charity>::class.java)
                             .let { array ->
                                 val realmCharitiesList = ArrayList<RealmCharity>()
                                 for (charity in array) {
@@ -114,11 +113,11 @@ class SplashActivity : AppCompatActivity() {
                                             charity.categoryId,
                                             charity.title,
                                             charity.description,
-                                            JsonUtilities.toJson(charity.picturesUrlArray),
+                                            JsonUtils.toJson(charity.picturesUrlArray),
                                             charity.startDate.format(DateTimeFormatter.ISO_DATE),
                                             charity.endDate.format(DateTimeFormatter.ISO_DATE),
-                                            JsonUtilities.toJson(charity.organisation),
-                                            JsonUtilities.toJson(charity.donatorsPicturesUrlArray)
+                                            JsonUtils.toJson(charity.organisation),
+                                            JsonUtils.toJson(charity.donatorsPicturesUrlArray)
                                     ))
                                 }
                                 realmCharitiesList.toTypedArray()
@@ -128,7 +127,7 @@ class SplashActivity : AppCompatActivity() {
                 }
     }
 
-    fun saveDataToRealm(pair: Pair<Array<RealmCategory>, Array<RealmCharity>>): Single<Int> {
+    private fun saveDataToRealm(pair: Pair<Array<RealmCategory>, Array<RealmCharity>>): Single<Int> {
         val categoriesArray = pair.first
         val charitiesArray = pair.second
 
@@ -149,7 +148,7 @@ class SplashActivity : AppCompatActivity() {
         return Single.just(1)
     }
 
-    fun loadAndSave(): Single<Int> =
+    private fun loadAndSave(): Single<Int> =
             loadData()
                     .flatMap(::saveDataToRealm)
                     .subscribeOn(Schedulers.io())
