@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import kotlinx.android.synthetic.main.fragment_organisation_tab.*
 import kotlinx.android.synthetic.main.fragment_organisation_tab.view.*
 import ru.shcherbakovdv.ss.trainee.data.Organisation
 import ru.shcherbakovdv.ss.trainee.R
@@ -19,7 +20,6 @@ class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView
 
     @InjectPresenter
     lateinit var presenter: OrganisationsTabPresenter
-    private lateinit var fragmentView: View
 
     private fun getLocaleQuantityString(id: Int, quantity: Int): String {
         val configuration = Configuration(context!!.resources.configuration).apply {
@@ -31,22 +31,19 @@ class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView
     override fun setContent(organisationArray: Array<Organisation>) {
         val searchResultPattern = getString(R.string.search_result_info)
         val searchResultsInfo = getLocaleQuantityString(R.plurals.organisation_search_quantity, organisationArray.size)
-        fragmentView.apply {
-            textOrganisationTabSearchInfo.text = String.format(searchResultPattern, searchResultsInfo)
-            recyclerviewOrganisationList.adapter = OrganisationsListAdapter(organisationArray)
-        }
+        textOrganisationTabSearchInfo.text = String.format(searchResultPattern, searchResultsInfo)
+        recyclerviewOrganisationList.adapter = OrganisationsListAdapter(organisationArray)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        fragmentView = inflater.inflate(R.layout.fragment_organisation_tab, container, false)
-        fragmentView.recyclerviewOrganisationList.apply {
-            val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
-            addItemDecoration(divider)
-        }
-        presenter.requestContent("")
-        return fragmentView
-    }
+                              savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_organisation_tab, container, false)
+            .apply {
+                recyclerviewOrganisationList.apply {
+                    val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+                    addItemDecoration(divider)
+                    presenter.requestContent("")
+                }
+            }
 
     companion object {
         fun newInstance() = OrganisationsTabFragment()

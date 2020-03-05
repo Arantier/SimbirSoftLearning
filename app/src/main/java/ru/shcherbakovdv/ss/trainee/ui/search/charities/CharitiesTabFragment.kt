@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import kotlinx.android.synthetic.main.fragment_charity_tab.*
 import kotlinx.android.synthetic.main.fragment_charity_tab.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Charity
@@ -21,22 +22,18 @@ class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharit
 
     @InjectPresenter
     lateinit var presenter: CharitiesTabMvpPresenter
-    private lateinit var fragmentView: View
 
     override fun setContent(charityArray: Array<Charity>) {
         if (charityArray.isEmpty()) {
-            fragmentView.layoutCharityTabBackground.makeVisible()
+            layoutCharityTabBackground.makeVisible()
         } else {
-            fragmentView.layoutCharityTabBackground.makeGone()
-            fragmentView.recyclerviewEventTab.adapter = CharitiesListAdapter(charityArray, this)
+            layoutCharityTabBackground.makeGone()
+            recyclerviewEventTab.adapter = CharitiesListAdapter(charityArray, this)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        fragmentView = inflater.inflate(R.layout.fragment_charity_tab, container, false)
-        return fragmentView
-    }
+                              savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_charity_tab, container, false)
 
     override fun onCharityEventClick(event: Charity) {
         val eventJson = JsonUtils.gson.toJson(event)
