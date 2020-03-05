@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import kotlinx.android.synthetic.main.fragment_category_screen.*
 import kotlinx.android.synthetic.main.fragment_category_screen.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.CategoryActivity
@@ -27,45 +28,34 @@ class CategoryTypesFragment : MvpAppCompatFragment(), CategoryTypesMvpView, OnCa
     @InjectPresenter
     lateinit var presenter: CategoriesTypesPresenter
 
-    private lateinit var fragmentView: View
-
     override fun onCategoryClick(id: Int, name: String) = startCategoryActivity(id, name)
 
     override fun setLoadingState() {
-        fragmentView.apply{
-            progressBar.makeVisible()
-            recyclerCategories.makeGone()
-            imageError.makeGone()
-            textError.makeGone()
-        }
+        progressBar.makeVisible()
+        recyclerCategories.makeGone()
+        imageError.makeGone()
+        textError.makeGone()
     }
 
     override fun setErrorState() {
-        fragmentView.apply{
-            recyclerCategories.makeGone()
-            progressBar.makeGone()
-            imageError.makeVisible()
-            textError.makeVisible()
-        }
+        recyclerCategories.makeGone()
+        progressBar.makeGone()
+        imageError.makeVisible()
+        textError.makeVisible()
     }
 
     override fun updateList(categories: Array<Category>) {
-        fragmentView.apply {
-            if (recyclerCategories.visibility == View.GONE) {
-                recyclerCategories.makeVisible()
-                progressBar.makeGone()
-                imageError.makeGone()
-                textError.makeGone()
-            }
-            recyclerCategories.adapter = CategoriesGridAdapter(categories, this@CategoryTypesFragment)
+        if (recyclerCategories.visibility == View.GONE) {
+            recyclerCategories.makeVisible()
+            progressBar.makeGone()
+            imageError.makeGone()
+            textError.makeGone()
         }
+        recyclerCategories.adapter = CategoriesGridAdapter(categories, this@CategoryTypesFragment)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        fragmentView = inflater.inflate(R.layout.fragment_category_screen, container, false)
-        return fragmentView
-    }
+                              savedInstanceState: Bundle?) = inflater.inflate(R.layout.fragment_category_screen, container, false)
 
     override fun onStart() {
         super.onStart()
