@@ -20,7 +20,6 @@ import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.RealmCategory
 import ru.shcherbakovdv.ss.trainee.data.RealmCharity
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
-import java.io.File
 import java.io.FileReader
 
 
@@ -91,18 +90,26 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun loadData(): Single<Pair<Array<RealmCategory>, Array<RealmCharity>>> {
-        val categoriesJson = File("/sdcard/Download/categories.json")
-        val charitiesJson = File("/sdcard/Download/events.json")
+        val categoriesJson = assets.open("categories.json")
+        val charitiesJson = assets.open("charities.json")
 
         return Single.just(Pair(categoriesJson, charitiesJson))
                 .flatMap { filePair ->
-                    val categoriesFileReader = FileReader(filePair.first)
-                    val categoriesData = categoriesFileReader.readText()
-                    categoriesFileReader.close()
+                    val categoriesData = categoriesJson.let {
+                        val size = it.available()
+                        val buffer = ByteArray(size)
+                        it.read(buffer)
+                        it.close()
+                        String(buffer)
+                    }
 
-                    val charitiesFileReader = FileReader(filePair.second)
-                    val charitiesData = charitiesFileReader.readText()
-                    charitiesFileReader.close()
+                    val charitiesData = charitiesJson.let {
+                        val size = it.available()
+                        val buffer = ByteArray(size)
+                        it.read(buffer)
+                        it.close()
+                        String(buffer)
+                    }
 
                     val categoriesArray = Gson().fromJson<Array<RealmCategory>>(categoriesData, Array<RealmCategory>::class.java)
                     val charitiesArray = JsonUtils.gson.fromJson(charitiesData, Array<Charity>::class.java)
