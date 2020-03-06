@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import com.arellomobile.mvp.InjectViewState
+import io.reactivex.Observable
 import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
@@ -33,20 +34,28 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkCallback)
         networkCallback.networkState
-                .subscribe {
+                .flatMap {
                     if (it) {
-                        viewState.setLoadingState()
-                        if (CharitiesProvider.charities == null) {
-                            CharitiesProvider.requestAllCharities()
-                                    .subscribe(({ array -> CharitiesProvider.charities = array; fillScreen(array) }), ({ t: Throwable? -> setErrorScreen(t!!) }))
-                                    .let { attachDisposable(it) }
-                        } else {
-                            fillScreen(CharitiesProvider.charities!!)
-                        }
+                        CharitiesProvider.requestAllCharities().toObservable()
                     } else {
                         viewState.setErrorState()
+                        // Не слишком изящный способ, но Observable.error() не давало результат
+                        Observable.empty<Array<Charity>>().doOnNext { throw IllegalStateException("Missing Internet connection") }
                     }
-                }.let { attachDisposable(it) }
+                }
+                .subscribe({
+                    if (!it.equals(CharitiesProvider.charities)) {
+                        viewState.setLoadingState()
+                        if (CharitiesProvider.charities == null) {
+                            CharitiesProvider.charities = it
+                        }
+                        CharitiesProvider.charities?.let { array ->
+                            fillScreen(array)
+                        }
+                    }
+                }, {
+                    setErrorScreen(it)
+                }).let { attachDisposable(it) }
     }
 
     fun disposeNetwork(context: Context) {
