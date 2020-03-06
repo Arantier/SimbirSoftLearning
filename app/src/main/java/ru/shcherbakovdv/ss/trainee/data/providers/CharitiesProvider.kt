@@ -20,7 +20,6 @@ object CharitiesProvider {
                 .findAllAsync()
                 .asFlowable()
                 .flatMap {
-                    realm.close()
                     val charitiesList = ArrayList<Charity>()
                     for (realmCharity in it) {
                         realmCharity.apply {
@@ -43,6 +42,7 @@ object CharitiesProvider {
                         }
                     }
                     charities = charitiesList.toTypedArray()
+                    realm.close()
                     charities?.let {
                         Flowable.just(it)
                     } ?: throw IllegalStateException("Empty charities")

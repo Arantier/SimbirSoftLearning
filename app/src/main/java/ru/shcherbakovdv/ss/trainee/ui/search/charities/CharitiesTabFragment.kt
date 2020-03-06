@@ -28,8 +28,8 @@ class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharit
             layoutCharityTabBackground.makeVisible()
         } else {
             layoutCharityTabBackground.makeGone()
-            recyclerviewEventTab.adapter = CharitiesListAdapter(charityArray, this)
         }
+        recyclerviewEventTab.adapter = CharitiesListAdapter(charityArray, this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
