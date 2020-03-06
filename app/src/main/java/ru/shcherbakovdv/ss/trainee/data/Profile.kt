@@ -5,4 +5,4 @@ data class Profile(var name: String,
         //TODO: Возможно стоит хранить в календарном виде
                    var birthDate: String,
                    var business: String,
-                   var friendsArray: Array<Profile>?)
+                   var friends: Array<Profile>?)

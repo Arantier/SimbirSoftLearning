@@ -10,23 +10,23 @@ object SearchFieldNotifier {
             inactiveItem = field
             field = value
 
-            if (listOfObservers[inactiveItem]::class.java == OrganisationsTabPresenter::class.java){
-                listOfObservers[inactiveItem].requestContent("")
+            if (observers[inactiveItem]::class.java == OrganisationsTabPresenter::class.java){
+                observers[inactiveItem].requestContent("")
             }
         }
-    private val listOfObservers: ArrayList<SearchFieldObserver> = ArrayList()
+    private val observers: ArrayList<SearchFieldObserver> = ArrayList()
 
     fun attachObserver(observer: SearchFieldObserver) {
-        listOfObservers.add(observer)
+        observers.add(observer)
     }
 
     fun detachObserver(observer: SearchFieldObserver) {
-        listOfObservers.remove(observer)
+        observers.remove(observer)
     }
 
     fun findContent(key: String?) {
-        if (listOfObservers.isNotEmpty()) {
-            listOfObservers[activeItem].requestContent(key)
+        if (observers.isNotEmpty()) {
+            observers[activeItem].requestContent(key)
         }
     }
 }

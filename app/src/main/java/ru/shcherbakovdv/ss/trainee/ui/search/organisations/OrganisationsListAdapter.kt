@@ -8,7 +8,7 @@ import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Organisation
 import ru.shcherbakovdv.ss.trainee.data.OrganisationViewHolder
 
-class OrganisationsListAdapter(private val organisationArray: Array<Organisation>) : RecyclerView.Adapter<OrganisationViewHolder>() {
+class OrganisationsListAdapter(private val organisations: Array<Organisation>) : RecyclerView.Adapter<OrganisationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): OrganisationViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -16,7 +16,7 @@ class OrganisationsListAdapter(private val organisationArray: Array<Organisation
         return OrganisationViewHolder(view as TextView)
     }
 
-    override fun getItemCount() = organisationArray.size
+    override fun getItemCount() = organisations.size
 
-    override fun onBindViewHolder(viewHolder: OrganisationViewHolder, position: Int) = viewHolder.bind(organisationArray[position])
+    override fun onBindViewHolder(viewHolder: OrganisationViewHolder, position: Int) = viewHolder.bind(organisations[position])
 }

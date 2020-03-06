@@ -19,7 +19,7 @@ class OrganisationsTabPresenter : MvpPresenter<OrganisationsTabMvpView>(), Searc
     }
 
     override fun requestContent(key:String?) {
-        val organisationArray = if (key.isNullOrEmpty()) emptyArray() else OrganisationsProvider.requestOrganisations()
+        val organisationArray = OrganisationsProvider.requestOrganisations()
         viewState.setContent(organisationArray)
     }
 }

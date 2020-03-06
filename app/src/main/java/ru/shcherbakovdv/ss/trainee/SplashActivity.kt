@@ -20,7 +20,6 @@ import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.RealmCategory
 import ru.shcherbakovdv.ss.trainee.data.RealmCharity
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
-import java.io.FileReader
 
 
 class SplashActivity : AppCompatActivity() {

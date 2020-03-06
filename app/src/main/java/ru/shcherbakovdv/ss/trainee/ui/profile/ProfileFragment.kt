@@ -2,7 +2,6 @@ package ru.shcherbakovdv.ss.trainee.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -24,7 +23,7 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
         textUserScreenName.text = profile.name
         textUserScreenBirth.text = profile.birthDate
         textUserScreenBusiness.text = profile.business
-        recyclerviewUserScreenFriends.adapter = FriendsListAdapter(profile.friendsArray)
+        recyclerviewUserScreenFriends.adapter = FriendsListAdapter(profile.friends)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

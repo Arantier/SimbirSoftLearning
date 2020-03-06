@@ -8,7 +8,7 @@ import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.CharityViewHolder
 import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
 
-class CharitiesListAdapter(private val charityArray: Array<Charity>, private val onCharityClickListener : OnCharityClickListener) : RecyclerView.Adapter<CharityViewHolder>() {
+class CharitiesListAdapter(private val charities: Array<Charity>, private val onCharityClickListener : OnCharityClickListener) : RecyclerView.Adapter<CharityViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, state: Int): CharityViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -16,8 +16,8 @@ class CharitiesListAdapter(private val charityArray: Array<Charity>, private val
         return CharityViewHolder(view, onCharityClickListener)
     }
 
-    override fun getItemCount() = charityArray.size
+    override fun getItemCount() = charities.size
 
-    override fun onBindViewHolder(viewHolder: CharityViewHolder, item: Int) = viewHolder.bind(charityArray[item])
+    override fun onBindViewHolder(viewHolder: CharityViewHolder, item: Int) = viewHolder.bind(charities[item])
 
 }
