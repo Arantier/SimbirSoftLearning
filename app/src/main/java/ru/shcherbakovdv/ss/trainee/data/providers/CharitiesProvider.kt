@@ -27,7 +27,7 @@ object CharitiesProvider {
                                     categoryId ?: 0,
                                     title ?: "",
                                     description ?: "",
-                                    JsonUtils.fromJson(picturesUrlArray, Array<String>::class.java)
+                                    JsonUtils.fromJson(picturesUrls, Array<String>::class.java)
                                             ?: throw java.lang.IllegalStateException("Bad charity field: pictures url array is null"),
                                     JsonUtils.fromJson(startDate, LocalDate::class.java)
                                             ?: throw java.lang.IllegalStateException("Bad field: start date is null"),
@@ -35,7 +35,7 @@ object CharitiesProvider {
                                             ?: throw java.lang.IllegalStateException("Bad field: end date is null"),
                                     JsonUtils.fromJson(organisation, Organisation::class.java)
                                             ?: throw java.lang.IllegalStateException("Bad field: organisation is null"),
-                                    JsonUtils.fromJson(donatorsPicturesUrlArray, Array<String>::class.java)
+                                    JsonUtils.fromJson(donatorsPicturesUrls, Array<String>::class.java)
                                             ?: throw java.lang.IllegalStateException("Bad field: donators pictures url array is null")
                             )
                             charitiesList.add(charity)

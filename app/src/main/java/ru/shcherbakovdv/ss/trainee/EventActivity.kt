@@ -81,16 +81,16 @@ class EventActivity : AppCompatActivity() {
 
     private fun setupEventInfo(){
         ImageProvider.apply {
-            loadImage(event.picturesUrlArray[0], imageBig)
-            loadImage(event.picturesUrlArray[1], imageSmallTop)
-            loadImage(event.picturesUrlArray[2], imageSmallBottom)
+            loadImage(event.picturesUrls[0], imageBig)
+            loadImage(event.picturesUrls[1], imageSmallTop)
+            loadImage(event.picturesUrls[2], imageSmallBottom)
         }
         textDescription.text = event.description
     }
 
     private fun setupSocials(){
-        val donatorsToShow = Math.min(event.donatorsPicturesUrlArray.size, 5)
-        val pictureUrlArray = event.donatorsPicturesUrlArray.slice(0 until donatorsToShow)
+        val donatorsToShow = Math.min(event.donatorsPicturesUrls.size, 5)
+        val pictureUrlArray = event.donatorsPicturesUrls.slice(0 until donatorsToShow)
         for (i in 0 until pictureUrlArray.size) {
             val donatorPhotoView = CircleImageView(this).apply {
                 setupFriendPictureAppearance()
@@ -99,10 +99,10 @@ class EventActivity : AppCompatActivity() {
             ImageProvider.loadImage(pictureUrlArray[i], donatorPhotoView)
             layoutDonatorsBar.addView(donatorPhotoView)
         }
-        if (event.donatorsPicturesUrlArray.size - donatorsToShow > 0) {
+        if (event.donatorsPicturesUrls.size - donatorsToShow > 0) {
             val donatorCountView = TextView(this).apply {
                 setupCounterAppearance()
-                text = "+${event.donatorsPicturesUrlArray.size - donatorsToShow}"
+                text = "+${event.donatorsPicturesUrls.size - donatorsToShow}"
             }
             layoutDonatorsBar.addView(donatorCountView)
         }

@@ -119,11 +119,11 @@ class SplashActivity : AppCompatActivity() {
                                             charity.categoryId,
                                             charity.title,
                                             charity.description,
-                                            JsonUtils.toJson(charity.picturesUrlArray),
+                                            JsonUtils.toJson(charity.picturesUrls),
                                             charity.startDate.format(DateTimeFormatter.ISO_DATE),
                                             charity.endDate.format(DateTimeFormatter.ISO_DATE),
                                             JsonUtils.toJson(charity.organisation),
-                                            JsonUtils.toJson(charity.donatorsPicturesUrlArray)
+                                            JsonUtils.toJson(charity.donatorsPicturesUrls)
                                     ))
                                 }
                                 realmCharitiesList.toTypedArray()
@@ -155,8 +155,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun loadAndSave(): Single<Int> =
-            loadData()
-                    .flatMap(::saveDataToRealm)
+            loadData().flatMap(::saveDataToRealm)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
 

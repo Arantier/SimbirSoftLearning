@@ -13,7 +13,7 @@ class CharityViewHolder(val view: View, private val onCharityClickListener : OnC
             titleEventItem.text = event.title
             textEventItemDescription.text = event.description
             textEventItemDate.text = DateUtils.eventDateIntervalRepresentation(context,event.startDate,event.endDate)
-            ImageProvider.loadImage(event.picturesUrlArray.first(),imageEventItem)
+            ImageProvider.loadImage(event.picturesUrls.first(),imageEventItem)
             setOnClickListener {
                 onCharityClickListener.onCharityEventClick(event)
             }

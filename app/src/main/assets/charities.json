@@ -3,7 +3,7 @@
 		"categoryId":0,
 		"title":"Помощь детям войны",
 		"description":"ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы",
-		"picturesUrlArray":[
+		"picturesUrls":[
 			"http://pre12.deviantart.net/5afb/th/pre/f/2016/058/d/1/geralt__ciri_by_cyberaeon-d9t9oqi.jpg",
 			"https://i.pinimg.com/originals/64/e2/ba/64e2ba6d8f5df26046f1cd2e1570c8b6.jpg",
 			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYX0hZhNXIXcBxGfIg5a6_rHkQ4L02bHPVKAYEedlV8CXsOVu"
@@ -20,7 +20,7 @@
 			"email":"kaer-morhen@mail.te",
 			"site":"http://kaer-morhen.te"
 		},
-		"donatorsPicturesUrlArray":[
+		"donatorsPicturesUrls":[
 			"https://vignette.wikia.nocookie.net/vedmak/images/3/36/%D0%92%D0%B5%D1%81%D0%B5%D0%BC%D0%B8%D1%80_%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20170713222536",
 			"https://games-reviews.net/_pu/10/10771191.png",
 			"https://vignette.wikia.nocookie.net/vedmak/images/6/6c/%D0%A0%D0%B5%D0%BD%D0%B4%D0%B5%D1%80_%D0%A2%D1%80%D0%B8%D1%81%D1%81_FotWW.jpg/revision/latest/zoom-crop/width/320/height/320?cb=20170710230955",
@@ -37,7 +37,7 @@
 		"categoryId":1,
 		"title":"Сбор пищи для бездомных",
 		"description":"ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы",
-		"picturesUrlArray":[
+		"picturesUrls":[
 			"https://core-rpg.net/arts/2017/02/17/witcher/gunter_3.png",
 			"https://ru.ostrog.com/image-q85/vedmak-3-dikaya-oxota---krov-i-vino-20109-1525346025296.jpeg",
 			"https://www.artshop-rus.com/upload/iblock/2c0/2c06854f2d52579a06955609994dede7.JPG"
@@ -54,7 +54,7 @@
 			"email":"abcdefg@higk.lm",
 			"site":"http://abcd.ef"
 		},
-		"donatorsPicturesUrlArray":[
+		"donatorsPicturesUrls":[
 			"https://vignette.wikia.nocookie.net/vedmak/images/3/36/%D0%92%D0%B5%D1%81%D0%B5%D0%BC%D0%B8%D1%80_%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20170713222536",
 			"https://games-reviews.net/_pu/10/10771191.png",
 			"https://vignette.wikia.nocookie.net/vedmak/images/6/6c/%D0%A0%D0%B5%D0%BD%D0%B4%D0%B5%D1%80_%D0%A2%D1%80%D0%B8%D1%81%D1%81_FotWW.jpg/revision/latest/zoom-crop/width/320/height/320?cb=20170710230955",
@@ -69,7 +69,7 @@
 		"categoryId":2,
 		"title":"Психологическая помощь пожилым людям",
 		"description":"ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы",
-		"picturesUrlArray":[
+		"picturesUrls":[
 			"https://i.ytimg.com/vi/4jaRog1X23k/maxresdefault.jpg",
 			"https://games-reviews.net/_pu/7/01945140.jpg",
 			"https://www.xgamers.ru/Handler1.ashx?id=141"
@@ -86,14 +86,14 @@
 			"email":"abcdefg@higk.lm",
 			"site":"http://abcd.ef"
 		},
-		"donatorsPicturesUrlArray":[
+		"donatorsPicturesUrls":[
 		]
 	},
 	{
 		"categoryId":3,
 		"title":"Уход за животными",
 		"description":"ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы",
-		"picturesUrlArray":[
+		"picturesUrls":[
 			"https://upload.wikimedia.org/wikipedia/commons/6/65/Goats_Go_Inspecting..jpg",
 			"https://agronomu.com/media/res/4/4/6/1/3/44613.ou25uo.300.jpg",
 			"https://www.proza.ru/pics/2015/11/18/1744.jpg"
@@ -110,7 +110,7 @@
 			"email":"abcdefg@higk.lm",
 			"site":"http://abcd.ef"
 		},
-		"donatorsPicturesUrlArray":[
+		"donatorsPicturesUrls":[
 			"https://vignette.wikia.nocookie.net/vedmak/images/4/42/%D0%92%D0%BE%D1%80%D0%BE%D0%B6%D0%B5%D0%B9.png/revision/latest?cb=20160518155827"
 		]
 	},
@@ -118,7 +118,7 @@
 		"categoryId":4,
 		"title":"Организация митингов",
 		"description":"ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы",
-		"picturesUrlArray":[
+		"picturesUrls":[
 			"https://cs7.pikabu.ru/post_img/2017/12/07/5/1512630605131548199.jpg",
 			"http://www.gamer.ru/system/attached_images/images/000/719/496/original/15.png",
 			"http://i.imgur.com/YcaZN8ql.jpg"
@@ -135,7 +135,7 @@
 			"email":"abcdefg@higk.lm",
 			"site":"http://abcd.ef"
 		},
-		"donatorsPicturesUrlArray":[
+		"donatorsPicturesUrls":[
 			"https://cs6.pikabu.ru/post_img/2017/07/01/8/1498911780126285547.jpg",
 			"https://vignette.wikia.nocookie.net/vedmak/images/c/c7/BmSgn3TRrlQ.jpg/revision/latest/top-crop/width/480/height/480?cb=20151018153628",
 			"https://cs8.pikabu.ru/post_img/big/2016/12/06/2/1480984121185088016.jpg",
