@@ -13,6 +13,7 @@ import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.EventActivity
 import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
+import ru.shcherbakovdv.ss.trainee.utilites.Logger
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
@@ -37,9 +38,14 @@ class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharit
 
     override fun onCharityEventClick(event: Charity) {
         val eventJson = JsonUtils.gson.toJson(event)
-        val intent = context!!.getClassIntent<EventActivity>()
-        intent.putExtra(EventActivity.EVENT_JSON, eventJson)
-        startActivity(intent)
+        context?.let { context ->
+            val intent = context.getClassIntent<EventActivity>()
+            intent.putExtra(EventActivity.EVENT_JSON, eventJson)
+            startActivity(intent)
+        }
+        if (context==null) {
+            Logger.flatError("Context is null in CharitiesTabFragment")
+        }
     }
 
     companion object {

@@ -51,13 +51,10 @@ object CharitiesProvider {
     }
 
     fun requestCharities(key: String): Flowable<Array<Charity>> {
-        if (charities != null) {
-            return Flowable.just(charities!!.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray())
-        } else {
-            return requestAllCharities()
-                    .map { array: Array<Charity> ->
-                        array.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray()
-                    }
+        return charities?.let { charities ->
+            Flowable.just(charities.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray())
+        } ?: requestAllCharities().map { array: Array<Charity> ->
+            array.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray()
         }
     }
 

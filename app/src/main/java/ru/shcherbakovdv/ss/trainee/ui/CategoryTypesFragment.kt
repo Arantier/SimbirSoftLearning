@@ -18,6 +18,7 @@ import ru.shcherbakovdv.ss.trainee.ui.categories.CategoriesGridAdapter
 import ru.shcherbakovdv.ss.trainee.ui.categories.CategoryTypesMvpView
 import ru.shcherbakovdv.ss.trainee.ui.categories.CategoriesTypesPresenter
 import ru.shcherbakovdv.ss.trainee.data.OnCategoryClickListener
+import ru.shcherbakovdv.ss.trainee.utilites.Logger
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
@@ -59,7 +60,9 @@ class CategoryTypesFragment : MvpAppCompatFragment(), CategoryTypesMvpView, OnCa
 
     override fun onStart() {
         super.onStart()
-        val storageAvailable = ContextCompat.checkSelfPermission(context!!, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+        val storageAvailable = context?.let { context ->
+            ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+        } ?: false
         if (storageAvailable) {
             presenter.requestCategories()
         } else {
@@ -68,11 +71,16 @@ class CategoryTypesFragment : MvpAppCompatFragment(), CategoryTypesMvpView, OnCa
     }
 
     private fun startCategoryActivity(id: Int, name: String) {
-        val intent = context!!.getClassIntent<CategoryActivity>().apply {
-            putExtra(CategoryActivity.CATEGORY_ID, id)
-            putExtra(CategoryActivity.CATEGORY_NAME, name)
+        context?.let {context ->
+            val intent = context.getClassIntent<CategoryActivity>().apply {
+                putExtra(CategoryActivity.CATEGORY_ID, id)
+                putExtra(CategoryActivity.CATEGORY_NAME, name)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
+        if (context == null) {
+            Logger.flatError("Context is null in CategoryTypesFragment")
+        }
     }
 
     companion object {

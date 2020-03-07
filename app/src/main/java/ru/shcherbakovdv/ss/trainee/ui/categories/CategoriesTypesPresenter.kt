@@ -8,9 +8,10 @@ import ru.shcherbakovdv.ss.trainee.data.providers.CategoriesProvider
 class CategoriesTypesPresenter : ReactiveMvpPresenter<CategoryTypesMvpView>() {
     fun requestCategories() {
         viewState.setLoadingState()
-        if (CategoriesProvider.categories != null) {
-            viewState.updateList(CategoriesProvider.categories!!)
-        } else {
+        CategoriesProvider.categories?.let {
+            viewState.updateList(it)
+        }
+        if (CategoriesProvider.categories == null) {
             CategoriesProvider.requestCategoriesFile()
                     .subscribe({ array -> viewState.updateList(array) }, { t: Throwable? -> viewState.setErrorState() })
                     .let { attachDisposable(it) }

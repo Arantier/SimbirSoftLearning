@@ -22,10 +22,12 @@ class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView
     lateinit var presenter: OrganisationsTabPresenter
 
     private fun getLocaleQuantityString(id: Int, quantity: Int): String {
-        val configuration = Configuration(context!!.resources.configuration).apply {
-            setLocale(Locale("ru"))
-        }
-        return context!!.createConfigurationContext(configuration).resources.getQuantityString(id, quantity, quantity)
+        return context?.let {context->
+            val configuration = Configuration(context.resources.configuration).apply {
+                setLocale(Locale("ru"))
+            }
+            context.createConfigurationContext(configuration).resources.getQuantityString(id, quantity, quantity)
+        } ?: ""
     }
 
     override fun setContent(organisationArray: Array<Organisation>) {
