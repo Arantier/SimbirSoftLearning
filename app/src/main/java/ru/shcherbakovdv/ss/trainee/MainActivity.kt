@@ -6,6 +6,7 @@ import android.view.inputmethod.EditorInfo
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_category_list.view.*
 import ru.shcherbakovdv.ss.trainee.ui.CategoryTypesFragment
 import ru.shcherbakovdv.ss.trainee.ui.ConnectionLostFragment
 import ru.shcherbakovdv.ss.trainee.ui.profile.ProfileFragment
@@ -57,6 +58,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
         toolbar.menu.clear()
         toolbar.navigationIcon = null
         textToolbarTitle.makeVisible()
+        edittextToolbarSearch.text.clear()
         layoutToolbarSearch.makeGone()
 
         when (id) {
@@ -71,9 +73,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
                 toolbar.apply {
                     inflateMenu(R.menu.search_toolbar)
                     menu.getItem(0).setOnMenuItemClickListener { item ->
-                        textToolbarTitle.makeGone()
-                        layoutToolbarSearch.makeVisible()
-                        menu.clear()
+                        presenter.prepareForSearch()
                         true
                     }
                 }
@@ -100,6 +100,12 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
                     .replace(R.id.fragmentContainer, ConnectionLostFragment.newInstance(getString(R.string.undefined_error)), ConnectionLostFragment.TAG)
                     .commit()
         }
+    }
+
+    override fun showSearchBar() {
+        textToolbarTitle.makeGone()
+        layoutToolbarSearch.makeVisible()
+        toolbar.menu.clear()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

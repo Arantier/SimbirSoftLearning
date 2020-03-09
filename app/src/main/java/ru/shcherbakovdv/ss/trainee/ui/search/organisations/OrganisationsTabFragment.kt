@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_organisation_tab.*
 import kotlinx.android.synthetic.main.fragment_organisation_tab.view.*
 import ru.shcherbakovdv.ss.trainee.data.Organisation
 import ru.shcherbakovdv.ss.trainee.R
+import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
 import java.util.*
 
 class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView {
@@ -43,7 +44,6 @@ class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView
                 recyclerviewOrganisationList.apply {
                     val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
                     addItemDecoration(divider)
-                    presenter.requestContent("")
                 }
             }
 

@@ -15,27 +15,26 @@ import ru.shcherbakovdv.ss.trainee.utilites.Logger
 class SearchFragment : MvpAppCompatFragment() {
 
     private lateinit var viewPager: ViewPager
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View =
+            inflater.inflate(R.layout.fragment_search_screen, container, false).apply {
+                viewPager = viewpagerSearchScreen.apply {
+                    adapter = SearchTabPagerAdapter(childFragmentManager, context)
+                    addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+                        override fun onPageScrollStateChanged(p0: Int) = Unit
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_search_screen, container, false)
-        viewPager = view.viewpagerSearchScreen.apply {
-            adapter = SearchTabPagerAdapter(childFragmentManager, context)
-            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(p0: Int) = Unit
+                        override fun onPageScrolled(p0: Int, p1: Float, p2: Int) = Unit
 
-                override fun onPageScrolled(p0: Int, p1: Float, p2: Int) = Unit
+                        override fun onPageSelected(position: Int) {
+                            SearchFieldNotifier.activeItem = position
+                            Logger.flatDebug("Page was swapped on position $position")
+                        }
 
-                override fun onPageSelected(position: Int) {
-                    SearchFieldNotifier.activeItem = position
-                    Logger.flatDebug("Page was swapped on position $position")
+                    })
+                    currentItem = savedInstanceState?.getInt("position") ?: 0
                 }
-
-            })
-        }
-        viewPager.currentItem = savedInstanceState?.getInt("position") ?: 0
-        return view
-    }
+            }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

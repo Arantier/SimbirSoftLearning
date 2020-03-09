@@ -30,7 +30,13 @@ class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
             }
         }
 
-    fun findContent(key: String) = SearchFieldNotifier.findContent(key)
+    fun prepareForSearch() {
+        viewState.showSearchBar()
+    }
+
+    fun findContent(key: String) {
+        SearchFieldNotifier.searchField.onNext(key)
+    }
 
     fun observeNetwork(context: Context) {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

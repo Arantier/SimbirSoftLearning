@@ -1,8 +1,10 @@
 package ru.shcherbakovdv.ss.trainee.ui.search
 
-import ru.shcherbakovdv.ss.trainee.ui.search.organisations.OrganisationsTabPresenter
+import io.reactivex.subjects.BehaviorSubject
 
 object SearchFieldNotifier {
+
+    val searchField: BehaviorSubject<String> = BehaviorSubject.create()
 
     private var inactiveItem = 1
     var activeItem = 0
@@ -10,23 +12,8 @@ object SearchFieldNotifier {
             inactiveItem = field
             field = value
 
-            if (observers[inactiveItem]::class.java == OrganisationsTabPresenter::class.java){
-                observers[inactiveItem].requestContent("")
+            if (value == 1) {
+                searchField.onNext(searchField.value ?: "")
             }
         }
-    private val observers: ArrayList<SearchFieldObserver> = ArrayList()
-
-    fun attachObserver(observer: SearchFieldObserver) {
-        observers.add(observer)
-    }
-
-    fun detachObserver(observer: SearchFieldObserver) {
-        observers.remove(observer)
-    }
-
-    fun findContent(key: String?) {
-        if (observers.isNotEmpty()) {
-            observers[activeItem].requestContent(key)
-        }
-    }
 }

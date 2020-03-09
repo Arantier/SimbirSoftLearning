@@ -4,19 +4,13 @@ import com.arellomobile.mvp.InjectViewState
 import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
-import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldObserver
 
 @InjectViewState
-class CharitiesTabMvpPresenter : ReactiveMvpPresenter<CharityTabMvpView>(), SearchFieldObserver {
+class CharitiesTabMvpPresenter : ReactiveMvpPresenter<CharityTabMvpView>() {
 
     init {
-        SearchFieldNotifier.attachObserver(this)
-    }
-
-    override fun onDestroy() = SearchFieldNotifier.detachObserver(this)
-
-    override fun requestContent(key: String?) {
-        CharitiesProvider.requestCharities(key ?: "")
+        SearchFieldNotifier.searchField
+                .flatMap { key -> CharitiesProvider.requestCharities(key).toObservable() }
                 .subscribe { array -> viewState.setContent(array) }
                 .let { attachDisposable(it) }
     }

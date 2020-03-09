@@ -9,6 +9,8 @@ interface MainMvpView : MvpView {
 
     fun selectScreen(id: Int)
 
+    fun showSearchBar()
+
     fun setDisconnectedState()
 
     fun setConnectedState()
