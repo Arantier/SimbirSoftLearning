@@ -5,7 +5,7 @@ import ru.shcherbakovdv.ss.trainee.data.Profile
 object ProfileModel {
 
     //TODO: Как только появится более точная модель - переделай
-    private val testFriendsArray = arrayOf(
+    private val mockFriends = arrayOf(
             Profile("Дмитрий Валерьевич",
                     "https://cdn.zeplin.io/5a8295e8de62056425a09dbc/assets/E0F81DAD-ED24-4342-957A-8DC6B274A0BA.png",
                     "",
@@ -26,5 +26,5 @@ object ProfileModel {
             "https://cdn.zeplin.io/5a8295e8de62056425a09dbc/assets/1D81E1C0-76EC-48C4-9272-A6411B832DF4.png",
             "01 февраля 1980",
             "Хирургия, травмотология",
-            testFriendsArray)
+            mockFriends)
 }

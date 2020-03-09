@@ -8,6 +8,6 @@ import ru.shcherbakovdv.ss.trainee.data.Organisation
 interface OrganisationsTabMvpView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun setContent(organisationArray: Array<Organisation>)
+    fun setContent(organisations: Array<Organisation>)
 
 }

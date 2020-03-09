@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -14,7 +13,6 @@ import kotlinx.android.synthetic.main.fragment_organisation_tab.*
 import kotlinx.android.synthetic.main.fragment_organisation_tab.view.*
 import ru.shcherbakovdv.ss.trainee.data.Organisation
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
 import java.util.*
 
 class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView {
@@ -31,11 +29,11 @@ class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView
         } ?: ""
     }
 
-    override fun setContent(organisationArray: Array<Organisation>) {
+    override fun setContent(organisations: Array<Organisation>) {
         val searchResultPattern = getString(R.string.search_result_info)
-        val searchResultsInfo = getLocaleQuantityString(R.plurals.organisation_search_quantity, organisationArray.size)
+        val searchResultsInfo = getLocaleQuantityString(R.plurals.organisation_search_quantity, organisations.size)
         textOrganisationTabSearchInfo.text = String.format(searchResultPattern, searchResultsInfo)
-        recyclerviewOrganisationList.adapter = OrganisationsListAdapter(organisationArray)
+        recyclerviewOrganisationList.adapter = OrganisationsListAdapter(organisations)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
