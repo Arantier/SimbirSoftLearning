@@ -4,11 +4,12 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
 import com.arellomobile.mvp.InjectViewState
-import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
+import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
 
 @InjectViewState
@@ -34,28 +35,18 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkCallback)
         networkCallback.networkState
-                .flatMap {
-                    if (it) {
-                        CharitiesProvider.requestAllCharities().toObservable()
-                    } else {
+                .flatMap { isNetAvailable ->
+                    if (!isNetAvailable) {
                         viewState.setErrorState()
-                        // Не слишком изящный способ, но Observable.error() не давало результат
-                        Observable.empty<Array<Charity>>().doOnNext { throw IllegalStateException("Missing Internet connection") }
+                        throw IllegalStateException("Missing Internet connection")
                     }
-                }
-                .subscribe({
-                    if (!it.equals(CharitiesProvider.charities)) {
-                        viewState.setLoadingState()
-                        if (CharitiesProvider.charities == null) {
-                            CharitiesProvider.charities = it
-                        }
-                        CharitiesProvider.charities?.let { array ->
-                            fillScreen(array)
-                        }
-                    }
-                }, {
-                    setErrorScreen(it)
-                }).let { attachDisposable(it) }
+                    // CharitiesProvider.requestAllCharities()
+                        //    .toList().toObservable().map { it.toTypedArray() }
+                    CharitiesProvider.requestAllCharitiesAsArray()
+                }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ fillScreen(it) }, { setErrorScreen(it) })
+                .let { attachDisposable(it) }
     }
 
     fun disposeNetwork(context: Context) {

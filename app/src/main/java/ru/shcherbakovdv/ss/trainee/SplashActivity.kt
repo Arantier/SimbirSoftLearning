@@ -20,6 +20,8 @@ import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.RealmCategory
 import ru.shcherbakovdv.ss.trainee.data.RealmCharity
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
+import java.io.IOException
+import java.io.InputStream
 
 
 class SplashActivity : AppCompatActivity() {
@@ -88,50 +90,54 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
-    private fun loadData(): Single<Pair<Array<RealmCategory>, Array<RealmCharity>>> {
-        val categoriesJson = assets.open("categories.json")
-        val charitiesJson = assets.open("charities.json")
-
-        return Single.just(Pair(categoriesJson, charitiesJson))
-                .flatMap { filePair ->
-                    val categoriesData = categoriesJson.let {
-                        val size = it.available()
-                        val buffer = ByteArray(size)
-                        it.read(buffer)
-                        it.close()
-                        String(buffer)
-                    }
-
-                    val charitiesData = charitiesJson.let {
-                        val size = it.available()
-                        val buffer = ByteArray(size)
-                        it.read(buffer)
-                        it.close()
-                        String(buffer)
-                    }
-
-                    val categoriesArray = Gson().fromJson<Array<RealmCategory>>(categoriesData, Array<RealmCategory>::class.java)
-                    val charitiesArray = JsonUtils.gson.fromJson(charitiesData, Array<Charity>::class.java)
-                            .let { array ->
-                                val realmCharitiesList = ArrayList<RealmCharity>()
-                                for (charity in array) {
-                                    realmCharitiesList.add(RealmCharity(
-                                            charity.categoryId,
-                                            charity.title,
-                                            charity.description,
-                                            JsonUtils.toJson(charity.picturesUrls),
-                                            charity.startDate.format(DateTimeFormatter.ISO_DATE),
-                                            charity.endDate.format(DateTimeFormatter.ISO_DATE),
-                                            JsonUtils.toJson(charity.organisation),
-                                            JsonUtils.toJson(charity.donatorsPicturesUrls)
-                                    ))
-                                }
-                                realmCharitiesList.toTypedArray()
-                            }
-
-                    Single.just(Pair(categoriesArray, charitiesArray))
+    private fun loadData(): Single<Pair<Array<RealmCategory>, Array<RealmCharity>>> =
+            Single.create<Pair<InputStream, InputStream>> {
+                try {
+                    it.onSuccess(Pair(
+                            assets.open("categories.json"),
+                            assets.open("charities.json")
+                    ))
+                } catch (exception: IOException) {
+                    it.onError(exception)
                 }
-    }
+            }.flatMap { filePair ->
+                val categoriesData = filePair.first.let {
+                    val size = it.available()
+                    val buffer = ByteArray(size)
+                    it.read(buffer)
+                    it.close()
+                    String(buffer)
+                }
+
+                val charitiesData = filePair.second.let {
+                    val size = it.available()
+                    val buffer = ByteArray(size)
+                    it.read(buffer)
+                    it.close()
+                    String(buffer)
+                }
+
+                val categoriesArray = Gson().fromJson<Array<RealmCategory>>(categoriesData, Array<RealmCategory>::class.java)
+                val charitiesArray = JsonUtils.gson.fromJson(charitiesData, Array<Charity>::class.java)
+                        .let { array ->
+                            val realmCharitiesList = ArrayList<RealmCharity>()
+                            for (charity in array) {
+                                realmCharitiesList.add(RealmCharity(
+                                        charity.categoryId,
+                                        charity.title,
+                                        charity.description,
+                                        JsonUtils.toJson(charity.picturesUrls),
+                                        charity.startDate.format(DateTimeFormatter.ISO_DATE),
+                                        charity.endDate.format(DateTimeFormatter.ISO_DATE),
+                                        JsonUtils.toJson(charity.organisation),
+                                        JsonUtils.toJson(charity.donatorsPicturesUrls)
+                                ))
+                            }
+                            realmCharitiesList.toTypedArray()
+                        }
+
+                Single.just(Pair(categoriesArray, charitiesArray))
+            }
 
     private fun saveDataToRealm(pair: Pair<Array<RealmCategory>, Array<RealmCharity>>): Single<Int> {
         val categoriesArray = pair.first
@@ -155,7 +161,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun loadAndSave(): Single<Int> =
-            loadData().flatMap(::saveDataToRealm)
+            loadData().flatMap(this::saveDataToRealm)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
 

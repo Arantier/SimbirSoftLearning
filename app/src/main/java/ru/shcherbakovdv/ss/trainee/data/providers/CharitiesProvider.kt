@@ -1,63 +1,73 @@
 package ru.shcherbakovdv.ss.trainee.data.providers
 
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.Observable
 import io.realm.Realm
-import org.threeten.bp.LocalDate
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.data.Organisation
 import ru.shcherbakovdv.ss.trainee.data.RealmCharity
-import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
+import java.util.*
 
 object CharitiesProvider {
 
-    var charities: Array<Charity>? = null
-    lateinit var realm: Realm
-
-    fun requestAllCharities(): Single<Array<Charity>> {
-        realm = Realm.getDefaultInstance()
+    fun requestAllCharities(): Observable<Charity> {
+        val realm = Realm.getDefaultInstance()
         return realm.where(RealmCharity::class.java)
                 .findAllAsync()
                 .asFlowable()
-                .firstOrError()
+                .toObservable()
                 .flatMap {
-                    val charitiesList = ArrayList<Charity>()
-                    for (realmCharity in it) {
-                        realmCharity.apply {
-                            val charity = Charity(
-                                    categoryId ?: 0,
-                                    title ?: "",
-                                    description ?: "",
-                                    JsonUtils.fromJson(picturesUrls, Array<String>::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad charity field: pictures url array is null"),
-                                    JsonUtils.fromJson(startDate, LocalDate::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad field: start date is null"),
-                                    JsonUtils.fromJson(endDate, LocalDate::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad field: end date is null"),
-                                    JsonUtils.fromJson(organisation, Organisation::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad field: organisation is null"),
-                                    JsonUtils.fromJson(donatorsPicturesUrls, Array<String>::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad field: donators pictures url array is null")
-                            )
-                            charitiesList.add(charity)
-                        }
-                    }
-                    charities = charitiesList.toTypedArray()
-                    realm.close()
-                    charities?.let {
-                        Single.just(it)
-                    } ?: throw IllegalStateException("Empty charities")
-                }
-                .observeOn(AndroidSchedulers.mainThread())
+                    Observable.fromIterable(it).apply { realm.close() }
+                }.map { it.toCharity() }
     }
 
-    fun requestCharities(key: String): Single<Array<Charity>> {
-        if (key.isEmpty()) return Single.just(emptyArray())
-        return charities?.let { charities ->
-            Single.just(charities.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray())
-        } ?: requestAllCharities().map { array: Array<Charity> ->
-            array.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray()
-        }
+    fun requestAllCharitiesAsArray(): Observable<Array<Charity>> {
+        val realm = Realm.getDefaultInstance()
+        return realm.where(RealmCharity::class.java)
+                .findAllAsync()
+                .asFlowable()
+                .toObservable()
+                .flatMap {
+                    it.map { it.toCharity() }
+                            .toTypedArray()
+                            .let {
+                                realm.close()
+                                if (it.isEmpty()) throw IllegalStateException("Empty charities")
+                                Observable.just(it)
+                            }
+                }
+    }
+
+    fun requestCharities(key: String): Observable<Charity> {
+        val realm = Realm.getDefaultInstance()
+        return realm.where(RealmCharity::class.java)
+                .contains("title", key.toLowerCase(Locale.ROOT))
+                .or()
+                .contains("description", key.toLowerCase(Locale.ROOT))
+                .findAllAsync()
+                .asFlowable()
+                .toObservable()
+                .flatMap {
+                    Observable.fromIterable(it)
+                }.map { it.toCharity() }
+    }
+
+    fun requestCharitiesAsArray(key: String): Observable<Array<Charity>> {
+        val realm = Realm.getDefaultInstance()
+        return realm.where(RealmCharity::class.java)
+                .contains("title", key.toLowerCase(Locale.ROOT))
+                .or()
+                .contains("description", key.toLowerCase(Locale.ROOT))
+                .findAllAsync()
+                .asFlowable()
+                .toObservable()
+                .flatMap { results ->
+                    results.map { it.toCharity() }
+                            .toTypedArray()
+                            .let { array ->
+                                realm.close()
+                                if (array.isEmpty()) throw IllegalStateException("Empty charities")
+                                Observable.just(array)
+                            }
+                }
     }
 
 }
