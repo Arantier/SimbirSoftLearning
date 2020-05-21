@@ -4,7 +4,6 @@ import android.net.ConnectivityManager
 import android.net.Network
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 
 class NetworkCallback : ConnectivityManager.NetworkCallback() {
@@ -12,11 +11,8 @@ class NetworkCallback : ConnectivityManager.NetworkCallback() {
     private val networkStateSubject = BehaviorSubject.createDefault(false)
 
     val networkState: Observable<Boolean>
-        get() {
-            return networkStateSubject
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-        }
+        get() = networkStateSubject
+                .observeOn(AndroidSchedulers.mainThread())
 
     override fun onAvailable(network: Network?) {
         super.onAvailable(network)

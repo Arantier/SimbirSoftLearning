@@ -40,8 +40,6 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
                         viewState.setErrorState()
                         throw IllegalStateException("Missing Internet connection")
                     }
-                    // CharitiesProvider.requestAllCharities()
-                        //    .toList().toObservable().map { it.toTypedArray() }
                     CharitiesProvider.requestAllCharitiesAsArray()
                 }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
