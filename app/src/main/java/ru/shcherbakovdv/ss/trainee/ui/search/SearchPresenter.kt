@@ -1,6 +1,6 @@
 package ru.shcherbakovdv.ss.trainee.ui.search
 
-import com.arellomobile.mvp.InjectViewState
+import moxy.InjectViewState
 import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 
 @InjectViewState

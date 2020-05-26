@@ -1,13 +1,13 @@
 package ru.shcherbakovdv.ss.trainee
 
-import com.arellomobile.mvp.MvpView
-import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
-import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy
-import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import moxy.MvpView
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.SingleStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 import ru.shcherbakovdv.ss.trainee.data.Charity
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface CategoryMvpView : MvpView{
+interface CategoryMvpView : MvpView {
 
     @StateStrategyType(SingleStateStrategy::class)
     fun setLoadingState()

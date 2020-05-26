@@ -3,13 +3,11 @@ package ru.shcherbakovdv.ss.trainee
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
-import com.arellomobile.mvp.InjectViewState
-import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
-import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
+import moxy.MvpPresenter
 import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
+import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
 
-@InjectViewState
-class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
+class MainMvpPresenter : MvpPresenter<MainMvpView>() {
 
     var currentScreenID = R.id.bottom_help
         set(id) {
@@ -39,18 +37,25 @@ class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
     }
 
     fun observeNetwork(context: Context) {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkCallback)
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        connectivityManager.registerNetworkCallback(
+            NetworkRequest.Builder().build(),
+            networkCallback
+        )
         networkCallback.networkState
-                .subscribe {
-                    viewState.apply {
-                        isConnected = it
-                    }
-                }.let { attachDisposable(it) }
+            .subscribe {
+                viewState.apply {
+                    isConnected = it
+                }
+                // Убрал для проверки теории про плохой презентер
+//                }.let { attachDisposable(it) }
+            }
     }
 
     fun disposeNetwork(context: Context) {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.unregisterNetworkCallback(networkCallback)
     }
 }

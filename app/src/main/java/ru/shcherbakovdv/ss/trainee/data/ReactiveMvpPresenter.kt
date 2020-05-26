@@ -1,9 +1,9 @@
 package ru.shcherbakovdv.ss.trainee.data
 
-import com.arellomobile.mvp.MvpPresenter
-import com.arellomobile.mvp.MvpView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import moxy.MvpPresenter
+import moxy.MvpView
 
 abstract class ReactiveMvpPresenter<T : MvpView> : MvpPresenter<T>() {
 

@@ -2,14 +2,14 @@ package ru.shcherbakovdv.ss.trainee.ui.search
 
 
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
+import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.fragment_search_screen.*
-import kotlinx.android.synthetic.main.fragment_search_screen.view.viewpagerSearchScreen
+import kotlinx.android.synthetic.main.fragment_search_screen.view.*
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
 import ru.shcherbakovdv.ss.trainee.R
 
 

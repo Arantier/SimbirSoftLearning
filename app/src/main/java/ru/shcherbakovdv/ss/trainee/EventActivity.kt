@@ -1,7 +1,6 @@
 package ru.shcherbakovdv.ss.trainee
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
@@ -12,12 +11,13 @@ import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_charity.*
 import kotlinx.android.synthetic.main.content_event_screen_images.*
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.utilites.DateUtils
 import ru.shcherbakovdv.ss.trainee.data.providers.ImageProvider
+import ru.shcherbakovdv.ss.trainee.utilites.DateUtils
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import java.util.regex.Pattern
 

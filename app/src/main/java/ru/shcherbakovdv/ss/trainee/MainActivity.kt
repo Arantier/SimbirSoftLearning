@@ -1,12 +1,10 @@
 package ru.shcherbakovdv.ss.trainee
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.view.inputmethod.EditorInfo
-import com.arellomobile.mvp.MvpAppCompatActivity
-import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_category_list.view.*
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.ui.CategoryTypesFragment
 import ru.shcherbakovdv.ss.trainee.ui.ConnectionLostFragment
 import ru.shcherbakovdv.ss.trainee.ui.profile.ProfileFragment
@@ -14,10 +12,9 @@ import ru.shcherbakovdv.ss.trainee.ui.search.SearchFragment
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
-class MainActivity : MvpAppCompatActivity(), MainMvpView {
+class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainMvpView {
 
-    @InjectPresenter
-    lateinit var presenter: MainMvpPresenter
+    private val presenter by moxyPresenter { MainMvpPresenter() }
 
     private fun showFragmentPlaceholder() {
         supportFragmentManager.apply {
@@ -36,7 +33,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
     }
 
     override fun setConnectedState() {
-        selectScreen(bottomNavBar.selectedItemId)
+        selectScreen(bottomNavBar.id)
         bottomNavBar.makeVisible()
         buttonHeart.makeVisible()
     }
@@ -123,17 +120,17 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
             }
         }
 
-        bottomNavBar.enableAnimation(false)
-
-        bottomNavBar.selectedItemId = R.id.bottom_help
-        bottomNavBar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            if (item.isChecked) {
-                false
-            } else {
-                presenter.currentScreenID = item.itemId
-                true
-            }
-        }
+//        bottomNavBar.enableAnimation(false)
+//
+//        bottomNavBar.selectedItemId = R.id.bottom_help
+//        bottomNavBar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+//            if (item.isChecked) {
+//                false
+//            } else {
+//                presenter.currentScreenID = item.itemId
+//                true
+//            }
+//        }
     }
 
     override fun onStart() {

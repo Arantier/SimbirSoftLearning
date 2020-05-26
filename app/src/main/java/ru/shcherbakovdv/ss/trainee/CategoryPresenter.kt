@@ -3,7 +3,6 @@ package ru.shcherbakovdv.ss.trainee
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
-import com.arellomobile.mvp.InjectViewState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.shcherbakovdv.ss.trainee.data.Charity
@@ -12,7 +11,6 @@ import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
 
-@InjectViewState
 class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
 
     var categoryId = -1

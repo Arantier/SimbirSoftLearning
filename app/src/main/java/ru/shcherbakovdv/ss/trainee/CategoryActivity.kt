@@ -3,17 +3,17 @@ package ru.shcherbakovdv.ss.trainee
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.arellomobile.mvp.MvpAppCompatActivity
-import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_category.*
+import moxy.MvpAppCompatActivity
+import moxy.presenter.InjectPresenter
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.ui.search.charities.CharitiesListAdapter
 import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
-import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
+import ru.shcherbakovdv.ss.trainee.ui.search.charities.CharitiesListAdapter
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
+import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 
-class CategoryActivity : MvpAppCompatActivity(), OnCharityClickListener, CategoryMvpView {
+class CategoryActivity : MvpAppCompatActivity(R.layout.activity_category), OnCharityClickListener, CategoryMvpView {
 
     @InjectPresenter
     lateinit var presenter: CategoryPresenter

@@ -3,21 +3,19 @@ package ru.shcherbakovdv.ss.trainee.ui.search.charities
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_charity_tab.*
-import kotlinx.android.synthetic.main.fragment_charity_tab.view.*
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
+import ru.shcherbakovdv.ss.trainee.EventActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.EventActivity
 import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
-import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
+import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 
 class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharityClickListener {
 

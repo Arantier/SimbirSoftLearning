@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:columnCount="3">
+    android:columnCount="3">
 
     <ImageView
         tools:srcCompat="@drawable/image_user_placeholder"
@@ -12,10 +11,10 @@
         android:layout_height="@dimen/event_screen_big_image_height"
         android:adjustViewBounds="true"
         android:scaleType="center"
-        app:layout_columnSpan="2"
-        app:layout_rowSpan="2"
-        app:layout_rowWeight="2"
-        app:layout_gravity="fill"/>
+        android:layout_columnSpan="2"
+        android:layout_rowSpan="2"
+        android:layout_rowWeight="2"
+        android:layout_gravity="fill"/>
 
     <ImageView
         android:layout_width="@dimen/event_screen_small_image_width"
@@ -35,4 +34,4 @@
         android:scaleType="centerCrop"
         android:visibility="visible"
         tools:srcCompat="@drawable/image_user_placeholder" />
-</android.support.v7.widget.GridLayout>
+</GridLayout>
