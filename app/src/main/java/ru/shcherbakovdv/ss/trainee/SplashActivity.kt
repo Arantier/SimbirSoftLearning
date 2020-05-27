@@ -25,6 +25,7 @@ import ru.shcherbakovdv.ss.trainee.data.RealmCharity
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import java.io.IOException
 import java.io.InputStream
+import java.lang.RuntimeException
 
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 

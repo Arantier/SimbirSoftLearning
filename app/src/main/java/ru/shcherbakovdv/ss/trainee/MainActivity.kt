@@ -2,9 +2,11 @@ package ru.shcherbakovdv.ss.trainee
 
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
+import moxy.presenter.InjectPresenter
 import ru.shcherbakovdv.ss.trainee.ui.CategoryTypesFragment
 import ru.shcherbakovdv.ss.trainee.ui.ConnectionLostFragment
 import ru.shcherbakovdv.ss.trainee.ui.profile.ProfileFragment
@@ -120,8 +122,8 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainMvpView {
             }
         }
 
-//        bottomNavBar.enableAnimation(false)
-//
+        bottomNavBar.clearAnimation()
+
 //        bottomNavBar.selectedItemId = R.id.bottom_help
 //        bottomNavBar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 //            if (item.isChecked) {

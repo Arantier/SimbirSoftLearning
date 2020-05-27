@@ -3,6 +3,7 @@ package ru.shcherbakovdv.ss.trainee
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
+import moxy.InjectViewState
 import moxy.MvpPresenter
 import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
