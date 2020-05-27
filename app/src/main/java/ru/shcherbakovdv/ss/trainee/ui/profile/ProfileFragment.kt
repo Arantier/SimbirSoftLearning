@@ -5,16 +5,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_profile_screen.*
 import moxy.MvpAppCompatFragment
-import moxy.presenter.InjectPresenter
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Profile
 import ru.shcherbakovdv.ss.trainee.data.providers.ImageProvider
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
 
-class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
+class ProfileFragment : MvpAppCompatFragment(R.layout.fragment_profile_screen), ProfileMvpView {
 
-    @InjectPresenter
-    lateinit var presenter: ProfilePresenter
+   private val presenter by moxyPresenter { ProfilePresenter() }
 
     override fun fillProfileScreen(profile: Profile) {
         ImageProvider.loadImage(profile.pictureUrl, imageUserScreenPhoto)

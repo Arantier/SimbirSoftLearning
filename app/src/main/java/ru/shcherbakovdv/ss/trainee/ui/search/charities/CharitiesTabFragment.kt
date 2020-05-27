@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_charity_tab.*
 import moxy.MvpAppCompatFragment
-import moxy.presenter.InjectPresenter
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.EventActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Charity
@@ -17,10 +17,9 @@ import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 
-class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharityClickListener {
+class CharitiesTabFragment : MvpAppCompatFragment(R.layout.fragment_charity_tab), CharityTabMvpView, OnCharityClickListener {
 
-    @InjectPresenter
-    lateinit var presenter: CharitiesTabMvpPresenter
+    private val presenter by moxyPresenter { CharitiesTabMvpPresenter() }
 
     override fun setContent(charityArray: Array<Charity>) {
         if (charityArray.isEmpty()) {

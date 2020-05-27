@@ -2,12 +2,10 @@ package ru.shcherbakovdv.ss.trainee.ui.search.charities
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import moxy.InjectViewState
 import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
 
-@InjectViewState
 class CharitiesTabMvpPresenter : ReactiveMvpPresenter<CharityTabMvpView>() {
 
     init {

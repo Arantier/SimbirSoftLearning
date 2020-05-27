@@ -3,12 +3,11 @@ package ru.shcherbakovdv.ss.trainee
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkRequest
-import moxy.InjectViewState
-import moxy.MvpPresenter
 import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
+import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
 
-class MainMvpPresenter : MvpPresenter<MainMvpView>() {
+class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
 
     var currentScreenID = R.id.bottom_help
         set(id) {
@@ -49,9 +48,7 @@ class MainMvpPresenter : MvpPresenter<MainMvpView>() {
                 viewState.apply {
                     isConnected = it
                 }
-                // Убрал для проверки теории про плохой презентер
-//                }.let { attachDisposable(it) }
-            }
+            }.let { attachDisposable(it) }
     }
 
     fun disposeNetwork(context: Context) {

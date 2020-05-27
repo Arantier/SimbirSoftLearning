@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_category.*
 import moxy.MvpAppCompatActivity
-import moxy.presenter.InjectPresenter
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
 import ru.shcherbakovdv.ss.trainee.ui.search.charities.CharitiesListAdapter
@@ -15,8 +15,7 @@ import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 
 class CategoryActivity : MvpAppCompatActivity(R.layout.activity_category), OnCharityClickListener, CategoryMvpView {
 
-    @InjectPresenter
-    lateinit var presenter: CategoryPresenter
+    private val presenter by moxyPresenter { CategoryPresenter() }
 
     override fun setLoadingState() {
         recyclerView.makeGone()

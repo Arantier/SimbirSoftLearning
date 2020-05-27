@@ -17,7 +17,7 @@
     <string name="button_history">История</string>
     <string name="button_profile">Профиль</string>
     <string name="title_error">Ошибка!</string>
-    <string name="undefined_error">Непредвиденная ошибка!</string>
+    <string name="unexpected_error">Непредвиденная ошибка!</string>
     <string name="no_internet_connection">Отсутствует соединение с Интернетом</string>
     <string name="button_close">Закрыть</string>
 

@@ -10,15 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_organisation_tab.*
 import kotlinx.android.synthetic.main.fragment_organisation_tab.view.*
 import moxy.MvpAppCompatFragment
-import moxy.presenter.InjectPresenter
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Organisation
 import java.util.*
 
-class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView {
+class OrganisationsTabFragment : MvpAppCompatFragment(R.layout.fragment_organisation_tab), OrganisationsTabMvpView {
 
-    @InjectPresenter
-    lateinit var presenter: OrganisationsTabPresenter
+    val presenter by moxyPresenter { OrganisationsTabPresenter() }
 
     private fun getLocaleQuantityString(id: Int, quantity: Int): String {
         return context?.let {context->

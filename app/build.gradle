@@ -53,9 +53,9 @@ dependencies {
     // Библиотеки для удобной работы с MVP
     implementation "com.github.moxy-community:moxy:$moxyVersion"
     kapt "com.github.moxy-community:moxy-compiler:$moxyVersion"
-    implementation "com.github.moxy-community:moxy-android:$moxyVersion"
+//    implementation "com.github.moxy-community:moxy-android:$moxyVersion"
     implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"
-    implementation "com.github.moxy-community:moxy-material:$moxyVersion"
+//    implementation "com.github.moxy-community:moxy-material:$moxyVersion"
     implementation "com.github.moxy-community:moxy-ktx:$moxyVersion"
 
 
