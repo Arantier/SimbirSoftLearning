@@ -53,9 +53,8 @@ dependencies {
     // Библиотеки для удобной работы с MVP
     implementation "com.github.moxy-community:moxy:$moxyVersion"
     kapt "com.github.moxy-community:moxy-compiler:$moxyVersion"
-//    implementation "com.github.moxy-community:moxy-android:$moxyVersion"
     implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"
-//    implementation "com.github.moxy-community:moxy-material:$moxyVersion"
+    implementation "com.github.moxy-community:moxy-material:$moxyVersion"
     implementation "com.github.moxy-community:moxy-ktx:$moxyVersion"
 
 
@@ -66,9 +65,11 @@ dependencies {
     // Реактивные расширения
     implementation "io.reactivex.rxjava2:rxjava:2.2.19"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
 
     // Firebase
     implementation "com.google.firebase:firebase-analytics:$firebaseVersion"
+    implementation 'com.google.firebase:firebase-database-ktx:19.3.0'
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
