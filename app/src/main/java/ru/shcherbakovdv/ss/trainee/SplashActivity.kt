@@ -1,7 +1,11 @@
 package ru.shcherbakovdv.ss.trainee
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkRequest
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
@@ -14,11 +18,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import io.realm.RealmObject
+import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.data.RealmCategory
 import ru.shcherbakovdv.ss.trainee.data.RealmCharity
-import ru.shcherbakovdv.ss.trainee.utilites.Logger
 
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
+
+    private val ERROR_TAG = "SplashActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +53,13 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     }
 
     private fun updateData(): Completable {
+        val networkCallback = NetworkCallback().apply {
+            (this@SplashActivity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)
+                .registerNetworkCallback(
+                    NetworkRequest.Builder().build(),
+                    this
+                )
+        }
         val categoriesCompletable = loadCategories()
             .saveToRealm()
             .let { Completable.fromObservable(it) }
@@ -56,6 +69,12 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
         return categoriesCompletable
             .andThen(charitiesCompletable)
+            .materialize<Void>()
+            .mergeWith(networkCallback.networkState
+                .map { if (!it) throw IllegalStateException("Net unavailable") }
+                .ignoreElements()
+                .materialize())
+            .dematerialize { it }.ignoreElements()
     }
 
     private fun loadCategories(): Observable<RealmCategory> =
@@ -98,7 +117,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
                 })
         }
 
-    private fun Observable<out RealmObject>.saveToRealm(): Observable<out RealmObject> {
+    private fun <T : RealmObject> Observable<out T>.saveToRealm(): Observable<out T> {
         var realm: Realm? = null
         return this
             .observeOn(Schedulers.io())
@@ -108,8 +127,12 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
                     realm?.beginTransaction()
                 }
             }
-            .doOnNext { realm?.copyToRealm(it) }.doOnComplete { realm?.commitTransaction() }
-            .doOnError { realm?.cancelTransaction() }.doOnTerminate {
+            .doOnNext {
+                realm?.copyToRealm(it)
+            }
+            .doOnComplete { realm?.commitTransaction() }
+            .doOnError { realm?.cancelTransaction() }
+            .doOnTerminate {
                 realm?.close()
             }.observeOn(AndroidSchedulers.mainThread())
     }
@@ -117,7 +140,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
     private fun showErrorMessage(throwable: Throwable) {
         // TODO: раздели ошибки по категориям и сделай отдельный вывод для каждой
-        Logger.flatError(throwable.message)
+        Log.e(ERROR_TAG, throwable.message)
         // TODO: перенеси это в другое место
         AlertDialog.Builder(this)
             .setTitle(R.string.title_error)
