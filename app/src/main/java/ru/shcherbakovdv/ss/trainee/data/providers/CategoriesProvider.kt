@@ -1,39 +1,55 @@
 package ru.shcherbakovdv.ss.trainee.data.providers
 
-import io.reactivex.Flowable
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.realm.Realm
 import ru.shcherbakovdv.ss.trainee.data.Category
 import ru.shcherbakovdv.ss.trainee.data.RealmCategory
 
 object CategoriesProvider {
 
-    var categories: Array<Category>? = null
-    lateinit var realm: Realm
+    private var categories: Array<Category>? = null
 
-    fun requestCategoriesFile(): Single<Array<Category>> {
-        realm = Realm.getDefaultInstance()
-        return realm.where(RealmCategory::class.java)
-                .findAllAsync()
-                .asFlowable()
-                .firstOrError()
-                .flatMap {
-                    realm.close()
-                    val categoriesList = ArrayList<Category>()
-                    for (realmCategory in it) {
-                        val category = Category(
-                                realmCategory?.id ?: 0,
-                                realmCategory.name ?: "",
-                                realmCategory.pictureUrl ?: ""
-                        )
-                        categoriesList.add(category)
+    val categoriesSingle: Single<Array<Category>>
+        get() = categories?.let {
+            Single.just(it)
+        } ?: getCategoriesFromDatabase()
+
+    fun loadRealmCategoriesFromNet(): Observable<RealmCategory> =
+        Observable.create<RealmCategory> { emitter ->
+            FirebaseDatabase.getInstance()
+                .getReference("categories")
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.children.forEach {
+                            it.getValue(RealmCategory::class.java)
+                                ?.let { emitter.onNext(it) }
+                                ?: emitter.onError(NullPointerException("Null pointer exception occurred while retrieving data from net"))
+                        }
+                        emitter.onComplete()
                     }
-                    categories = categoriesList.toTypedArray()
-                    categories?.let {
-                        Single.just(it)
-                    } ?: throw IllegalStateException("Empty categories")
-                }
-                .observeOn(AndroidSchedulers.mainThread())
+
+                    override fun onCancelled(error: DatabaseError) {
+                        emitter.onError(error.toException())
+                    }
+                })
+        }
+
+    fun getCategoriesFromDatabase(): Single<Array<Category>> = Single.defer {
+        val realm = Realm.getDefaultInstance()
+        val results = realm.where(RealmCategory::class.java).findAll()
+        realm.copyFromRealm(results)
+            .map { it.toCategory() }
+            .filterNotNull()
+            .toTypedArray()
+            .let { array ->
+                realm.close()
+                categories = array
+                Single.just(array)
+            }
     }
 }

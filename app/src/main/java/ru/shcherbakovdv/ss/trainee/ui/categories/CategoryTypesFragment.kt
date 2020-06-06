@@ -1,12 +1,9 @@
-package ru.shcherbakovdv.ss.trainee.ui
+package ru.shcherbakovdv.ss.trainee.ui.categories
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.fragment_category_screen.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -14,16 +11,14 @@ import ru.shcherbakovdv.ss.trainee.CategoryActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Category
 import ru.shcherbakovdv.ss.trainee.data.OnCategoryClickListener
-import ru.shcherbakovdv.ss.trainee.ui.categories.CategoriesGridAdapter
-import ru.shcherbakovdv.ss.trainee.ui.categories.CategoriesTypesPresenter
-import ru.shcherbakovdv.ss.trainee.ui.categories.CategoryTypesMvpView
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
 
-class CategoryTypesFragment : MvpAppCompatFragment(R.layout.fragment_category_screen), CategoryTypesMvpView,
+class CategoryTypesFragment : MvpAppCompatFragment(R.layout.fragment_category_screen),
+    CategoryTypesMvpView,
     OnCategoryClickListener {
 
     private val presenter by moxyPresenter { CategoriesTypesPresenter() }
@@ -61,17 +56,7 @@ class CategoryTypesFragment : MvpAppCompatFragment(R.layout.fragment_category_sc
 
     override fun onStart() {
         super.onStart()
-        val storageAvailable = context?.let { context ->
-            ContextCompat.checkSelfPermission(
-                context,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
-        } ?: false
-        if (storageAvailable) {
-            presenter.requestCategories()
-        } else {
-            setErrorState()
-        }
+        presenter.requestCategories()
     }
 
     private fun startCategoryActivity(id: Int, name: String) {
