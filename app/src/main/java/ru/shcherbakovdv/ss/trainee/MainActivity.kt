@@ -5,8 +5,8 @@ import android.view.inputmethod.EditorInfo
 import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
-import ru.shcherbakovdv.ss.trainee.ui.CategoryTypesFragment
 import ru.shcherbakovdv.ss.trainee.ui.ConnectionLostFragment
+import ru.shcherbakovdv.ss.trainee.ui.categories.CategoryTypesFragment
 import ru.shcherbakovdv.ss.trainee.ui.profile.ProfileFragment
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFragment
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone

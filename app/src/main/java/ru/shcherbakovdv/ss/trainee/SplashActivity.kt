@@ -1,9 +1,6 @@
 package ru.shcherbakovdv.ss.trainee
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkRequest
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
@@ -53,13 +50,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     }
 
     private fun updateData(): Completable {
-        val networkCallback = NetworkCallback().apply {
-            (this@SplashActivity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)
-                .registerNetworkCallback(
-                    NetworkRequest.Builder().build(),
-                    this
-                )
-        }
+        val networkCallback = NetworkCallback.newInstance(this)
         val categoriesCompletable = loadCategories()
             .saveToRealm()
             .let { Completable.fromObservable(it) }
@@ -70,7 +61,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         return categoriesCompletable
             .andThen(charitiesCompletable)
             .materialize<Void>()
-            .mergeWith(networkCallback.networkState
+            .mergeWith(networkCallback.networkLiveState
                 .map { if (!it) throw IllegalStateException("Net unavailable") }
                 .ignoreElements()
                 .materialize())
