@@ -9,7 +9,6 @@ import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
 class CharitiesTabMvpPresenter : ReactiveMvpPresenter<CharityTabMvpView>() {
 
     init {
-
         SearchFieldNotifier.searchField
                 .flatMapSingle { key ->
                     CharitiesProvider.find(key)

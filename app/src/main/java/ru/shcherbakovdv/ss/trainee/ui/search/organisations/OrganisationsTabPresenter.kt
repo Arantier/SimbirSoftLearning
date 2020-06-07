@@ -11,12 +11,10 @@ class OrganisationsTabPresenter : ReactiveMvpPresenter<OrganisationsTabMvpView>(
     init {
         SearchFieldNotifier.searchField
             .subscribe {
-                OrganisationsProvider.organisationsSingle
+                OrganisationsProvider.find(it)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(viewState::setContent) {
-                        // TODO: пока нету вкладки организаций, нет смысла с этим возиться
-                    }
+                    .subscribe(viewState::setContent)
             }.let(this::attachDisposable)
     }
 }

@@ -30,7 +30,7 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainMvpView {
         toolbar.apply {
             inflateMenu(R.menu.search_toolbar)
             menu.getItem(0).setOnMenuItemClickListener { item ->
-                presenter.prepareForSearch()
+                showSearchBar()
                 true
             }
         }

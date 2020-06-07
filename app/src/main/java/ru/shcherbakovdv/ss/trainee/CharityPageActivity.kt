@@ -23,6 +23,7 @@ import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import java.util.regex.Pattern
+import kotlin.math.min
 
 // TODO: Ну и мерзкий экран. Переделать.
 class CharityPageActivity : MvpAppCompatActivity(), CharityPageMvpView {
@@ -76,10 +77,10 @@ class CharityPageActivity : MvpAppCompatActivity(), CharityPageMvpView {
         }
         textDescription.text = charity.description
 
-        val donatorsToShow = Math.min(charity.donatorsPicturesUrls?.size ?: 0, 5)
+        val donatorsToShow = min(charity.donatorsPicturesUrls?.size ?: 0, 5)
         val pictureUrlArray = charity.donatorsPicturesUrls?.slice(0 until donatorsToShow) ?: null
         if (!pictureUrlArray.isNullOrEmpty()) {
-            for (i in 0 until (pictureUrlArray?.size ?: 0)) {
+            for (i in pictureUrlArray.indices) {
                 val donatorPhotoView = CircleImageView(this).apply {
                     val donatorPhotoSize =
                         resources.getDimensionPixelSize(R.dimen.donator_picture_size)

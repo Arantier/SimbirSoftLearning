@@ -9,7 +9,6 @@ import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
-import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.data.providers.CategoriesProvider
 import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.data.providers.OrganisationsProvider
@@ -45,7 +44,6 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     }
 
     private fun updateData(): Completable {
-        val networkCallback = NetworkCallback.newInstance(this)
         val categoriesCompletable = CategoriesProvider.loadRealmCategoriesFromNet()
             .saveToRealm()
             .let { Completable.fromObservable(it) }
@@ -53,19 +51,13 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
             OrganisationsProvider.loadRealmOrganisatonsFromNet()
                 .saveToRealm()
                 .let { Completable.fromObservable(it) }
-        val charitiesCompletable = CharitiesProvider.loadRealmCharitiesFromNetWithRetrofit()
+        val charitiesCompletable = CharitiesProvider.loadRealmCharitiesFromNet()
             .saveToRealm()
             .let { Completable.fromObservable(it) }
 
         return categoriesCompletable
             .andThen(organisationsCompletable)
             .andThen(charitiesCompletable)
-            .materialize<Void>()
-            .mergeWith(networkCallback.networkLiveState
-                .map { if (!it) throw IllegalStateException("Net unavailable") }
-                .ignoreElements()
-                .materialize())
-            .dematerialize { it }.ignoreElements()
     }
 
 

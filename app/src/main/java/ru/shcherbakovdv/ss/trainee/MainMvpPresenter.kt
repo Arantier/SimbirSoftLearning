@@ -17,21 +17,6 @@ class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
         }
 
     lateinit var networkCallback: NetworkCallback
-    private var isConnected: Boolean? = null
-        set(value) {
-            if (value != field) {
-                if (value == true) {
-                    viewState.setConnectedState()
-                } else {
-                    viewState.setDisconnectedState()
-                }
-                field = value
-            }
-        }
-
-    fun prepareForSearch() {
-        viewState.showSearchBar()
-    }
 
     fun findContent(key: String) {
         SearchFieldNotifier.searchField.onNext(key)
@@ -43,9 +28,13 @@ class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
                 networkLiveState
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe {
+                    .subscribe { connected ->
                         viewState.apply {
-                            isConnected = it
+                            if (connected) {
+                                setConnectedState()
+                            } else {
+                                setDisconnectedState()
+                            }
                         }
                     }.let { attachDisposable(it) }
             }
