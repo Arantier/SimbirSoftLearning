@@ -2,7 +2,7 @@ package ru.shcherbakovdv.ss.trainee.data
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_event_list.view.*
+import kotlinx.android.synthetic.main.item_charity_list.view.*
 import ru.shcherbakovdv.ss.trainee.data.providers.ImageProvider
 import ru.shcherbakovdv.ss.trainee.utilites.DateUtils
 

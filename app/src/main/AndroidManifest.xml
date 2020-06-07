@@ -26,11 +26,11 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_help_categories" />
         <activity
-            android:name=".CategoryActivity"
+            android:name=".CategoryPageActivity"
             android:label="@string/title_activity_help_category"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".EventActivity"
+            android:name=".CharityPageActivity"
             android:label="@string/title_activity_event"
             android:theme="@style/AppTheme" />
     </application>

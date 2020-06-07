@@ -44,7 +44,7 @@
             app:layout_constraintBottom_toTopOf="@+id/textEventItemDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/event_item_decor" />
+            app:srcCompat="@drawable/charity_item_decor" />
 
         <TextView
             android:id="@+id/textEventItemDescription"

@@ -12,7 +12,7 @@ class CharitiesListAdapter(private val charities: Array<Charity>, private val on
 
     override fun onCreateViewHolder(parent: ViewGroup, state: Int): CharityViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_event_list, parent, false)
+                .inflate(R.layout.item_charity_list, parent, false)
         return CharityViewHolder(view, onCharityClickListener)
     }
 

@@ -2,6 +2,8 @@ package ru.shcherbakovdv.ss.trainee
 
 import android.content.Context
 import android.net.ConnectivityManager
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
@@ -39,6 +41,8 @@ class MainMvpPresenter : ReactiveMvpPresenter<MainMvpView>() {
         networkCallback = NetworkCallback.newInstance(context)
             .apply {
                 networkLiveState
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         viewState.apply {
                             isConnected = it

@@ -10,7 +10,7 @@ import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
 
-class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
+class CategoryPresenter : ReactiveMvpPresenter<CategoryPageMvpView>() {
 
     var categoryId = -1
 
@@ -32,16 +32,18 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
         networkCallback = NetworkCallback.newInstance(context)
             .apply {
                 networkLiveState
-                    .flatMap { isNetAvailable ->
-                        if (!isNetAvailable) {
-                            viewState.setErrorState()
-                            throw IllegalStateException("Missing Internet connection")
+                    .subscribeOn(Schedulers.io())
+                    .subscribe({ netAvailable ->
+                        if (netAvailable) {
+                            CharitiesProvider.charitiesSingle
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(
+                                    this@CategoryPresenter::fillScreen,
+                                    this@CategoryPresenter::setErrorScreen
+                                )
                         }
-                        CharitiesProvider.requestAllCharitiesAsArray()
-                    }.subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({ fillScreen(it) }, { setErrorScreen(it) })
-                    .let { attachDisposable(it) }
+                    }, this@CategoryPresenter::setErrorScreen)
+                    .let(this@CategoryPresenter::attachDisposable)
             }
     }
 

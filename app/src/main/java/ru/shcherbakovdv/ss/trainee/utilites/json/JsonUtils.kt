@@ -8,13 +8,13 @@ object JsonUtils {
 
     val gson: Gson by lazy {
         GsonBuilder()
-                .registerTypeAdapter(LocalDate::class.java, LocalDateJsonDesrializer())
-                .registerTypeAdapter(LocalDate::class.java, LocalDateJsonSerializer())
-                .create()
+            .registerTypeAdapter(LocalDate::class.java, LocalDateJsonDesrializer())
+            .registerTypeAdapter(LocalDate::class.java, LocalDateJsonSerializer())
+            .create()
     }
 
-    fun toJson(source: Any): String {
-        return gson.toJson(source)
+    fun toJson(source: Any?): String {
+        return source?.let(gson::toJson) ?: ""
     }
 
     fun <T> fromJson(json: String?, classOfT: Class<T>): T? {

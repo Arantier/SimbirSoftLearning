@@ -8,7 +8,7 @@ open class RealmCategory(
     var name: String? = null,
     var pictureUrl: String? = null
 ) : RealmObject() {
-    fun toCategory(): Category? = if ((id != null) and (name != null) and (pictureUrl != null)) {
+    fun toCategory() = if (!listOf(id, name, pictureUrl).contains(null)) {
         Category(id!!, name!!, pictureUrl!!)
     } else null
 }

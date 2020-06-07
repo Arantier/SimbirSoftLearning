@@ -13,7 +13,7 @@ import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 
-class CategoryActivity : MvpAppCompatActivity(R.layout.activity_category), OnCharityClickListener, CategoryMvpView {
+class CategoryPageActivity : MvpAppCompatActivity(R.layout.activity_category), OnCharityClickListener, CategoryPageMvpView {
 
     private val presenter by moxyPresenter { CategoryPresenter() }
 
@@ -68,9 +68,9 @@ class CategoryActivity : MvpAppCompatActivity(R.layout.activity_category), OnCha
     }
 
     override fun onCharityEventClick(event: Charity) {
-        val intent = Intent(this, EventActivity::class.java)
+        val intent = Intent(this, CharityPageActivity::class.java)
         val eventJson = JsonUtils.gson.toJson(event)
-        intent.putExtra(EventActivity.EVENT_JSON, eventJson)
+        intent.putExtra(CharityPageActivity.EVENT_JSON, eventJson)
         startActivity(intent)
     }
 

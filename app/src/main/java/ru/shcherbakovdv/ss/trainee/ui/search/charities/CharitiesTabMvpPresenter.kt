@@ -9,21 +9,10 @@ import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
 class CharitiesTabMvpPresenter : ReactiveMvpPresenter<CharityTabMvpView>() {
 
     init {
-        /*
+
         SearchFieldNotifier.searchField
-                .flatMap { key -> CharitiesProvider.requestCharities(key)
-                        .subscribeOn(Schedulers.io())}
-                .doOnEach { Logger.flatDebug("Принимаю очередной успешно обработанный элемент!") }
-                .observeOn(Schedulers.io())
-                .toList()
-                .doOnEvent { t1, t2 -> Logger.flatDebug("After collecting: "+t1.toString()) }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { arrayList -> viewState.setContent(arrayList.toTypedArray()) }
-                .let { attachDisposable(it) }
-         */
-        SearchFieldNotifier.searchField
-                .flatMap { key ->
-                    CharitiesProvider.requestCharitiesAsArray(key)
+                .flatMapSingle { key ->
+                    CharitiesProvider.find(key)
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

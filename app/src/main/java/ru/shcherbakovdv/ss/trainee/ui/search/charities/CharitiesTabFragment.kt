@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_charity_tab.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
-import ru.shcherbakovdv.ss.trainee.EventActivity
+import ru.shcherbakovdv.ss.trainee.CharityPageActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
@@ -36,8 +36,8 @@ class CharitiesTabFragment : MvpAppCompatFragment(R.layout.fragment_charity_tab)
     override fun onCharityEventClick(event: Charity) {
         val eventJson = JsonUtils.gson.toJson(event)
         context?.let { context ->
-            val intent = context.getClassIntent<EventActivity>()
-            intent.putExtra(EventActivity.EVENT_JSON, eventJson)
+            val intent = context.getClassIntent<CharityPageActivity>()
+            intent.putExtra(CharityPageActivity.EVENT_JSON, eventJson)
             startActivity(intent)
         }
         if (context==null) {

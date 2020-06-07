@@ -5,12 +5,24 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.realm.Realm
 import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.RealmCharity
-import java.util.*
 
 object CharitiesProvider {
+
+    private var charities: Array<Charity>? = null
+
+    val charitiesSingle: Single<Array<Charity>>
+        get() = charities?.let {
+            Single.just(it)
+        } ?: getCharitiesFromDatabase()
+
+    fun loadRealmCharitiesFromNetWithRetrofit() = DatabaseService.getApi()
+        .getCharities()
+        .flatMapObservable { Observable.fromIterable(it.asIterable()) }
+        .map { it.toRealmCharity() }
 
     fun loadRealmCharitiesFromNet(): Observable<RealmCharity> =
         Observable.create { emitter ->
@@ -32,66 +44,28 @@ object CharitiesProvider {
                 })
         }
 
-    fun requestAllCharities(): Observable<Charity> {
+    fun getCharitiesFromDatabase() = Single.defer {
         val realm = Realm.getDefaultInstance()
-        return realm.where(RealmCharity::class.java)
-                .findAllAsync()
-                .asFlowable()
-                .toObservable()
-                .flatMap {
-                    Observable.fromIterable(it).apply { realm.close() }
-                }.map { it.toCharity() }
+        val results = realm.where(RealmCharity::class.java).findAll()
+        realm.copyFromRealm(results)
+            .mapNotNull { it.toCharity() }
+            .toTypedArray()
+            .let { array ->
+                realm.close()
+                charities = array
+                Single.just(array)
+            }
     }
 
-    fun requestAllCharitiesAsArray(): Observable<Array<Charity>> {
-        val realm = Realm.getDefaultInstance()
-        return realm.where(RealmCharity::class.java)
-                .findAllAsync()
-                .asFlowable()
-                .toObservable()
-                .flatMap {
-                    it.map { it.toCharity() }
-                            .toTypedArray()
-                            .let {
-                                realm.close()
-                                if (it.isEmpty()) throw IllegalStateException("Empty charities")
-                                Observable.just(it)
-                            }
-                }
-    }
-
-    fun requestCharities(key: String): Observable<Charity> {
-        val realm = Realm.getDefaultInstance()
-        return realm.where(RealmCharity::class.java)
-                .contains("title", key.toLowerCase(Locale.ROOT))
-                .or()
-                .contains("description", key.toLowerCase(Locale.ROOT))
-                .findAllAsync()
-                .asFlowable()
-                .toObservable()
-                .flatMap {
-                    Observable.fromIterable(it)
-                }.map { it.toCharity() }
-    }
-
-    fun requestCharitiesAsArray(key: String): Observable<Array<Charity>> {
-        val realm = Realm.getDefaultInstance()
-        return realm.where(RealmCharity::class.java)
-                .contains("title", key.toLowerCase(Locale.ROOT))
-                .or()
-                .contains("description", key.toLowerCase(Locale.ROOT))
-                .findAllAsync()
-                .asFlowable()
-                .toObservable()
-                .flatMap { results ->
-                    results.map { it.toCharity() }
-                            .toTypedArray()
-                            .let { array ->
-                                realm.close()
-                                if (array.isEmpty()) throw IllegalStateException("Empty charities")
-                                Observable.just(array)
-                            }
-                }
-    }
+    fun find(key: String) = charitiesSingle
+        .map { array ->
+            if (key.isEmpty()) {
+                emptyArray<Charity>()
+            } else {
+                array.filter { charity ->
+                    charity.title.contains(key) or charity.description.contains(key)
+                }.toTypedArray()
+            }
+        }
 
 }

@@ -10,8 +10,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
-import ru.shcherbakovdv.ss.trainee.data.providers.CategoriesProvider.loadRealmCategoriesFromNet
-import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider.loadRealmCharitiesFromNet
+import ru.shcherbakovdv.ss.trainee.data.providers.CategoriesProvider
+import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
+import ru.shcherbakovdv.ss.trainee.data.providers.OrganisationsProvider
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.saveToRealm
 
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
@@ -33,7 +34,6 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
         }.subscribeOn(Schedulers.io()).subscribe()
 
         updateData()
-            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { startActivity(Intent(this, MainActivity::class.java)) },
@@ -46,14 +46,19 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
     private fun updateData(): Completable {
         val networkCallback = NetworkCallback.newInstance(this)
-        val categoriesCompletable = loadRealmCategoriesFromNet()
+        val categoriesCompletable = CategoriesProvider.loadRealmCategoriesFromNet()
             .saveToRealm()
             .let { Completable.fromObservable(it) }
-        val charitiesCompletable = loadRealmCharitiesFromNet()
+        val organisationsCompletable =
+            OrganisationsProvider.loadRealmOrganisatonsFromNet()
+                .saveToRealm()
+                .let { Completable.fromObservable(it) }
+        val charitiesCompletable = CharitiesProvider.loadRealmCharitiesFromNetWithRetrofit()
             .saveToRealm()
             .let { Completable.fromObservable(it) }
 
         return categoriesCompletable
+            .andThen(organisationsCompletable)
             .andThen(charitiesCompletable)
             .materialize<Void>()
             .mergeWith(networkCallback.networkLiveState

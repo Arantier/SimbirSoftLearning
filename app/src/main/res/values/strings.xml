@@ -74,11 +74,12 @@
     <string name="title_activity_event">EventActivity</string>
 
     <!--Экран события-->
-    <string name="event_screen_action_bar_items">Помочь \nвещами</string>
-    <string name="event_screen_action_bar_volunteers">Стать \nволонтёром</string>
-    <string name="event_screen_action_bar_quality_help">Проф. \nпомощь</string>
-    <string name="event_screen_action_bar_donate">Помочь \nденьгами</string>
-    <string name="event_screen_organisation_message">У вас есть вопросы? Напишите нам!</string>
-    <string name="event_screen_organisation_site">Перейти на сайт организаии</string>
+    <string name="charity_screen_error_message">Ошибка: загрузка события не удалась. Проверьте ваше Интернет соединение и повторите.</string>
+    <string name="charity_screen_action_bar_items">Помочь \nвещами</string>
+    <string name="charity_screen_action_bar_volunteers">Стать \nволонтёром</string>
+    <string name="charity_screen_action_bar_quality_help">Проф. \nпомощь</string>
+    <string name="charity_screen_action_bar_donate">Помочь \nденьгами</string>
+    <string name="charity_screen_organisation_message">У вас есть вопросы? Напишите нам!</string>
+    <string name="charity_screen_organisation_site">Перейти на сайт организаии</string>
 
 </resources>

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_category_screen.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
-import ru.shcherbakovdv.ss.trainee.CategoryActivity
+import ru.shcherbakovdv.ss.trainee.CategoryPageActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Category
 import ru.shcherbakovdv.ss.trainee.data.OnCategoryClickListener
@@ -61,9 +61,9 @@ class CategoryTypesFragment : MvpAppCompatFragment(R.layout.fragment_category_sc
 
     private fun startCategoryActivity(id: Int, name: String) {
         context?.let { context ->
-            val intent = context.getClassIntent<CategoryActivity>().apply {
-                putExtra(CategoryActivity.CATEGORY_ID, id)
-                putExtra(CategoryActivity.CATEGORY_NAME, name)
+            val intent = context.getClassIntent<CategoryPageActivity>().apply {
+                putExtra(CategoryPageActivity.CATEGORY_ID, id)
+                putExtra(CategoryPageActivity.CATEGORY_NAME, name)
             }
             startActivity(intent)
         }

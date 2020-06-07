@@ -7,7 +7,7 @@ import moxy.viewstate.strategy.StateStrategyType
 import ru.shcherbakovdv.ss.trainee.data.Charity
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface CategoryMvpView : MvpView {
+interface CategoryPageMvpView : MvpView {
 
     @StateStrategyType(SingleStateStrategy::class)
     fun setLoadingState()
