@@ -23,7 +23,7 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryPageMvpView>() {
             }
     }
 
-    private fun setErrorScreen(throwable: Throwable) {
+    private fun setErrorState(throwable: Throwable) {
         Logger.flatError(throwable.toString())
         viewState.setErrorState()
     }
@@ -39,10 +39,10 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryPageMvpView>() {
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(
                                     this@CategoryPresenter::fillScreen,
-                                    this@CategoryPresenter::setErrorScreen
+                                    this@CategoryPresenter::setErrorState
                                 )
                         }
-                    }, this@CategoryPresenter::setErrorScreen)
+                    }, this@CategoryPresenter::setErrorState)
                     .let(this@CategoryPresenter::attachDisposable)
             }
     }

@@ -4,17 +4,14 @@ import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 
 
+@AddToEndSingle
 interface MainMvpView : MvpView {
 
-    @AddToEndSingle
     fun selectScreen(id: Int)
 
-    @AddToEndSingle
     fun showSearchBar()
 
-    @AddToEndSingle
     fun setDisconnectedState()
 
-    @AddToEndSingle
     fun setConnectedState()
 }

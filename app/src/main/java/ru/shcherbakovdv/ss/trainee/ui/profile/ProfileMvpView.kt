@@ -1,12 +1,13 @@
 package ru.shcherbakovdv.ss.trainee.ui.profile
 
 import moxy.MvpView
-import moxy.viewstate.strategy.AddToEndSingleStrategy
-import moxy.viewstate.strategy.StateStrategyType
+import moxy.viewstate.strategy.alias.AddToEndSingle
 import ru.shcherbakovdv.ss.trainee.data.Profile
 
+@AddToEndSingle
 interface ProfileMvpView : MvpView {
 
-    @StateStrategyType(AddToEndSingleStrategy::class)
     fun fillProfileScreen(profile: Profile)
+
+    fun proceedToLoginScreen()
 }

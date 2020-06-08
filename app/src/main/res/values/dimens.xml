@@ -74,7 +74,6 @@
     <dimen name="search_toolbar_field_height">48dp</dimen>
     <dimen name="search_toolbar_field_elevation">8dp</dimen>
     <dimen name="search_toolbar_field_drawable_margin">11dp</dimen>
-    <dimen name="search_toolbar_field_text_size">14sp</dimen>
     <dimen name="organisation_list_item_padding_vertical">18dp</dimen>
     <dimen name="organisation_list_padding_left">20dp</dimen>
     <dimen name="organisation_list_item_padding_right">8dp</dimen>
@@ -91,7 +90,6 @@
     <dimen name="event_list_item_decor_margin_bottom">10dp</dimen>
     <dimen name="event_list_item_description_margin_horizontal">26dp</dimen>
     <dimen name="event_list_item_description_margin_bottom">16dp</dimen>
-    <dimen name="event_list_item_description_text_size">14sp</dimen>
     <dimen name="event_list_item_snack_height">32dp</dimen>
     <dimen name="event_list_item_snack_text_size">12sp</dimen>
 
@@ -101,7 +99,6 @@
     <dimen name="event_screen_common_vertical_margin">15dp</dimen>
     <dimen name="event_screen_organisation_name_top_margin">11dp</dimen>
     <dimen name="event_screen_organisation_name_text_size">12sp</dimen>
-    <dimen name="event_screen_info_field_text_size">14sp</dimen>
     <dimen name="event_screen_info_field_top_margin">5dp</dimen>
     <dimen name="event_screen_info_field_left_margin">10dp</dimen>
     <dimen name="event_screen_image_margin_top">19dp</dimen>
@@ -113,7 +110,6 @@
     <dimen name="event_screen_description_margin_top">20dp</dimen>
     <dimen name="event_screen_hyperlink_margin_top">20dp</dimen>
     <dimen name="event_screen_donators_bar_margin_top">30dp</dimen>
-    <dimen name="event_screen_donators_text_size">14sp</dimen>
     <dimen name="event_screen_action_bar_height">70dp</dimen>
     <dimen name="event_screen_action_bar_item_icon_margin_top">9dp</dimen>
     <dimen name="event_screen_action_bar_item_icon_margin_horizontal">33dp</dimen>
@@ -124,14 +120,31 @@
     <dimen name="donator_picture_start_margin">-6dp</dimen>
     <dimen name="donator_picture_margin_vertical">20dp</dimen>
     <dimen name="donator_counter_margin_start">10dp</dimen>
-    <!--
-        Общее
-    -->
+
+    <!--Экран логина-->
+    <dimen name="login_screen_disclaimer_top_margin_top">40dp</dimen>
+    <dimen name="login_screen_disclaimer_margin_horizontal">55dp</dimen>
+    <dimen name="login_screen_social_buttons_margin_vertical">20dp</dimen>
+    <dimen name="login_screen_social_buttons_margin_between">40dp</dimen>
+    <dimen name="login_screen_social_buttons_margin_horizontal">80dp</dimen>
+    <dimen name="login_screen_disclaimer_bottom_margin_top">40dp</dimen>
+    <dimen name="login_screen_disclaimer_bottom_margin_horizontal">55dp</dimen>
+    <dimen name="login_screen_fields_height">48dp</dimen>
+    <dimen name="login_screen_button_height">44dp</dimen>
+    <dimen name="login_screen_fields_margin_horizontal">21dp</dimen>
+    <dimen name="login_screen_button_margin_bottom">80dp</dimen>
+    <dimen name="login_screen_fields_margin_vertical">20dp</dimen>
+    <dimen name="login_screen_options_margin_top">20dp</dimen>
+    <dimen name="login_screen_field_label_text_size">12sp</dimen>
+    <dimen name="login_screen_password_switch_icon_size">24dp</dimen>
+
+    <!--Общее-->
     <dimen name="bottom_nav_bar_height">56dp</dimen>
     <dimen name="bottom_nav_bar_elevation">1dp</dimen>
     <dimen name="button_help_circle_size">56dp</dimen>
     <dimen name="button_help_shadow_height">28dp</dimen>
     <dimen name="button_help_bottom_margin">16dp</dimen>
     <dimen name="button_help_elevation">30dp</dimen>
+    <dimen name="textSize">14sp</dimen>
 
 </resources>

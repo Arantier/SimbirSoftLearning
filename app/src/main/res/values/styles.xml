@@ -8,6 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:fontFamily">?fontFamily/sans-serif</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="editTextStyle">@style/EditTextStyle</item>
+    </style>
+
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/textSize</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@drawable/btn_selected</item>
+        <item name="android:textColor">@color/textColorPrimaryInverse</item>
     </style>
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -51,8 +68,7 @@
         <item name="android:layout_marginEnd">@dimen/profile_text_horizontal_margin</item>
     </style>
 
-    <style name="ProfileLogOutButtonStyle" parent="Widget.AppCompat.Button.Colored">
-        <item name="android:backgroundTint">@drawable/btn_logout_selected</item>
+    <style name="ProfileLogOutButtonStyle" parent="ButtonStyle">
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginTop">@dimen/profile_log_out_top_margin</item>
         <item name="android:layout_marginBottom">@dimen/profile_log_out_bottom_margin</item>
@@ -95,7 +111,6 @@
     <style name="EventTextStyle">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/eventTextColor</item>
-        <item name="android:textSize">@dimen/event_screen_info_field_text_size</item>
         <item name="android:layout_marginTop">@dimen/event_screen_info_field_top_margin</item>
         <item name="android:layout_marginRight">@dimen/event_screen_horizontal_margin</item>
         <item name="android:layout_marginLeft">@dimen/event_screen_info_field_left_margin</item>
@@ -105,5 +120,21 @@
         <item name="android:textSize">10sp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:minLines">2</item>
+    </style>
+
+    <style name="LoginScreenFieldTitleLabel">
+        <item name="android:textSize">@dimen/login_screen_field_label_text_size</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+
+    <style name="PasswordToggleButton" parent="Widget.AppCompat.Button">
+        <item name="background">@drawable/btn_password_visibility_switch_bg</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+    </style>
+
+    <style name="PasswordVisibilitySwitch" parent="AppTheme">
+        <item name="android:buttonStyleToggle">@style/PasswordToggleButton</item>
+        <item name="android:textOn" />
+        <item name="android:textOff" />
     </style>
 </resources>

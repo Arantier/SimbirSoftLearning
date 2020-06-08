@@ -10,7 +10,7 @@ interface CharityPageMvpView : MvpView {
 
     fun setCharityScreen(charity: Charity, organisation: Organisation)
 
-    fun setErrorScreen(t: Throwable)
+    fun setErrorState(t: Throwable)
 
-    fun setLoadingScreen()
+    fun setLoadingState()
 }

@@ -56,7 +56,6 @@
             android:ellipsize="end"
             android:gravity="center_horizontal"
             android:maxLines="3"
-            android:textSize="@dimen/event_list_item_description_text_size"
             app:layout_constraintBottom_toTopOf="@+id/layoutEventItemDateHandler"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

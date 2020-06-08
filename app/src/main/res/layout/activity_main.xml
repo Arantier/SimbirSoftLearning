@@ -60,7 +60,6 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/search_toolbar_field_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageToolbarMic"
                 app:layout_constraintHorizontal_bias="0.5"
