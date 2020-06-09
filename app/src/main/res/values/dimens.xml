@@ -31,22 +31,22 @@
     <!--
         Экран профиля
     -->
-    <dimen name="profile_text_horizontal_margin">20dp</dimen>
-    <dimen name="profile_name_top_margin">20dp</dimen>
-    <dimen name="profile_text_top_margin">0dp</dimen>
-    <dimen name="profile_text_bottom_margin">18dp</dimen>
-    <dimen name="profile_hint_top_margin">27dp</dimen>
+    <dimen name="profile_text_margin_horizontal">20dp</dimen>
+    <dimen name="profile_name_margin_top">20dp</dimen>
+    <dimen name="profile_text_margin_top">0dp</dimen>
+    <dimen name="profile_text_margin_bottom">18dp</dimen>
+    <dimen name="profile_hint_margin_top">27dp</dimen>
     <dimen name="profile_name_size">24sp</dimen>
     <dimen name="profile_text_size">16sp</dimen>
     <dimen name="profile_hint_size">12sp</dimen>
     <dimen name="profile_divider_height">1dp</dimen>
-    <dimen name="profile_friend_list_hint_top_margin">20dp</dimen>
-    <dimen name="profile_friend_list_hint_bottom_margin">11dp</dimen>
-    <dimen name="profile_friend_list_bottom_margin">15dp</dimen>
-    <dimen name="profile_log_out_top_margin">20dp</dimen>
-    <dimen name="profile_log_out_bottom_margin">38dp</dimen>
-    <dimen name="profile_log_out_vertical_padding">9dp</dimen>
-    <dimen name="profile_log_out_horizontal_padding">16dp</dimen>
+    <dimen name="profile_friend_list_hint_margin_top">20dp</dimen>
+    <dimen name="profile_friend_list_hint_margin_bottom">11dp</dimen>
+    <dimen name="profile_friend_list_margin_bottom">15dp</dimen>
+    <dimen name="profile_log_out_margin_top">20dp</dimen>
+    <dimen name="profile_log_out_margin_bottom">38dp</dimen>
+    <dimen name="profile_log_out_padding_vertical">9dp</dimen>
+    <dimen name="profile_log_out_padding_horizontal">16dp</dimen>
     <dimen name="profile_log_out_elevation">5dp</dimen>
     <dimen name="profile_friend_picture_size">48dp</dimen>
     <dimen name="profile_friend_picture_margin_vertical">5dp</dimen>
@@ -122,15 +122,11 @@
     <dimen name="donator_counter_margin_start">10dp</dimen>
 
     <!--Экран логина-->
-    <dimen name="login_screen_disclaimer_top_margin_top">40dp</dimen>
     <dimen name="login_screen_disclaimer_margin_horizontal">55dp</dimen>
     <dimen name="login_screen_social_buttons_margin_vertical">20dp</dimen>
     <dimen name="login_screen_social_buttons_margin_between">40dp</dimen>
     <dimen name="login_screen_social_buttons_margin_horizontal">80dp</dimen>
     <dimen name="login_screen_disclaimer_bottom_margin_top">40dp</dimen>
-    <dimen name="login_screen_disclaimer_bottom_margin_horizontal">55dp</dimen>
-    <dimen name="login_screen_fields_height">48dp</dimen>
-    <dimen name="login_screen_button_height">44dp</dimen>
     <dimen name="login_screen_fields_margin_horizontal">21dp</dimen>
     <dimen name="login_screen_button_margin_bottom">80dp</dimen>
     <dimen name="login_screen_fields_margin_vertical">20dp</dimen>

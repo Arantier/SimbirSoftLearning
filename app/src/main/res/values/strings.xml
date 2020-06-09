@@ -41,6 +41,8 @@
     <string name="edit_photo_select">Выбрать фото</string>
     <string name="edit_photo_make">Сделать снимок</string>
     <string name="edit_photo_delete">Удалить</string>
+    <string name="profile_friends_error">Возникла ошибка при загрузке списка друзей</string>
+    <string name="profile_no_friends">Список друзей пуст</string>
 
 
     <!--

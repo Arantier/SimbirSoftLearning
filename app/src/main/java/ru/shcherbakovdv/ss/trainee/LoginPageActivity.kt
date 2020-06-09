@@ -2,6 +2,7 @@ package ru.shcherbakovdv.ss.trainee
 
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.core.widget.doOnTextChanged
@@ -73,6 +74,12 @@ class LoginPageActivity : MvpAppCompatActivity(), LoginPageMvpView {
                 editTextEmail.text.toString(),
                 editTextPassword.text.toString()
             )
+        }
+        editTextPassword.setOnEditorActionListener { textView, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                buttonLogin.apply { if (isEnabled) callOnClick() }
+                true
+            } else false
         }
     }
 

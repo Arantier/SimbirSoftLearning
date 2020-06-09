@@ -6,6 +6,7 @@
     <color name="textColorPrimary">#b3000000</color>
     <color name="textColorSecondary">#61000000</color>
     <color name="textColorPrimaryInverse">#fff</color>
+    <color name="textColorError">#DB5252</color>
 
     <color name="splashBackground">#eff3f6</color>
 

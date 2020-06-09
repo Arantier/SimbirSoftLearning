@@ -4,14 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_profile_screen.*
+import kotlinx.android.synthetic.main.fragment_profile_screen.view.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.LoginPageActivity
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.data.Profile
+import ru.shcherbakovdv.ss.trainee.data.User
 import ru.shcherbakovdv.ss.trainee.data.providers.ImageProvider
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
@@ -22,23 +26,57 @@ class ProfileFragment private constructor(val loginResponce: PublishSubject<Bool
 
     private val presenter by moxyPresenter { ProfilePresenter() }
 
-    override fun fillProfileScreen(profile: Profile) {
-        loginResponce.onNext(true)
-        ImageProvider.loadImage(profile.pictureUrl, imageUserScreenPhoto)
+    var friendsLoadDisposable: Disposable? = null
+
+    override fun fillProfileScreen(user: User) {
+        ImageProvider.loadImage(user.photoUrl, imageUserScreenPhoto)
         imageUserScreenPhoto.setOnClickListener {
             fragmentManager?.let { it1 ->
                 EditPhotoDialog().show(it1, EditPhotoDialog.TAG)
             } ?: Logger.flatError("Fragment manager is null")
         }
-        textUserScreenName.text = profile.name
-        textUserScreenBirth.text = profile.birthDate
-        textUserScreenBusiness.text = profile.business
-        // TODO: Переделай
-//        recyclerviewUserScreenFriends.adapter = FriendsListAdapter(profile.friends)
+        textUserScreenName.text = user.name
+        textUserScreenBirth.text = user.birthDate
+        textUserScreenBusiness.text = user.business
+        friendsLoadDisposable = presenter.getFriendsVisuals(user)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                if (it.size != 0) {
+                    recyclerviewUserScreenFriends.adapter = FriendsListAdapter(it)
+                    friendsProgressBar.makeGone()
+                    textFriendsMessage.makeGone()
+                    recyclerviewUserScreenFriends.makeVisible()
+                } else {
+                    friendsProgressBar.makeGone()
+                    recyclerviewUserScreenFriends.makeGone()
+                    textFriendsMessage.apply {
+                        text = getString(R.string.profile_no_friends)
+                        context?.let { setTextColor(it.resources.getColor(R.color.textColorPrimary)) }
+                        makeVisible()
+                    }
+                }
+            }, {
+                friendsProgressBar.makeGone()
+                recyclerviewUserScreenFriends.makeGone()
+                textFriendsMessage.apply {
+                    text = getString(R.string.profile_friends_error)
+                    context?.let { setTextColor(it.resources.getColor(R.color.textColorError)) }
+                    makeVisible()
+                }
+            })
+
         buttonLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             loginResponce.onNext(false)
         }
+        progressBar.makeGone()
+        content.makeVisible()
+    }
+
+    override fun setErrorState(throwable: Throwable) {
+        content.makeGone()
+        progressBar.makeGone()
+        errorScreen.makeVisible()
     }
 
     override fun proceedToLoginScreen() {
@@ -62,17 +100,16 @@ class ProfileFragment private constructor(val loginResponce: PublishSubject<Bool
         savedInstanceState: Bundle?
     ) = inflater.inflate(R.layout.fragment_profile_screen, container, false)
         .also {
-            presenter.requestUser()
-            loginResponce.doOnNext {
-                if (!it) {
-                    content.makeGone()
-                    progressBar.makeVisible()
-                } else {
-                    progressBar.makeGone()
-                    content.makeVisible()
-                }
+            it.recyclerviewUserScreenFriends.layoutManager = object : LinearLayoutManager(context) {
+                override fun canScrollVertically() = false
             }
+            presenter.requestUser()
         }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        friendsLoadDisposable?.dispose()
+    }
 
     companion object {
 
@@ -84,6 +121,6 @@ class ProfileFragment private constructor(val loginResponce: PublishSubject<Bool
         val TAG = ProfileFragment::class.simpleName
 
         @JvmStatic
-        fun newInstance(loginResponce: PublishSubject<Boolean>) = ProfileFragment(loginResponce)
+        fun newInstance(loginResponse: PublishSubject<Boolean>) = ProfileFragment(loginResponse)
     }
 }

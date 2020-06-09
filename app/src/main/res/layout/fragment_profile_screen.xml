@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fillViewport="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,9 +50,9 @@
                     android:id="@+id/textUserScreenName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/profile_text_horizontal_margin"
-                    android:layout_marginTop="@dimen/profile_name_top_margin"
-                    android:layout_marginEnd="@dimen/profile_text_horizontal_margin"
+                    android:layout_marginStart="@dimen/profile_text_margin_horizontal"
+                    android:layout_marginTop="@dimen/profile_name_margin_top"
+                    android:layout_marginEnd="@dimen/profile_text_margin_horizontal"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="@dimen/profile_name_size"
                     tools:text="Кагыр Маур Дыффин Аэп Кеаллах" />
@@ -87,8 +87,8 @@
                     style="@style/ProfileTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/profile_hint_top_margin"
-                    android:layout_marginBottom="@dimen/profile_text_bottom_margin"
+                    android:layout_marginTop="@dimen/profile_hint_margin_top"
+                    android:layout_marginBottom="@dimen/profile_text_margin_bottom"
                     android:text="@string/profile_receive_notifications" />
             </LinearLayout>
 
@@ -101,16 +101,42 @@
                 style="@style/ProfileHintStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/profile_friend_list_hint_top_margin"
-                android:layout_marginBottom="@dimen/profile_friend_list_hint_bottom_margin"
+                android:layout_marginTop="@dimen/profile_friend_list_hint_margin_top"
+                android:layout_marginBottom="@dimen/profile_friend_list_hint_margin_bottom"
                 android:text="@string/profile_friends" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerviewUserScreenFriends"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/profile_friend_list_bottom_margin"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/friendsProgressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:id="@+id/textFriendsMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/profile_text_margin_horizontal"
+                    android:layout_marginTop="@dimen/profile_friend_picture_margin_vertical"
+                    android:layout_marginEnd="@dimen/profile_text_margin_horizontal"
+                    android:layout_marginBottom="@dimen/profile_friend_picture_margin_vertical"
+                    android:textAlignment="center"
+                    android:visibility="gone"
+                    tools:text="авфывфтвофтаоитыолвиолфдипаиолфиыпоифдипафшдциашцфиашгциагшфцуипашгцифпшгицфпгшфцпкигш"
+                    tools:visibility="visible" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewUserScreenFriends"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/profile_friend_list_margin_bottom"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </FrameLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -122,9 +148,54 @@
                 style="@style/ProfileLogOutButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/profile_log_out" />
+                android:layout_marginBottom="@dimen/profile_log_out_margin_bottom"
+                android:text="@string/profile_log_out"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/errorScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageError"
+            android:layout_width="@dimen/help_screen_error_image_size"
+            android:layout_height="@dimen/help_screen_error_image_size"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.31"
+            app:srcCompat="?android:attr/alertDialogIcon" />
+
+        <TextView
+            android:id="@+id/textError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/no_internet_connection"
+            android:textAlignment="center"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageError" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
