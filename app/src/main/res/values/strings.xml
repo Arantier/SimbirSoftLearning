@@ -41,6 +41,8 @@
     <string name="edit_photo_select">Выбрать фото</string>
     <string name="edit_photo_make">Сделать снимок</string>
     <string name="edit_photo_delete">Удалить</string>
+    <string name="profile_friends_error">Возникла ошибка при загрузке списка друзей</string>
+    <string name="profile_no_friends">Список друзей пуст</string>
 
 
     <!--
@@ -81,5 +83,18 @@
     <string name="charity_screen_action_bar_donate">Помочь \nденьгами</string>
     <string name="charity_screen_organisation_message">У вас есть вопросы? Напишите нам!</string>
     <string name="charity_screen_organisation_site">Перейти на сайт организаии</string>
+    
+    <!--Экран логина-->
+    <string name="login_action_error_responce">Чтобы попасть в эту вкладку вы должны произвести вход!</string>
+    <string name="login_screen_title">Авторизация</string>
+    <string name="login_screen_disclaimer_message_top">Для участия в мероприятиях войдите в наше приложение через социальные сети</string>
+    <string name="login_screen_disclaimer_message_bottom">Или авторизуйтесь через приложение</string>
+    <string name="login_screen_email">E-mail</string>
+    <string name="login_screen_email_prompt">Введите e-mail</string>
+    <string name="login_screen_password">Пароль</string>
+    <string name="login_screen_password_prompt">Введите пароль</string>
+    <string name="login_screen_login_button">Войти</string>
+    <string name="login_screen_forgot_credential"><u>Забыли пароль?</u></string>
+    <string name="login_screen_register"><u>Регистрация</u></string>
 
 </resources>

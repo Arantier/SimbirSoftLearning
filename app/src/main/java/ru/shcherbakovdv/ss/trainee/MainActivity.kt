@@ -2,6 +2,9 @@ package ru.shcherbakovdv.ss.trainee
 
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
+import io.reactivex.Completable
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
@@ -11,6 +14,7 @@ import ru.shcherbakovdv.ss.trainee.ui.profile.ProfileFragment
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFragment
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
+import javax.security.auth.login.LoginException
 
 class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainMvpView {
 
@@ -50,10 +54,25 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainMvpView {
     private fun showHistoryFragment() = showFragmentPlaceholder()
 
     private fun showProfileFragment() {
+        val loginResponce = PublishSubject.create<Boolean>()
+            .apply {
+                flatMapCompletable {
+                    if (it) Completable.complete()
+                    else Completable.error(LoginException("User didn't log in."))
+                }.subscribe({ }, {
+                    bottomNavBar.selectedItemId = R.id.bottom_help
+                    Toast.makeText(
+                        this@MainActivity,
+                        R.string.login_action_error_responce,
+                        Toast.LENGTH_LONG
+                    ).show()
+                })
+            }
+
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.fragmentContainer,
-                ProfileFragment.newInstance(),
+                ProfileFragment.newInstance(loginResponce),
                 ProfileFragment.TAG
             )
             .commit()

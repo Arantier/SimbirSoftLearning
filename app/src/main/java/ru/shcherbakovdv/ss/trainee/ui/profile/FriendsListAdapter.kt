@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_friend_list.view.*
 import ru.shcherbakovdv.ss.trainee.R
-import ru.shcherbakovdv.ss.trainee.data.Profile
 import ru.shcherbakovdv.ss.trainee.data.providers.ImageProvider
 
-class FriendsListAdapter(private val friendsList: Array<Profile>?)
+class FriendsListAdapter(private val friendsList: Array<Pair<String, String>>?)
     : RecyclerView.Adapter<FriendsListAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewMode: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_friend_list, parent, false)
@@ -24,9 +23,9 @@ class FriendsListAdapter(private val friendsList: Array<Profile>?)
     }
 
     class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(friend: Profile) {
-            ImageProvider.loadImage(friend.pictureUrl, view.imageFriendItem)
-            view.textFriendItem.text = friend.name
+        fun bind(friend: Pair<String, String>) {
+            view.textFriendItem.text = friend.first
+            ImageProvider.loadImage(friend.second, view.imageFriendItem)
         }
     }
 }

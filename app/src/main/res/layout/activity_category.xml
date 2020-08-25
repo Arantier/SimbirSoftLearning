@@ -18,15 +18,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/toolbarTitle"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textAlignment="center"
-            android:theme="@style/ToolbarTheme.Title"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="19dp" />
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textAlignment="center"
+                android:theme="@style/ToolbarTheme.Title"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="19dp" />
+        </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -45,8 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            tools:listitem="@layout/item_charity_list"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_charity_list" />
     </androidx.core.widget.NestedScrollView>
 
 

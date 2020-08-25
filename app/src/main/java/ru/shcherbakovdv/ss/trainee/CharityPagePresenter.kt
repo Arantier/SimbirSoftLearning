@@ -14,7 +14,7 @@ class CharityPagePresenter : ReactiveMvpPresenter<CharityPageMvpView>() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ organisation ->
                 viewState.setCharityScreen(charity, organisation)
-            }, viewState::setErrorScreen)
+            }, viewState::setErrorState)
             .let(this::attachDisposable)
     }
 

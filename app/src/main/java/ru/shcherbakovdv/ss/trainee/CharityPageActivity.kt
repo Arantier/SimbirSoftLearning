@@ -6,7 +6,6 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.URLSpan
 import android.text.util.Linkify
-import android.util.TypedValue
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TextView
@@ -30,7 +29,7 @@ class CharityPageActivity : MvpAppCompatActivity(), CharityPageMvpView {
 
     private val presenter by moxyPresenter { CharityPagePresenter() }
 
-    override fun setLoadingScreen() {
+    override fun setLoadingState() {
         bottomBar.makeGone()
         content.makeGone()
         error.makeGone()
@@ -115,17 +114,13 @@ class CharityPageActivity : MvpAppCompatActivity(), CharityPageMvpView {
                 }
                 gravity = Gravity.CENTER_VERTICAL
                 setTextColor(resources.getColor(R.color.donatorsTextColor))
-                setTextSize(
-                    TypedValue.COMPLEX_UNIT_PX,
-                    resources.getDimension(R.dimen.event_screen_donators_text_size)
-                )
                 text = "+${(charity.donatorsPicturesUrls?.size ?: 0) - donatorsToShow}"
             }
             layoutDonatorsBar.addView(donatorCountView)
         }
     }
 
-    override fun setErrorScreen(t: Throwable) {
+    override fun setErrorState(t: Throwable) {
         progressBar.makeGone()
         content.makeGone()
         bottomBar.makeGone()
