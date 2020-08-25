@@ -1,9 +1,9 @@
 package ru.shcherbakovdv.ss.trainee.ui.profile
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_friend_list.view.*
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Profile

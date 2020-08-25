@@ -1,8 +1,8 @@
 package ru.shcherbakovdv.ss.trainee.ui.search.charities
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Charity
 import ru.shcherbakovdv.ss.trainee.data.CharityViewHolder
@@ -12,7 +12,7 @@ class CharitiesListAdapter(private val charities: Array<Charity>, private val on
 
     override fun onCreateViewHolder(parent: ViewGroup, state: Int): CharityViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_event_list, parent, false)
+                .inflate(R.layout.item_charity_list, parent, false)
         return CharityViewHolder(view, onCharityClickListener)
     }
 

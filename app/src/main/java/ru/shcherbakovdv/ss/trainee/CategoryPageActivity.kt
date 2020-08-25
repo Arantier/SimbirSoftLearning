@@ -3,20 +3,19 @@ package ru.shcherbakovdv.ss.trainee
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.arellomobile.mvp.MvpAppCompatActivity
-import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_category.*
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.ui.search.charities.CharitiesListAdapter
 import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
-import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
+import ru.shcherbakovdv.ss.trainee.ui.search.charities.CharitiesListAdapter
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
+import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 
-class CategoryActivity : MvpAppCompatActivity(), OnCharityClickListener, CategoryMvpView {
+class CategoryPageActivity : MvpAppCompatActivity(R.layout.activity_category), OnCharityClickListener, CategoryPageMvpView {
 
-    @InjectPresenter
-    lateinit var presenter: CategoryPresenter
+    private val presenter by moxyPresenter { CategoryPresenter() }
 
     override fun setLoadingState() {
         recyclerView.makeGone()
@@ -69,9 +68,9 @@ class CategoryActivity : MvpAppCompatActivity(), OnCharityClickListener, Categor
     }
 
     override fun onCharityEventClick(event: Charity) {
-        val intent = Intent(this, EventActivity::class.java)
+        val intent = Intent(this, CharityPageActivity::class.java)
         val eventJson = JsonUtils.gson.toJson(event)
-        intent.putExtra(EventActivity.EVENT_JSON, eventJson)
+        intent.putExtra(CharityPageActivity.EVENT_JSON, eventJson)
         startActivity(intent)
     }
 

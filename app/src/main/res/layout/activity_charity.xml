@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="ru.shcherbakovdv.ss.trainee.EventActivity">
+    tools:context="ru.shcherbakovdv.ss.trainee.CharityPageActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -27,14 +26,21 @@
             android:theme="@style/ToolbarTheme.Title"
             tools:text="Спонсоры отремонтируют школу-интернат" />
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:visibility="visible">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -141,11 +147,11 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintStart_toEndOf="@+id/imageMessageIcon"
                 app:layout_constraintTop_toTopOf="@+id/imageMessageIcon"
-                tools:text="У вас есть вопросы? Напишите нам!"/>
+                tools:text="У вас есть вопросы? Напишите нам!" />
 
             <include
-                layout="@layout/content_event_screen_images"
                 android:id="@+id/layoutImages"
+                layout="@layout/content_charity_screen_images"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/event_screen_horizontal_margin"
@@ -153,7 +159,7 @@
                 android:layout_marginEnd="@dimen/event_screen_horizontal_margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textMessage"/>
+                app:layout_constraintTop_toBottomOf="@+id/textMessage" />
 
             <TextView
                 android:id="@+id/textDescription"
@@ -178,33 +184,78 @@
                 android:layout_marginLeft="@dimen/event_screen_horizontal_margin"
                 android:layout_marginTop="@dimen/event_screen_hyperlink_margin_top"
                 android:layout_marginRight="@dimen/event_screen_horizontal_margin"
-                android:text="@string/event_screen_organisation_site"
+                android:text="@string/charity_screen_organisation_site"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textDescription"/>
+                app:layout_constraintTop_toBottomOf="@+id/textDescription" />
 
             <LinearLayout
                 android:id="@+id/layoutDonatorsBar"
-                android:orientation="horizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/event_screen_donators_bar_margin_top"
                 android:background="@color/donatorsBarBackground"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/event_screen_horizontal_margin"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textHyperlink"
-                android:paddingLeft="@dimen/event_screen_horizontal_margin"/>
+                app:layout_constraintTop_toBottomOf="@id/textHyperlink" />
 
-            <include
-                layout="@layout/content_event_screen_action_bar"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/event_screen_action_bar_height"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layoutDonatorsBar" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v4.widget.NestedScrollView>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:visibility="gone" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/error"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <ImageView
+            android:id="@+id/imageError"
+            android:layout_width="@dimen/help_screen_error_image_size"
+            android:layout_height="@dimen/help_screen_error_image_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?android:attr/alertDialogIcon" />
+
+        <TextView
+            android:id="@+id/textError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/help_screen_error_text_margin_top"
+            android:text="@string/charity_screen_error_message"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageError" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/bottomBar"
+        layout="@layout/content_charity_screen_action_bar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/event_screen_action_bar_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

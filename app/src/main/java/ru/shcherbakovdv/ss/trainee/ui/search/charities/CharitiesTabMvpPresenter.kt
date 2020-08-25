@@ -1,17 +1,21 @@
 package ru.shcherbakovdv.ss.trainee.ui.search.charities
 
-import com.arellomobile.mvp.InjectViewState
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFieldNotifier
 
-@InjectViewState
 class CharitiesTabMvpPresenter : ReactiveMvpPresenter<CharityTabMvpView>() {
 
     init {
         SearchFieldNotifier.searchField
-                .flatMap { key -> CharitiesProvider.requestCharities(key).toObservable() }
-                .subscribe { array -> viewState.setContent(array) }
+                .flatMapSingle { key ->
+                    CharitiesProvider.find(key)
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { viewState.setContent(it) }
                 .let { attachDisposable(it) }
     }
 

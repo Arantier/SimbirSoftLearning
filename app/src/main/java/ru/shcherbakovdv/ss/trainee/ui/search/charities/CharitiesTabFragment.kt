@@ -3,26 +3,23 @@ package ru.shcherbakovdv.ss.trainee.ui.search.charities
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_charity_tab.*
-import kotlinx.android.synthetic.main.fragment_charity_tab.view.*
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
+import ru.shcherbakovdv.ss.trainee.CharityPageActivity
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.EventActivity
 import ru.shcherbakovdv.ss.trainee.data.OnCharityClickListener
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
-import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.getClassIntent
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
+import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 
-class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharityClickListener {
+class CharitiesTabFragment : MvpAppCompatFragment(R.layout.fragment_charity_tab), CharityTabMvpView, OnCharityClickListener {
 
-    @InjectPresenter
-    lateinit var presenter: CharitiesTabMvpPresenter
+    private val presenter by moxyPresenter { CharitiesTabMvpPresenter() }
 
     override fun setContent(charityArray: Array<Charity>) {
         if (charityArray.isEmpty()) {
@@ -39,8 +36,8 @@ class CharitiesTabFragment : MvpAppCompatFragment(), CharityTabMvpView, OnCharit
     override fun onCharityEventClick(event: Charity) {
         val eventJson = JsonUtils.gson.toJson(event)
         context?.let { context ->
-            val intent = context.getClassIntent<EventActivity>()
-            intent.putExtra(EventActivity.EVENT_JSON, eventJson)
+            val intent = context.getClassIntent<CharityPageActivity>()
+            intent.putExtra(CharityPageActivity.EVENT_JSON, eventJson)
             startActivity(intent)
         }
         if (context==null) {

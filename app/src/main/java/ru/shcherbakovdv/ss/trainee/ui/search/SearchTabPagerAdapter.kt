@@ -1,9 +1,9 @@
 package ru.shcherbakovdv.ss.trainee.ui.search
 
 import android.content.Context
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.ui.search.charities.CharitiesTabFragment
 import ru.shcherbakovdv.ss.trainee.ui.search.organisations.OrganisationsTabFragment

@@ -1,9 +1,7 @@
 package ru.shcherbakovdv.ss.trainee.ui.search
 
-import com.arellomobile.mvp.InjectViewState
 import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
 
-@InjectViewState
 class SearchPresenter : ReactiveMvpPresenter<SearchMvpView>() {
 
     var position = 0

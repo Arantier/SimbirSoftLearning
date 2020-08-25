@@ -1,39 +1,35 @@
 package ru.shcherbakovdv.ss.trainee.data.providers
 
-import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.realm.Realm
 import ru.shcherbakovdv.ss.trainee.data.Category
 import ru.shcherbakovdv.ss.trainee.data.RealmCategory
 
 object CategoriesProvider {
 
-    var categories: Array<Category>? = null
-    lateinit var realm: Realm
+    private var categories: Array<Category>? = null
 
-    fun requestCategoriesFile(): Single<Array<Category>> {
-        realm = Realm.getDefaultInstance()
-        return realm.where(RealmCategory::class.java)
-                .findAllAsync()
-                .asFlowable()
-                .firstOrError()
-                .flatMap {
-                    realm.close()
-                    val categoriesList = ArrayList<Category>()
-                    for (realmCategory in it) {
-                        val category = Category(
-                                realmCategory?.id ?: 0,
-                                realmCategory.name ?: "",
-                                realmCategory.pictureUrl ?: ""
-                        )
-                        categoriesList.add(category)
-                    }
-                    categories = categoriesList.toTypedArray()
-                    categories?.let {
-                        Single.just(it)
-                    } ?: throw IllegalStateException("Empty categories")
-                }
-                .observeOn(AndroidSchedulers.mainThread())
+    val categoriesSingle: Single<Array<Category>>
+        get() = categories?.let {
+            Single.just(it)
+        } ?: getCategoriesFromDatabase()
+
+    fun loadRealmCategoriesFromNet() = DatabaseService.getApi()
+        .getCategories()
+        .flatMapObservable { Observable.fromIterable(it.asIterable()) }
+        .map { it.toRealmCategory() }
+
+    fun getCategoriesFromDatabase() = Single.defer {
+        val realm = Realm.getDefaultInstance()
+        val results = realm.where(RealmCategory::class.java).findAll()
+        realm.copyFromRealm(results)
+            .mapNotNull { it.toCategory() }
+            .toTypedArray()
+            .let { array ->
+                realm.close()
+                categories = array
+                Single.just(array)
+            }
     }
 }

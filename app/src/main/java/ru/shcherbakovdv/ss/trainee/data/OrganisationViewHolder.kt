@@ -1,8 +1,7 @@
 package ru.shcherbakovdv.ss.trainee.data
 
-import android.support.v7.widget.RecyclerView
 import android.widget.TextView
-import ru.shcherbakovdv.ss.trainee.data.Organisation
+import androidx.recyclerview.widget.RecyclerView
 
 class OrganisationViewHolder(val view: TextView) : RecyclerView.ViewHolder(view) {
 

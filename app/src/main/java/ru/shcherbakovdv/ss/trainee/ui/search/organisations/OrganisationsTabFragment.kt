@@ -3,22 +3,21 @@ package ru.shcherbakovdv.ss.trainee.ui.search.organisations
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_organisation_tab.*
 import kotlinx.android.synthetic.main.fragment_organisation_tab.view.*
-import ru.shcherbakovdv.ss.trainee.data.Organisation
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.R
+import ru.shcherbakovdv.ss.trainee.data.Organisation
 import java.util.*
 
-class OrganisationsTabFragment : MvpAppCompatFragment(), OrganisationsTabMvpView {
+class OrganisationsTabFragment : MvpAppCompatFragment(R.layout.fragment_organisation_tab), OrganisationsTabMvpView {
 
-    @InjectPresenter
-    lateinit var presenter: OrganisationsTabPresenter
+    val presenter by moxyPresenter { OrganisationsTabPresenter() }
 
     private fun getLocaleQuantityString(id: Int, quantity: Int): String {
         return context?.let {context->

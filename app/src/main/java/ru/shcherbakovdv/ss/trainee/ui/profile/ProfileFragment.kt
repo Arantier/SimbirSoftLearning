@@ -3,22 +3,24 @@ package ru.shcherbakovdv.ss.trainee.ui.profile
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_profile_screen.*
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.R
 import ru.shcherbakovdv.ss.trainee.data.Profile
 import ru.shcherbakovdv.ss.trainee.data.providers.ImageProvider
+import ru.shcherbakovdv.ss.trainee.utilites.Logger
 
-class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
+class ProfileFragment : MvpAppCompatFragment(R.layout.fragment_profile_screen), ProfileMvpView {
 
-    @InjectPresenter
-    lateinit var presenter: ProfilePresenter
+   private val presenter by moxyPresenter { ProfilePresenter() }
 
     override fun fillProfileScreen(profile: Profile) {
         ImageProvider.loadImage(profile.pictureUrl, imageUserScreenPhoto)
         imageUserScreenPhoto.setOnClickListener {
-            EditPhotoDialog().show(fragmentManager, EditPhotoDialog.TAG)
+            fragmentManager?.let { it1 ->
+                EditPhotoDialog().show(it1, EditPhotoDialog.TAG)
+            } ?: Logger.flatError("Fragment manager is null")
         }
         textUserScreenName.text = profile.name
         textUserScreenBirth.text = profile.birthDate
@@ -26,9 +28,10 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileMvpView {
         recyclerviewUserScreenFriends.adapter = FriendsListAdapter(profile.friends)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?)
-            = inflater.inflate(R.layout.fragment_profile_screen, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = inflater.inflate(R.layout.fragment_profile_screen, container, false)
 
     companion object {
         @JvmStatic

@@ -1,23 +1,67 @@
 package ru.shcherbakovdv.ss.trainee
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.view.inputmethod.EditorInfo
-import com.arellomobile.mvp.MvpAppCompatActivity
-import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_category_list.view.*
-import ru.shcherbakovdv.ss.trainee.ui.CategoryTypesFragment
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 import ru.shcherbakovdv.ss.trainee.ui.ConnectionLostFragment
+import ru.shcherbakovdv.ss.trainee.ui.categories.CategoryTypesFragment
 import ru.shcherbakovdv.ss.trainee.ui.profile.ProfileFragment
 import ru.shcherbakovdv.ss.trainee.ui.search.SearchFragment
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeGone
 import ru.shcherbakovdv.ss.trainee.utilites.extensions.makeVisible
 
-class MainActivity : MvpAppCompatActivity(), MainMvpView {
+class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainMvpView {
 
-    @InjectPresenter
-    lateinit var presenter: MainMvpPresenter
+    private val presenter by moxyPresenter { MainMvpPresenter() }
+
+    private fun showNewsFragment() = showFragmentPlaceholder()
+
+    private fun showSearchFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.fragmentContainer,
+                SearchFragment.newInstance(),
+                SearchFragment.TAG
+            )
+            .commit()
+        textToolbarTitle.text = getString(R.string.title_search)
+        toolbar.apply {
+            inflateMenu(R.menu.search_toolbar)
+            menu.getItem(0).setOnMenuItemClickListener { item ->
+                showSearchBar()
+                true
+            }
+        }
+    }
+
+    private fun showHelpFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.fragmentContainer,
+                CategoryTypesFragment.newInstance(),
+                CategoryTypesFragment.TAG
+            )
+            .commit()
+        textToolbarTitle.text = getText(R.string.title_help)
+    }
+
+    private fun showHistoryFragment() = showFragmentPlaceholder()
+
+    private fun showProfileFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.fragmentContainer,
+                ProfileFragment.newInstance(),
+                ProfileFragment.TAG
+            )
+            .commit()
+        toolbar.apply {
+            inflateMenu(R.menu.profile_toolbar)
+        }
+        textToolbarTitle.text = getText(R.string.title_profile)
+    }
 
     private fun showFragmentPlaceholder() {
         supportFragmentManager.apply {
@@ -35,6 +79,26 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
         textToolbarTitle.text = "Unused"
     }
 
+    private fun showErrorFragment(messageId: Int) {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.fragmentContainer,
+                ConnectionLostFragment.newInstance(getString(messageId)),
+                ConnectionLostFragment.TAG
+            )
+            .commit()
+    }
+
+    private fun showErrorFragment(message: String) {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.fragmentContainer,
+                ConnectionLostFragment.newInstance(message),
+                ConnectionLostFragment.TAG
+            )
+            .commit()
+    }
+
     override fun setConnectedState() {
         selectScreen(bottomNavBar.selectedItemId)
         bottomNavBar.makeVisible()
@@ -48,8 +112,12 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
         textToolbarTitle.makeVisible()
         layoutToolbarSearch.makeGone()
         supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, ConnectionLostFragment.newInstance(getString(R.string.help_error)), ConnectionLostFragment.TAG)
-                .commit()
+            .replace(
+                R.id.fragmentContainer,
+                ConnectionLostFragment.newInstance(getString(R.string.help_error)),
+                ConnectionLostFragment.TAG
+            )
+            .commit()
         bottomNavBar.makeGone()
         buttonHeart.makeGone()
     }
@@ -62,43 +130,12 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
         layoutToolbarSearch.makeGone()
 
         when (id) {
-            R.id.bottom_news -> {
-                showFragmentPlaceholder()
-            }
-            R.id.bottom_search -> {
-                supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, SearchFragment.newInstance(), SearchFragment.TAG)
-                        .commit()
-                textToolbarTitle.text = getString(R.string.title_search)
-                toolbar.apply {
-                    inflateMenu(R.menu.search_toolbar)
-                    menu.getItem(0).setOnMenuItemClickListener { item ->
-                        presenter.prepareForSearch()
-                        true
-                    }
-                }
-            }
-            R.id.bottom_help -> {
-                supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, CategoryTypesFragment.newInstance(), CategoryTypesFragment.TAG)
-                        .commit()
-                textToolbarTitle.text = getText(R.string.title_help)
-            }
-            R.id.bottom_history -> {
-                showFragmentPlaceholder()
-            }
-            R.id.bottom_profile -> {
-                supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, ProfileFragment.newInstance(), ProfileFragment.TAG)
-                        .commit()
-                toolbar.apply {
-                    inflateMenu(R.menu.profile_toolbar)
-                }
-                textToolbarTitle.text = getText(R.string.title_profile)
-            }
-            else -> supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, ConnectionLostFragment.newInstance(getString(R.string.undefined_error)), ConnectionLostFragment.TAG)
-                    .commit()
+            R.id.bottom_news -> showNewsFragment()
+            R.id.bottom_search -> showSearchFragment()
+            R.id.bottom_help -> showHelpFragment()
+            R.id.bottom_history -> showHistoryFragment()
+            R.id.bottom_profile -> showProfileFragment()
+            else -> showErrorFragment(R.string.unexpected_error)
         }
     }
 
@@ -123,10 +160,7 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
             }
         }
 
-        bottomNavBar.enableAnimation(false)
-
-        bottomNavBar.selectedItemId = R.id.bottom_help
-        bottomNavBar.onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        bottomNavBar.setOnNavigationItemSelectedListener { item ->
             if (item.isChecked) {
                 false
             } else {
@@ -134,7 +168,9 @@ class MainActivity : MvpAppCompatActivity(), MainMvpView {
                 true
             }
         }
+        bottomNavBar.selectedItemId = R.id.bottom_help
     }
+
 
     override fun onStart() {
         super.onStart()

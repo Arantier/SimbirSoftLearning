@@ -2,27 +2,25 @@ package ru.shcherbakovdv.ss.trainee
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.NetworkRequest
-import com.arellomobile.mvp.InjectViewState
-import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.data.NetworkCallback
 import ru.shcherbakovdv.ss.trainee.data.ReactiveMvpPresenter
+import ru.shcherbakovdv.ss.trainee.data.providers.CharitiesProvider
 import ru.shcherbakovdv.ss.trainee.utilites.Logger
 
-@InjectViewState
-class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
+class CategoryPresenter : ReactiveMvpPresenter<CategoryPageMvpView>() {
 
     var categoryId = -1
 
-    private val networkCallback = NetworkCallback()
+    lateinit var networkCallback: NetworkCallback
 
     private fun fillScreen(events: Array<Charity>) {
         events.filter { it.categoryId == categoryId }
-                .apply {
-                    viewState.updateList(this.toTypedArray())
-                }
+            .apply {
+                viewState.updateList(this.toTypedArray())
+            }
     }
 
     private fun setErrorScreen(throwable: Throwable) {
@@ -31,35 +29,27 @@ class CategoryPresenter : ReactiveMvpPresenter<CategoryMvpView>() {
     }
 
     fun observeNetwork(context: Context) {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        connectivityManager.registerNetworkCallback(NetworkRequest.Builder().build(), networkCallback)
-        networkCallback.networkState
-                .flatMap {
-                    if (it) {
-                        CharitiesProvider.requestAllCharities().toObservable()
-                    } else {
-                        viewState.setErrorState()
-                        // Не слишком изящный способ, но Observable.error() не давало результат
-                        Observable.empty<Array<Charity>>().doOnNext { throw IllegalStateException("Missing Internet connection") }
-                    }
-                }
-                .subscribe({
-                    if (!it.equals(CharitiesProvider.charities)) {
-                        viewState.setLoadingState()
-                        if (CharitiesProvider.charities == null) {
-                            CharitiesProvider.charities = it
+        networkCallback = NetworkCallback.newInstance(context)
+            .apply {
+                networkLiveState
+                    .subscribeOn(Schedulers.io())
+                    .subscribe({ netAvailable ->
+                        if (netAvailable) {
+                            CharitiesProvider.charitiesSingle
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(
+                                    this@CategoryPresenter::fillScreen,
+                                    this@CategoryPresenter::setErrorScreen
+                                )
                         }
-                        CharitiesProvider.charities?.let { array ->
-                            fillScreen(array)
-                        }
-                    }
-                }, {
-                    setErrorScreen(it)
-                }).let { attachDisposable(it) }
+                    }, this@CategoryPresenter::setErrorScreen)
+                    .let(this@CategoryPresenter::attachDisposable)
+            }
     }
 
     fun disposeNetwork(context: Context) {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.unregisterNetworkCallback(networkCallback)
     }
 }

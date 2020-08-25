@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/event_screen_action_bar_height"
-    android:divider="@drawable/event_screen_action_bar_divider"
+    android:divider="@drawable/charity_screen_action_bar_divider"
     android:orientation="horizontal"
     tools:layout_editor_absoluteY="25dp">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutItems"
         android:layout_width="80dp"
         android:layout_height="70dp"
@@ -38,12 +38,12 @@
             android:layout_marginTop="@dimen/event_screen_action_bar_item_title_margin_top"
             android:layout_marginRight="@dimen/event_screen_action_bar_item_title_margin_horizontal"
             android:layout_marginBottom="@dimen/event_screen_action_bar_item_title_margin_bottom"
-            android:text="@string/event_screen_action_bar_items"
+            android:text="@string/charity_screen_action_bar_items"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageItemIcon" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageDivider1"
@@ -54,10 +54,10 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/layoutItems"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/event_screen_action_bar_divider" />
+        app:srcCompat="@drawable/charity_screen_action_bar_divider" />
 
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutQualityHelp"
         android:layout_width="80dp"
         android:layout_height="70dp"
@@ -87,13 +87,13 @@
             android:layout_marginTop="@dimen/event_screen_action_bar_item_title_margin_top"
             android:layout_marginRight="@dimen/event_screen_action_bar_item_title_margin_horizontal"
             android:layout_marginBottom="@dimen/event_screen_action_bar_item_title_margin_bottom"
-            android:text="@string/event_screen_action_bar_quality_help"
+            android:text="@string/charity_screen_action_bar_quality_help"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageQualityHelpIcon" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageDivider2"
@@ -104,9 +104,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/layoutQualityHelp"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/event_screen_action_bar_divider" />
+        app:srcCompat="@drawable/charity_screen_action_bar_divider" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutVolunteers"
         android:layout_width="80dp"
         android:layout_height="70dp"
@@ -136,12 +136,12 @@
             android:layout_marginTop="@dimen/event_screen_action_bar_item_title_margin_top"
             android:layout_marginRight="@dimen/event_screen_action_bar_item_title_margin_horizontal"
             android:layout_marginBottom="@dimen/event_screen_action_bar_item_title_margin_bottom"
-            android:text="@string/event_screen_action_bar_volunteers"
+            android:text="@string/charity_screen_action_bar_volunteers"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageVolunteersIcon" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageDivider3"
@@ -152,9 +152,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/layoutVolunteers"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/event_screen_action_bar_divider" />
+        app:srcCompat="@drawable/charity_screen_action_bar_divider" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutDonate"
         android:layout_width="80dp"
         android:layout_height="70dp"
@@ -184,11 +184,11 @@
             android:layout_marginTop="@dimen/event_screen_action_bar_item_title_margin_top"
             android:layout_marginRight="@dimen/event_screen_action_bar_item_title_margin_horizontal"
             android:layout_marginBottom="@dimen/event_screen_action_bar_item_title_margin_bottom"
-            android:text="@string/event_screen_action_bar_donate"
+            android:text="@string/charity_screen_action_bar_donate"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageDonateIcon" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

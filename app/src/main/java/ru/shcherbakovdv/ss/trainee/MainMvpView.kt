@@ -1,17 +1,20 @@
 package ru.shcherbakovdv.ss.trainee
 
-import com.arellomobile.mvp.MvpView
-import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
-import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import moxy.MvpView
+import moxy.viewstate.strategy.alias.AddToEndSingle
 
-@StateStrategyType(AddToEndSingleStrategy::class)
+
 interface MainMvpView : MvpView {
 
+    @AddToEndSingle
     fun selectScreen(id: Int)
 
+    @AddToEndSingle
     fun showSearchBar()
 
+    @AddToEndSingle
     fun setDisconnectedState()
 
+    @AddToEndSingle
     fun setConnectedState()
 }

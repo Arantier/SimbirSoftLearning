@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/search_info_padding" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewOrganisationList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/searchListBackground"
         android:paddingLeft="@dimen/organisation_list_padding_left"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_organisation_list">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

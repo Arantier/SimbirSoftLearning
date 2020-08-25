@@ -1,63 +1,47 @@
 package ru.shcherbakovdv.ss.trainee.data.providers
 
+import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.realm.Realm
-import org.threeten.bp.LocalDate
 import ru.shcherbakovdv.ss.trainee.data.Charity
-import ru.shcherbakovdv.ss.trainee.data.Organisation
 import ru.shcherbakovdv.ss.trainee.data.RealmCharity
-import ru.shcherbakovdv.ss.trainee.utilites.json.JsonUtils
 
 object CharitiesProvider {
 
-    var charities: Array<Charity>? = null
-    lateinit var realm: Realm
+    private var charities: Array<Charity>? = null
 
-    fun requestAllCharities(): Single<Array<Charity>> {
-        realm = Realm.getDefaultInstance()
-        return realm.where(RealmCharity::class.java)
-                .findAllAsync()
-                .asFlowable()
-                .firstOrError()
-                .flatMap {
-                    val charitiesList = ArrayList<Charity>()
-                    for (realmCharity in it) {
-                        realmCharity.apply {
-                            val charity = Charity(
-                                    categoryId ?: 0,
-                                    title ?: "",
-                                    description ?: "",
-                                    JsonUtils.fromJson(picturesUrls, Array<String>::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad charity field: pictures url array is null"),
-                                    JsonUtils.fromJson(startDate, LocalDate::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad field: start date is null"),
-                                    JsonUtils.fromJson(endDate, LocalDate::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad field: end date is null"),
-                                    JsonUtils.fromJson(organisation, Organisation::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad field: organisation is null"),
-                                    JsonUtils.fromJson(donatorsPicturesUrls, Array<String>::class.java)
-                                            ?: throw java.lang.IllegalStateException("Bad field: donators pictures url array is null")
-                            )
-                            charitiesList.add(charity)
-                        }
-                    }
-                    charities = charitiesList.toTypedArray()
-                    realm.close()
-                    charities?.let {
-                        Single.just(it)
-                    } ?: throw IllegalStateException("Empty charities")
-                }
-                .observeOn(AndroidSchedulers.mainThread())
+    val charitiesSingle: Single<Array<Charity>>
+        get() = charities?.let {
+            Single.just(it)
+        } ?: getCharitiesFromDatabase()
+
+    fun loadRealmCharitiesFromNet() = DatabaseService.getApi()
+        .getCharities()
+        .flatMapObservable { Observable.fromIterable(it.asIterable()) }
+        .map { it.toRealmCharity() }
+
+    fun getCharitiesFromDatabase() = Single.defer {
+        val realm = Realm.getDefaultInstance()
+        val results = realm.where(RealmCharity::class.java).findAll()
+        realm.copyFromRealm(results)
+            .mapNotNull { it.toCharity() }
+            .toTypedArray()
+            .let { array ->
+                realm.close()
+                charities = array
+                Single.just(array)
+            }
     }
 
-    fun requestCharities(key: String): Single<Array<Charity>> {
-        if (key.isEmpty()) return Single.just(emptyArray())
-        return charities?.let { charities ->
-            Single.just(charities.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray())
-        } ?: requestAllCharities().map { array: Array<Charity> ->
-            array.filter { it.title.toLowerCase().contains(key.toLowerCase()) || it.description.toLowerCase().contains(key.toLowerCase()) }.toTypedArray()
+    fun find(key: String) = charitiesSingle
+        .map { array ->
+            if (key.isEmpty()) {
+                emptyArray()
+            } else {
+                array.filter { charity ->
+                    charity.title.contains(key) or charity.description.contains(key)
+                }.toTypedArray()
+            }
         }
-    }
 
 }
